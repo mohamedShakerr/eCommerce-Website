@@ -1,7 +1,7 @@
 # target
 */target
 #context.xml
-#src/main/webapp/META-INF/context.xml
+src/main/webapp/META-INF/context.xml
 #classpath
 *.classpath
 
