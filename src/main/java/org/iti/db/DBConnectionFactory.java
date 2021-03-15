@@ -30,7 +30,7 @@ public class DBConnectionFactory {
         try {
             InitialContext ctx = null;
             ctx = new InitialContext();
-            DataSource ds = (DataSource)ctx.lookup("java:comp/env/jdbc/myusers");
+            DataSource ds = (DataSource)ctx.lookup("java:comp/env/jdbc/ecomm");
             conn = ds.getConnection();
         } catch (NamingException | SQLException e) {
             e.printStackTrace();
