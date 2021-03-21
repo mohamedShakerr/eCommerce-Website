@@ -5,7 +5,7 @@
     <meta charset="utf-8">
 
     <!--====== Title ======-->
-    <title>Game On</title>
+    <title>Login</title>
 
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -33,32 +33,31 @@
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-6 align-self-center">
-                    <div class="login-registration-style-2 mt-50">
+                    <div class="login-registration-style-2 text-center mt-50">
                         <h1 class="heading-4 font-weight-500 title">Login</h1>
                         <div class="login-registration-form pt-10">
-                            <form action="#">
+                            <form action="login" method="post">
                                 <div class="single-form form-default form-border">
                                      <label>Email Address</label>
                                      <div class="form-input">
-                                         <input type="email" placeholder="user@email.com">
+                                         <input type="email" name="email" placeholder="user@email.com">
                                          <i class="mdi mdi-email"></i>
                                      </div>
                                  </div>
                                  <div class="single-form form-default form-border">
-                                     <label>Choose Password</label>
+                                     <label>Password</label>
                                      <div class="form-input">
-                                         <input id="password-5" type="password" placeholder="Password">
+                                         <input id="password-5" type="password" name="password" placeholder="Password">
                                          <i class="mdi mdi-lock"></i>
                                          <span toggle="#password-5" class="mdi mdi-eye-outline toggle-password"></span>
                                      </div>
                                  </div>
                                  <div class="login-checkbox-forget d-sm-flex justify-content-between align-items-center">
                                      <div class="single-checkbox checkbox-style-3">
-                                         <input type="checkbox" id="login-5">
-                                         <label for="login-5"><span></span> </label>
+                                         <input type="checkbox" name="rememberMe" id="remember-me">
+                                         <label for="remember-me"><span></span> </label>
                                          <p>Remember Me</p>
                                      </div>
-                                     <a class="forget" href="#0">Forget Password?</a>
                                  </div>
                                  <div class="single-form">
                                      <button class="main-btn primary-btn">Signin</button>
@@ -66,7 +65,7 @@
                             </form>
                         </div>
                         <div class="d-sm-flex justify-content-between align-items-center">
-                            <p class="login">Don’t have an account? <a href="#0">Sign up</a></p>
+                            <p class="login">Don’t have an account? <a href="register.html">Sign up</a></p>
                         </div>
                     </div>
                  </div>

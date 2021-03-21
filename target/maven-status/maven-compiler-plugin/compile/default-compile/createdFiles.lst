@@ -1,0 +1,7 @@
+org\iti\controllers\filters\CookieFilter.class
+org\iti\controllers\LoginController.class
+org\iti\helpers\CookiesManager.class
+org\iti\controllers\listeners\ServletContextEventListener.class
+org\iti\data\daos\UserDao.class
+org\iti\data\daoimpl\UserDaoImpl.class
+org\iti\db\DBConnectionFactory.class
