@@ -6,12 +6,6 @@ version= "5.0"
 metadata-complete= "true">
 
 
-
-
-
-
-
-
     <resource-ref>
         <description>DB Connection</description>
         <res-ref-name>jdbc/ecomm</res-ref-name>
