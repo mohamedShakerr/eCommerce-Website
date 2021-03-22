@@ -1,0 +1,39 @@
+package org.iti.utils;
+
+
+import software.amazon.awssdk.core.sync.RequestBody;
+import software.amazon.awssdk.services.s3.S3Client;
+import software.amazon.awssdk.services.s3.model.ObjectCannedACL;
+import software.amazon.awssdk.services.s3.model.PutObjectRequest;
+
+import java.nio.ByteBuffer;
+
+public class S3UploadManager {
+
+    public static final String BUCKET_NAME = "ecommerece-iti";
+
+
+    public  S3UploadManager(){}
+
+    //Will Upload Byte array and return it's URL
+    public String uploadImage(byte[] byteArr, String fileName){
+        S3ClientProvider s3ClientProvider =S3ClientProvider.getInstance();
+        S3Client s3Client = s3ClientProvider.getS3Client();
+
+        PutObjectRequest putObjectRequest = PutObjectRequest.builder()
+                .bucket(BUCKET_NAME)
+                .acl(ObjectCannedACL.PUBLIC_READ)
+                .key(fileName)
+                .build();
+
+        s3Client.putObject(putObjectRequest,
+                RequestBody.fromByteBuffer( ByteBuffer.wrap(byteArr) ) );
+
+        return s3Client.utilities().getUrl(builder -> builder.
+                bucket(BUCKET_NAME)
+                .key(fileName))
+                .toExternalForm();
+    }
+
+
+}

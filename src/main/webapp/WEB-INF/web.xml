@@ -7,6 +7,30 @@ metadata-complete= "true">
 
 
 
+    <!--============Welcome FIle=============-->
+    <welcome-file-list>
+        <welcome-file>index.jsp</welcome-file>
+    </welcome-file-list>
+    <!--=====================================-->
+    <!--=====================Index Servlet===============-->
+    <servlet>
+        <servlet-name>IndexServlet</servlet-name>
+        <servlet-class>org.iti.controllers.IndexServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>IndexServlet</servlet-name>
+        <url-pattern></url-pattern>
+    </servlet-mapping>
+    <!--================================================-->
+
+
+    <!--==============LISTENERS========================-->
+
+    <listener>
+        <listener-class>org.iti.controllers.listeners.ServletContextEventListener</listener-class>
+    </listener>
+
+    <!--================================================-->
 
 
 
