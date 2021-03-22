@@ -6,6 +6,16 @@ version= "5.0"
 metadata-complete= "true">
 
 
+    <servlet>
+        <servlet-name>Register</servlet-name>
+        <servlet-class>org.iti.controllers.RegistrationController</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>Register</servlet-name>
+        <url-pattern>/register</url-pattern>
+    </servlet-mapping>
+
     <resource-ref>
         <description>DB Connection</description>
         <res-ref-name>jdbc/ecomm</res-ref-name>
