@@ -959,7 +959,7 @@
         <div class="row">
 
             <c:forEach var="accessory" items="${requestScope.featuredAccessories}">
-                <div class="col-lg-4 col-md-6" id="${accessory.productId}">
+                <div class="col-lg-4 col col-md-6" id="${accessory.productId}">
                     <div class="product-style-14 mt-30">
                         <div class="product-image">
                             <img src="${accessory.imageUrl}" alt="product">
