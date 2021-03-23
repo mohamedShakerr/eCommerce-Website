@@ -29,110 +29,104 @@
 
 <body>
 
-    <section class="login-registration-wrapper pt-50 pb-100">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-6 align-self-center">
-                    <div class="login-registration-style-1 registration text-center mt-50">
-                        <h1 class="heading-4 font-weight-500 title">Create an Account</h1>
-                        <div class="login-registration-form pt-10">
-                            <form action="RegistrationController">
-                                <div class="single-form form-default form-border text-left">
-                                    <label>UserName</label>
-                                    <div class="row">
-                                        <div class="col-sm-12">
-                                            <div class="form-input">
-                                                <input type="text" placeholder="Username">
-                                                <i class="mdi mdi-account"></i>
-                                            </div>
+<section class="login-registration-wrapper pt-50 pb-100">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-6 align-self-center">
+                <div class="login-registration-style-1 registration text-center mt-50">
+                    <h1 class="heading-4 font-weight-500 title">Create an Account</h1>
+                    <div class="login-registration-form pt-10">
+                        <form action="RegistrationController" method="post">
+                            <div class="single-form form-default form-border text-left">
+                                <label>UserName</label>
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="form-input">
+                                            <input type="text" name="userName" placeholder="Username" required>
+                                            <i class="mdi mdi-account"></i>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="single-form form-default form-border text-left">
-                                    <label>Email Address</label>
-                                    <div class="form-input">
-                                        <input type="email" placeholder="user@email.com">
-                                        <i class="mdi mdi-email"></i>
-                                    </div>
+                            </div>
+                            <div class="single-form form-default form-border text-left">
+                                <label>Email Address</label>
+                                <div class="form-input">
+                                    <input type="email" name="email" placeholder="user@email.com" required>
+                                    <i class="mdi mdi-email"></i>
                                 </div>
+                            </div>
 
-                                <div class="single-form form-default form-border text-left">
-                                    <label>Choose Password</label>
-                                    <div class="form-input">
-                                        <input id="password-3" type="password" placeholder="Password">
-                                        <i class="mdi mdi-lock"></i>
-                                        <span toggle="#password-3" class="mdi mdi-eye-outline toggle-password"></span>
-                                    </div>
+                            <div class="single-form form-default form-border text-left">
+                                <label>Choose Password</label>
+                                <div class="form-input">
+                                    <input id="password-3" name="password" type="password" placeholder="Password"
+                                           required>
+                                    <i class="mdi mdi-lock"></i>
+                                    <span toggle="#password-3" class="mdi mdi-eye-outline toggle-password"></span>
                                 </div>
+                            </div>
 
-                                <div class="single-form form-default form-border text-left">
-                                    <label>Address</label>
-                                    <div class="form-input">
-                                        <input type="text" placeholder="Cairo, Egypt">
-                                        <i class="mdi mdi-map-marker"></i>
-                                    </div>
+                            <div class="single-form form-default form-border text-left">
+                                <label>Address</label>
+                                <div class="form-input">
+                                    <input type="text" name="address" placeholder="Cairo, Egypt" required>
+                                    <i class="mdi mdi-map-marker"></i>
                                 </div>
+                            </div>
 
-                                <div class="single-form form-default form-border text-left">
-                                    <label>Job</label>
-                                    <div class="form-input">
-                                        <input type="text" placeholder="Engineer">
-                                        <i class="mdi mdi-briefcase"></i>
-                                    </div>
+                            <div class="single-form form-default form-border text-left">
+                                <label>Job</label>
+                                <div class="form-input">
+                                    <input type="text" name="job" placeholder="Engineer">
+                                    <i class="mdi mdi-briefcase"></i>
                                 </div>
+                            </div>
 
-                                <div class="single-form form-default form-border text-left">
-                                    <label>Interests</label>
-                                    <div class="form-input">
-                                        <input type="text" placeholder="Movies">
-                                        <i class="mdi mdi-thought-bubble"></i>
-                                    </div>
+                            <div class="single-form form-default form-border text-left">
+                                <label>Interests</label>
+                                <div class="form-input">
+                                    <input type="text" name="interests" placeholder="Movies">
+                                    <i class="mdi mdi-thought-bubble"></i>
                                 </div>
-
-                                <div class="single-form form-default form-border text-left">
-                                    <label>Credit limit</label>
-                                    <div class="form-input">
-                                        <input type="number" placeholder="$1000">
-                                        <i class="mdi mdi-cash-usd"></i>
-                                    </div>
-                                </div>
+                            </div>
 
 
+                            <!--todo handle this checkbox -->
+                            <div class="single-checkbox checkbox-style-3">
+                                <input type="checkbox" name="terms" id="login-3">
+                                <label for="login-3"><span></span> </label>
+                                <p>I accept the Terms of Use.</p>
+                            </div>
 
-                                <div class="single-checkbox checkbox-style-3">
-                                    <input type="checkbox" id="login-3">
-                                    <label for="login-3"><span></span> </label>
-                                    <p>I accept the Terrms of Use.</p>
-                                </div>
-                                <div class="single-form">
-                                    <button class="main-btn primary-btn">Signup</button>
-                                </div>
-                            </form>
-                        </div>
+                            <div class="single-form">
+                                <button class="main-btn primary-btn">Signup</button>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
 
-    <!--====== Bootstrap js ======-->
-    <script src="assets/js/bootstrap.min.js"></script>
+<!--====== Bootstrap js ======-->
+<script src="assets/js/bootstrap.min.js"></script>
 
-    <!--====== Tiny Slider js ======-->
-    <script src="assets/js/tiny-slider.js"></script>
+<!--====== Tiny Slider js ======-->
+<script src="assets/js/tiny-slider.js"></script>
 
-    <!--====== nouiSlider js ======-->
-    <script src="assets/js/nouislider.min.js"></script>
+<!--====== nouiSlider js ======-->
+<script src="assets/js/nouislider.min.js"></script>
 
-    <!--====== count up js ======-->
-    <script src="assets/js/count-up.min.js"></script>
+<!--====== count up js ======-->
+<script src="assets/js/count-up.min.js"></script>
 
-    <!--====== gLightBox js ======-->
-    <script src="assets/js/glightbox.min.js"></script>
+<!--====== gLightBox js ======-->
+<script src="assets/js/glightbox.min.js"></script>
 
-    <!--====== Main js ======-->
-    <script src="assets/js/main.js"></script>
+<!--====== Main js ======-->
+<script src="assets/js/main.js"></script>
 
 </body>
 
