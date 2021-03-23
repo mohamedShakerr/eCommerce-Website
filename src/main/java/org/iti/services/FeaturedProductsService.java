@@ -1,10 +1,15 @@
 package org.iti.services;
 
-import jakarta.websocket.Session;
+import org.iti.dao.impl.FeaturedProductImpl;
+import org.iti.dao.interfaces.FeaturedProductDao;
+import  org.iti.utils.mappers.*;
+import  org.iti.utils.mappers.EntityToDtoMapper;
 
+import org.hibernate.Session;
+import org.iti.db.DBSessionProvider;
 import org.iti.db.domain.DBProduct;
 import org.iti.dtos.FeaturedIndexProductDto;
-import org.iti.utils.mappers.EntityToDtoMapper;
+
 import org.iti.utils.mappers.todtomappers.DBProdToFeaturedProd;
 
 import java.util.ArrayList;
@@ -16,7 +21,8 @@ public class FeaturedProductsService {
 
     public FeaturedProductsService(){
         //TODO Should Create Session Here
-
+        DBSessionProvider dbSessionProvider = DBSessionProvider.getInstance();
+        serviceSessison = dbSessionProvider.getSession();
     }
 
 
@@ -69,6 +75,11 @@ public class FeaturedProductsService {
         dbProducts.add(product2);
         dbProducts.add(product3);
         dbProducts.add(product4);
+        dbProducts.add(product3);
+        dbProducts.add(product4);
+
+        FeaturedProductDao dao = new FeaturedProductImpl(serviceSessison);
+        System.out.println(dao.getAllFeaturedProducts());
 
 
         EntityToDtoMapper<FeaturedIndexProductDto,DBProduct> mapper = new DBProdToFeaturedProd();

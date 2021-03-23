@@ -4,6 +4,9 @@
 src/main/webapp/META-INF/context.xml
 #res
 /src/main/resources/*
+#target
+target/*
+target
 #classpath
 *.classpath
 

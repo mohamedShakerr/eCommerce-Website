@@ -37,16 +37,9 @@ public class IndexServlet extends HttpServlet{
 
 
 		HttpSession session = request.getSession(true);
-		session.setAttribute("userId",1);
-
+//		session.setAttribute("userId",1);
 
 		S3UploadManager uploadManager = new S3UploadManager();
-
-//
-//		byte[] arr = new byte[10000];
-//		String url = uploadManager.uploadImage(arr,"Tetst.svg");
-//		System.out.println(url);
-
 
 		request.setAttribute("featuredProducts", featuredProducts);
 		request.setAttribute("featuredAccessories", featuredAccessories);
