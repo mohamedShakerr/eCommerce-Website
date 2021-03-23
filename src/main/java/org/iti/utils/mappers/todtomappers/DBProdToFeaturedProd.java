@@ -1,9 +1,9 @@
-package org.iti.services.mappers.todtomappers;
+package org.iti.utils.mappers.todtomappers;
 
 
 import org.iti.db.domain.DBProduct;
 import org.iti.dtos.FeaturedIndexProductDto;
-import org.iti.services.mappers.EntityToDtoMapper;
+import org.iti.utils.mappers.EntityToDtoMapper;
 
 public class DBProdToFeaturedProd extends EntityToDtoMapper<FeaturedIndexProductDto, DBProduct> {
 

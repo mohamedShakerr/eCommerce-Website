@@ -4,8 +4,8 @@ import jakarta.websocket.Session;
 
 import org.iti.db.domain.DBProduct;
 import org.iti.dtos.FeaturedIndexProductDto;
-import org.iti.services.mappers.EntityToDtoMapper;
-import org.iti.services.mappers.todtomappers.DBProdToFeaturedProd;
+import org.iti.utils.mappers.EntityToDtoMapper;
+import org.iti.utils.mappers.todtomappers.DBProdToFeaturedProd;
 
 import java.util.ArrayList;
 import java.util.List;
