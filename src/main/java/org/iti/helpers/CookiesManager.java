@@ -9,26 +9,25 @@ import java.util.Optional;
 
 public class CookiesManager {
 
-    private static volatile CookiesManager instance = null;
-    private static final String defaultKey = "e-mail";
+    private static volatile CookiesManager cookiesInstance = null;
 
     private CookiesManager() {
-        if (instance != null)
+        if (cookiesInstance != null)
             throw new RuntimeException();
     }
 
     public static CookiesManager getInstance() {
-        if (instance == null) {
+        if (cookiesInstance == null) {
             synchronized (CookiesManager.class) {
-                if (instance == null) {
-                    instance = new CookiesManager();
+                if (cookiesInstance == null) {
+                    cookiesInstance = new CookiesManager();
                 }
             }
         }
-        return instance;
+        return cookiesInstance;
     }
 
-    public void writeCookie(HttpServletResponse response,String key, String value) {
+    public void addCookie(HttpServletResponse response, String key, String value) {
         Cookie cookie = new Cookie(key, value);
         response.addCookie(cookie);
     }
@@ -38,18 +37,21 @@ public class CookiesManager {
         return request.getCookies();
     }
 
+    public boolean isCookieExists(HttpServletRequest request, String key){
 
-    // generalize
-    public Optional<String> readCookie(HttpServletRequest request) {
-        if (request.getCookies() != null) {
-            return Arrays.stream(request.getCookies())
-                    .filter(c -> defaultKey.equals(c.getName()))
-                    .map(Cookie::getValue)
-                    .findAny();
+        Cookie[] cookies = getCookies(request);
+        if (cookies != null) {
+            for (Cookie cookie : cookies) {
+                System.out.println("after check : cookies is " + cookie.getName());
+                if (cookie.getName().equals(key)) {
+                    return true;
+                }
+            }
         }
-        else {
-            return Optional.empty();
-        }
+        return false;
     }
+
+
+
 
 }

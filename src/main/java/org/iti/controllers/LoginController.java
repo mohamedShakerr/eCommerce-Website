@@ -1,18 +1,13 @@
 package org.iti.controllers;
 
-import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
-import jakarta.servlet.http.HttpServlet;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
+import jakarta.servlet.http.*;
 import org.iti.data.daoimpl.UserDaoImpl;
 import org.iti.data.daos.UserDao;
 import org.iti.helpers.CookiesManager;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.Arrays;
 
 
 public class LoginController extends HttpServlet {
@@ -21,16 +16,21 @@ public class LoginController extends HttpServlet {
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        cookiesManager.readCookie(request);
+        // check cookie email
+        if(cookiesManager.isCookieExists(request, "email")) {
+            response.sendRedirect("index.html");
+        } else {
+            response.sendRedirect("login.jsp");
+        }
 
-        response.sendRedirect("login.jsp");
-//        RequestDispatcher rd = request.getRequestDispatcher("index.html");
-//        rd.include(request, response);
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+
+        response.setContentType("text/html");
+        response.addHeader("Refresh", "5");
 
         String email = request.getParameter("email");
         String password = request.getParameter("password");
@@ -42,22 +42,24 @@ public class LoginController extends HttpServlet {
             int userId;
 
             if (isLoginValid) {
-                userId = userDao.getUserIdByEmail(email);
-
-//                if (rememberMe != null && rememberMe.equals("true")) {
-                    cookiesManager.writeCookie(response, "email", email);
-                    System.out.println("cookies" + Arrays.toString(cookiesManager.getCookies(request)));
-//                }
 
                 HttpSession session = request.getSession(true);
+
+                userId = userDao.getUserIdByEmail(email);
                 session.setAttribute("userId", userId);
 
-                response.sendRedirect("index.html");
-                return;
-            }
+                if (rememberMe != null && rememberMe.equals("true")) {
+                    cookiesManager.addCookie(response, "email", email);
+                }
 
-            RequestDispatcher rd = request.getRequestDispatcher("err404.jsp");
-            rd.include(request, response);
+                response.sendRedirect("index.html");
+            }
+            else {
+
+                request.setAttribute("InputError", "err");
+
+                response.sendRedirect("login");
+            }
 
         } catch (SQLException throwable) {
             throwable.printStackTrace();

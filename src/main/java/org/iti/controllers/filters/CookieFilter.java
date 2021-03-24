@@ -27,35 +27,33 @@ public class CookieFilter implements Filter {
         CookiesManager cookiesManager = CookiesManager.getInstance();
         Cookie[] cookies = cookiesManager.getCookies(req);
 
-        if (cookies == null) {
+        if (cookies != null) {
+
+            System.out.println("cookie is enabled");
+
+            chain.doFilter(request, response);
+
+        } else {
+
+            // add checkCookies parameter at the first time
             if (req.getParameter("checkCookies") == null) {
-                cookiesManager.writeCookie(res, "cookieTest", "cookieCheck");
-
-                System.out.println("wow .. we added cookies");
-
+                cookiesManager.addCookie(res, "cookieTest", "cookieCheck");
                 res.sendRedirect(url + "?checkCookies=1");
+
             } else {
                 System.out.println("sad .. cookies is blocked");
-                if(url.endsWith("login.jsp")){
-                    RequestDispatcher rd = request.getRequestDispatcher("alertCookies.jsp");
-                    rd.include(request, response);
+
+                req.setAttribute("cookiesState", "cookiesBlocked");
+
+                if(!(url.endsWith("login.jsp"))){
+                    RequestDispatcher rd = request.getRequestDispatcher("login");
+                    rd.forward(request, response);
                 }
-                else {
-                    RequestDispatcher rd = request.getRequestDispatcher("login.jsp");
-                    rd.include(request, response);
+                else{
+                    chain.doFilter(request, response);
                 }
 
             }
-        } else {
-            System.out.println("cookie is enabled");
-            String email = request.getParameter("email");
-//            for(Cookie cookie : cookies){
-//
-//                if(cookie.getName().equals("email") && cookie.getValue().equals(email)){
-//                    ((HttpServletResponse) response).sendRedirect("index.html");
-//                }
-//            }
-            chain.doFilter(request, response);
         }
     }
 
