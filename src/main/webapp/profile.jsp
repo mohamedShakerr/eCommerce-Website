@@ -38,6 +38,9 @@
     <!--====== Style CSS ======-->
     <link rel="stylesheet" href="assets/css/style.css">
 
+    <!-- card style-->
+    <link rel="stylesheet" type="text/css" href="assets/css/card.css">
+
 </head>
 
 <body>
@@ -132,44 +135,85 @@
                         <div class="profile-footer mt-45">
                             <div class="profile-title">
                                 <h5 class="title">Cards</h5>
-                                <a class="profile-link" href="#0">Add Cards</a>
+                                <a class="profile-link" href="#0" onclick="showCard()">Add Cards</a>
                             </div>
                             <div class="profile-card-info">
-                                <div class="row">
-                                    <div class="col-md-4 col-sm-6">
-                                        <div class="single-card-info d-flex">
-                                            <div class="card-icon">
-                                                <img src="assets/images/visa.png" alt="Card">
+                                <div id="creditCardFormId" class="creditCardForm" style="display: none">
+
+                                    <div class="payment">
+                                        <form>
+                                            <div class="form-group owner" >
+                                                <label for="owner">Owner</label>
+                                                <input type="text" class="form-control" id="owner">
+                                                <div class="alert alert-danger" id="ownerNameError" style="display:none">
+
+                                                </div>
                                             </div>
-                                            <div class="card-info media-body">
-                                                <h5 class="card-name">Musa Ahmed</h5>
-                                                <p class="card-number">.... 4534 <span>02/20</span></p>
+                                            <div class="form-group CVV">
+                                                <label for="cvv">CVV</label>
+                                                <input type="text" class="form-control" id="cvv">
+                                                <div class="alert alert-danger" id="CVVError" style="display:none">
+
+                                                </div>
                                             </div>
-                                        </div>
+                                            <div class="form-group" id="card-number-field">
+                                                <label for="cardNumber">Card Number</label>
+                                                <input type="text" class="form-control" id="cardNumber">
+                                                <div class="alert alert-danger" id="cardNumberError" style="display:none" >
+
+                                                </div>
+                                            </div>
+                                            <div class="form-group" id="expiration-date">
+                                                <label>Expiration Date</label>
+                                                <select>
+                                                    <option value="01">January</option>
+                                                    <option value="02">February </option>
+                                                    <option value="03">March</option>
+                                                    <option value="04">April</option>
+                                                    <option value="05">May</option>
+                                                    <option value="06">June</option>
+                                                    <option value="07">July</option>
+                                                    <option value="08">August</option>
+                                                    <option value="09">September</option>
+                                                    <option value="10">October</option>
+                                                    <option value="11">November</option>
+                                                    <option value="12">December</option>
+                                                </select>
+                                                <select>
+                                                    <option value="21"> 2021</option>
+                                                    <option value="22"> 2022</option>
+                                                    <option value="23"> 2023</option>
+                                                    <option value="24"> 2024</option>
+                                                    <option value="25"> 2025</option>
+                                                    <option value="26"> 2026</option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group" id="credit_cards">
+                                                <img src="assets/imgs/visa.jpg" id="visa">
+                                                <img src="assets/imgs/mastercard.jpg" id="mastercard">
+
+                                            </div>
+                                            <div class="form-group" id="money-field">
+                                                <label >Money</label>
+                                                <input type="text" class="form-control" id="money">
+                                                <div class="alert alert-danger" id="moneyError" style="display:none" >
+
+                                                </div>
+                                            </div>
+                                            <div class="form-group" id="pay-now">
+                                                <button type="submit" class="btn btn-default" id="confirm-purchase">Confirm</button>
+                                            </div>
+                                        </form>
+
+<%--                                        <div class="alert alert-danger" role="alert">--%>
+<%--                                            This is a danger alert—check it out!--%>
+<%--                                        </div>--%>
                                     </div>
-                                    <div class="col-md-4 col-sm-6">
-                                        <div class="single-card-info d-flex">
-                                            <div class="card-icon">
-                                                <img src="assets/images/american-express.png" alt="Card">
-                                            </div>
-                                            <div class="card-info media-body">
-                                                <h5 class="card-name">Musa Ahmed</h5>
-                                                <p class="card-number">.... 4534 <span>02/20</span></p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4 col-sm-6">
-                                        <div class="single-card-info d-flex">
-                                            <div class="card-icon">
-                                                <img src="assets/images/mastercard.png" alt="Card">
-                                            </div>
-                                            <div class="card-info media-body">
-                                                <h5 class="card-name">Musa Ahmed</h5>
-                                                <p class="card-number">.... 4534 <span>02/20</span></p>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    <div id="addMoneyResult" class="alert alert-success" role="alert">
+
                                 </div>
+                                </div>
+
                             </div>
                         </div>
                     </div>
@@ -177,7 +221,16 @@
             </div>
         </div>
     </section>
-
+<%--    <tr>--%>
+<%--        <td>Visa</td>--%>
+<%--        <td>4716108999716531</td>--%>
+<%--        <td>257</td>--%>
+<%--    </tr>--%>
+<%--    <tr>--%>
+<%--        <td>Master Card</td>--%>
+<%--        <td>5281037048916168</td>--%>
+<%--        <td>043</td>--%>
+<%--    </tr>--%>
     <!--====== Profile Ends ======-->
 
    <!--====== Footer ======-->
@@ -200,10 +253,21 @@
 
     <!--====== gLightBox js ======-->
     <script src="assets/js/glightbox.min.js"></script>
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <!--====== Main js ======-->
     <script src="assets/js/main.js"></script>
 
+    <script src="assets/js/card.js"></script>
+    <script src="assets/js/jquery.payform.min.js" charset="utf-8"></script>
+<script>
+    function showCard(){
+        if(document.getElementById("creditCardFormId").style.display=="none"){
+            document.getElementById("creditCardFormId").style.display="block";
+        }else{
+            document.getElementById("creditCardFormId").style.display="none";
+        }
+    }
+</script>
 </body>
 
 </html>

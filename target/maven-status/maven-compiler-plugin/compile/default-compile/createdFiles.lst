@@ -4,4 +4,5 @@ org\iti\controllers\customer\CustomerProfileServlet.class
 org\iti\controllers\listeners\ServletContextEventListener.class
 org\iti\services\CustomerServices.class
 org\iti\domain\Customer.class
+org\iti\controllers\customer\CreditCardServlet.class
 org\iti\db\DBConnectionFactory.class
