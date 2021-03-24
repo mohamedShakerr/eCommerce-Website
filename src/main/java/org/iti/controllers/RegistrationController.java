@@ -30,9 +30,15 @@ public class RegistrationController extends HttpServlet {
         String userName = req.getParameter("useName");
         String email = req.getParameter("email");
         String password = req.getParameter("password");
+        String phone = req.getParameter("phone");
         String address = req.getParameter("address");
         String job = req.getParameter("job");
         String interests = req.getParameter("interests");
+
+
+
+
+
 
 
 
