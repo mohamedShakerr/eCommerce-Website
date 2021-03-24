@@ -25,6 +25,9 @@
     <!--====== Style CSS ======-->
     <link rel="stylesheet" href="assets/css/style.css">
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+
 </head>
 
 <body>
@@ -36,13 +39,13 @@
                 <div class="login-registration-style-1 registration text-center mt-50">
                     <h1 class="heading-4 font-weight-500 title">Create an Account</h1>
                     <div class="login-registration-form pt-10">
-                        <form action="RegistrationController" method="post">
+                        <form action="register" method="post">
                             <div class="single-form form-default form-border text-left">
                                 <label>UserName</label>
                                 <div class="row">
                                     <div class="col-sm-12">
                                         <div class="form-input">
-                                            <input type="text" name="userName" placeholder="User name" required>
+                                            <input type="text" id="userName" name="userName" placeholder="User name" required onblur="validateUserName()">
                                             <i class="mdi mdi-account"></i>
                                         </div>
                                     </div>
@@ -51,7 +54,7 @@
                             <div class="single-form form-default form-border text-left">
                                 <label>Email Address</label>
                                 <div class="form-input">
-                                    <input type="email" name="email" placeholder="user@email.com" required>
+                                    <input type="email" id="email" name="email" placeholder="user@email.com" required onblur="validateEmail()">
                                     <i class="mdi mdi-email"></i>
                                 </div>
                             </div>
@@ -135,6 +138,24 @@
 
 <!--====== Main js ======-->
 <script src="assets/js/main.js"></script>
+
+<!--====== Ajax validation ======-->
+
+<script>
+
+    function validateUserName() {
+       $.post("validateRegister?type=name&&userName="+$("#userName").val(),function(data){
+           alert("name validated and data: " + data);
+           });
+
+        function validateEmail() {
+            $.post("validateRegister?type=email&&email=" + $("#email").val(), function (data) {
+                alert("email, data from server=",data);
+            });
+        }
+
+    }
+</script>
 
 </body>
 

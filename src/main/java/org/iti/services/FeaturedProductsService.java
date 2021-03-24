@@ -2,8 +2,7 @@ package org.iti.services;
 
 import org.iti.dao.impl.FeaturedProductImpl;
 import org.iti.dao.interfaces.FeaturedProductDao;
-import  org.iti.utils.mappers.*;
-import  org.iti.utils.mappers.EntityToDtoMapper;
+import org.iti.utils.mappers.EntityDtoMapper;
 
 import org.hibernate.Session;
 import org.iti.db.DBSessionProvider;
@@ -82,8 +81,8 @@ public class FeaturedProductsService {
         System.out.println(dao.getAllFeaturedProducts());
 
 
-        EntityToDtoMapper<FeaturedIndexProductDto,DBProduct> mapper = new DBProdToFeaturedProd();
-        return mapper.convertEntityListToDtoList(dbProducts);
+        EntityDtoMapper<DBProduct,FeaturedIndexProductDto> mapper = new DBProdToFeaturedProd();
+        return mapper.entityListToDtoList(dbProducts);
 
     }
 
@@ -137,9 +136,9 @@ public class FeaturedProductsService {
         dbProducts.add(product2);
         dbProducts.add(product4);
 
-        EntityToDtoMapper<FeaturedIndexProductDto, DBProduct> mapper = new DBProdToFeaturedProd();
+        EntityDtoMapper<DBProduct,FeaturedIndexProductDto> mapper = new DBProdToFeaturedProd();
 
-        return  mapper.convertEntityListToDtoList(dbProducts);
+        return  mapper.entityListToDtoList(dbProducts);
     }
 
 }

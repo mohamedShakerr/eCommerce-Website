@@ -43,6 +43,16 @@ metadata-complete= "true">
         <url-pattern>/register</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>RegisterValidationServlet</servlet-name>
+        <servlet-class>org.iti.controllers.RegisterValidationServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>RegisterValidationServlet</servlet-name>
+        <url-pattern>/validateRegister</url-pattern>
+    </servlet-mapping>
+
     <resource-ref>
         <description>DB Connection</description>
         <res-ref-name>jdbc/ecomm</res-ref-name>

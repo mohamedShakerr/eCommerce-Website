@@ -1,21 +1,32 @@
 package org.iti.services;
 
-import org.iti.data.daoimpl.CustomerDaoImpl;
-import org.iti.data.daos.CustomerDao;
-import org.iti.dto.CustomerDto;
+import org.hibernate.Session;
+import org.iti.dao.impl.CustomerDaoImpl;
+import org.iti.dao.interfaces.CustomerDao;
+import org.iti.db.DBSessionProvider;
+import org.iti.dtos.CustomerDto;
+import org.iti.utils.mappers.todtomappers.CustomerMapper;
 
 public class RegistrationService {
 
     CustomerDao customerDao;
+    DBSessionProvider dbSessionProvider;
+    Session serviceSession;
+
 
     public RegistrationService() {
 
-        customerDao = CustomerDaoImpl.getInstance();
+        dbSessionProvider = DBSessionProvider.getInstance();
+        serviceSession = dbSessionProvider.getSession();
+        customerDao =  new CustomerDaoImpl(serviceSession);
+
+
     }
 
     public boolean registerCustomer(CustomerDto customerDto){
 
-        //todo Add real implementation
+        CustomerMapper customerMapper = new CustomerMapper();
+        customerDao.addCustomer(customerMapper.toEntity(customerDto));
 
         return true;
     }

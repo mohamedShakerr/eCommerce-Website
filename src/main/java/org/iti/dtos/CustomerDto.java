@@ -1,15 +1,30 @@
-package org.iti.dto;
+package org.iti.dtos;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class CustomerDto {
+public class CustomerDto implements Serializable {
 
     String name;
     String email;
     String password;
     String address;
+    double credit;
     Date  registerDate;
     String url;
+    String phone;
+
+    public CustomerDto() {
+    }
+
+    public CustomerDto(String name, String email, String password, String address, double credit, String phone) {
+        this.name = name;
+        this.email = email;
+        this.password = password;
+        this.address = address;
+        this.credit = credit;
+        this.phone = phone;
+    }
 
     public String getName() {
         return name;
@@ -57,5 +72,21 @@ public class CustomerDto {
 
     public void setUrl(String url) {
         this.url = url;
+    }
+
+    public double getCredit() {
+        return credit;
+    }
+
+    public void setCredit(double credit) {
+        this.credit = credit;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 }

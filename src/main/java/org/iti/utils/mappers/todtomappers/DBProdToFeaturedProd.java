@@ -3,13 +3,13 @@ package org.iti.utils.mappers.todtomappers;
 
 import org.iti.db.domain.DBProduct;
 import org.iti.dtos.FeaturedIndexProductDto;
-import org.iti.utils.mappers.EntityToDtoMapper;
+import org.iti.utils.mappers.EntityDtoMapper;
 
-public class DBProdToFeaturedProd extends EntityToDtoMapper<FeaturedIndexProductDto, DBProduct> {
+public class DBProdToFeaturedProd extends EntityDtoMapper<DBProduct,FeaturedIndexProductDto> {
 
 
     @Override
-    public FeaturedIndexProductDto convertEntityToDto(DBProduct entity) {
+    public FeaturedIndexProductDto toDto(DBProduct entity) {
 
         FeaturedIndexProductDto featuredProd = new FeaturedIndexProductDto();
 
@@ -22,6 +22,10 @@ public class DBProdToFeaturedProd extends EntityToDtoMapper<FeaturedIndexProduct
         return  featuredProd;
     }
 
+    @Override
+    public DBProduct toEntity(FeaturedIndexProductDto entity) {
+        return null;
+    }
 
 
 }
