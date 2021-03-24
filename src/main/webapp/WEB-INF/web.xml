@@ -16,7 +16,7 @@ metadata-complete= "true">
 	</servlet-mapping>
 	<servlet>
 		<servlet-name>CreditCardServlet</servlet-name>
-		<servlet-class>org.iti.controllers.customer.CustomerProfileServlet</servlet-class>
+		<servlet-class>org.iti.controllers.customer.CreditCardServlet</servlet-class>
 	</servlet>
 
 	<servlet-mapping>

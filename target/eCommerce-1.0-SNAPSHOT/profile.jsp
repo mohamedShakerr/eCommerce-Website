@@ -120,7 +120,14 @@
                                         <p><c:out value="${customer.regDate}"/></p>
                                     </div>
                                 </div>
-								
+                                <div class="single-details-item d-flex flex-wrap">
+                                    <div class="details-title">
+                                        <h6 class="title">Credit limit:</h6>
+                                    </div>
+                                    <div class="details-content media-body">
+                                        <p><c:out value="${customer.credit}"/></p>
+                                    </div>
+                                </div>
 								
 								 <div class="single-details-item d-flex flex-wrap">
                                     <div class="details-title">
@@ -201,7 +208,7 @@
                                                 </div>
                                             </div>
                                             <div class="form-group" id="pay-now">
-                                                <button type="submit" class="btn btn-default" id="confirm-purchase">Confirm</button>
+                                                <button  class="btn btn-default" id="confirm-purchase">Confirm</button>
                                             </div>
                                         </form>
 
@@ -209,9 +216,7 @@
 <%--                                            This is a danger alert—check it out!--%>
 <%--                                        </div>--%>
                                     </div>
-                                    <div id="addMoneyResult" class="alert alert-success" role="alert">
 
-                                </div>
                                 </div>
 
                             </div>

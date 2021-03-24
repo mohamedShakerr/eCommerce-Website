@@ -89,9 +89,8 @@ $(function() {
             };
 
             $.post("CreditCardServlet", cardData, function (data) {
-                var response = jQuery.parseJSON(data);
-                var row = "";
-                $("#addMoneyResult").innerHTML=response.msg;
+                //var response = jQuery.parseJSON(data);
+                location.replace("profile?userid=1");
 
             });
         }

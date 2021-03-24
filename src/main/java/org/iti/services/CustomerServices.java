@@ -16,7 +16,7 @@ public class CustomerServices {
     private CustomerDAO customerDao = new CustomerDAO();
     private HttpServletRequest request;
     private HttpServletResponse response;
-
+    public CustomerServices(){}
     public CustomerServices(HttpServletRequest request, HttpServletResponse response) {
         this.request = request;
         this.response = response;
@@ -54,7 +54,12 @@ public class CustomerServices {
         RequestDispatcher rd = request.getRequestDispatcher("/edit_profile.jsp");
         rd.forward(request, response);
     }
-
+   public double addMoneyToCredit(double money,int id){
+        Customer customer=customerDao.getCustomer(id);
+        //update DB
+        customer.setCredit(money+customer.getCredit());
+        return customer.getCredit();
+    }
     boolean isPhoneNumberValid(String phone){
         Pattern pattern = Pattern.compile("^(011|015|012|010)[0-9]{8}");
         Matcher matcher = pattern.matcher(phone);
