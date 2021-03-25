@@ -45,7 +45,7 @@
                                 <div class="row">
                                     <div class="col-sm-12">
                                         <div class="form-input">
-                                            <input type="text" id="userName" name="userName" placeholder="User name" required onblur="validateUserName()">
+                                            <input type="text" id="userName" name="userName" placeholder="User name" required>
                                             <i class="mdi mdi-account"></i>
                                         </div>
                                     </div>
@@ -143,17 +143,22 @@
 
 <script>
 
-    function validateUserName() {
-       $.post("validateRegister?type=name&&userName="+$("#userName").val(),function(data){
-           alert("name validated and data: " + data);
-           });
+    function validateEmail() {
 
-        function validateEmail() {
-            $.post("validateRegister?type=email&&email=" + $("#email").val(), function (data) {
-                alert("email, data from server=",data);
-            });
-        }
+        $.get("validateRegister?type=email&email=" + $("#email").val(), function (data) {
 
+            console.log("data :" + data);
+            if(data =="true"){
+          //      alert("email already exists");
+                console.log("email already exists");
+
+
+            }else{
+        //        alert("check mark");
+                console.log("email valid");
+
+            }
+        });
     }
 </script>
 

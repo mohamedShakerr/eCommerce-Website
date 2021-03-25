@@ -6,4 +6,8 @@ import org.iti.dtos.CustomerDto;
 public interface CustomerDao {
 
     void addCustomer(Customers customerDto);
+
+    Customers getCustomerByUserName(String userName);
+
+    Customers getCustomerByUserEmail(String email);
 }
