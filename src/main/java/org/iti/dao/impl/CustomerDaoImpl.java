@@ -5,11 +5,7 @@ import org.hibernate.query.Query;
 import org.iti.dao.interfaces.CustomerDao;
 import org.iti.db.DBSessionProvider;
 import org.iti.db.domain.Customers;
-import org.iti.dtos.CustomerDto;
 
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.List;
 
 public class CustomerDaoImpl implements CustomerDao {
@@ -73,6 +69,7 @@ public class CustomerDaoImpl implements CustomerDao {
 
     @Override
     public boolean isCustomerExist(Customers customer){
+        Session hibernateSession = dbSessionProvider.getSession();
 
         String queryString = "FROM Customers c WHERE c.email = ?0 AND c.password = ?1" ;
         List<Customers> customerList = hibernateSession.createQuery(queryString, Customers.class)
@@ -88,6 +85,8 @@ public class CustomerDaoImpl implements CustomerDao {
 
     @Override
     public int getUserIdByEmail(String email) {
+
+        Session hibernateSession = dbSessionProvider.getSession();
 
         String queryString = "from Customers c WHERE c.email=?0";
         Query query = hibernateSession.createQuery(queryString, Customers.class).setParameter(0, email);

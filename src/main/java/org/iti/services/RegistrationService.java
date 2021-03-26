@@ -15,9 +15,7 @@ public class RegistrationService {
     CustomerDao customerDao;
 
     public RegistrationService() {
-
         customerDao = new CustomerDaoImpl();
-
 
     }
 
