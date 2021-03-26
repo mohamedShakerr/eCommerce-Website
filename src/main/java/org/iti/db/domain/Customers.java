@@ -122,7 +122,7 @@ public class Customers implements java.io.Serializable {
     }
 
     @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "reg_date", nullable = false, length = 19)
+    @Column(name = "reg_date", length = 19)
     public Date getRegDate() {
         return this.regDate;
     }

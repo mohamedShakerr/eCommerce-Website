@@ -33,6 +33,12 @@
     font-size: 18px;
 }
 
+.err, .suc {
+    display: none;
+}
+.err { color: red;}
+.suc { color: green;}
+
 
 
 

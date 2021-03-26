@@ -38,6 +38,9 @@ public class RegistrationController extends HttpServlet {
         String interests = req.getParameter("interests");
 
         CustomerDto customerDto = new CustomerDto(userName,email,password,address,1000L,phone);
+
+        customerDto.setJob(job);
+        customerDto.setInterests(interests);
         customerDto.setUrl("/imageurl/");
 
         registrationService.registerCustomer(customerDto);

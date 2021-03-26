@@ -41,11 +41,12 @@
                     <div class="login-registration-form pt-10">
                         <form action="register" method="post">
                             <div class="single-form form-default form-border text-left">
-                                <label>UserName</label>
+                                <label>User Name</label>
                                 <div class="row">
                                     <div class="col-sm-12">
                                         <div class="form-input">
-                                            <input type="text" id="userName" name="userName" placeholder="User name" required>
+                                            <input type="text" id="userName" name="userName" placeholder="User name"
+                                                   required>
                                             <i class="mdi mdi-account"></i>
                                         </div>
                                     </div>
@@ -54,9 +55,13 @@
                             <div class="single-form form-default form-border text-left">
                                 <label>Email Address</label>
                                 <div class="form-input">
-                                    <input type="email" id="email" name="email" placeholder="user@email.com" required onblur="validateEmail()">
+                                    <input type="email" id="email" name="email" placeholder="user@email.com" required
+                                           onblur="validateEmail(email)">
+
                                     <i class="mdi mdi-email"></i>
                                 </div>
+                                <span id="emailError" class="err" style="display: none;">E-mail already existed</span>
+                                <span id="emailSuccess" class="suc" style=" display: none;">Valid email</span>
                             </div>
 
                             <div class="single-form form-default form-border text-left">
@@ -96,7 +101,7 @@
                             <div class="single-form form-default form-border text-left">
                                 <label>Interests</label>
                                 <div class="form-input">
-                                    <input type="text" name="interests" placeholder="Action">
+                                    <input type="text" name="interests" placeholder="Action Games">
                                     <i class="mdi mdi-thought-bubble"></i>
                                 </div>
                             </div>
@@ -143,19 +148,22 @@
 
 <script>
 
-    function validateEmail() {
+    function validateEmail(field) {
 
-        $.get("validateRegister?type=email&email=" + $("#email").val(), function (data) {
+        $.get("validateRegister?type=email&email=" + $("#email").val(), function (emailExists) {
 
-            console.log("data :" + data);
-            if(data =="true"){
-          //      alert("email already exists");
-                console.log("email already exists");
+            console.log("data :" + emailExists);
+            if (emailExists == "true") {
 
+                document.getElementById("emailSuccess").style.display = 'none';
+                document.getElementById("emailError").style.display ='block' ;
+                console.log("email invalid");
 
-            }else{
-        //        alert("check mark");
-                console.log("email valid");
+            } else {
+
+                document.getElementById("emailSuccess").style.display = 'block';
+                document.getElementById("emailError").style.display = 'none';
+                console.log("email invalid");
 
             }
         });

@@ -13,6 +13,8 @@ public class CustomerDto implements Serializable {
     Date  registerDate;
     String url;
     String phone;
+    String job;
+    String interests;
 
     public CustomerDto() {
     }
@@ -88,5 +90,21 @@ public class CustomerDto implements Serializable {
 
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+    public String getJob() {
+        return job;
+    }
+
+    public void setJob(String job) {
+        this.job = job;
+    }
+
+    public String getInterests() {
+        return interests;
+    }
+
+    public void setInterests(String interests) {
+        this.interests = interests;
     }
 }

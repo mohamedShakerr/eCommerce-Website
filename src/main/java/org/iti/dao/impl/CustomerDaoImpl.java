@@ -19,9 +19,12 @@ public class CustomerDaoImpl implements CustomerDao {
     @Override
     public void addCustomer(Customers customer) {
 
+        dbSessionProvider = DBSessionProvider.getInstance();
         Session hibernateSession = dbSessionProvider.getSession();
 
-        hibernateSession.persist(customer);
+        hibernateSession.beginTransaction();
+
+        hibernateSession.save(customer);
 
         hibernateSession.getTransaction().commit();
 

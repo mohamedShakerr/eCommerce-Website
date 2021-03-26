@@ -8,6 +8,8 @@ import org.iti.db.domain.Customers;
 import org.iti.dtos.CustomerDto;
 import org.iti.utils.mappers.todtomappers.CustomerMapper;
 
+import java.util.Date;
+
 public class RegistrationService {
 
     CustomerDao customerDao;
@@ -22,6 +24,7 @@ public class RegistrationService {
     public boolean registerCustomer(CustomerDto customerDto) {
 
         CustomerMapper customerMapper = new CustomerMapper();
+        customerDto.setRegisterDate(new Date());
         customerDao.addCustomer(customerMapper.toEntity(customerDto));
 
         return true;
