@@ -23,6 +23,21 @@ metadata-complete= "true">
     </servlet-mapping>
     <!--================================================-->
 
+    <!--=================Filters========================-->
+
+    <!-- Cookie filter -->
+    <filter>
+        <filter-name>CookieFilter</filter-name>
+        <filter-class>org.iti.controllers.filters.CookieFilter</filter-class>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>CookieFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+    <!--================================================-->
+
 
     <!--==============LISTENERS========================-->
 
@@ -52,6 +67,19 @@ metadata-complete= "true">
         <servlet-name>RegisterValidationServlet</servlet-name>
         <url-pattern>/validateRegister</url-pattern>
     </servlet-mapping>
+
+
+    <!-- login servlet -->
+    <servlet>
+        <servlet-name>Login</servlet-name>
+        <servlet-class>org.iti.controllers.LoginController</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>Login</servlet-name>
+        <url-pattern>/login</url-pattern>
+    </servlet-mapping>
+
 
     <resource-ref>
         <description>DB Connection</description>

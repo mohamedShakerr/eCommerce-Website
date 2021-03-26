@@ -1,3 +1,5 @@
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!doctype html>
 <html class="no-js" lang="en">
 
@@ -5,7 +7,7 @@
     <meta charset="utf-8">
 
     <!--====== Title ======-->
-    <title>Game On</title>
+    <title>Login</title>
 
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -22,6 +24,9 @@
     <!--====== Temp Style CSS ======-->
     <link rel="stylesheet" href="assets/css/tempstyle.css">
 
+    <!--====== font-awesome Style CSS ======-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+
     <!--====== Style CSS ======-->
     <!-- <link rel="stylesheet" href="assets/css/style.css"> -->
 
@@ -33,40 +38,58 @@
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-6 align-self-center">
-                    <div class="login-registration-style-2 mt-50">
-                        <h1 class="heading-4 font-weight-500 title">Login</h1>
+                    <c:if test='${requestScope["cookiesState"].equals("cookiesBlocked")}'>
+                        <jsp:include page="alertCookies.jsp"/>
+                    </c:if>
+                    <div class="login-registration-style-2 text-center mt-50">
+                        <div>
+                            <h3 style="color: #542DED;">
+                                <i class="fab fa-playstation"></i>
+                                <i class="fas fa-gamepad"></i>
+                            </h3>
+                            <h1 class="heading-4 font-weight-500 title" style="color: #542DED;">Login</h1>
+                        </div>
+
                         <div class="login-registration-form pt-10">
-                            <form action="#">
+                            <form action="login" method="post">
+
                                 <div class="single-form form-default form-border">
-                                     <label>Email Address</label>
+
+                                    <c:if test='${! empty requestScope.InputError}'>
+                                        <span id="inputErr" style="color: #ff0000;">
+                                            Invalid email or password.
+                                        </span>
+                                    </c:if>
+                                    <span id="invalidInput"></span>
                                      <div class="form-input">
-                                         <input type="email" placeholder="user@email.com">
-                                         <i class="mdi mdi-email"></i>
+                                         <input type="email" name="email" id="email" placeholder="Email">
+                                         <i class="mdi mdi-email" style="color: #542DED;"></i>
                                      </div>
+                                    <br>
+
                                  </div>
                                  <div class="single-form form-default form-border">
-                                     <label>Choose Password</label>
                                      <div class="form-input">
-                                         <input id="password-5" type="password" placeholder="Password">
-                                         <i class="mdi mdi-lock"></i>
-                                         <span toggle="#password-5" class="mdi mdi-eye-outline toggle-password"></span>
+                                         <input id="password-5" type="password" name="password" placeholder="Password" required>
+                                         <i class="mdi mdi-lock" style="color: #542DED;"></i>
+<%--                                         <span toggle="#password-5" class="mdi mdi-eye-outline toggle-password"></span>--%>
                                      </div>
+                                     <br>
                                  </div>
                                  <div class="login-checkbox-forget d-sm-flex justify-content-between align-items-center">
                                      <div class="single-checkbox checkbox-style-3">
-                                         <input type="checkbox" id="login-5">
-                                         <label for="login-5"><span></span> </label>
+                                         <input type="checkbox" name="rememberMe" id="remember-me" value="true" >
+                                         <label for="remember-me"><span></span> </label>
                                          <p>Remember Me</p>
                                      </div>
-                                     <a class="forget" href="#0">Forget Password?</a>
                                  </div>
                                  <div class="single-form">
-                                     <button class="main-btn primary-btn">Signin</button>
+                                     <button class="main-btn primary-btn" id="lgnBtn">Sign in</button>
                                  </div>
                             </form>
                         </div>
                         <div class="d-sm-flex justify-content-between align-items-center">
-                            <p class="login">Don’t have an account? <a href="#0">Sign up</a></p>
+                            <p class="login" >Don't have an account? <a href="register.html">Sign up</a></p>
                         </div>
                     </div>
                  </div>
@@ -74,7 +97,6 @@
             </div>
         </div>
     </section>
-
 
     <!--====== Bootstrap js ======-->
     <script src="assets/js/bootstrap.min.js"></script>
@@ -93,6 +115,14 @@
 
     <!--====== Main js ======-->
     <script src="assets/js/main.js"></script>
+
+    <!--====== JQuery js ======-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+
+    <!--====== LoginForm js ======-->
+    <script src="assets/js/loginForm.js"></script>
+
 
 </body>
 
