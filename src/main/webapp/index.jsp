@@ -802,23 +802,23 @@
                     <div class="product-image-active tab-content" id="v-pills-tabContent-6">
                         <div class="single-image tab-pane fade show active" id="v-pills-26" role="tabpanel"
                              aria-labelledby="v-pills-26-tab">
-                            <img src="assets/images/product-details-2/product-1.jpg" alt="">
+                            <img src="assets/images/product-details-1/product-1.jpg" alt="">
                         </div>
                         <div class="single-image tab-pane fade" id="v-pills-27" role="tabpanel"
                              aria-labelledby="v-pills-27-tab">
-                            <img src="assets/images/product-details-2/product-2.jpg" alt="">
+                            <img src="assets/images/product-details-1/product-2.jpg" alt="">
                         </div>
                         <div class="single-image tab-pane fade" id="v-pills-28" role="tabpanel"
                              aria-labelledby="v-pills-28-tab">
-                            <img src="assets/images/product-details-2/product-3.jpg" alt="">
+                            <img src="assets/images/product-details-1/product-3.jpg" alt="">
                         </div>
                         <div class="single-image tab-pane fade" id="v-pills-29" role="tabpanel"
                              aria-labelledby="v-pills-29-tab">
-                            <img src="assets/images/product-details-2/product-4.jpg" alt="">
+                            <img src="assets/images/product-details-1/product-4.jpg" alt="">
                         </div>
                         <div class="single-image tab-pane fade" id="v-pills-30" role="tabpanel"
                              aria-labelledby="v-pills-30-tab">
-                            <img src="assets/images/product-details-2/product-5.jpg" alt="">
+                            <img src="assets/images/product-details-1/product-5.jpg" alt="">
                         </div>
                     </div>
                 </div>

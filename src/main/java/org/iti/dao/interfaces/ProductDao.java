@@ -2,6 +2,7 @@ package org.iti.dao.interfaces;
 
 
 import org.iti.db.domain.DBProduct;
+import org.iti.db.domain.Products;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -9,17 +10,21 @@ import java.util.List;
 public interface ProductDao {
 
 
-    List<DBProduct> getAllProducts() throws SQLException;
+//    List<DBProduct> getAllProducts() throws SQLException;
+//
+//    DBProduct getProductById(Integer productId) throws  SQLException;
+//
+//    List<DBProduct> getProductsByCategoryName(String categoryName) throws  SQLException;
+//
+//    List<DBProduct> getProductsByCategoryId(Integer categoryId) throws  SQLException;
+//
+//    List<String> getProductSecondaryImgsById(Integer productId) throws  SQLException;
+//
+//    List<DBProduct> getAllFeaturedProducts() throws  SQLException;
 
-    DBProduct getProductById(Integer productId) throws  SQLException;
+    List<Products> getAllProducts();
 
-    List<DBProduct> getProductsByCategoryName(String categoryName) throws  SQLException;
-
-    List<DBProduct> getProductsByCategoryId(Integer categoryId) throws  SQLException;
-
-    List<String> getProductSecondaryImgsById(Integer productId) throws  SQLException;
-
-    List<DBProduct> getAllFeaturedProducts() throws  SQLException;
+    Products getProductById(Integer id);
 
 
 

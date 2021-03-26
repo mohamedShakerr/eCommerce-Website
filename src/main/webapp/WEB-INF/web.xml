@@ -21,7 +21,21 @@ metadata-complete= "true">
         <servlet-name>IndexServlet</servlet-name>
         <url-pattern></url-pattern>
     </servlet-mapping>
+
     <!--================================================-->
+
+    <!--=====================Index Servlet===============-->
+
+    <servlet>
+        <servlet-name>ProductDetailServlet</servlet-name>
+        <servlet-class>org.iti.controllers.ProductDetailServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ProductDetailServlet</servlet-name>
+        <url-pattern>/prod-detail</url-pattern>
+    </servlet-mapping>
+    <!--================================================-->
+
 
 
     <!--==============LISTENERS========================-->
