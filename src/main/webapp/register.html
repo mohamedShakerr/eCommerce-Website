@@ -62,6 +62,7 @@
                                 </div>
                                 <span id="emailError" class="err" style="display: none;">E-mail already existed</span>
                                 <span id="emailSuccess" class="suc" style=" display: none;">Valid email</span>
+                                <span id="emailInvalid" class="err" style=" display: none;">Invalid E-mail format</span>
                             </div>
 
                             <div class="single-form form-default form-border text-left">
@@ -156,13 +157,27 @@
             if (emailExists == "true") {
 
                 document.getElementById("emailSuccess").style.display = 'none';
+                document.getElementById("emailInvalid").style.display = 'none';
                 document.getElementById("emailError").style.display ='block' ;
                 console.log("email invalid");
 
             } else {
 
+                var mailformat = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if(!mailformat.test($("#email").val())) {
+                    tmp = $("#email").val();
+                    console.log(tmp);
+                    document.getElementById("emailSuccess").style.display = 'none';
+                    document.getElementById("emailError").style.display = 'none';
+                    document.getElementById("emailInvalid").style.display = 'block';
+                    return true;
+
+                }
+
                 document.getElementById("emailSuccess").style.display = 'block';
                 document.getElementById("emailError").style.display = 'none';
+                document.getElementById("emailInvalid").style.display = 'none';
+
                 console.log("email invalid");
 
             }
