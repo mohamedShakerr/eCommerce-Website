@@ -36,7 +36,7 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-lg-6 align-self-center">
-                <div class="login-registration-style-1 registration text-center mt-50">
+                <div class="login-registration-style-3 registration text-center mt-50">
                     <h1 class="heading-4 font-weight-500 title">Create an Account</h1>
                     <div class="login-registration-form pt-10">
                         <form action="register" method="post">
@@ -46,9 +46,16 @@
                                     <div class="col-sm-12">
                                         <div class="form-input">
                                             <input type="text" id="userName" name="userName" placeholder="User name"
-                                                   required>
+                                                   required
+                                                   onblur="validateUserName(userName)">
                                             <i class="mdi mdi-account"></i>
                                         </div>
+                                        <span id="nameError" class="err"
+                                              style="display: none;">name already existed</span>
+                                        <span id="nameSuccess" class="suc"
+                                              style=" display: none;">Valid user name</span>
+                                        <span id="nameInvalid" class="err" style=" display: none;">Invalid user name format</span>
+
                                     </div>
                                 </div>
                             </div>
@@ -69,7 +76,7 @@
                                 <label>Choose Password</label>
                                 <div class="form-input">
                                     <input id="password-3" name="password" type="password" placeholder="Password"
-                                           required>
+                                           required minlength="8" maxlength="20">
                                     <i class="mdi mdi-lock"></i>
                                     <span toggle="#password-3" class="mdi mdi-eye-outline toggle-password"></span>
                                 </div>
@@ -78,7 +85,8 @@
                             <div class="single-form form-default form-border text-left">
                                 <label>Address</label>
                                 <div class="form-input">
-                                    <input type="text" name="address" placeholder="Cairo, Egypt" required>
+                                    <input type="text" minlength="3" maxlength="30" name="address"
+                                           placeholder="Cairo, Egypt" required>
                                     <i class="mdi mdi-map-marker"></i>
                                 </div>
                             </div>
@@ -86,7 +94,7 @@
                             <div class="single-form form-default form-border text-left">
                                 <label>Phone</label>
                                 <div class="form-input">
-                                    <input type="tel" name="phone" placeholder="+20xxxxxxx" required>
+                                    <input type="tel" minlength="8" name="phone" placeholder="+20xxxxxxx" required>
                                     <i class="mdi mdi-phone"></i>
                                 </div>
                             </div>
@@ -94,7 +102,7 @@
                             <div class="single-form form-default form-border text-left">
                                 <label>Job</label>
                                 <div class="form-input">
-                                    <input type="text" name="job" placeholder="Engineer">
+                                    <input type="text" minlength="5" name="job" placeholder="Engineer">
                                     <i class="mdi mdi-briefcase"></i>
                                 </div>
                             </div>
@@ -102,21 +110,21 @@
                             <div class="single-form form-default form-border text-left">
                                 <label>Interests</label>
                                 <div class="form-input">
-                                    <input type="text" name="interests" placeholder="Action Games">
-                                    <i class="mdi mdi-thought-bubble"></i>
+                                    <input type="text" name="interests" placeholder="controllers">
+                                    <i class="mdi mdi-thought-bubble mdi"></i>
                                 </div>
                             </div>
 
 
                             <!--todo handle this checkbox -->
                             <div class="single-checkbox checkbox-style-3">
-                                <input type="checkbox" name="terms" id="login-3">
+                                <input type="checkbox" name="terms" id="login-3" required>
                                 <label for="login-3"><span></span> </label>
                                 <p>I accept the Terms of Use.</p>
                             </div>
 
                             <div class="single-form">
-                                <button class="main-btn primary-btn">Signup</button>
+                                <button class="main-btn primary-btn">Sign up</button>
                             </div>
                         </form>
                     </div>
@@ -149,22 +157,60 @@
 
 <script>
 
+
+    function validateUserName(username) {
+
+        $.get("validateRegister?type=name&name=" + $("#userName").val(), function (nameExists) {
+
+            if (nameExists == "true") {
+
+                document.getElementById("nameSuccess").style.display = 'none';
+                document.getElementById("nameInvalid").style.display = 'none';
+                document.getElementById("nameError").style.display = 'block';
+                console.log("name invalid");
+                return true;
+
+            } else {
+
+                var userNameFormat = /^(?=.{3,20}$)(?![_.])(?!.*[_.]{2})[a-zA-Z0-9._]+(?<![_.])$/;
+                if (!userNameFormat.test($("#userName").val())) {
+
+                    document.getElementById("nameSuccess").style.display = 'none';
+                    document.getElementById("nameInvalid").style.display = 'block';
+                    document.getElementById("nameError").style.display = 'none';
+
+                    return true;
+                }
+
+                document.getElementById("nameSuccess").style.display = 'block';
+                document.getElementById("nameInvalid").style.display = 'none';
+                document.getElementById("nameError").style.display = 'none';
+                console.log("email invalid");
+                return true;
+
+            }
+
+        });
+
+    }
+
+
     function validateEmail(field) {
 
         $.get("validateRegister?type=email&email=" + $("#email").val(), function (emailExists) {
 
-            console.log("data :" + emailExists);
             if (emailExists == "true") {
 
                 document.getElementById("emailSuccess").style.display = 'none';
                 document.getElementById("emailInvalid").style.display = 'none';
-                document.getElementById("emailError").style.display ='block' ;
+                document.getElementById("emailError").style.display = 'block';
                 console.log("email invalid");
+                return true;
 
             } else {
 
                 var mailformat = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-                if(!mailformat.test($("#email").val())) {
+                if (!mailformat.test($("#email").val())) {
                     tmp = $("#email").val();
                     console.log(tmp);
                     document.getElementById("emailSuccess").style.display = 'none';
@@ -179,10 +225,14 @@
                 document.getElementById("emailInvalid").style.display = 'none';
 
                 console.log("email invalid");
+                return true;
 
             }
         });
     }
+
+    document.getElementById("login-3").required = true;
+
 </script>
 
 </body>

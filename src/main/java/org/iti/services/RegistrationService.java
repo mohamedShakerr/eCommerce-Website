@@ -30,12 +30,12 @@ public class RegistrationService {
         return true;
     }
 
-/*    public boolean checkIfCustomerExistsByName(String userName) {
+    public boolean checkIfCustomerExistsByName(String userName) {
 
         Customers customer = customerDao.getCustomerByUserName(userName);
 
         return customer != null;
-    }*/
+    }
 
     public boolean checkIfCustomerExistsByEmail(String email) {
         Customers customer = customerDao.getCustomerByUserEmail(email);

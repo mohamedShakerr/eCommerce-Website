@@ -20,12 +20,14 @@ public class RegisterValidationServlet extends HttpServlet {
         String type = req.getParameter("type");
 
         if (type.equals("email")) {
-            System.out.println("inside mail validation");
             String email = req.getParameter("email");
-            System.out.println(email);
             boolean exists = registrationService.checkIfCustomerExistsByEmail(email);
 
-            System.out.println("returned exist out of checking of service" + exists);
+            writer.print(exists);
+        }else if (type.equals("name")){
+
+            String name = req.getParameter("name");
+            boolean exists = registrationService.checkIfCustomerExistsByName(name);
             writer.print(exists);
         }
 
