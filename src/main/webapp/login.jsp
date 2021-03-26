@@ -9,11 +9,6 @@
     <!--====== Title ======-->
     <title>Login</title>
 
-    <%-- Refresh page to check cookies --%>
-<%--    <c:if test='${requestScope["cookiesState"].equals("cookiesBlocked")}'>--%>
-<%--            <meta http-equiv="refresh" content="5" />--%>
-<%--    </c:if>--%>
-
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
