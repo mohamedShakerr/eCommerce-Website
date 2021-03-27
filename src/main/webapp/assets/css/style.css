@@ -60,3 +60,9 @@
     #BurgerMenuLoginRegBtns{ display: none; }   /* hide it elsewhere */
 }
 /*======================================================================*/
+
+.inputsLabel{
+    color: #542DED;
+    margin-right: 90%;
+    /*margin: 100px;*/
+}

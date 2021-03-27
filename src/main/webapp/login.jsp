@@ -12,6 +12,8 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon1/png">
+
     <!--====== Material Design Icons CSS ======-->
     <link rel="stylesheet" href="assets/css/materialdesignicons.min.css">
 
@@ -89,7 +91,7 @@
                             </form>
                         </div>
                         <div class="d-sm-flex justify-content-between align-items-center">
-                            <p class="login" >Don't have an account? <a href="register.html">Sign up</a></p>
+                            <p class="login" >Don't have an account? <a href="register">Sign up</a></p>
                         </div>
                     </div>
                  </div>
