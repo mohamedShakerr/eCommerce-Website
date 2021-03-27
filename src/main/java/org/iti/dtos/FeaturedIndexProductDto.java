@@ -6,17 +6,7 @@ public class FeaturedIndexProductDto {
     private String productName;
     private Double productPrice;
     private String imageUrl;
-    private  Integer quantity;
 
-
-
-    public Integer getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(Integer quantity) {
-        this.quantity = quantity;
-    }
 
     public Integer getProductId() {
         return productId;
@@ -57,7 +47,6 @@ public class FeaturedIndexProductDto {
                 ", productName='" + productName + '\'' +
                 ", productPrice=" + productPrice +
                 ", imageUrl='" + imageUrl + '\'' +
-                ", quantity=" + quantity +
                 '}';
     }
 }

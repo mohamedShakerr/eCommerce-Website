@@ -1,2 +1,5 @@
-package org.iti.controllers;public class LogoutServlet {
+package org.iti.controllers;
+
+public class LogoutServlet {
+
 }

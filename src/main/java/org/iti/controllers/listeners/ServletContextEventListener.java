@@ -3,25 +3,20 @@ package org.iti.controllers.listeners;
 import jakarta.servlet.ServletContext;
 import jakarta.servlet.ServletContextEvent;
 import jakarta.servlet.ServletContextListener;
-import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
-import org.hibernate.cfg.Configuration;
+import org.iti.dao.impl.CartImpl;
+import org.iti.dao.interfaces.CartDao;
 import org.iti.db.DBSessionProvider;
-import org.iti.db.domain.FeaturedProds;
-import org.iti.db.domain.Products;
+import org.iti.dtos.CartDto;
+import org.iti.services.CartService;
 import org.iti.utils.*;
-import software.amazon.awssdk.services.s3.S3Client;
-import software.amazon.awssdk.services.s3.model.DeleteObjectRequest;
 
-import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.MalformedURLException;
-import java.net.URI;
-import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.Properties;
 
@@ -58,6 +53,19 @@ public class ServletContextEventListener implements ServletContextListener{
         StandardServiceRegistry registry = new StandardServiceRegistryBuilder().configure(url).build();
         SessionFactory sessionFactory = new MetadataSources(registry).buildMetadata().buildSessionFactory();
         dbSessionProvider.setSessionFactory(sessionFactory);
+
+
+
+//        ===============================dao testings
+        System.out.println("=============DAO TESTING =============");
+
+//        System.out.println(cartDao.getCartByUserId(1));
+//        System.out.println(cartDao.getCartProdCountByUserId(1));
+
+//        CartService cartService = new CartService();
+//        CartDto dto = cartService.getCartByUserId(1);
+//        System.out.println(dto);
+
 
     }
     

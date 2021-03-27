@@ -19,9 +19,11 @@ public class S3UploadManager {
     public  S3UploadManager(){}
 
     //Will Upload Byte array and return it's URL
-    public String uploadImage(byte[] byteArr, String fileName){
+    public String uploadImage(byte[] byteArr){
         S3ClientProvider s3ClientProvider =S3ClientProvider.getInstance();
         S3Client s3Client = s3ClientProvider.getS3Client();
+
+        String fileName = UUIDProvider.getUUID();
 
         PutObjectRequest putObjectRequest = PutObjectRequest.builder()
                 .bucket(BUCKET_NAME)

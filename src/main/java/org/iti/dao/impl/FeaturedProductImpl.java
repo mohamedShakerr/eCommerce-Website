@@ -3,6 +3,7 @@ package org.iti.dao.impl;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
 import org.iti.dao.interfaces.FeaturedProductDao;
+import org.iti.db.domain.FeaturedAccesory;
 import org.iti.db.domain.FeaturedProds;
 
 
@@ -24,6 +25,11 @@ public class FeaturedProductImpl implements FeaturedProductDao {
     public List<FeaturedProds> getAllFeaturedProducts() {
         Query<FeaturedProds> query =  session.createQuery("from featuredprods", FeaturedProds.class);
         return query.getResultList();
+    }
+
+    public List<FeaturedAccesory> getAllFeaturedAccessories(){
+        Query<FeaturedAccesory> query = session.createQuery("from featuredaccesory", FeaturedAccesory.class);
+        return  query.getResultList();
     }
 
     @Override

@@ -45,7 +45,7 @@ public class FeaturedProds  implements java.io.Serializable {
         this.featuredProdId = featuredProdId;
     }
 
-@OneToOne(fetch=FetchType.LAZY)@PrimaryKeyJoinColumn
+@OneToOne(fetch=FetchType.EAGER)@PrimaryKeyJoinColumn
     public Products getProducts() {
         return this.products;
     }

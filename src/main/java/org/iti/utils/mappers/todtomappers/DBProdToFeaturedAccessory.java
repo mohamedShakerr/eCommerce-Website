@@ -1,22 +1,21 @@
 package org.iti.utils.mappers.todtomappers;
 
 
-import org.iti.dao.interfaces.FeaturedProductDao;
-import org.iti.db.domain.DBProduct;
+import org.iti.db.domain.FeaturedAccesory;
 import org.iti.db.domain.FeaturedProds;
 import org.iti.db.domain.Products;
 import org.iti.dtos.FeaturedIndexProductDto;
 import org.iti.utils.mappers.EntityToDtoMapper;
 
-public class DBProdToFeaturedProd extends EntityToDtoMapper<FeaturedIndexProductDto, FeaturedProds> {
+public class DBProdToFeaturedAccessory extends EntityToDtoMapper<FeaturedIndexProductDto, FeaturedAccesory> {
 
 
     @Override
-    public FeaturedIndexProductDto convertEntityToDto(FeaturedProds featuredProd) {
+    public FeaturedIndexProductDto convertEntityToDto(FeaturedAccesory featuredAcc) {
 
         FeaturedIndexProductDto featuredProdDto = new FeaturedIndexProductDto();
 
-        Products entity = featuredProd.getProducts();
+        Products entity = featuredAcc.getProducts();
 
         featuredProdDto.setProductId(entity.getProdId());
         featuredProdDto.setProductName(entity.getName());

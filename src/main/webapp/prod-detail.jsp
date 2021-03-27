@@ -114,7 +114,7 @@
                                     <div class="select-quantity">
                                         <button type="button" id="sub" class="sub"><i
                                                 class="mdi mdi-minus" onclick="subQuantity()"></i></button>
-                                        <input id="prod-quantity" type="text" value="1" />
+                                        <input id="prod-quantity" type="text" value="1" disabled/>
                                         <button type="button" id="add" class="add" onclick="addQuantity()"><i class="mdi mdi-plus"></i></button>
 
                                     </div>
@@ -129,7 +129,7 @@
                             </div>
 
                             <div class="product-btn">
-                                <a href="#0" class="main-btn primary-btn"><img src="./assets/images/icon-svg/cart-4.svg"
+                                <a href="#0" class="main-btn primary-btn" onclick="addProdToCart(${product.id})"><img src="./assets/images/icon-svg/cart-4.svg"
                                         alt=""> Add to cart</a>
                             </div>
                         </div>
@@ -191,10 +191,10 @@
                 return;
             }
 
-            if(quantityInput.value >= 10) {
-                quantityInput.value = 10;
-                return;
-            }
+            // if(quantityInput.value >= 10) {
+            //     quantityInput.value = 10;
+            //     return;
+            // }
 
             quantity++;
 
@@ -209,17 +209,15 @@
 
             var quantity = quantityInput.value;
 
-            if (isNaN(quantity) || quantityInput.value <1){
+            if (isNaN(quantity) || quantityInput.value <=1){
                 quantityInput.value = 1;
                 return;
             }
 
-            if(quantityInput.value >= 10) {
-                quantityInput.value = 10;
-                return;
-            }
-            
-            if (quantity == 1) return;
+            // if(quantityInput.value >= 10) {
+            //     quantityInput.value = 10;
+            //     return;
+            // }
 
             quantity--;
 

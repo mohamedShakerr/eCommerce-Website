@@ -41,6 +41,11 @@
     <!-- =======Style CSS ============ -->
     <link rel="stylesheet" href="./assets/css/style.css">
 
+    <script
+            src="https://code.jquery.com/jquery-3.6.0.min.js"
+            integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+            crossorigin="anonymous"></script>
+
 </head>
 
 <body>
@@ -66,6 +71,9 @@
 
 
 <!--====== Navbar Style 11 Part Start ======-->
+
+<c:set var="cart" value="${requestScope.cartItems}" scope="request"/>
+<c:set var="oculus" value="${requestScope.featuredOculus}" scope="request"/>
 
 <section class="navigation">
     <!--====== Navbar Style 11 Part Start ======-->
@@ -289,10 +297,6 @@
                                                 
                                             </c:choose>
 
-
-
-
-
                                         </ul>
                                     </div>
                                 </nav>
@@ -364,171 +368,72 @@
                                 <li>
                                     <div class="navbar-cart">
                                         <a class="icon-btn primary-icon-text icon-text-btn" href="#0"><img
-                                                src="assets/images/icon-svg/cart-9.svg" alt="Icon" style="padding-top: 10px;"><span
-                                                class="icon-text text-style-1">88</span></a>
+                                                src="assets/images/icon-svg/cart-9.svg" alt="Icon" style="padding-top: 10px;"><span id="cart-count"
+                                                class="icon-text text-style-1">${cart.size()}</span></a>
 
                                         <div class="navbar-cart-dropdown">
                                             <div class="checkout-style-2">
                                                 <div class="checkout-header d-flex justify-content-between">
-                                                    <h6 class="title">Shopping Cart</h6>
+                                                    <h6 class="title">Shopping Cart </h6>
                                                 </div>
 
                                                 <div class="checkout-table table-responsive">
                                                     <table class="table">
-                                                        <tbody>
-                                                        <tr>
-                                                            <td class="checkout-product">
-                                                                <div class="product-cart d-flex">
-                                                                    <div class="product-thumb">
-                                                                        <img src="assets/images/product-cart/product-1.png"
-                                                                             alt="Product">
+                                                        <tbody id="cart-items-table">
+                                                        <c:forEach var="item" items="${cart}">
+                                                            <tr id="table-row-${item.productId}">
+                                                                <td class="checkout-product">
+                                                                    <div class="product-cart d-flex">
+                                                                        <div class="product-thumb">
+                                                                            <img src="${item.productImage}"
+                                                                                 alt="Product">
+                                                                        </div>
+                                                                        <div class="product-content media-body">
+                                                                            <h5 class="title"><a href="prod-detail?prodId=${item.productId}">
+                                                                                ${item.productName}
+                                                                            </a></h5>
+                                                                            <ul>
+                                                                                <li><span id="item-qty-${item.productId}">${item.productQty}</span>
+                                                                                    <span>X$</span>
+                                                                                    <span id="item-price">${item.productPrice}</span>
+                                                                                </li>
+                                                                                <li><a class="delete" onclick="deleteProduct(${item.productId})"><i
+                                                                                        class="mdi mdi-delete"></i></a>
+                                                                                </li>
+                                                                            </ul>
+                                                                        </div>
                                                                     </div>
-                                                                    <div class="product-content media-body">
-                                                                        <h5 class="title"><a href="#0">Hollow
-                                                                            Port</a></h5>
-                                                                        <ul>
-                                                                            <li><span>Brown</span></li>
-                                                                            <li><span>XL</span></li>
-                                                                            <li><a class="delete" href="#0"><i
-                                                                                    class="mdi mdi-delete"></i></a>
-                                                                            </li>
-                                                                        </ul>
+                                                                </td>
+                                                                <td class="checkout-quantity">
+                                                                    <div class="product-quantity d-inline-flex">
+                                                                        <button type="button" id="sub"
+                                                                                class="sub" onclick="decProdQty(${item.productId},${item.productPrice})"><i
+                                                                                class="mdi mdi-minus"></i></button>
+                                                                        <input id="item-${item.productId}-qty-input" type="text" value="${item.productQty}" disabled>
+                                                                        <button type="button" id="add"
+                                                                                class="add" onclick="incProdQty(${item.productId},${item.productPrice})">
+                                                                            <i
+                                                                                class="mdi mdi-plus"></i>
+                                                                        </button>
                                                                     </div>
-                                                                </div>
-                                                            </td>
-                                                            <td class="checkout-quantity">
-                                                                <div class="product-quantity d-inline-flex">
-                                                                    <button type="button" id="sub"
-                                                                            class="sub"><i
-                                                                            class="mdi mdi-minus"></i></button>
-                                                                    <input type="text" value="1">
-                                                                    <button type="button" id="add"
-                                                                            class="add"><i
-                                                                            class="mdi mdi-plus"></i></button>
-                                                                </div>
-                                                            </td>
-                                                            <td class="checkout-price">
-                                                                <p class="price">$36.00</p>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td class="checkout-product">
-                                                                <div class="product-cart d-flex">
-                                                                    <div class="product-thumb">
-                                                                        <img src="assets/images/product-cart/product-2.png"
-                                                                             alt="Product">
-                                                                    </div>
-                                                                    <div class="product-content media-body">
-                                                                        <h5 class="title"><a href="#0">Mist
-                                                                            Black Triblend</a></h5>
-                                                                        <ul>
-                                                                            <li><span>Brown</span></li>
-                                                                            <li><span>XL</span></li>
-                                                                            <li><a class="delete" href="#0"><i
-                                                                                    class="mdi mdi-delete"></i></a>
-                                                                            </li>
-                                                                        </ul>
-                                                                    </div>
-                                                                </div>
-                                                            </td>
-                                                            <td class="checkout-quantity">
-                                                                <div class="product-quantity d-inline-flex">
-                                                                    <button type="button" id="sub"
-                                                                            class="sub"><i
-                                                                            class="mdi mdi-minus"></i></button>
-                                                                    <input type="text" value="1">
-                                                                    <button type="button" id="add"
-                                                                            class="add"><i
-                                                                            class="mdi mdi-plus"></i></button>
-                                                                </div>
-                                                            </td>
-                                                            <td class="checkout-price">
-                                                                <p class="price">$36.00</p>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td class="checkout-product">
-                                                                <div class="product-cart d-flex">
-                                                                    <div class="product-thumb">
-                                                                        <img src="assets/images/product-cart/product-3.png"
-                                                                             alt="Product">
-                                                                    </div>
-                                                                    <div class="product-content media-body">
-                                                                        <h5 class="title"><a href="#0">Realm
-                                                                            Bone</a></h5>
-                                                                        <ul>
-                                                                            <li><span>Brown</span></li>
-                                                                            <li><span>XL</span></li>
-                                                                            <li><a class="delete" href="#0"><i
-                                                                                    class="mdi mdi-delete"></i></a>
-                                                                            </li>
-                                                                        </ul>
-                                                                    </div>
-                                                                </div>
-                                                            </td>
-                                                            <td class="checkout-quantity">
-                                                                <div class="product-quantity d-inline-flex">
-                                                                    <button type="button" id="sub"
-                                                                            class="sub"><i
-                                                                            class="mdi mdi-minus"></i></button>
-                                                                    <input type="text" value="1">
-                                                                    <button type="button" id="add"
-                                                                            class="add"><i
-                                                                            class="mdi mdi-plus"></i></button>
-                                                                </div>
-                                                            </td>
-                                                            <td class="checkout-price">
-                                                                <p class="price">$36.00</p>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td class="checkout-product">
-                                                                <div class="product-cart d-flex">
-                                                                    <div class="product-thumb">
-                                                                        <img src="assets/images/product-cart/product-4.png"
-                                                                             alt="Product">
-                                                                    </div>
-                                                                    <div class="product-content media-body">
-                                                                        <h5 class="title"><a href="#0">Circular
-                                                                            Sienna</a></h5>
-                                                                        <ul>
-                                                                            <li><span>Brown</span></li>
-                                                                            <li><span>XL</span></li>
-                                                                            <li><a class="delete" href="#0"><i
-                                                                                    class="mdi mdi-delete"></i></a>
-                                                                            </li>
-                                                                        </ul>
-                                                                    </div>
-                                                                </div>
-                                                            </td>
-                                                            <td class="checkout-quantity">
-                                                                <div class="product-quantity d-inline-flex">
-                                                                    <button type="button" id="sub"
-                                                                            class="sub"><i
-                                                                            class="mdi mdi-minus"></i></button>
-                                                                    <input type="text" value="1">
-                                                                    <button type="button" id="add"
-                                                                            class="add"><i
-                                                                            class="mdi mdi-plus"></i></button>
-                                                                </div>
-                                                            </td>
-                                                            <td class="checkout-price">
-                                                                <p class="price">$36.00</p>
-                                                            </td>
-                                                        </tr>
+                                                                </td>
+                                                                <td class="checkout-price">
+                                                                    <p id="total-item-price-${item.productId}" class="price">${item.productPrice * item.productQty }</p>
+                                                                </td>
+                                                            </tr>
+                                                        </c:forEach>
                                                         </tbody>
                                                     </table>
                                                 </div>
-
                                                 <div class="checkout-footer">
                                                     <div class="checkout-sub-total d-flex justify-content-between">
                                                         <p class="value">Subotal Price:</p>
-                                                        <p class="price">$144</p>
+                                                        <p class="price" id="cart-total-price">$144</p>
                                                     </div>
                                                     <div class="checkout-btn">
                                                         <a href="#0" class="main-btn primary-btn-border">View
                                                             Cart</a>
-                                                        <a href="#0" class="main-btn primary-btn">Checkout</a>
+                                                        <a href="#0" class="main-btn primary-btn">To Checkout</a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -545,13 +450,10 @@
         <!-- main navbar Ends -->
         <div class="overlay-11"></div>
     </header>
-
     <!--====== Navbar Style 11 Part Ends ======-->
 </section>
 <!--====== Navbar Style 11 Part Ends ======-->
-
 <!--======  Header Style 4 Part Start ======-->
-
 <section class="header-style-4">
     <div class="position-relative">
         <div class="header-4-active">
@@ -579,9 +481,7 @@
         </div>
     </div>
 </section>
-
 <!--======  Header Style 4 Part Ends ======-->
-
 <!--====== Content Card Style 6 Part Start ======-->
 <section class="content-card-style-6 pt-95 pb-100">
     <div class="container">
@@ -637,10 +537,6 @@
     </div>
 </section>
 <!--====== Content Card Style 6 Part Ends ======-->
-
-
-
-
 <!--====== Content Card Style 1 Part Start ======-->
 <section class="content-card-wrapper">
     <div class="content-card-style-1">
@@ -661,9 +557,6 @@
     </div>
 </section>
 <!--====== Content Card Style 1 Part Ends ======-->
-
-
-
 <!--====== Content Card Style 4 Part Start ======-->
 <section class="content-card-style-4 bg-white pt-70 pb-100">
     <div class="container">
@@ -708,45 +601,11 @@
     </div>
 </section>
 <!--====== Content Card Style 4 Part Ends ======-->
-
 <!--====== Product Style 7 Part Start ======-->
 <section class="product-wrapper pb-100">
     <div class="container">
         <h3 class="main-title text-center">FEATURED PRODUCTS</h3>
         <div class="row">
-<%--            <div class="col-lg-6">--%>
-<%--                <div class="product-style-7 mt-30">--%>
-<%--                    <div class="product-image">--%>
-<%--                        <div class="product-active">--%>
-<%--                            <div class="product-item active">--%>
-<%--                                <img src="assets/images/product-4/product-1.jpg" alt="product">--%>
-<%--                            </div>--%>
-<%--                        </div>--%>
-<%--                    </div>--%>
-<%--                    <div class="product-content">--%>
-<%--                        <ul class="product-meta">--%>
-<%--                            <li>--%>
-<%--                                <a class="add-wishlist" href="#0">--%>
-<%--                                    <i class="mdi mdi-heart-outline"></i>--%>
-<%--                                    Add to Favourite--%>
-<%--                                </a>--%>
-<%--                            </li>--%>
-<%--                            <li>--%>
-<%--                                <span><i class="mdi mdi-star"></i> 4.5/5</span>--%>
-<%--                            </li>--%>
-<%--                        </ul>--%>
-<%--                        <h4 class="title"><a href="#0">Metro 38 Date</a></h4>--%>
-<%--                        <p>Reference 1102</p>--%>
-<%--                        <span class="price">$ 399</span>--%>
-<%--                        <a href="#0" class="main-btn primary-btn"> <img src="assets/images/icon-svg/cart-4.svg"--%>
-<%--                                                                        alt="">--%>
-<%--                            Add to Cart</a>--%>
-<%--                    </div>--%>
-<%--                </div>--%>
-<%--            </div>--%>
-
-
-
             <c:forEach var="myProd" items="${requestScope.featuredProducts}">
                 <div class="col-lg-6" id="${myProd.productId}">
                     <div class="product-style-7 mt-30">
@@ -770,7 +629,7 @@
                                 </li>
                             </ul>
                             <h4 class="title"><a href="#0">${myProd.productName}</a></h4>
-                            <p>In Stock : ${myProd.quantity}</p>
+<%--                            <p>In Stock : ${myProd.quantity}</p>--%>
                             <span class="price">$ ${myProd.productPrice}</span>
                             <a href="#0" class="main-btn primary-btn"> <img src="assets/images/icon-svg/cart-4.svg"
                                                                             alt="">
@@ -787,11 +646,7 @@
     </div>
 </section>
 <!--====== Product Style 7 Part Ends ======-->
-
-
-
 <!--======  Product Details Style 6 Part Start ======-->
-
 <section class="product-details-wrapper mt-30 pb-100">
     <div class="product-details-bg bg_cover" style="background-image: url(assets/images/product-details-bg.jpg);">
     </div>
@@ -850,34 +705,12 @@
             </div>
 
             <div class="product-details-content mt-25">
-                <p class="sub-title">All-In-One VR</p>
-                <h2 class="title">Oculus VR</h2>
+<%--                <p class="sub-title">All-In-One VR</p>--%>
+                <h2 class="title">${oculus.prodName}</h2>
 
                 <div class="row">
                     <div class="col-lg-6">
-                        <div class="product-items flex-wrap mt-25">
-                            <h6 class="item-title">Select Your Oculus: </h6>
-                            <div class="items-wrapper" id="select-item-6">
-                                <div class="single-item active">
-                                    <div class="items-image">
-                                        <img src="assets/images/product-details-1/product-items-1.jpg"
-                                             alt="product">
-                                    </div>
-                                </div>
-                                <div class="single-item">
-                                    <div class="items-image">
-                                        <img src="assets/images/product-details-1/product-items-2.jpg"
-                                             alt="product">
-                                    </div>
-                                </div>
-                                <div class="single-item">
-                                    <div class="items-image">
-                                        <img src="assets/images/product-details-1/product-items-3.jpg"
-                                             alt="product">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+
 
                         <div class="product-select-wrapper mt-10 flex-wrap">
                             <div class="select-item">
@@ -906,33 +739,18 @@
                                 <div class="select-quantity">
                                     <button type="button" id="sub" class="sub"><i
                                             class="mdi mdi-minus"></i></button>
-                                    <input type="text" value="1" />
+                                    <input type="text" value="1" disabled/>
                                     <button type="button" id="add" class="add"><i class="mdi mdi-plus"></i></button>
                                 </div>
                             </div>
-                            <div class="select-item">
-                                <h6 class="select-title">Select Shipping Country: <span>+ $ 30 USD</span> </h6>
-                                <div class="country-select">
-                                    <div class="select-position">
-                                        <select>
-                                            <option value="0">-- Select Country --</option>
-                                            <option value="1">Bangladesh</option>
-                                            <option value="2">India</option>
-                                            <option value="3">Pakistan</option>
-                                            <option value="4">Australia</option>
-                                            <option value="5">Canada</option>
-                                            <option value="6">Spain</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
+
                         </div>
                     </div>
                     <div class="col-lg-6">
                         <div class="product-price-btn text-lg-right">
                             <div class="product-price">
                                 <h6 class="price-title">Price: </h6>
-                                <p class="sale-price">$ 149 USD</p>
+                                <p class="sale-price">$ ${oculus.price} USD</p>
                                 <p class="regular-price">$ 179 USD</p>
                             </div>
 
@@ -949,10 +767,7 @@
         </div>
     </div>
 </section>
-
 <!--======  Product Details Style 6 Part Ends ======-->
-
-
 <!--====== Product Style 14 Part Start ======-->
 <section class="product-wrapper pt-70">
     <div class="container">
@@ -966,7 +781,7 @@
                         </div>
                         <div class="product-content">
                             <h4 class="title"><a href="#0">${accessory.productName}</a></h4>
-                            <p>In Stock : ${accessory.quantity}</p>
+<%--                            <p>In Stock : ${accessory.quantity}</p>--%>
                             <a href="#0" class="main-btn secondary-1-btn"> <img src="assets/images/icon-svg/cart-7.svg"
                                                                                 alt=""> $ ${accessory.productPrice}</a>
                         </div>
@@ -992,8 +807,6 @@
     </div>
 </section>
 <!--====== Product Style 14 Part Ends ======-->
-
-
 <!--======  Content Card Style 10 Part Start ======-->
 <section class="content-card-style-10 bg_cover mt-100"
          style="background-image: url(assets/images/content-card-5/content-6.jpg);">
@@ -1003,7 +816,6 @@
     </div>
 </section>
 <!--======  Content Card Style 10 Part Ends ======-->
-
 <!--====== Footer Style 5 Part Start ======-->
 <section class="footer-style-5 pt-70 pb-100">
     <div class="container">
@@ -1084,25 +896,28 @@
     </div>
 </section>
 <!--====== Footer Style 5 Part Ends ======-->
-
 <!--=========================================Scripts=====================================-->
+
+<script>
+
+</script>
+
 <!--====== Bootstrap js ======-->
 <script src="./assets/js/bootstrap.bundle-5.0.0-beta1.min.js"></script>
-
 <!--====== Tiny Slider js ======-->
 <script src="./assets/js/tiny-slider.js"></script>
-
 <!--====== nouiSlider js ======-->
 <script src="./assets/js/nouislider.min.js"></script>
-
 <!--====== count up js ======-->
 <script src="./assets/js/count-up.min.js"></script>
-
 <!--====== gLightBox js ======-->
 <script src="./assets/js/glightbox.min.js"></script>
-
 <!--====== Main js ======-->
 <script src="./assets/js/main.js"></script>
+
+<%--=======CART SCRIPT======--%>
+<script src="./assets/js/cart.js"></script>
+
 
 </body>
 

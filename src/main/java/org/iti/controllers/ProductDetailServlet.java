@@ -34,8 +34,6 @@ public class ProductDetailServlet extends HttpServlet {
         ProductService prodService = new ProductService();
         ProdDetailDto product = prodService.getProductById(productId);
 
-        System.out.println(productId);
-        System.out.println(product);
 
         request.setAttribute("product", product);
 
