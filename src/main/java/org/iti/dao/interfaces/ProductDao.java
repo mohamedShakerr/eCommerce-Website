@@ -10,17 +10,17 @@ import java.util.List;
 public interface ProductDao {
 
 
-    List<Products> getAllProducts() throws SQLException;
+    List<Products> getAllProducts();
 
-    DBProduct getProductById(Integer productId) throws  SQLException;
+    DBProduct getProductById(Integer productId) ;
 
-    List<DBProduct> getProductsByCategoryName(String categoryName) throws  SQLException;
+    List<DBProduct> getProductsByCategoryName(String categoryName) ;
 
-    List<DBProduct> getProductsByCategoryId(Integer categoryId) throws  SQLException;
+    List<DBProduct> getProductsByCategoryId(Integer categoryId) ;
 
-    List<String> getProductSecondaryImgsById(Integer productId) throws  SQLException;
+    List<String> getProductSecondaryImgsById(Integer productId) ;
 
-    List<DBProduct> getAllFeaturedProducts() throws  SQLException;
+    List<DBProduct> getAllFeaturedProducts() ;
 
 
 
