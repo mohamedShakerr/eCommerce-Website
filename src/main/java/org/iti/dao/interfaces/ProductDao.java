@@ -2,6 +2,7 @@ package org.iti.dao.interfaces;
 
 
 import org.iti.db.domain.DBProduct;
+import org.iti.db.domain.Products;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -9,7 +10,7 @@ import java.util.List;
 public interface ProductDao {
 
 
-    List<DBProduct> getAllProducts() throws SQLException;
+    List<Products> getAllProducts() throws SQLException;
 
     DBProduct getProductById(Integer productId) throws  SQLException;
 
