@@ -257,7 +257,9 @@
                                                         </div>
                                                     </td>
                                                     <td>
-                                                        <c:out value="${myProduct.productPrice}" />
+                                                        <label class="label label-primary">
+                                                            <c:out value="${myProduct.productPrice}" />
+                                                        </label>
                                                     </td>
                                                     <td>
                                                         <label class="label label-danger">
