@@ -1,3 +1,7 @@
+<%@ page import="java.util.*" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql" %>
+
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
 
@@ -17,13 +21,13 @@
           crossorigin="anonymous" />
 
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="../admin_assets/images/favicon2.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="admin_assets/images/favicon2.png">
 
     <!-- Custom CSS -->
-    <link href="../admin_assets/css/chartist.min.css" rel="stylesheet">
+    <link href="admin_assets/css/chartist.min.css" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link href="../admin_assets/css/style.min.css" rel="stylesheet">
+    <link href="admin_assets/css/style.min.css" rel="stylesheet">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -96,7 +100,7 @@
                     <!-- ============================================================== -->
                     <!-- Logo -->
                     <!-- ============================================================== -->
-                    <a class="navbar-brand" href="admin_screen.html">
+                    <a class="navbar-brand" href="admin_screen.jsp">
                         <!-- Logo icon -->
                         <b class="logo-icon">
                             <h3>
@@ -146,7 +150,7 @@
                         <!-- ============================================================== -->
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark pro-pic" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                <img src="../admin_assets/images/users/1.jpg" alt="user" class="rounded-circle" width="31">
+                                <img src="admin_assets/images/users/1.jpg" alt="user" class="rounded-circle" width="31">
                             </a>
                             <ul class="dropdown-menu dropdown-menu-end user-dd animated" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="javascript:void(0)">
@@ -184,7 +188,7 @@
                         <!-- User Profile-->
                         <li class="sidebar-item">
                             <a class="sidebar-link waves-effect waves-dark sidebar-link"
-                               href="admin_screen.html" aria-expanded="false">
+                               href="admin_screen.jsp" aria-expanded="false">
                                 <i class="mdi mdi-view-dashboard"></i>
                                 <span class="hide-menu">Products</span>
                             </a>
@@ -227,47 +231,89 @@
                                             <th class="border-top-0">ID</th>
                                             <th class="border-top-0">Name</th>
                                             <th class="border-top-0">Price</th>
-                                            <th class="border-top-0">Category</th>
+<%--                                            <th class="border-top-0">Category</th>--%>
                                             <th class="border-top-0">Quantity</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>
-                                                <div class="d-flex align-items-center">
-                                                    <div class="m-r-10"><a
-                                                            class="btn btn-circle d-flex btn-info text-white">PS4</a>
-                                                    </div>
-                                                    <div class="">
-                                                        <h4 class="m-b-0 font-16">Sony PlayStation 4 pro 1 TB - White</h4>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td>5600</td>
-                                            <td>
-                                                <label class="label label-danger">consoles</label>
-                                            </td>
-                                            <td>100</td>
-                                        </tr>
-                                        <tr>
-                                            <td>2</td>
-                                            <td>
-                                                <div class="d-flex align-items-center">
-                                                    <div class="m-r-10"><a
-                                                            class="btn btn-circle d-flex btn-info text-white">PS4</a>
-                                                    </div>
-                                                    <div class="">
-                                                        <h4 class="m-b-0 font-16">Sony Playstation 4 Pro - 1Tb, 1 Controller, Black</h4>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td>6200</td>
-                                            <td>
-                                                <label class="label label-danger">consoles</label>
-                                            </td>
-                                            <td>50</td>
-                                        </tr>
+
+                                    <c:choose>
+                                        <c:when test='${! empty requestScope.productsList}'>
+                                            <c:forEach var="myProduct" items='${requestScope["productsList"]}'>
+                                                <tr>
+                                                    <td>
+                                                        <c:out value="${myProduct.productId}" />
+                                                    </td>
+                                                    <td>
+                                                        <div class="d-flex align-items-center">
+                                                            <div class="m-r-10">
+                                                                <img class="btn btn-circle d-flex btn-info text-white" src="${myProduct.imageUrl}" style="object-fit: cover;" alt="product" />
+                                                            </div>
+                                                            <div class="">
+                                                                <h4 class="m-b-0 font-16">
+                                                                    <c:out value="${myProduct.productName}" />
+                                                                </h4>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <c:out value="${myProduct.productPrice}" />
+                                                    </td>
+                                                    <td>
+                                                        <label class="label label-danger">
+                                                            <c:out value="${myProduct.quantity}" />
+                                                        </label>
+                                                    </td>
+                                                </tr>
+                                            </c:forEach>
+                                        </c:when>
+
+                                        <c:otherwise>
+                                            <tr>
+                                                <td colspan=8 align="center" bgcolor="red">
+                                                    <b>There is no Product Found</b>
+                                                </td>
+                                            </tr>
+                                        </c:otherwise>
+                                    </c:choose>
+
+
+<%--                                        <tr>--%>
+<%--                                            <td>1</td>--%>
+<%--                                            <td>--%>
+<%--                                                <div class="d-flex align-items-center">--%>
+<%--                                                    <div class="m-r-10"><a--%>
+<%--                                                            class="btn btn-circle d-flex btn-info text-white">PS4</a>--%>
+<%--                                                    </div>--%>
+<%--                                                    <div class="">--%>
+<%--                                                        <h4 class="m-b-0 font-16">Sony PlayStation 4 pro 1 TB - White</h4>--%>
+<%--                                                    </div>--%>
+<%--                                                </div>--%>
+<%--                                            </td>--%>
+<%--                                            <td>5600</td>--%>
+<%--                                            <td>--%>
+<%--                                                <label class="label label-danger">consoles</label>--%>
+<%--                                            </td>--%>
+<%--                                            <td>100</td>--%>
+<%--                                        </tr>--%>
+<%--                                        <tr>--%>
+<%--                                            <td>2</td>--%>
+<%--                                            <td>--%>
+<%--                                                <div class="d-flex align-items-center">--%>
+<%--                                                    <div class="m-r-10"><a--%>
+<%--                                                            class="btn btn-circle d-flex btn-info text-white">PS4</a>--%>
+<%--                                                    </div>--%>
+<%--                                                    <div class="">--%>
+<%--                                                        <h4 class="m-b-0 font-16">Sony Playstation 4 Pro - 1Tb, 1 Controller, Black</h4>--%>
+<%--                                                    </div>--%>
+<%--                                                </div>--%>
+<%--                                            </td>--%>
+<%--                                            <td>6200</td>--%>
+<%--                                            <td>--%>
+<%--                                                <label class="label label-danger">consoles</label>--%>
+<%--                                            </td>--%>
+<%--                                            <td>50</td>--%>
+<%--                                        </tr>--%>
                                     </tbody>
                                 </table>
                             </div>
@@ -309,17 +355,17 @@
         integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/"
         crossorigin="anonymous"></script>
 
-    <script src="../admin_assets/js/jquery.min.js"></script>
+    <script src="admin_assets/js/jquery.min.js"></script>
     <!-- Bootstrap tether Core JavaScript -->
-    <script src="../admin_assets/js/bootstrap.bundle.min.js"></script>
+    <script src="admin_assets/js/bootstrap.bundle.min.js"></script>
 
-    <script src="../admin_assets/js/app-style-switcher.js"></script>
+    <script src="admin_assets/js/app-style-switcher.js"></script>
     <!--Wave Effects -->
-    <script src="../admin_assets/js/waves.js"></script>
+    <script src="admin_assets/js/waves.js"></script>
     <!--Menu sidebar -->
-    <script src="../admin_assets/js/sidebarmenu.js"></script>
+    <script src="admin_assets/js/sidebarmenu.js"></script>
     <!--Custom JavaScript -->
-    <script src="../admin_assets/js/custom.js"></script>
+    <script src="admin_assets/js/custom.js"></script>
 
 </body>
 

@@ -26,7 +26,7 @@ public class AdminController extends HttpServlet{
 
 	public void doGet(HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException{
 
-		RequestDispatcher rd = request.getRequestDispatcher("/admin/admin_screen.html");
+		RequestDispatcher rd = request.getRequestDispatcher("admin_screen.jsp");
 
 
 		ProductsService productsService = new ProductsService();
