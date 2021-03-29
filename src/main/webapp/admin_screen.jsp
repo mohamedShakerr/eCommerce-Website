@@ -188,14 +188,14 @@
                         <li class="sidebar-item">
                             <a class="sidebar-link waves-effect waves-dark sidebar-link"
                                href="admin" aria-expanded="false">
-                                <i class="mdi mdi-view-dashboard"></i>
+                                <i class="fas fa-shopping-cart"></i>&nbsp;
                                 <span class="hide-menu">Products</span>
                             </a>
 
                         <li class="sidebar-item">
                             <a class="sidebar-link waves-effect waves-dark sidebar-link"
-                               href="admin/customers" aria-expanded="false">
-                                <i class="mdi mdi-account-network"></i>
+                               href="customers" aria-expanded="false">
+                                <i class="fas fa-users"></i>&nbsp;
                                 <span class="hide-menu">Customers</span>
                             </a>
                         </li>
@@ -245,7 +245,7 @@
                                                         <td>
                                                             <div class="d-flex align-items-center">
                                                                 <div class="m-r-10">
-                                                                    <img class="btn btn-circle d-flex btn-info text-white" src="${myProduct.imageUrl}" style="object-fit: cover;" alt="product" />
+                                                                    <img class="btn btn-circle d-flex btn-info text-white" src="${myProduct.imageUrl}" width="50" class="rounded-circle" alt="product" />
                                                                 </div>
                                                                 <div class="">
                                                                     <h4 class="m-b-0 font-16">
@@ -291,7 +291,7 @@
             <!-- footer -->
             <!-- ============================================================== -->
             <footer class="footer text-center">
-                All Rights Reserved by JETS G.M.W.M
+                All Rights Reserved by JETS G.M.W.SH
             </footer>
             <!-- ============================================================== -->
             <!-- End footer -->

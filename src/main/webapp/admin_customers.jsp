@@ -188,14 +188,14 @@
                     <li class="sidebar-item">
                         <a class="sidebar-link waves-effect waves-dark sidebar-link"
                            href="admin" aria-expanded="false">
-                            <i class="mdi mdi-view-dashboard"></i>
+                            <i class="fas fa-shopping-cart"></i>&nbsp;
                             <span class="hide-menu">Products</span>
                         </a>
 
                     <li class="sidebar-item">
                         <a class="sidebar-link waves-effect waves-dark sidebar-link"
-                           href="admin/customers" aria-expanded="false">
-                            <i class="mdi mdi-account-network"></i>
+                           href="customers" aria-expanded="false">
+                            <i class="fas fa-users"></i>&nbsp;
                             <span class="hide-menu">Customers</span>
                         </a>
                     </li>
@@ -218,70 +218,49 @@
             <!-- ============================================================== -->
             <div class="row">
                 <!-- column -->
-                <div class="col-lg-12">
-                    <div class="card">
-                        <div class="card-body">
-                            <h4 class="card-title">Customers</h4>
-                        </div>
-                        <div class="comment-widgets scrollable">
+<%--                <div class="col-lg-12">--%>
+<%--                    <div class="card">--%>
+<%--                        <div class="card-body">--%>
+<%--                            <h4 class="card-title">Customers</h4>--%>
+<%--                        </div>--%>
+<%--                        <div class="comment-widgets scrollable">--%>
                             <!-- User Row -->
 
-                            <c:choose>
-                                <c:when test='${! empty requestScope.productsList}'>
-                                    <c:forEach var="myCustomer" items='${requestScope["customersList"]}'>
 
-                                        <a href="admin_screen.jsp">
-                                            <div class="d-flex flex-row comment-row m-t-0">
-                                                <div class="p-2">
-                                                    <img src="${myCustomer.url}" alt="user" width="50" class="rounded-circle">
-                                                </div>
-                                                <div class="comment-text w-100"><br>
-                                                    <b><span class="m-b-15 d-block">
-                                                         <c:out value="${myCustomer.name}" />
-                                                    </span></b>
-                                                    <div class="comment-footer">
-                                                        <span class="text-muted float-end">
-                                                            <c:out value="${myCustomer.registerDate}" />
-                                                        </span>
-                                                    </div>
+                    <div class="col-md-12">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <h4 class="card-title">Customers</h4>
+                                                <div class="feed-widget">
+                                                    <ul class="list-style-none feed-body m-0 p-b-20">
+                                                        <c:choose>
+                                                        <c:when test='${! empty requestScope.customersList}'>
+                                                        <c:forEach var="myCustomer" items='${requestScope["customersList"]}'>
+                                                            <li class="feed-item">
+                                                                <div class="feed-icon">
+                                                                    <img src="${myCustomer.url}" alt="user" width="50" height="50" class="rounded-circle">
+                                                                </div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                                                                <b>
+                                                                    <c:out value="${myCustomer.name}" />
+                                                                </b>
+                                                                <span class="ms-auto font-12 text-muted">
+                                                                <c:out value="${myCustomer.registerDate}" />
+                                                                </span>
+                                                            </li>
+                                                        </c:forEach>
+                                                        </c:when>
+                                                            <c:otherwise>
+                                                                <li class="feed-item">
+                                                                    <b style="text-align: center; color: #2c3034">No Customers Found</b>
+                                                                </li>
+                                                            </c:otherwise>
+                                                        </c:choose>
+                                                    </ul>
                                                 </div>
                                             </div>
-                                        </a>
-                                    </c:forEach>
-                                </c:when>
-                                <c:otherwise>
-                                    <div class="d-flex flex-row comment-row m-t-0">
-                                        <b colspan=8 align="center" bgcolor="red">There is no Customers Found</b>
-                                    </div>
-                                </c:otherwise>
-                            </c:choose>
+                                        </div>
 
 <%--                            <a href="admin_screen.jsp">--%>
-<%--                                <div class="d-flex flex-row comment-row m-t-0">--%>
-<%--                                    <div class="p-2"><img src="admin_assets/images/users/1.jpg" alt="user" width="50"--%>
-<%--                                                          class="rounded-circle">--%>
-<%--                                    </div>--%>
-<%--                                    <div class="comment-text w-100">--%>
-<%--                                        <br><b><span class="m-b-15 d-block">Ahmed Galal</span></b>--%>
-<%--                                        <div class="comment-footer">--%>
-<%--                                            <span class="text-muted float-end">March 25, 2021</span>--%>
-<%--                                        </div>--%>
-<%--                                    </div>--%>
-<%--                                </div>--%>
-<%--                            </a>--%>
-<%--                            <!-- User Row -->--%>
-<%--                            <a href="admin_screen.jsp">--%>
-<%--                                <div class="d-flex flex-row comment-row">--%>
-<%--                                    <div class="p-2"><img src="admin_assets/images/users/1.jpg" alt="user" width="50"--%>
-<%--                                                          class="rounded-circle">--%>
-<%--                                    </div>--%>
-<%--                                    <div class="comment-text w-100">--%>
-<%--                                        <br><b><span class="m-b-15 d-block">Ahmed Wael</span></b>--%>
-<%--                                        <div class="comment-footer">--%>
-<%--                                            <span class="text-muted float-end">March 26, 2021</span>--%>
-<%--                                        </div>--%>
-<%--                                    </div>--%>
-<%--                                </div>--%>
 <%--                            </a>--%>
                         </div>
                     </div>
@@ -293,7 +272,7 @@
         <!-- footer -->
         <!-- ============================================================== -->
         <footer class="footer text-center">
-            All Rights Reserved by JETS G.M.W.M
+            All Rights Reserved by JETS G.M.W.SH
         </footer>
 
     </div>

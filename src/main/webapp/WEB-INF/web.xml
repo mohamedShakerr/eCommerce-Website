@@ -69,7 +69,7 @@ metadata-complete= "true">
     </servlet-mapping>
 
 
-    <!-- login servlet -->
+    <!-- Login servlet -->
     <servlet>
         <servlet-name>Login</servlet-name>
         <servlet-class>org.iti.controllers.LoginController</servlet-class>
@@ -80,7 +80,7 @@ metadata-complete= "true">
         <url-pattern>/login</url-pattern>
     </servlet-mapping>
 
-
+    <!-- AdminDashboard servlet -->
     <servlet>
         <servlet-name>AdminDashboard</servlet-name>
         <servlet-class>org.iti.controllers.AdminDashboardController</servlet-class>
@@ -91,6 +91,7 @@ metadata-complete= "true">
         <url-pattern>/admin</url-pattern>
     </servlet-mapping>
 
+    <!-- AdminCustomers servlet -->
     <servlet>
         <servlet-name>AdminCustomersController</servlet-name>
         <servlet-class>org.iti.controllers.AdminCustomersController</servlet-class>
@@ -98,7 +99,19 @@ metadata-complete= "true">
 
     <servlet-mapping>
         <servlet-name>AdminCustomersController</servlet-name>
-        <url-pattern>/admin/customers</url-pattern>
+        <url-pattern>/customers</url-pattern>
+    </servlet-mapping>
+
+
+    <!-- Admin CustomerProfile servlet -->
+    <servlet>
+        <servlet-name>AdminCustomerProfileController</servlet-name>
+        <servlet-class>org.iti.controllers.AdminCustomerProfileController</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>AdminCustomerProfileController</servlet-name>
+        <url-pattern>/profile</url-pattern>
     </servlet-mapping>
 
 
