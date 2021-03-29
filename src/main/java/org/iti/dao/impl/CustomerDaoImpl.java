@@ -61,13 +61,11 @@ public class CustomerDaoImpl implements CustomerDao {
                 createQuery("from Customers c where c.email = :email")
                 .setParameter("email", email);
 
-
         Customers result = (Customers) q.uniqueResult();
         hibernateSession.close();
+
         return result;
-
     }
-
 
     @Override
     public boolean isCustomerExist(Customers customer){

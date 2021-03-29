@@ -99,7 +99,7 @@
                 <!-- ============================================================== -->
                 <!-- Logo -->
                 <!-- ============================================================== -->
-                <a class="navbar-brand" href="admin_screen.jsp">
+                <a class="navbar-brand" href="admin">
                     <!-- Logo icon -->
                     <b class="logo-icon">
                         <h3>
@@ -112,7 +112,6 @@
                     <h3>
                         <span class="logo-text">UnityStore</span>
                     </h3>
-
                 </a>
                 <!-- ============================================================== -->
                 <!-- End Logo -->
@@ -182,7 +181,6 @@
                             <i class="fa fa-plus-square"></i>
                             <span class="hide-menu m-l-5">Add New Product</span>
                         </button>
-
                     </li>
                     <!-- User Profile-->
                     <li class="sidebar-item">
@@ -217,51 +215,38 @@
             <!-- Users -->
             <!-- ============================================================== -->
             <div class="row">
-                <!-- column -->
-<%--                <div class="col-lg-12">--%>
-<%--                    <div class="card">--%>
-<%--                        <div class="card-body">--%>
-<%--                            <h4 class="card-title">Customers</h4>--%>
-<%--                        </div>--%>
-<%--                        <div class="comment-widgets scrollable">--%>
-                            <!-- User Row -->
-
-
-                    <div class="col-md-12">
-                                        <div class="card">
-                                            <div class="card-body">
-                                                <h4 class="card-title">Customers</h4>
-                                                <div class="feed-widget">
-                                                    <ul class="list-style-none feed-body m-0 p-b-20">
-                                                        <c:choose>
-                                                        <c:when test='${! empty requestScope.customersList}'>
-                                                        <c:forEach var="myCustomer" items='${requestScope["customersList"]}'>
-                                                            <li class="feed-item">
-                                                                <div class="feed-icon">
-                                                                    <img src="${myCustomer.url}" alt="user" width="50" height="50" class="rounded-circle">
-                                                                </div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-                                                                <b>
-                                                                    <c:out value="${myCustomer.name}" />
-                                                                </b>
-                                                                <span class="ms-auto font-12 text-muted">
-                                                                <c:out value="${myCustomer.registerDate}" />
-                                                                </span>
-                                                            </li>
-                                                        </c:forEach>
-                                                        </c:when>
-                                                            <c:otherwise>
-                                                                <li class="feed-item">
-                                                                    <b style="text-align: center; color: #2c3034">No Customers Found</b>
-                                                                </li>
-                                                            </c:otherwise>
-                                                        </c:choose>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-
-<%--                            <a href="admin_screen.jsp">--%>
-<%--                            </a>--%>
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title">Customers</h4>
+                            <div class="feed-widget">
+                                <ul class="list-style-none feed-body m-0 p-b-20">
+                                        <c:choose>
+                                            <c:when test='${! empty requestScope.customersList}'>
+                                                <c:forEach var="myCustomer" items='${requestScope["customersList"]}'>
+                                                    <a href="profile?email=${myCustomer.email}">
+                                                        <li class="feed-item">
+                                                            <div class="feed-icon">
+                                                                <img src="${myCustomer.url}" alt="user" width="50" height="50" class="rounded-circle">
+                                                            </div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                                                            <b>
+                                                                <c:out value="${myCustomer.name}" />
+                                                            </b>
+                                                            <span class="ms-auto font-12 text-muted">
+                                                            <c:out value="${myCustomer.registerDate}" />
+                                                            </span>
+                                                        </li>
+                                                    </a>
+                                                </c:forEach>
+                                            </c:when>
+                                            <c:otherwise>
+                                                <li class="feed-item">
+                                                    <b style="text-align: center; color: #2c3034">No Customers Found</b>
+                                                </li>
+                                            </c:otherwise>
+                                        </c:choose>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -274,38 +259,38 @@
         <footer class="footer text-center">
             All Rights Reserved by JETS G.M.W.SH
         </footer>
-
     </div>
+
+</div>
     <!-- ============================================================== -->
     <!-- End Page wrapper  -->
     <!-- ============================================================== -->
-</div>
 <!-- ============================================================== -->
 <!-- End Wrapper -->
 <!-- ============================================================== -->
 <!-- All Jquery -->
 
 <!-- Bootstrap -->
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+            integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+            crossorigin="anonymous"></script>
 
-<!-- Bootstrap -->
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js"
-        integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/"
-        crossorigin="anonymous"></script>
+    <!-- Bootstrap -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js"
+            integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/"
+            crossorigin="anonymous"></script>
 
-<script src="admin_assets/js/jquery.min.js"></script>
-<!-- Bootstrap tether Core JavaScript -->
-<script src="admin_assets/js/bootstrap.bundle.min.js"></script>
+    <script src="admin_assets/js/jquery.min.js"></script>
+    <!-- Bootstrap tether Core JavaScript -->
+    <script src="admin_assets/js/bootstrap.bundle.min.js"></script>
 
-<script src="admin_assets/js/app-style-switcher.js"></script>
-<!--Wave Effects -->
-<script src="admin_assets/js/waves.js"></script>
-<!--Menu sidebar -->
-<script src="admin_assets/js/sidebarmenu.js"></script>
-<!--Custom JavaScript -->
-<script src="admin_assets/js/custom.js"></script>
+    <script src="admin_assets/js/app-style-switcher.js"></script>
+    <!--Wave Effects -->
+    <script src="admin_assets/js/waves.js"></script>
+    <!--Menu sidebar -->
+    <script src="admin_assets/js/sidebarmenu.js"></script>
+    <!--Custom JavaScript -->
+    <script src="admin_assets/js/custom.js"></script>
 
 </body>
 

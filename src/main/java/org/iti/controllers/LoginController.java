@@ -48,7 +48,7 @@ public class LoginController extends HttpServlet {
             boolean isLoginValid = loginService.isLoginCustomer(customerDto);
 
 
-            if (isLoginValid) {
+            if(isLoginValid) {
 
                 HttpSession session = request.getSession(true);
 
@@ -65,9 +65,7 @@ public class LoginController extends HttpServlet {
 
                 request.setAttribute("InputError", "err");
                 RequestDispatcher rd = request.getRequestDispatcher("login.jsp");
-                System.out.println("fuckkkk");
                 rd.forward(request, response);
-//                response.sendRedirect("login");
             }
 
         } catch (SQLException throwable) {

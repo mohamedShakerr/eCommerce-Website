@@ -99,7 +99,7 @@
                     <!-- ============================================================== -->
                     <!-- Logo -->
                     <!-- ============================================================== -->
-                    <a class="navbar-brand" href="admin_screen.jsp">
+                    <a class="navbar-brand" href="admin">
                         <!-- Logo icon -->
                         <b class="logo-icon">
                             <h3>
@@ -112,7 +112,6 @@
                         <h3>
                             <span class="logo-text">UnityStore</span>
                         </h3>
-
                     </a>
                     <!-- ============================================================== -->
                     <!-- End Logo -->
@@ -224,10 +223,10 @@
                                 <h4 class="card-title" style="text-align: center">Product Details</h4>
                             </div>
                             <div class="table-responsive">
-                                <table class="table v-middle">
+                                <table class="table v-middle table-striped">
                                     <thead>
                                         <tr class="bg-light">
-                                            <th class="border-top-0">ID</th>
+                                            <th class="border-top-0">#</th>
                                             <th class="border-top-0">Name</th>
                                             <th class="border-top-0">Price</th>
 <%--                                            <th class="border-top-0">Category</th>--%>
