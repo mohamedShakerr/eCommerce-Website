@@ -188,14 +188,14 @@
                         <!-- User Profile-->
                         <li class="sidebar-item">
                             <a class="sidebar-link waves-effect waves-dark sidebar-link"
-                               href="admin_screen.jsp" aria-expanded="false">
+                               href="admin" aria-expanded="false">
                                 <i class="mdi mdi-view-dashboard"></i>
                                 <span class="hide-menu">Products</span>
                             </a>
 
                         <li class="sidebar-item">
                             <a class="sidebar-link waves-effect waves-dark sidebar-link"
-                               href="admin_customers.html" aria-expanded="false">
+                               href="admin/customers" aria-expanded="false">
                                 <i class="mdi mdi-account-network"></i>
                                 <span class="hide-menu">Users</span>
                             </a>
