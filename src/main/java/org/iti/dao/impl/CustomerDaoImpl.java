@@ -5,11 +5,13 @@ import org.hibernate.query.Query;
 import org.iti.dao.interfaces.CustomerDao;
 import org.iti.db.DBSessionProvider;
 import org.iti.db.domain.Customers;
+import org.iti.dtos.CustomerDto;
 
 import java.util.List;
 
 public class CustomerDaoImpl implements CustomerDao {
 
+    // Session session = null;
     DBSessionProvider dbSessionProvider;
 
 
@@ -96,4 +98,13 @@ public class CustomerDaoImpl implements CustomerDao {
         return ((Customers)query.getResultList().get(0)).getCustomerId();
     }
 
+
+    // Todo make the session creation and usage consistant with the rest of the application
+    @Override
+    public List<Customers> getAllCustomers() {
+
+        Session hibernateSession = dbSessionProvider.getSession();
+        Query query = hibernateSession.createQuery("from Customers", Customers.class);
+        return query.getResultList();
+    }
 }

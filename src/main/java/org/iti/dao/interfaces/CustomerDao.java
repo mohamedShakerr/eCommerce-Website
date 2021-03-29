@@ -5,6 +5,7 @@ import org.iti.db.domain.FeaturedProds;
 import org.iti.dtos.CustomerDto;
 
 import java.sql.SQLException;
+import java.util.List;
 
 public interface CustomerDao {
 
@@ -17,5 +18,7 @@ public interface CustomerDao {
     boolean isCustomerExist(Customers customerDto);
 
     int getUserIdByEmail(String email);
+
+    List<Customers> getAllCustomers();
 
 }

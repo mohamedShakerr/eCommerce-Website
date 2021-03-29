@@ -9,6 +9,7 @@ import java.sql.SQLException;
 
 public class LoginService {
 
+    // Todo make session management mechanisim consistant just like product
     CustomerDao customerDao;
 
     public LoginService() {

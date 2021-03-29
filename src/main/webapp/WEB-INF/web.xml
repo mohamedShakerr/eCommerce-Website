@@ -82,14 +82,25 @@ metadata-complete= "true">
 
 
     <servlet>
-        <servlet-name>AdminController</servlet-name>
-        <servlet-class>org.iti.controllers.AdminController</servlet-class>
+        <servlet-name>AdminDashboard</servlet-name>
+        <servlet-class>org.iti.controllers.AdminDashboardController</servlet-class>
     </servlet>
 
     <servlet-mapping>
-        <servlet-name>AdminController</servlet-name>
+        <servlet-name>AdminDashboard</servlet-name>
         <url-pattern>/admin</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>AdminCustomersController</servlet-name>
+        <servlet-class>org.iti.controllers.AdminCustomersController</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>AdminCustomersController</servlet-name>
+        <url-pattern>/admin/customers</url-pattern>
+    </servlet-mapping>
+
 
 
     <resource-ref>
