@@ -23,7 +23,7 @@ public class AdminCustomersController extends HttpServlet{
 
 	public void doGet(HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException{
 
-		RequestDispatcher rd = request.getRequestDispatcher("admin_customers.html");
+		RequestDispatcher rd = request.getRequestDispatcher("admin_customers.jsp");
 
 		CustomerService customerService = new CustomerService();
 		List<CustomerDto> customersList = customerService.getAllCustomers();

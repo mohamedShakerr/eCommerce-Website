@@ -1,4 +1,3 @@
-<%@ page import="java.util.*" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql" %>
 
@@ -197,7 +196,7 @@
                             <a class="sidebar-link waves-effect waves-dark sidebar-link"
                                href="admin/customers" aria-expanded="false">
                                 <i class="mdi mdi-account-network"></i>
-                                <span class="hide-menu">Users</span>
+                                <span class="hide-menu">Customers</span>
                             </a>
                         </li>
                     </ul>
@@ -236,86 +235,46 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-
-                                    <c:choose>
-                                        <c:when test='${! empty requestScope.productsList}'>
-                                            <c:forEach var="myProduct" items='${requestScope["productsList"]}'>
+                                        <c:choose>
+                                            <c:when test='${! empty requestScope.productsList}'>
+                                                <c:forEach var="myProduct" items='${requestScope["productsList"]}'>
+                                                    <tr>
+                                                        <td>
+                                                            <c:out value="${myProduct.productId}" />
+                                                        </td>
+                                                        <td>
+                                                            <div class="d-flex align-items-center">
+                                                                <div class="m-r-10">
+                                                                    <img class="btn btn-circle d-flex btn-info text-white" src="${myProduct.imageUrl}" style="object-fit: cover;" alt="product" />
+                                                                </div>
+                                                                <div class="">
+                                                                    <h4 class="m-b-0 font-16">
+                                                                        <c:out value="${myProduct.productName}" />
+                                                                    </h4>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <label class="label label-primary">
+                                                                <c:out value="${myProduct.productPrice}" />
+                                                            </label>
+                                                        </td>
+                                                        <td>
+                                                            <label class="label label-danger">
+                                                                <c:out value="${myProduct.quantity}" />
+                                                            </label>
+                                                        </td>
+                                                    </tr>
+                                                </c:forEach>
+                                            </c:when>
+                                            <c:otherwise>
                                                 <tr>
-                                                    <td>
-                                                        <c:out value="${myProduct.productId}" />
-                                                    </td>
-                                                    <td>
-                                                        <div class="d-flex align-items-center">
-                                                            <div class="m-r-10">
-                                                                <img class="btn btn-circle d-flex btn-info text-white" src="${myProduct.imageUrl}" style="object-fit: cover;" alt="product" />
-                                                            </div>
-                                                            <div class="">
-                                                                <h4 class="m-b-0 font-16">
-                                                                    <c:out value="${myProduct.productName}" />
-                                                                </h4>
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <label class="label label-primary">
-                                                            <c:out value="${myProduct.productPrice}" />
-                                                        </label>
-                                                    </td>
-                                                    <td>
-                                                        <label class="label label-danger">
-                                                            <c:out value="${myProduct.quantity}" />
-                                                        </label>
+                                                    <td colspan=8 align="center" bgcolor="red">
+                                                        <b>There is no Products Found</b>
                                                     </td>
                                                 </tr>
-                                            </c:forEach>
-                                        </c:when>
-
-                                        <c:otherwise>
-                                            <tr>
-                                                <td colspan=8 align="center" bgcolor="red">
-                                                    <b>There is no Product Found</b>
-                                                </td>
-                                            </tr>
-                                        </c:otherwise>
-                                    </c:choose>
-
-
-<%--                                        <tr>--%>
-<%--                                            <td>1</td>--%>
-<%--                                            <td>--%>
-<%--                                                <div class="d-flex align-items-center">--%>
-<%--                                                    <div class="m-r-10"><a--%>
-<%--                                                            class="btn btn-circle d-flex btn-info text-white">PS4</a>--%>
-<%--                                                    </div>--%>
-<%--                                                    <div class="">--%>
-<%--                                                        <h4 class="m-b-0 font-16">Sony PlayStation 4 pro 1 TB - White</h4>--%>
-<%--                                                    </div>--%>
-<%--                                                </div>--%>
-<%--                                            </td>--%>
-<%--                                            <td>5600</td>--%>
-<%--                                            <td>--%>
-<%--                                                <label class="label label-danger">consoles</label>--%>
-<%--                                            </td>--%>
-<%--                                            <td>100</td>--%>
-<%--                                        </tr>--%>
-<%--                                        <tr>--%>
-<%--                                            <td>2</td>--%>
-<%--                                            <td>--%>
-<%--                                                <div class="d-flex align-items-center">--%>
-<%--                                                    <div class="m-r-10"><a--%>
-<%--                                                            class="btn btn-circle d-flex btn-info text-white">PS4</a>--%>
-<%--                                                    </div>--%>
-<%--                                                    <div class="">--%>
-<%--                                                        <h4 class="m-b-0 font-16">Sony Playstation 4 Pro - 1Tb, 1 Controller, Black</h4>--%>
-<%--                                                    </div>--%>
-<%--                                                </div>--%>
-<%--                                            </td>--%>
-<%--                                            <td>6200</td>--%>
-<%--                                            <td>--%>
-<%--                                                <label class="label label-danger">consoles</label>--%>
-<%--                                            </td>--%>
-<%--                                            <td>50</td>--%>
-<%--                                        </tr>--%>
+                                            </c:otherwise>
+                                        </c:choose>
                                     </tbody>
                                 </table>
                             </div>
@@ -332,7 +291,7 @@
             <!-- footer -->
             <!-- ============================================================== -->
             <footer class="footer text-center">
-                All Rights Reserved by JETS Admins
+                All Rights Reserved by JETS G.M.W.M
             </footer>
             <!-- ============================================================== -->
             <!-- End footer -->

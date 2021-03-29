@@ -1,3 +1,6 @@
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql" %>
+
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
 
@@ -184,16 +187,16 @@
                     <!-- User Profile-->
                     <li class="sidebar-item">
                         <a class="sidebar-link waves-effect waves-dark sidebar-link"
-                           href="admin_screen.jsp" aria-expanded="false">
+                           href="admin" aria-expanded="false">
                             <i class="mdi mdi-view-dashboard"></i>
                             <span class="hide-menu">Products</span>
                         </a>
 
                     <li class="sidebar-item">
                         <a class="sidebar-link waves-effect waves-dark sidebar-link"
-                           href="admin_customers.html" aria-expanded="false">
+                           href="admin/customers" aria-expanded="false">
                             <i class="mdi mdi-account-network"></i>
-                            <span class="hide-menu">Users</span>
+                            <span class="hide-menu">Customers</span>
                         </a>
                     </li>
                 </ul>
@@ -222,33 +225,64 @@
                         </div>
                         <div class="comment-widgets scrollable">
                             <!-- User Row -->
-                            <a href="admin_screen.jsp">
-                                <div class="d-flex flex-row comment-row m-t-0">
-                                    <div class="p-2"><img src="admin_assets/images/users/1.jpg" alt="user" width="50"
-                                                          class="rounded-circle">
+
+                            <c:choose>
+                                <c:when test='${! empty requestScope.productsList}'>
+                                    <c:forEach var="myCustomer" items='${requestScope["customersList"]}'>
+
+                                        <a href="admin_screen.jsp">
+                                            <div class="d-flex flex-row comment-row m-t-0">
+                                                <div class="p-2">
+                                                    <img src="${myCustomer.url}" alt="user" width="50" class="rounded-circle">
+                                                </div>
+                                                <div class="comment-text w-100"><br>
+                                                    <b><span class="m-b-15 d-block">
+                                                         <c:out value="${myCustomer.name}" />
+                                                    </span></b>
+                                                    <div class="comment-footer">
+                                                        <span class="text-muted float-end">
+                                                            <c:out value="${myCustomer.registerDate}" />
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </c:forEach>
+                                </c:when>
+                                <c:otherwise>
+                                    <div class="d-flex flex-row comment-row m-t-0">
+                                        <b colspan=8 align="center" bgcolor="red">There is no Customers Found</b>
                                     </div>
-                                    <div class="comment-text w-100">
-                                        <br><b><span class="m-b-15 d-block">Ahmed Galal</span></b>
-                                        <div class="comment-footer">
-                                            <span class="text-muted float-end">March 25, 2021</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                            <!-- User Row -->
-                            <a href="admin_screen.jsp">
-                                <div class="d-flex flex-row comment-row">
-                                    <div class="p-2"><img src="admin_assets/images/users/1.jpg" alt="user" width="50"
-                                                          class="rounded-circle">
-                                    </div>
-                                    <div class="comment-text w-100">
-                                        <br><b><span class="m-b-15 d-block">Ahmed Wael</span></b>
-                                        <div class="comment-footer">
-                                            <span class="text-muted float-end">March 26, 2021</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
+                                </c:otherwise>
+                            </c:choose>
+
+<%--                            <a href="admin_screen.jsp">--%>
+<%--                                <div class="d-flex flex-row comment-row m-t-0">--%>
+<%--                                    <div class="p-2"><img src="admin_assets/images/users/1.jpg" alt="user" width="50"--%>
+<%--                                                          class="rounded-circle">--%>
+<%--                                    </div>--%>
+<%--                                    <div class="comment-text w-100">--%>
+<%--                                        <br><b><span class="m-b-15 d-block">Ahmed Galal</span></b>--%>
+<%--                                        <div class="comment-footer">--%>
+<%--                                            <span class="text-muted float-end">March 25, 2021</span>--%>
+<%--                                        </div>--%>
+<%--                                    </div>--%>
+<%--                                </div>--%>
+<%--                            </a>--%>
+<%--                            <!-- User Row -->--%>
+<%--                            <a href="admin_screen.jsp">--%>
+<%--                                <div class="d-flex flex-row comment-row">--%>
+<%--                                    <div class="p-2"><img src="admin_assets/images/users/1.jpg" alt="user" width="50"--%>
+<%--                                                          class="rounded-circle">--%>
+<%--                                    </div>--%>
+<%--                                    <div class="comment-text w-100">--%>
+<%--                                        <br><b><span class="m-b-15 d-block">Ahmed Wael</span></b>--%>
+<%--                                        <div class="comment-footer">--%>
+<%--                                            <span class="text-muted float-end">March 26, 2021</span>--%>
+<%--                                        </div>--%>
+<%--                                    </div>--%>
+<%--                                </div>--%>
+<%--                            </a>--%>
                         </div>
                     </div>
                 </div>
@@ -256,8 +290,12 @@
             <!-- column -->
         </div>
         <!-- ============================================================== -->
-        <!-- Recent comment and chats -->
+        <!-- footer -->
         <!-- ============================================================== -->
+        <footer class="footer text-center">
+            All Rights Reserved by JETS G.M.W.M
+        </footer>
+
     </div>
     <!-- ============================================================== -->
     <!-- End Page wrapper  -->
