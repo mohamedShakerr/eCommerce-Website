@@ -95,6 +95,9 @@
         padding: 20px 10px 25px;
         height: 170px;
     }
+    .product-style-17 .product-content .title a {
+        font-size: 3vw;
+    }
 }
 @media screen and (min-width: 992px) {
     #BurgerMenuLoginRegBtns{ display: none; }   /* hide it elsewhere */

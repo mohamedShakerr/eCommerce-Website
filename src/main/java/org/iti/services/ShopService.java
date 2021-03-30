@@ -76,8 +76,25 @@ public class ShopService {
             List<Products> products = productDao.getAllProductsByCatAndPriceRange(minprice,maxPrice,categoryIds);
             prodDtos = mapper.convertEntityListToDtoList(products);
         }
-
         return  prodDtos;
+    }
+
+    //Gets the number of Procusts matching this Criteria
+    public long getNumberOfCriteriaProducts(FilterCriteria criteria){
+        ProductDao productDao = new ProductImpl(serviceSessison);
+
+        List<Integer> categoryIds = criteria.getCategories();
+        double maxPrice = criteria.getMaxPrice();
+        double minprice = criteria.getMinPrice();
+
+        long prodNumber = 0;
+
+        if (criteria.getCategories().size() <= 0){
+            prodNumber = productDao.getProdNumber(minprice, maxPrice);
+        }else {
+            prodNumber = productDao.getProdNumber(minprice, maxPrice, categoryIds);
+        }
+        return prodNumber;
     }
 
 
@@ -86,6 +103,29 @@ public class ShopService {
         double pages = list.size() * 1.0 / PAGE_SIZE;
         return  (int) Math.ceil( pages );
     }
+
+    public Integer getNumberOfPagesForAllProds(){
+
+        ProductDao productDao = new ProductImpl(serviceSessison);
+
+        long prodCount = productDao.getProdCount();
+        double pages = prodCount*1.0 / PAGE_SIZE;
+
+        return  (int) Math.ceil(pages);
+    }
+
+
+    public List<ShopProdDto> fetchProdsByBatch(Integer pageNum){
+
+        ProductDao productDao = new ProductImpl(serviceSessison);
+        List<Products> products =  productDao.fetchProductsByBatch(pageNum, PAGE_SIZE);
+
+        EntityToDtoMapper<ShopProdDto, Products> mapper = new DBProdToShopProd();
+        return  mapper.convertEntityListToDtoList(products);
+    }
+
+
+
 
 
 

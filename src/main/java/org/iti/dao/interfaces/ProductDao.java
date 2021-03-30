@@ -28,6 +28,7 @@ public interface ProductDao {
 
     List<Products> fetchProductsByBatch(Integer startingId, Integer batchSize);
 
+    List<Products> fetchProductsByBatchApplyingCriteria(Integer startingId, Integer batchSize);
 
     List<Products> getAllProductsByCategoryId(Integer categoryId);
 
@@ -36,6 +37,10 @@ public interface ProductDao {
     List<Products> getAllProductsWithingPriceRange(double min, double max);
 
     List<Products> getAllProductsByCatAndPriceRange(double min, double max, List<Integer> categoryId);
+
+    long getProdNumber(double min, double max);
+
+    long getProdNumber(double min, double max, List<Integer> categoryId);
 
 
     Double getMaximumProdPrice();

@@ -60,13 +60,14 @@
 
 <c:set var="paginationSize" value="${requestScope.NumberOfPages}"/>
 
-
 <c:out value="${paginationSize}"/>
     <!--====== Filter Part Start ======-->
 
     <section class="filter-wrapper pt-85" style="padding-top: 20px;">
         <div class="container-fluid">
+
             <div class="row">
+
                 <div class="col-md-5 col-lg-3  filters-column"  style="margin: 10px auto;">
                     <div class="filter-style-2">
                         <div class="filter-title">
@@ -120,62 +121,29 @@
                             <h4 class="title">Filter</h4>
                         </div>
                         <div class="filter-btn">
-                            <a class="main-btn primary-btn" onclick="sendFilter()">Reset</a>
+                            <a class="main-btn primary-btn" onclick="sendFilter()">Apply Filter</a>
                         </div>
                     </div>
 
                 </div>
 
 
-                <div class="col-md-7 col-lg-9  products-column" style="margin: 10px auto;" id="products-column">
+                <div class="col-md-7 col-lg-9 products-column" style="margin: 10px auto;" id="products-column">
 
-<%--                    HOLD ALL PRODUCTS--%>
-                    <div class="row ">
-                            <c:forEach var="product" items="${prods}" >
-                                <div class="col-lg-4 col-md-6">
-                                    <div class="product-style-17 mt-30" style="padding: 5px">
-                                        <div class="product-image shop-prod-img"
-                                                 id="shop-prod-img"
-                                                 style='background-image: url("${product.imgUrl}")'>
-                                                <a href="prod-detail?prodId=${product.id}"></a>
-                                        </div>
-                                        <div class="product-content text-center">
-                                            <h4 class="title"><a href="prod-detail?prodId=${product.id}">${product.name}</a></h4>
-                                            <p style="color:#161358;">$ ${product.price}</p>
-                                            <a  href="prod-detail?prodId=${product.id}" class="main-btn primary-btn-text explore-btn">Explore <i class="mdi mdi-chevron-right"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
 
-                            </c:forEach>
+<%--                    <div class="text-center"  id="loader-spinner"--%>
+<%--                         style="display: flex;justify-content: center;align-items: center;height: 100%;">--%>
+<%--                        <div class="spinner-grow"--%>
+<%--                             style="width: 3rem; height: 3rem; color: #4726CA"--%>
+<%--                             role="status" >--%>
+<%--                        </div>--%>
+<%--                    </div>--%>
 
+                    <div id="prods-section">
+                        <jsp:include page="shop-prods-col.jsp" flush="true"/>
                     </div>
-
-<%--                    FOR PAGINATION--%>
-                    <div class="row " style="padding: 10px">
-                        <nav aria-label="Page navigation example " style="margin:20px auto; ">
-                            <ul class="pagination justify-content-center ">
-
-                                <c:forEach varStatus="page" begin="1" end="${paginationSize}">
-
-                                    <li class="page-item ${page.isFirst()? 'active': ''} active">
-                                        <a class="page-link " href="#">${page.index}</a>
-                                    </li>
-
-                                </c:forEach>
-
-
-<%--                                <li class="page-item active"><a class="page-link " href="#">1</a></li>--%>
-
-<%--                                <li class="page-item"><a class="page-link" href="#">2</a></li>--%>
-
-<%--                                <li class="page-item"><a class="page-link" href="#">3</a></li>--%>
-
-                            </ul>
-                        </nav>
-                    </div>
-
                 </div>
+
             </div>
         </div>
     </section>
@@ -198,6 +166,8 @@
 
 <script>
 
+    var jsonFilterCriteria;
+
     function sendFilter(){
 
         var selectedCategories = [];
@@ -217,12 +187,20 @@
         filterCriteria.maxPrice = maxPrice;
         filterCriteria.categories = selectedCategories;
 
-        var jsonFilterCriteria = JSON.stringify(filterCriteria);
-        console.log(jsonFilterCriteria);
+         jsonFilterCriteria = JSON.stringify(filterCriteria);
 
+        //Show Spinner and hide prods
+        $("#loader-spinner").show(1000);
+        $("#prods-section").hide(1000);
 
+        $.get("shop?filter="+jsonFilterCriteria, function(data){
 
-        $.get("shop?filter="+jsonFilterCriteria);
+            //Hide Spinner show Prods.
+            $("#loader-spinner").hide(1500);
+            $("#prods-section").show(1500);
+            $("#products-column").html(data);
+        });
+
 
 
     }

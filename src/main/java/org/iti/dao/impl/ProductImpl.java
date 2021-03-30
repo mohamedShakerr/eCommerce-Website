@@ -30,16 +30,25 @@ public class ProductImpl implements ProductDao {
     }
 
     @Override
-    public List<Products> fetchProductsByBatch(Integer startingId, Integer batchSize) {
+    public List<Products> fetchProductsByBatch(Integer pageNum, Integer batchSize) {
 
         Query query = session.createQuery("from products",Products.class);
 
-        query.setFirstResult(1);
+        int startingIndex = (pageNum * batchSize) - batchSize;
+        //page1 : ( 1 * 6 ) - 6 = 0
+        //page2:  ( 2 * 6 ) - 6 = 6
+        //page3:  ( 3 * 6 ) - 6 = 12
+        query.setFirstResult(startingIndex);
 
-        query.setMaxResults(2);
+        query.setMaxResults(batchSize);
 
 
         return  query.getResultList();
+    }
+
+    @Override
+    public List<Products> fetchProductsByBatchApplyingCriteria(Integer startingId, Integer batchSize) {
+        return null;
     }
 
     @Override
@@ -51,7 +60,9 @@ public class ProductImpl implements ProductDao {
 
     @Override
     public long getProdCount() {
-        return 0;
+        Query q = session.createQuery("select count(*) from products");
+
+        return  (long)q.getResultList().get(0);
     }
 
 
@@ -97,6 +108,27 @@ public class ProductImpl implements ProductDao {
                 .setParameter("max", max);
 
         return q.getResultList();
+    }
+
+    @Override
+    public long getProdNumber(double min, double max) {
+
+        Query q = session.createQuery("select count(*) from products p where p.price between :min and :max")
+                .setParameter("min" , min)
+                .setParameter("max", max);
+
+        return (long) q.getResultList().get(0);
+    }
+
+    @Override
+    public long getProdNumber(double min, double max, List<Integer> categoryId) {
+
+        Query q = session.createQuery("select count(*) from products p where p.categories.id in (:ids) AND p.price between :min and :max ")
+                .setParameter("ids", categoryId)
+                .setParameter("min", min)
+                .setParameter("max", max);
+
+        return (long) q.getResultList().get(0);
     }
 
 
