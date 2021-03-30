@@ -93,7 +93,7 @@
       <div class="col-md-7 col-lg-8">
         <h4 class="mb-3">Billing address</h4>
 
-        <form class="needs-validation" novalidate>
+        <form class="needs-validation" novalidate method="post" action="checkout">
           <div class="row g-3">
          
 
@@ -107,7 +107,7 @@
 
             <div class="col-md-5">
               <label for="country" class="form-label">Country</label>
-              <input type="text" class="form-control" id="country" required>
+              <input type="text" class="form-control" id="country" name="country" required>
                 
               <div class="invalid-feedback">
                 Please select a valid country.
@@ -116,7 +116,7 @@
 
             <div class="col-md-4">
               <label for="state" class="form-label">State</label>
-              <input type="text" class="form-control" id="state" required>
+              <input type="text" class="form-control" id="state" name="state" required>
                
               <div class="invalid-feedback">
                 Please provide a valid state.
@@ -125,7 +125,7 @@
 
             <div class="col-md-3">
               <label for="zip" class="form-label">Zip</label>
-              <input type="text" class="form-control" id="zip" placeholder="" required>
+              <input type="text" class="form-control" id="zip" name="zipcode" placeholder="" required>
               <div class="invalid-feedback">
                 Zip code required.
               </div>
@@ -140,12 +140,12 @@
 
           <div class="my-3">
             <div class="form-check">
-              <input id="credit" name="paymentMethod" type="radio" class="form-check-input" checked required>
+              <input id="credit" name="paymentMethod" type="radio" class="form-check-input" value="credit" checked required>
               <label class="form-check-label" for="credit">Credit card</label>
             </div>
          
             <div class="form-check">
-              <input id="paypal" name="paymentMethod" type="radio" class="form-check-input" required>
+              <input id="paypal" name="paymentMethod" type="radio" class="form-check-input" value="paypal" required>
               <label class="form-check-label" for="paypal">PayPal</label>
             </div>
           </div>

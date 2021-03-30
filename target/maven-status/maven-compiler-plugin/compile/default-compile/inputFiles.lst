@@ -31,6 +31,7 @@ D:\iti\project\eCommerce-Website\src\main\java\org\iti\db\domain\DBProduct.java
 D:\iti\project\eCommerce-Website\src\main\java\org\iti\dtos\ProdDetailDto.java
 D:\iti\project\eCommerce-Website\src\main\java\org\iti\utils\mappers\todtomappers\DBProdToFeaturedProd.java
 D:\iti\project\eCommerce-Website\src\main\java\org\iti\db\domain\Categories.java
+D:\iti\project\eCommerce-Website\src\main\java\org\iti\controllers\ExecutePaymentServlet.java
 D:\iti\project\eCommerce-Website\src\main\java\org\iti\controllers\CheckoutServlet.java
 D:\iti\project\eCommerce-Website\src\main\java\org\iti\controllers\CartEditServlet.java
 D:\iti\project\eCommerce-Website\src\main\java\org\iti\dao\impl\CartImpl.java
@@ -47,5 +48,7 @@ D:\iti\project\eCommerce-Website\src\main\java\org\iti\utils\mappers\todtomapper
 D:\iti\project\eCommerce-Website\src\main\java\org\iti\dao\interfaces\FeaturedProductDao.java
 D:\iti\project\eCommerce-Website\src\main\java\org\iti\dao\impl\ProductImpl.java
 D:\iti\project\eCommerce-Website\src\main\java\org\iti\db\domain\AdminRolesId.java
+D:\iti\project\eCommerce-Website\src\main\java\org\iti\services\PaymentServices.java
 D:\iti\project\eCommerce-Website\src\main\java\org\iti\db\domain\CartItemsId.java
 D:\iti\project\eCommerce-Website\src\main\java\org\iti\controllers\customer\EditProfileServlet.java
+D:\iti\project\eCommerce-Website\src\main\java\org\iti\controllers\ReviewPaymentServlet.java
