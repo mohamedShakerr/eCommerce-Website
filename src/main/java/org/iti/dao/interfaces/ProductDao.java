@@ -26,6 +26,21 @@ public interface ProductDao {
 
     Products getProductById(Integer id);
 
+    List<Products> fetchProductsByBatch(Integer startingId, Integer batchSize);
+
+
+    List<Products> getAllProductsByCategoryId(Integer categoryId);
+
+    List<Products> getAllProductsByCategoryIds(Integer  ... categoryId);
+
+    List<Products> getAllProductsWithingPriceRange(double min, double max);
+
+    List<Products> getAllProductsByCatAndPriceRange(double min, double max, List<Integer> categoryId);
+
+
+    Double getMaximumProdPrice();
+
+    long getProdCount();
 
 
 

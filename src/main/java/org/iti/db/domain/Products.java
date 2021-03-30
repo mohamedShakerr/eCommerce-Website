@@ -159,8 +159,12 @@ public class Products  implements java.io.Serializable {
     }
 
 
-
-
+    @Override
+    public String toString() {
+        return "Products{" +
+                "prodId=" + prodId +
+                '}';
+    }
 }
 
 

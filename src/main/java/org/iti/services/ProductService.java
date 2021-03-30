@@ -29,5 +29,8 @@ public class ProductService {
     }
 
 
+    public  void terminateService(){
+        serviceSessison.close();
+    }
 
 }
