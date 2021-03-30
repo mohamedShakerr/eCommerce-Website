@@ -1,3 +1,4 @@
+
 /*-----------------------------------------------------------------------------------
 
     Product Name: eCommerce HTML UI Kit
@@ -20395,7 +20396,7 @@ only screen and (min-width: 992px) and (max-width: 1199px) {
 }
 
 .pricing-style-10 .single-pricing-plan .pricing-list ul li .list-title {
-    font-size: 16pxx;
+    font-size: 16px;
     line-height: 22px;
     color: #000;
     display: none;
@@ -22217,7 +22218,7 @@ only screen and (min-width: 992px) and (max-width: 1199px) {
 }
 
 .order-id-content .order-meta li .date {
-    font-size: 15x;
+    font-size: 15px;
     color: #4C4C4C;
 }
 
@@ -27783,7 +27784,7 @@ only screen and (min-width: 992px) and (max-width: 1199px) {
 .product-details-style-1 .product-details-content .product-select-wrapper .select-item {
     padding-top: 20px;
     padding-left: 10px;
-    padding-right: 10x;
+    padding-right: 10px;
 }
 
 .product-details-style-1 .product-details-content .product-select-wrapper .select-item .color-select {
@@ -36808,3 +36809,61 @@ only screen and (min-width: 992px) and (max-width: 1199px) {
         right: auto;
     }
 }
+
+/* My Custom Styles,, These will override the template CSS */
+.customMenuBtn {
+    display: table-cell;
+    padding-right: 10px;
+    padding-left: 10px;
+}
+
+.product-style-15 {
+    background-color: transparent;
+}
+.product-style-15 .product-content {
+    background-color: rgba(0,0,0,0.6);
+}
+.product-style-15 .product-content .title a {
+    color: white;
+}
+.product-style-15 .product-content p {
+    color: white;
+}
+
+#BurgerMenuLoginRegBtns{
+    color: #4726CA;
+}
+#BurgerMenuLoginRegBtns i{
+    display: block;
+}
+
+
+.product-style-7 .product-image .product-item img {
+    max-height: 210px;
+}
+.product-style-14 .product-content .title a {
+    font-size: 18px;
+}
+
+
+
+
+/*================================ MEDIA QUERIES ======================*/
+@media screen and (min-width: 0px) and (max-width: 992px) {
+    #BurgerMenuLoginRegBtns { display: block; }  /* show it on small screens */
+}
+@media only screen and (min-width: 768px) and (max-width: 991px){
+    .product-style-14 .product-content .title a {
+        font-size: 16px;
+    }
+}
+@media (max-width: 767px) {
+    .product-style-14 .product-content .title a {
+        font-size: 20px;
+    }
+}
+@media screen and (min-width: 992px) {
+    #BurgerMenuLoginRegBtns{ display: none; }   /* hide it elsewhere */
+}
+/*======================================================================*/
+

@@ -23,7 +23,8 @@ public class CartImpl  implements CartDao {
         this.session = sesison;
     }
 
-
+    /*******Shakeeeeeeeeeer*****/
+    public CartImpl(){}
 
 
     @Override
