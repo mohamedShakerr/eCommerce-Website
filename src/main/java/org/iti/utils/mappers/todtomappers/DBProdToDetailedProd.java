@@ -2,12 +2,12 @@ package org.iti.utils.mappers.todtomappers;
 
 import org.iti.db.domain.Products;
 import org.iti.dtos.ProdDetailDto;
-import org.iti.utils.mappers.EntityToDtoMapper;
+import org.iti.utils.mappers.Mapper;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class DBProdToDetailedProd extends EntityToDtoMapper<ProdDetailDto, Products> {
+public class DBProdToDetailedProd extends Mapper<ProdDetailDto, Products> {
 
 
     @Override

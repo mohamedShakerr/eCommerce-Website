@@ -7,7 +7,7 @@ import org.iti.db.DBSessionProvider;
 import org.iti.db.domain.CartItems;
 import org.iti.dtos.CartDto;
 import org.iti.dtos.CartItemDto;
-import org.iti.utils.mappers.EntityToDtoMapper;
+import org.iti.utils.mappers.Mapper;
 import org.iti.utils.mappers.todtomappers.DBCartItemToItemDto;
 
 import java.util.List;
@@ -45,7 +45,7 @@ public class CartService {
         List<CartItems> cartItemsList = cartDao.getCartByUserId(id);
 
         cart.setUserId(id);
-        EntityToDtoMapper<CartItemDto, CartItems> mapper = new DBCartItemToItemDto();
+        Mapper<CartItemDto, CartItems> mapper = new DBCartItemToItemDto();
         List<CartItemDto> cartItems = mapper.convertEntityListToDtoList(cartItemsList);
         cart.setCartItems(cartItems);
 

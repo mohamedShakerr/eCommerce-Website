@@ -3,9 +3,9 @@ package org.iti.utils.mappers.todtomappers;
 import org.apache.commons.lang3.StringUtils;
 import org.iti.db.domain.Categories;
 import org.iti.dtos.ShopCategoryDto;
-import org.iti.utils.mappers.EntityToDtoMapper;
+import org.iti.utils.mappers.Mapper;
 
-public class DBCatToShopCat extends EntityToDtoMapper<ShopCategoryDto, Categories> {
+public class DBCatToShopCat extends Mapper<ShopCategoryDto, Categories> {
 
 
     @Override

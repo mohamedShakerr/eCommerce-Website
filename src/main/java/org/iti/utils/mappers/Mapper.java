@@ -3,7 +3,7 @@ package org.iti.utils.mappers;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public abstract class EntityToDtoMapper<E,T> {
+public abstract class Mapper<E,T> {
 
     public abstract  E convertEntityToDto(T entity);
     public   List<E> convertEntityListToDtoList(List<T> entities){

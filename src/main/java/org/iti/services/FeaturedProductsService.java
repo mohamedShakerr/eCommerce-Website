@@ -8,19 +8,16 @@ import org.iti.db.domain.FeaturedAccesory;
 import org.iti.db.domain.FeaturedProds;
 import org.iti.db.domain.Products;
 import org.iti.dtos.ProdDetailDto;
-import  org.iti.utils.mappers.*;
-import  org.iti.utils.mappers.EntityToDtoMapper;
+import org.iti.utils.mappers.Mapper;
 
 import org.hibernate.Session;
 import org.iti.db.DBSessionProvider;
-import org.iti.db.domain.DBProduct;
 import org.iti.dtos.FeaturedIndexProductDto;
 
 import org.iti.utils.mappers.todtomappers.DBProdToDetailedProd;
 import org.iti.utils.mappers.todtomappers.DBProdToFeaturedAccessory;
 import org.iti.utils.mappers.todtomappers.DBProdToFeaturedProd;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class FeaturedProductsService {
@@ -41,7 +38,7 @@ public class FeaturedProductsService {
 
         List<FeaturedProds> dbProducts = dao.getAllFeaturedProducts();
 
-        EntityToDtoMapper<FeaturedIndexProductDto,FeaturedProds> mapper = new DBProdToFeaturedProd();
+        Mapper<FeaturedIndexProductDto,FeaturedProds> mapper = new DBProdToFeaturedProd();
         return mapper.convertEntityListToDtoList(dbProducts);
 
     }
@@ -52,7 +49,7 @@ public class FeaturedProductsService {
 
         List<FeaturedAccesory> dbProducts = dao.getAllFeaturedAccessories();
 
-        EntityToDtoMapper<FeaturedIndexProductDto, FeaturedAccesory> mapper = new DBProdToFeaturedAccessory();
+        Mapper<FeaturedIndexProductDto, FeaturedAccesory> mapper = new DBProdToFeaturedAccessory();
 
         return  mapper.convertEntityListToDtoList(dbProducts);
     }
@@ -62,7 +59,7 @@ public class FeaturedProductsService {
         ProductDao productDao = new ProductImpl(serviceSessison);
         //TODO ZABAT DEH ===========>>>
         Products OculusFeaturedProd = productDao.getProductById(3);
-        EntityToDtoMapper<ProdDetailDto, Products> mapper = new DBProdToDetailedProd();
+        Mapper<ProdDetailDto, Products> mapper = new DBProdToDetailedProd();
 
         return  mapper.convertEntityToDto(OculusFeaturedProd);
     }

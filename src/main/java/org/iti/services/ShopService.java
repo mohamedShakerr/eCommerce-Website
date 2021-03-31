@@ -11,7 +11,7 @@ import org.iti.db.domain.Products;
 import org.iti.dtos.FilterCriteria;
 import org.iti.dtos.ShopCategoryDto;
 import org.iti.dtos.ShopProdDto;
-import org.iti.utils.mappers.EntityToDtoMapper;
+import org.iti.utils.mappers.Mapper;
 import org.iti.utils.mappers.todtomappers.DBCatToShopCat;
 import org.iti.utils.mappers.todtomappers.DBProdToShopProd;
 
@@ -34,7 +34,7 @@ public class ShopService {
 
         List<Products> products = productDao.getAllProducts();
 
-        EntityToDtoMapper<ShopProdDto, Products> mapper = new DBProdToShopProd();
+        Mapper<ShopProdDto, Products> mapper = new DBProdToShopProd();
         List<ShopProdDto> list = mapper.convertEntityListToDtoList(products);
 
         return  list;
@@ -54,14 +54,14 @@ public class ShopService {
         CategoryDao categoryDao = new CategoryImpl(serviceSessison);
         List<Categories> categoryList =  categoryDao.getAllCategories();
 
-        EntityToDtoMapper<ShopCategoryDto, Categories> mapper = new DBCatToShopCat();
+        Mapper<ShopCategoryDto, Categories> mapper = new DBCatToShopCat();
         return  mapper.convertEntityListToDtoList(categoryList);
     }
 
     public List<ShopProdDto> filterProducts(FilterCriteria criteria){
 
         ProductDao productDao = new ProductImpl(serviceSessison);
-        EntityToDtoMapper<ShopProdDto, Products> mapper = new DBProdToShopProd();
+        Mapper<ShopProdDto, Products> mapper = new DBProdToShopProd();
         List<ShopProdDto> prodDtos = null;
 
         List<Integer> categoryIds = criteria.getCategories();
@@ -83,7 +83,7 @@ public class ShopService {
     public List<ShopProdDto> batchFilterProducts(FilterCriteria criteria, int pageNumber){
 
         ProductDao productDao = new ProductImpl(serviceSessison);
-        EntityToDtoMapper<ShopProdDto, Products> mapper = new DBProdToShopProd();
+        Mapper<ShopProdDto, Products> mapper = new DBProdToShopProd();
         List<ShopProdDto> prodDtos = null;
 
         List<Integer> categoryIds = criteria.getCategories();
@@ -142,7 +142,7 @@ public class ShopService {
         ProductDao productDao = new ProductImpl(serviceSessison);
         List<Products> products =  productDao.fetchProductsByBatch(pageNum, BATCH_SIZE);
 
-        EntityToDtoMapper<ShopProdDto, Products> mapper = new DBProdToShopProd();
+        Mapper<ShopProdDto, Products> mapper = new DBProdToShopProd();
         return  mapper.convertEntityListToDtoList(products);
     }
 

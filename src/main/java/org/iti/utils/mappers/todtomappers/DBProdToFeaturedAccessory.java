@@ -2,12 +2,11 @@ package org.iti.utils.mappers.todtomappers;
 
 
 import org.iti.db.domain.FeaturedAccesory;
-import org.iti.db.domain.FeaturedProds;
 import org.iti.db.domain.Products;
 import org.iti.dtos.FeaturedIndexProductDto;
-import org.iti.utils.mappers.EntityToDtoMapper;
+import org.iti.utils.mappers.Mapper;
 
-public class DBProdToFeaturedAccessory extends EntityToDtoMapper<FeaturedIndexProductDto, FeaturedAccesory> {
+public class DBProdToFeaturedAccessory extends Mapper<FeaturedIndexProductDto, FeaturedAccesory> {
 
 
     @Override
