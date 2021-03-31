@@ -6,6 +6,44 @@ version= "5.0"
 metadata-complete= "false">
 
 
+	<servlet>
+		<servlet-name>profile</servlet-name>
+		<servlet-class>org.iti.controllers.customer.CustomerProfileServlet</servlet-class>	
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>profile</servlet-name>
+		<url-pattern>/profile</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>CreditCardServlet</servlet-name>
+		<servlet-class>org.iti.controllers.customer.CreditCardServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>CreditCardServlet</servlet-name>
+		<url-pattern>/CreditCardServlet</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>editprofile</servlet-name>
+		<servlet-class>org.iti.controllers.customer.EditProfileServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>editprofile</servlet-name>
+		<url-pattern>/editprofile</url-pattern>
+	</servlet-mapping>
+<!--    CHECKOUT SERVLET-->
+    <servlet>
+        <servlet-name>checkout</servlet-name>
+        <servlet-class>org.iti.controllers.CheckoutServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>checkout</servlet-name>
+        <url-pattern>/checkout</url-pattern>
+    </servlet-mapping>
+
 
     <!--============Welcome FIle=============-->
     <welcome-file-list>
@@ -114,7 +152,7 @@ metadata-complete= "false">
 
     <servlet-mapping>
         <servlet-name>AdminCustomersController</servlet-name>
-        <url-pattern>/customers</url-pattern>
+        <url-pattern>/admin/customers</url-pattern>
     </servlet-mapping>
 
 
@@ -126,12 +164,13 @@ metadata-complete= "false">
 
     <servlet-mapping>
         <servlet-name>AdminCustomerProfileController</servlet-name>
-        <url-pattern>/profile</url-pattern>
+        <url-pattern>/admin/customers/profile</url-pattern>
     </servlet-mapping>
 
 
 
     <resource-ref>
+
         <description>DB Connection</description>
         <res-ref-name>jdbc/ecomm</res-ref-name>
         <res-type>javax.sql.DataSource</res-type>
