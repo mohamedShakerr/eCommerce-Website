@@ -5,9 +5,14 @@ import org.iti.dao.impl.ProductImpl;
 import org.iti.dao.interfaces.ProductDao;
 import org.iti.db.DBSessionProvider;
 import org.iti.db.domain.Products;
+import org.iti.dtos.FeaturedIndexProductDto;
 import org.iti.dtos.ProdDetailDto;
+import org.iti.utils.mappers.EntityDtoMapper;
 import org.iti.utils.mappers.Mapper;
 import org.iti.utils.mappers.todtomappers.DBProdToDetailedProd;
+import org.iti.utils.mappers.todtomappers.ProductToFeaturedProduct;
+
+import java.util.List;
 
 public class ProductService {
 
@@ -26,6 +31,20 @@ public class ProductService {
 
         Mapper<ProdDetailDto, Products> mapper = new DBProdToDetailedProd();
         return mapper.convertEntityToDto(product);
+    }
+
+
+
+    public List<FeaturedIndexProductDto> getAllProducts() {
+
+        //Access DaoImpl , Pass The Sesison
+        ProductDao productDao = new ProductImpl(serviceSessison);
+
+        List<Products> products = productDao.getAllProducts();
+
+        EntityDtoMapper<Products, FeaturedIndexProductDto> mapper = new ProductToFeaturedProduct();
+        return mapper.entityListToDtoList(products);
+
     }
 
 

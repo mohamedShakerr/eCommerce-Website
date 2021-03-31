@@ -3,12 +3,14 @@ package org.iti.services;
 import org.iti.dao.impl.FeaturedProductImpl;
 import org.iti.dao.impl.ProductImpl;
 import org.iti.dao.interfaces.FeaturedProductDao;
+
 import org.iti.dao.interfaces.ProductDao;
 import org.iti.db.domain.FeaturedAccesory;
 import org.iti.db.domain.FeaturedProds;
 import org.iti.db.domain.Products;
 import org.iti.dtos.ProdDetailDto;
 import org.iti.utils.mappers.Mapper;
+
 
 import org.hibernate.Session;
 import org.iti.db.DBSessionProvider;
@@ -41,6 +43,7 @@ public class FeaturedProductsService {
         Mapper<FeaturedIndexProductDto,FeaturedProds> mapper = new DBProdToFeaturedProd();
         return mapper.convertEntityListToDtoList(dbProducts);
 
+
     }
 
     public List<FeaturedIndexProductDto> getAllFeaturedAccessories(){
@@ -50,6 +53,7 @@ public class FeaturedProductsService {
         List<FeaturedAccesory> dbProducts = dao.getAllFeaturedAccessories();
 
         Mapper<FeaturedIndexProductDto, FeaturedAccesory> mapper = new DBProdToFeaturedAccessory();
+
 
         return  mapper.convertEntityListToDtoList(dbProducts);
     }

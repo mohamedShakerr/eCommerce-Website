@@ -12,6 +12,7 @@ public class DBProdToFeaturedProd extends Mapper<FeaturedIndexProductDto, Featur
     @Override
     public FeaturedIndexProductDto convertEntityToDto(FeaturedProds featuredProd) {
 
+
         FeaturedIndexProductDto featuredProdDto = new FeaturedIndexProductDto();
 
         Products entity = featuredProd.getProducts();

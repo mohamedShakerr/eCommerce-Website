@@ -38,6 +38,20 @@ metadata-complete= "false">
 
     <!--=====================Cart Edit==================-->
 
+    <!--=================Filters========================-->
+
+    <!-- Cookie filter -->
+    <filter>
+        <filter-name>CookieFilter</filter-name>
+        <filter-class>org.iti.controllers.filters.CookieFilter</filter-class>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>CookieFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+    <!--================================================-->
 
 
     <!--==============LISTENERS========================-->
@@ -49,6 +63,71 @@ metadata-complete= "false">
     <!--================================================-->
 
 
+    <servlet>
+        <servlet-name>Register</servlet-name>
+        <servlet-class>org.iti.controllers.RegistrationController</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>Register</servlet-name>
+        <url-pattern>/register</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>RegisterValidationServlet</servlet-name>
+        <servlet-class>org.iti.controllers.RegisterValidationServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>RegisterValidationServlet</servlet-name>
+        <url-pattern>/validateRegister</url-pattern>
+    </servlet-mapping>
+
+
+    <!-- Login servlet -->
+    <servlet>
+        <servlet-name>Login</servlet-name>
+        <servlet-class>org.iti.controllers.LoginController</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>Login</servlet-name>
+        <url-pattern>/login</url-pattern>
+    </servlet-mapping>
+
+    <!-- AdminDashboard servlet -->
+    <servlet>
+        <servlet-name>AdminDashboard</servlet-name>
+        <servlet-class>org.iti.controllers.AdminDashboardController</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>AdminDashboard</servlet-name>
+        <url-pattern>/admin</url-pattern>
+    </servlet-mapping>
+
+    <!-- AdminCustomers servlet -->
+    <servlet>
+        <servlet-name>AdminCustomersController</servlet-name>
+        <servlet-class>org.iti.controllers.AdminCustomersController</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>AdminCustomersController</servlet-name>
+        <url-pattern>/customers</url-pattern>
+    </servlet-mapping>
+
+
+    <!-- Admin CustomerProfile servlet -->
+    <servlet>
+        <servlet-name>AdminCustomerProfileController</servlet-name>
+        <servlet-class>org.iti.controllers.AdminCustomerProfileController</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>AdminCustomerProfileController</servlet-name>
+        <url-pattern>/profile</url-pattern>
+    </servlet-mapping>
 
 
 
