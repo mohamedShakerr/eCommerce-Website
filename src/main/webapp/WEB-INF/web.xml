@@ -24,7 +24,7 @@ metadata-complete= "false">
 
     <!--================================================-->
 
-    <!--=====================Index Servlet===============-->
+    <!--=====================PROD DETAIL Servlet===============-->
 
     <servlet>
         <servlet-name>ProductDetailServlet</servlet-name>
@@ -32,7 +32,7 @@ metadata-complete= "false">
     </servlet>
     <servlet-mapping>
         <servlet-name>ProductDetailServlet</servlet-name>
-        <url-pattern>/prod-detail</url-pattern>
+        <url-pattern>/shop/prod-detail</url-pattern>
     </servlet-mapping>
     <!--================================================-->
 

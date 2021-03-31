@@ -128,20 +128,27 @@
                 </div>
 
 
+
+
+
                 <div class="col-md-7 col-lg-9 products-column" style="margin: 10px auto;" id="products-column">
 
 
-<%--                    <div class="text-center"  id="loader-spinner"--%>
-<%--                         style="display: flex;justify-content: center;align-items: center;height: 100%;">--%>
-<%--                        <div class="spinner-grow"--%>
-<%--                             style="width: 3rem; height: 3rem; color: #4726CA"--%>
-<%--                             role="status" >--%>
-<%--                        </div>--%>
-<%--                    </div>--%>
+                    <div id="loader-spinner"  style="display: none">
+                        <div class="text-center"
+                             style="display: flex;justify-content: center;align-items: center;height: 100%;">
+                            <div class="spinner-grow"
+                                 style="width: 3rem; height: 3rem; color: #4726CA"
+                                 role="status" >
+                            </div>
+                        </div>
+                    </div>
 
-                    <div id="prods-section">
+                    <div id="products-section" style="display: block">
                         <jsp:include page="shop-prods-col.jsp" flush="true"/>
                     </div>
+
+
                 </div>
 
             </div>
@@ -168,6 +175,17 @@
 
     var jsonFilterCriteria;
 
+    $(document).ready(function(){
+        //Init Criteria
+        var filterCriteria = new Object()
+        filterCriteria.minPrice = 0;
+        filterCriteria.maxPrice = ${maxPrice};
+        filterCriteria.categories = [];
+        console.log("init"+ filterCriteria);
+        jsonFilterCriteria = JSON.stringify(filterCriteria);
+        console.log("init ==>>>"+ jsonFilterCriteria);
+    })
+
     function sendFilter(){
 
         var selectedCategories = [];
@@ -189,19 +207,36 @@
 
          jsonFilterCriteria = JSON.stringify(filterCriteria);
 
+        $("#products-section").hide();
         //Show Spinner and hide prods
-        $("#loader-spinner").show(1000);
-        $("#prods-section").hide(1000);
+        $("#loader-spinner").show();
 
         $.get("shop?filter="+jsonFilterCriteria, function(data){
 
             //Hide Spinner show Prods.
-            $("#loader-spinner").hide(1500);
-            $("#prods-section").show(1500);
-            $("#products-column").html(data);
+            $("#loader-spinner").hide();
+            $("#products-section").show();
+            $("#products-section").html(data);
+
         });
 
+    }
 
+    function fetchPage(pageNum){
+
+
+        $("#products-section").hide();
+        //Show Spinner and hide prods
+        $("#loader-spinner").show();
+
+        $.get("shop?filter="+jsonFilterCriteria+"&page="+pageNum, function(data){
+
+            //Hide Spinner show Prods.
+            $("#loader-spinner").hide();
+            $("#products-section").show();
+            $("#products-section").html(data);
+
+        });
 
     }
 

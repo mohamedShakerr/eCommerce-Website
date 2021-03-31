@@ -12,34 +12,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!--====== Favicon Icon ======-->
-    <link rel="shortcut icon" href="./assets/images/favicon.png" type="image/png">
+    <link rel="shortcut icon" href="../assets/images/favicon.png" type="image/png">
 
     <!--====== Tiny Slider CSS ======-->
-    <link rel="stylesheet" href="./assets/css/tiny-slider.css">
+    <link rel="stylesheet" href="../assets/css/tiny-slider.css">
 
     <!--====== Line Icons CSS ======-->
-    <link rel="stylesheet" href="./assets/css/LineIcons.css">
+    <link rel="stylesheet" href="../assets/css/LineIcons.css">
 
     <!--====== Material Design Icons CSS ======-->
-    <link rel="stylesheet" href="./assets/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="../assets/css/materialdesignicons.min.css">
 
     <!--====== Bootstrap CSS ======-->
-    <link rel="stylesheet" href="./assets/css/bootstrap-5.0.0-beta1.min.css">
+    <link rel="stylesheet" href="../assets/css/bootstrap-5.0.0-beta1.min.css">
 
     <!--====== gLightBox CSS ======-->
-    <link rel="stylesheet" href="./assets/css/glightbox.min.css">
+    <link rel="stylesheet" href="../assets/css/glightbox.min.css">
 
     <!--====== nouiSlider CSS ======-->
-    <link rel="stylesheet" href="./assets/css/nouislider.min.css">
+    <link rel="stylesheet" href="../assets/css/nouislider.min.css">
 
     <!--====== Default CSS ======-->
-    <link rel="stylesheet" href="./assets/css/default.css">
+    <link rel="stylesheet" href="../assets/css/default.css">
 
     <!--====== Temp CSS ======-->
-    <link rel="stylesheet" href="./assets/css/tempstyle.css">
+    <link rel="stylesheet" href="../assets/css/tempstyle.css">
 
     <!-- =======Style CSS ============ -->
-    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
 
 </head>
 
@@ -49,8 +49,6 @@
     <!--====== Product Details Style 2 Part Start ======-->
 
     <c:set var = "product" scope="request" value="${requestScope.product}"/>
-
-
 
 
     <section class="product-details-wrapper mt-30 pt-70 pb-100">
@@ -144,22 +142,22 @@
     <!--=========================================Scripts=====================================-->
 
     <!--====== Bootstrap js ======-->
-    <script src="./assets/js/bootstrap.bundle-5.0.0-beta1.min.js"></script>
+    <script src="../assets/js/bootstrap.bundle-5.0.0-beta1.min.js"></script>
 
     <!--====== Tiny Slider js ======-->
-    <script src="./assets/js/tiny-slider.js"></script>
+    <script src="../assets/js/tiny-slider.js"></script>
 
     <!--====== nouiSlider js ======-->
-    <script src="./assets/js/nouislider.min.js"></script>
+    <script src="../assets/js/nouislider.min.js"></script>
 
     <!--====== count up js ======-->
-    <script src="./assets/js/count-up.min.js"></script>
+    <script src="../assets/js/count-up.min.js"></script>
 
     <!--====== gLightBox js ======-->
-    <script src="./assets/js/glightbox.min.js"></script>
+    <script src="../assets/js/glightbox.min.js"></script>
 
     <!--====== Main js ======-->
-    <script src="./assets/js/main.js"></script>
+    <script src="../assets/js/main.js"></script>
 
 
     <script>

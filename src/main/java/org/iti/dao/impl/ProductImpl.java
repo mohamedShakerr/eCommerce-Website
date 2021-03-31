@@ -100,12 +100,49 @@ public class ProductImpl implements ProductDao {
     }
 
     @Override
+    public List<Products> batchProductsWithingPriceRange(int pageNum, int batchSize, double min, double max) {
+
+        Query query = session.createQuery("from products p where p.price between :min and :max")
+                .setParameter("min" , min)
+                .setParameter("max", max);
+
+        int startingIndex = (pageNum * batchSize) - batchSize;
+        //page1 : ( 1 * 6 ) - 6 = 0
+        //page2:  ( 2 * 6 ) - 6 = 6
+        //page3:  ( 3 * 6 ) - 6 = 12
+        query.setFirstResult(startingIndex);
+
+        query.setMaxResults(batchSize);
+
+        return query.getResultList();
+
+    }
+
+    @Override
     public List<Products> getAllProductsByCatAndPriceRange(double min, double max, List<Integer> categoryId) {
 
         Query q = session.createQuery("from products p where p.categories.id in (:ids) AND p.price between :min and :max ")
                 .setParameter("ids", categoryId)
                 .setParameter("min", min)
                 .setParameter("max", max);
+
+        return q.getResultList();
+    }
+
+    @Override
+    public List<Products> batchAllProductsByCatAndPriceRange(int pageNum,int batchSize, double min, double max, List<Integer> categoryId) {
+        Query q = session.createQuery("from products p where p.categories.id in (:ids) AND p.price between :min and :max ")
+                .setParameter("ids", categoryId)
+                .setParameter("min", min)
+                .setParameter("max", max);
+
+        int startingIndex = (pageNum * batchSize) - batchSize;
+        //page1 : ( 1 * 6 ) - 6 = 0
+        //page2:  ( 2 * 6 ) - 6 = 6
+        //page3:  ( 3 * 6 ) - 6 = 12
+        q.setFirstResult(startingIndex);
+
+        q.setMaxResults(batchSize);
 
         return q.getResultList();
     }

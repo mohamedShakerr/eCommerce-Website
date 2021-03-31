@@ -31,7 +31,6 @@ public class ShopServlet extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         RequestDispatcher rd = request.getRequestDispatcher("shop.jsp");
-        PrintWriter out = response.getWriter();
         request.setCharacterEncoding("UTF-8");
         //Need to Get Number Of Pages, According to the selected Query
         String filter  = request.getParameter("filter");
@@ -47,7 +46,6 @@ public class ShopServlet extends HttpServlet {
                 currentPage = "1";
 
             ShopService shopService = new ShopService();
-
             //Get Max Price of Prods
             double maxPrice = shopService.getMaxPrice();
             //Get All Categories we Have
@@ -77,33 +75,40 @@ public class ShopServlet extends HttpServlet {
             rd.forward(request,response);
         }
         else {
-            System.out.println(filter);
             Gson gson = new Gson();
-            //Got The Filter Criteria
+            String currentPage = request.getParameter("page");
+
+            //if current page is null, assume we are in the first page
+            //entering the first time.
+            if(currentPage == null)
+                currentPage = "1";
+
+
+            //Get The Filter Criteria
             FilterCriteria criteria  = gson.fromJson(filter, FilterCriteria.class);
 
-            //Shop Service
+            //Initialize our service
             ShopService shopService = new ShopService();
 
-            List<ShopProdDto> prodList = shopService.filterProducts(criteria);
+            //Get Number Of Pages we gonna have
+            long numberOfPages = shopService.getNumberOfPagesOfCriteria(criteria);
 
-            double maxPrice = shopService.getMaxPrice();
-            List<ShopCategoryDto> categoryList = shopService.getAllCategories();
+            //By Default we view the first page
+            //fetch the first 6 products
+            //Parse current page to pageNum
+            //BATCH SIZE is configurable in  shop service class
+            int pageNum = Integer.parseInt(currentPage);
+            //FilterProducts And Fetch First Page Of result ONLY
+            List<ShopProdDto> prodList = shopService.batchFilterProducts(criteria, pageNum);
 
-            System.out.println("=========" + shopService.getNumberOfCriteriaProducts(criteria));
-
-            int NumberOfPages = shopService.getNumberOfPages(prodList);
 
             shopService.terminateService();
-
-//            request.setAttribute("categories", categoryList);
+            request.setAttribute("currentPage", pageNum);
             request.setAttribute("products", prodList);
-//            request.setAttribute("maxPrice", maxPrice);
-            request.setAttribute("NumberOfPages", NumberOfPages);
+            request.setAttribute("NumberOfPages", numberOfPages);
 
-
-            RequestDispatcher filterd = request.getRequestDispatcher("shop-prods-col.jsp");
-            filterd.forward(request,response);
+            RequestDispatcher filtered = request.getRequestDispatcher("shop-prods-col.jsp");
+            filtered.forward(request,response);
         }
 
     }

@@ -36,7 +36,11 @@ public interface ProductDao {
 
     List<Products> getAllProductsWithingPriceRange(double min, double max);
 
+    List<Products> batchProductsWithingPriceRange(int pageNum, int batchSize, double min, double max);
+
     List<Products> getAllProductsByCatAndPriceRange(double min, double max, List<Integer> categoryId);
+
+    List<Products> batchAllProductsByCatAndPriceRange(int pageNum,int batchSize,double min, double max, List<Integer> categoryId);
 
     long getProdNumber(double min, double max);
 

@@ -65,6 +65,9 @@
     transition: all 0.3s linear;
     margin-top: 4px;
 }
+#loader-spinner{
+    height: 100%
+}
 
 
 
@@ -96,7 +99,7 @@
         height: 170px;
     }
     .product-style-17 .product-content .title a {
-        font-size: 3vw;
+        font-size: 4.5vw;
     }
 }
 @media screen and (min-width: 992px) {
