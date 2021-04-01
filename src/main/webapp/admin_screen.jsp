@@ -193,7 +193,7 @@
 
                         <li class="sidebar-item">
                             <a class="sidebar-link waves-effect waves-dark sidebar-link"
-                               href="customers" aria-expanded="false">
+                               href="admin/customers" aria-expanded="false">
                                 <i class="fas fa-users"></i>&nbsp;
                                 <span class="hide-menu">Customers</span>
                             </a>

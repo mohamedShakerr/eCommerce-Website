@@ -23,10 +23,10 @@
     <link rel="icon" type="image/png" sizes="16x16" href="admin_assets/images/favicon2.png">
 
     <!-- Custom CSS -->
-    <link href="admin_assets/css/chartist.min.css" rel="stylesheet">
+    <link href="../../admin_assets/css/chartist.min.css" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link href="admin_assets/css/style.min.css" rel="stylesheet">
+    <link href="../../admin_assets/css/style.min.css" rel="stylesheet">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -99,7 +99,7 @@
                 <!-- ============================================================== -->
                 <!-- Logo -->
                 <!-- ============================================================== -->
-                <a class="navbar-brand" href="admin">
+                <a class="navbar-brand" href="../../admin">
                     <!-- Logo icon -->
                     <b class="logo-icon">
                         <h3>
@@ -187,13 +187,13 @@
                     <!-- User Profile-->
                     <li class="sidebar-item">
                         <a class="sidebar-link waves-effect waves-dark sidebar-link"
-                           href="admin" aria-expanded="false">
+                           href="../../admin" aria-expanded="false">
                             <i class="fas fa-shopping-cart"></i>&nbsp;
                             <span class="hide-menu">Products</span>
                         </a>
                     <li class="sidebar-item">
                         <a class="sidebar-link waves-effect waves-dark sidebar-link"
-                           href="customers" aria-expanded="false">
+                           href="../../admin/customers" aria-expanded="false">
                             <i class="fas fa-users"></i>&nbsp;
                             <span class="hide-menu">Customers</span>
                         </a>
@@ -429,17 +429,17 @@
         integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/"
         crossorigin="anonymous"></script>
 
-<script src="admin_assets/js/jquery.min.js"></script>
+<script src="../../admin_assets/js/jquery.min.js"></script>
 <!-- Bootstrap tether Core JavaScript -->
-<script src="admin_assets/js/bootstrap.bundle.min.js"></script>
+<script src="../../admin_assets/js/bootstrap.bundle.min.js"></script>
 
-<script src="admin_assets/js/app-style-switcher.js"></script>
+<script src="../../admin_assets/js/app-style-switcher.js"></script>
 <!--Wave Effects -->
-<script src="admin_assets/js/waves.js"></script>
+<script src="../../admin_assets/js/waves.js"></script>
 <!--Menu sidebar -->
-<script src="admin_assets/js/sidebarmenu.js"></script>
+<script src="../../admin_assets/js/sidebarmenu.js"></script>
 <!--Custom JavaScript -->
-<script src="admin_assets/js/custom.js"></script>
+<script src="../../admin_assets/js/custom.js"></script>
 
 </body>
 

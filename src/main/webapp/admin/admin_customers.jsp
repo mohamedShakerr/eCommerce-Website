@@ -99,7 +99,7 @@
                 <!-- ============================================================== -->
                 <!-- Logo -->
                 <!-- ============================================================== -->
-                <a class="navbar-brand" href="">
+                <a class="navbar-brand" href="../admin">
                     <!-- Logo icon -->
                     <b class="logo-icon">
                         <h3>
@@ -185,14 +185,14 @@
                     <!-- User Profile-->
                     <li class="sidebar-item">
                         <a class="sidebar-link waves-effect waves-dark sidebar-link"
-                           href="" aria-expanded="false">
+                           href="../admin" aria-expanded="false">
                             <i class="fas fa-shopping-cart"></i>&nbsp;
                             <span class="hide-menu">Products</span>
                         </a>
 
                     <li class="sidebar-item">
                         <a class="sidebar-link waves-effect waves-dark sidebar-link"
-                           href="customers" aria-expanded="false">
+                           href="../admin/customers" aria-expanded="false">
                             <i class="fas fa-users"></i>&nbsp;
                             <span class="hide-menu">Customers</span>
                         </a>
@@ -224,7 +224,7 @@
                                         <c:choose>
                                             <c:when test='${! empty requestScope.customersList}'>
                                                 <c:forEach var="myCustomer" items='${requestScope["customersList"]}'>
-                                                    <a href="profile?email=${myCustomer.email}">
+                                                    <a href="customers/profile?email=${myCustomer.email}">
                                                         <li class="feed-item">
                                                             <div class="feed-icon">
                                                                 <img src="${myCustomer.url}" alt="user" width="50" height="50" class="rounded-circle">
