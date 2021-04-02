@@ -57,6 +57,7 @@ public class LoginController extends HttpServlet {
 
                 if (rememberMe != null && rememberMe.equals("true")) {
                     cookiesManager.addCookie(response, "email", email);
+                    session.setAttribute("rememberMe", true);
                 }
 
                 response.sendRedirect(request.getContextPath());

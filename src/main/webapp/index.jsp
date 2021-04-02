@@ -283,15 +283,15 @@
                                                 <c:when test="${sessionScope.userId != null}">
                                                     <!-- TODO REMOVE DEBUGGIMG -->
                                                     <script> console.log("user Logged In") </script>
-                                                    <li><a href="/profile" id="BurgerMenuLoginRegBtns"> Profile  <i class="mdi mdi-card-account-details"></i></a></li>
-                                                    <li><a href="/logout" id="BurgerMenuLoginRegBtns">Logout  <i class="mdi mdi-logout-variant"></i></a></li>
+                                                    <li><a href="profile" id="BurgerMenuLoginRegBtns"> Profile  <i class="mdi mdi-card-account-details"></i></a></li>
+                                                    <li><a href="logout" id="BurgerMenuLoginRegBtns">Logout  <i class="mdi mdi-logout-variant"></i></a></li>
                                                 </c:when>
 
                                                 <c:when test="${sessionScope.userId == null}">
                                                     <!-- TODO REMOVE DEBUGGIMG -->
                                                     <script> console.log("user NOT Logged In") </script>
-                                                    <li><a href="/login" id="BurgerMenuLoginRegBtns"> Login <i class="mdi mdi-login-variant"></i></a></li>
-                                                    <li><a href="/register" id="BurgerMenuLoginRegBtns">Register <i class="mdi mdi-account-multiple-plus"></i></a></li>
+                                                    <li><a href="login" id="BurgerMenuLoginRegBtns"> Login <i class="mdi mdi-login-variant"></i></a></li>
+                                                    <li><a href="register" id="BurgerMenuLoginRegBtns">Register <i class="mdi mdi-account-multiple-plus"></i></a></li>
 
                                                 </c:when>
                                                 
@@ -339,10 +339,84 @@
                                                         class="mdi mdi-account"></i></a>
                                                 <ul class="dropdown-menu" id="dropdown11">
                                                     <li><a href="#0"><i class="mdi mdi-account"></i> My Profile</a></li>
-                                                    <li><a href="#0"><i class="mdi mdi-cog"></i> Settings</a></li>
-                                                    <li><a href="#0"><i class="mdi mdi-bell"></i>Notifications</a></li>
                                                     <li><a href="#0"><i class="mdi mdi-import"></i> Logout</a></li>
                                                 </ul>
+                                            </div>
+                                        </li>
+
+                                        <li id="user-cart">
+                                            <div class="navbar-cart">
+                                                <a class="icon-btn primary-icon-text icon-text-btn" href="#0"><img
+                                                        src="assets/images/icon-svg/cart-9.svg" alt="Icon" style="padding-top: 10px;"><span id="cart-count"
+                                                                                                                                            class="icon-text text-style-1">${cart.size()}</span></a>
+
+                                                <div class="navbar-cart-dropdown">
+                                                    <div class="checkout-style-2">
+                                                        <div class="checkout-header d-flex justify-content-between">
+                                                            <h6 class="title">Shopping Cart </h6>
+                                                        </div>
+
+                                                        <div class="checkout-table table-responsive">
+                                                            <table class="table">
+                                                                <tbody id="cart-items-table">
+                                                                <c:forEach var="item" items="${cart}">
+                                                                    <tr id="table-row-${item.productId}">
+                                                                        <td class="checkout-product">
+                                                                            <div class="product-cart d-flex">
+                                                                                <div class="product-thumb">
+                                                                                    <img src="${item.productImage}"
+                                                                                         alt="Product">
+                                                                                </div>
+                                                                                <div class="product-content media-body">
+                                                                                    <h5 class="title"><a href="shop/prod-detail?prodId=${item.productId}">
+                                                                                            ${item.productName}
+                                                                                    </a></h5>
+                                                                                    <ul>
+                                                                                        <li><span id="item-qty-${item.productId}">${item.productQty}</span>
+                                                                                            <span>X$</span>
+                                                                                            <span id="item-price">${item.productPrice}</span>
+                                                                                        </li>
+                                                                                        <li><a class="delete" onclick="deleteProduct(${item.productId})"><i
+                                                                                                class="mdi mdi-delete"></i></a>
+                                                                                        </li>
+                                                                                    </ul>
+                                                                                </div>
+                                                                            </div>
+                                                                        </td>
+                                                                        <td class="checkout-quantity">
+                                                                            <div class="product-quantity d-inline-flex">
+                                                                                <button type="button" id="sub"
+                                                                                        class="sub" onclick="decProdQty(${item.productId},${item.productPrice})"><i
+                                                                                        class="mdi mdi-minus"></i></button>
+                                                                                <input id="item-${item.productId}-qty-input" type="text" value="${item.productQty}" disabled>
+                                                                                <button type="button" id="add"
+                                                                                        class="add" onclick="incProdQty(${item.productId},${item.productPrice})">
+                                                                                    <i
+                                                                                            class="mdi mdi-plus"></i>
+                                                                                </button>
+                                                                            </div>
+                                                                        </td>
+                                                                        <td class="checkout-price">
+                                                                            <p id="total-item-price-${item.productId}" class="price">${item.productPrice * item.productQty }</p>
+                                                                        </td>
+                                                                    </tr>
+                                                                </c:forEach>
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                        <div class="checkout-footer">
+                                                            <div class="checkout-sub-total d-flex justify-content-between">
+                                                                <p class="value">Subotal Price:</p>
+                                                                <p class="price" id="cart-total-price">$144</p>
+                                                            </div>
+                                                            <div class="checkout-btn">
+                                                                <a href="#0" class="main-btn primary-btn-border">View
+                                                                    Cart</a>
+                                                                <a href="#0" class="main-btn primary-btn">To Checkout</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </li>
 
@@ -351,11 +425,11 @@
                                     <c:when test="${sessionScope.userId == null}">
 
                                         <li id="userSignInRegister">
-                                            <a class="icon-btn primary-icon-text icon-text-btn customMenuBtn" href="/login" role="button">
+                                            <a class="icon-btn primary-icon-text icon-text-btn customMenuBtn" href="login" role="button">
                                                 <class class="mdi mdi-login-variant"></class>Login
                                             </a>
 
-                                            <a class="icon-btn primary-icon-text icon-text-btn customMenuBtn" href="/register" role="button">
+                                            <a class="icon-btn primary-icon-text icon-text-btn customMenuBtn" href="register" role="button">
                                                 <class class="mdi mdi-account-multiple-plus"></class>Register
                                             </a>
 
@@ -365,81 +439,6 @@
 
                                 </c:choose>
 
-                                <li>
-                                    <div class="navbar-cart">
-                                        <a class="icon-btn primary-icon-text icon-text-btn" href="#0"><img
-                                                src="assets/images/icon-svg/cart-9.svg" alt="Icon" style="padding-top: 10px;"><span id="cart-count"
-                                                class="icon-text text-style-1">${cart.size()}</span></a>
-
-                                        <div class="navbar-cart-dropdown">
-                                            <div class="checkout-style-2">
-                                                <div class="checkout-header d-flex justify-content-between">
-                                                    <h6 class="title">Shopping Cart </h6>
-                                                </div>
-
-                                                <div class="checkout-table table-responsive">
-                                                    <table class="table">
-                                                        <tbody id="cart-items-table">
-                                                        <c:forEach var="item" items="${cart}">
-                                                            <tr id="table-row-${item.productId}">
-                                                                <td class="checkout-product">
-                                                                    <div class="product-cart d-flex">
-                                                                        <div class="product-thumb">
-                                                                            <img src="${item.productImage}"
-                                                                                 alt="Product">
-                                                                        </div>
-                                                                        <div class="product-content media-body">
-                                                                            <h5 class="title"><a href="prod-detail?prodId=${item.productId}">
-                                                                                ${item.productName}
-                                                                            </a></h5>
-                                                                            <ul>
-                                                                                <li><span id="item-qty-${item.productId}">${item.productQty}</span>
-                                                                                    <span>X$</span>
-                                                                                    <span id="item-price">${item.productPrice}</span>
-                                                                                </li>
-                                                                                <li><a class="delete" onclick="deleteProduct(${item.productId})"><i
-                                                                                        class="mdi mdi-delete"></i></a>
-                                                                                </li>
-                                                                            </ul>
-                                                                        </div>
-                                                                    </div>
-                                                                </td>
-                                                                <td class="checkout-quantity">
-                                                                    <div class="product-quantity d-inline-flex">
-                                                                        <button type="button" id="sub"
-                                                                                class="sub" onclick="decProdQty(${item.productId},${item.productPrice})"><i
-                                                                                class="mdi mdi-minus"></i></button>
-                                                                        <input id="item-${item.productId}-qty-input" type="text" value="${item.productQty}" disabled>
-                                                                        <button type="button" id="add"
-                                                                                class="add" onclick="incProdQty(${item.productId},${item.productPrice})">
-                                                                            <i
-                                                                                class="mdi mdi-plus"></i>
-                                                                        </button>
-                                                                    </div>
-                                                                </td>
-                                                                <td class="checkout-price">
-                                                                    <p id="total-item-price-${item.productId}" class="price">${item.productPrice * item.productQty }</p>
-                                                                </td>
-                                                            </tr>
-                                                        </c:forEach>
-                                                        </tbody>
-                                                    </table>
-                                                </div>
-                                                <div class="checkout-footer">
-                                                    <div class="checkout-sub-total d-flex justify-content-between">
-                                                        <p class="value">Subotal Price:</p>
-                                                        <p class="price" id="cart-total-price">$144</p>
-                                                    </div>
-                                                    <div class="checkout-btn">
-                                                        <a href="#0" class="main-btn primary-btn-border">View
-                                                            Cart</a>
-                                                        <a href="#0" class="main-btn primary-btn">To Checkout</a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
                             </ul>
                         </div>
                         <!-- navbar Meta Ends -->
@@ -628,10 +627,10 @@
                                     <span><i class="mdi mdi-star"></i> 4.5/5</span>
                                 </li>
                             </ul>
-                            <h4 class="title"><a href="#0">${myProd.productName}</a></h4>
+                            <h4 class="title"><a href="shop/prod-detail?prodId=${myProd.productId}">${myProd.productName}</a></h4>
 <%--                            <p>In Stock : ${myProd.quantity}</p>--%>
                             <span class="price">$ ${myProd.productPrice}</span>
-                            <a href="#0" class="main-btn primary-btn"> <img src="assets/images/icon-svg/cart-4.svg"
+                            <a href="shop/prod-detail?prodId=${myProd.productId}" class="main-btn primary-btn"> <img src="assets/images/icon-svg/cart-4.svg"
                                                                             alt="">
                                 Add to Cart</a>
                         </div>
@@ -780,29 +779,15 @@
                             <img src="${accessory.imageUrl}" alt="product">
                         </div>
                         <div class="product-content">
-                            <h4 class="title"><a href="#0">${accessory.productName}</a></h4>
+                            <h4 class="title"><a href="shop/prod-detail?prodId=${accessory.productId}">${accessory.productName}</a></h4>
 <%--                            <p>In Stock : ${accessory.quantity}</p>--%>
-                            <a href="#0" class="main-btn secondary-1-btn"> <img src="assets/images/icon-svg/cart-7.svg"
+                            <a href="shop/prod-detail?prodId=${accessory.productId}" class="main-btn secondary-1-btn"> <img src="assets/images/icon-svg/cart-7.svg"
                                                                                 alt=""> $ ${accessory.productPrice}</a>
                         </div>
                     </div>
                 </div>
             </c:forEach>
 
-
-<%--            <div class="col-lg-4 col-md-6">--%>
-<%--                <div class="product-style-14 mt-30">--%>
-<%--                    <div class="product-image">--%>
-<%--                        <img src="assets/images/product-6/product-1.jpg" alt="product">--%>
-<%--                    </div>--%>
-<%--                    <div class="product-content">--%>
-<%--                        <h4 class="title"><a href="#0">Loop Ear Plug Black</a></h4>--%>
-<%--                        <p>Midnight Black</p>--%>
-<%--                        <a href="#0" class="main-btn secondary-1-btn"> <img src="assets/images/icon-svg/cart-7.svg"--%>
-<%--                                                                            alt=""> $ 399</a>--%>
-<%--                    </div>--%>
-<%--                </div>--%>
-<%--            </div>--%>
         </div>
     </div>
 </section>

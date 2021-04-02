@@ -1,7 +1,16 @@
-$(document).ready( function(){
-    updateCartTotal()
-    updateCartCount();
-});
+function initCart(){
+    $("#user-cart").ready(function(){
+        updateCartTotal()
+        updateCartCount();
+    });
+}
+
+initCart();
+
+// $("#user-cart").on("load", function(){
+//     updateCartTotal()
+//     updateCartCount();
+// })
 
 function incProdQty(prodId, prodPrice){
     var prodCountInput = $("#item-"+prodId+"-qty-input");

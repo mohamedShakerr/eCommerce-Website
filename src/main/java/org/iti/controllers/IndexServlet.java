@@ -18,6 +18,8 @@ import org.iti.utils.*;
 import java.io.IOException;
 import java.util.List;
 
+import static javax.swing.text.html.CSS.getAttribute;
+
 public class IndexServlet extends HttpServlet{
 
 	public void init(ServletConfig config) throws ServletException {
@@ -30,9 +32,14 @@ public class IndexServlet extends HttpServlet{
 
 		RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
 
-		//TODO REFACOTR THOIIIS >>>>
 		HttpSession session = request.getSession(true);
-//		session.setAttribute("userId",1);
+
+
+		if( session.getAttribute("rememberMe") != null){
+			if( session.getAttribute("userId") != null ){
+				session.setAttribute("userId", null);
+			}
+		}
 
 		// ============== Call On Services And Get Required Stuff ================
 		//======================== Featured Product Service ================
