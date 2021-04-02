@@ -136,7 +136,7 @@
                         <li class="nav-item search-box"> <a class="nav-link waves-effect waves-dark"
                                 href="javascript:void(0)"><i class="ti-search"></i></a>
                             <form class="app-search position-absolute">
-                                <input type="text" class="form-control" placeholder="Search"> <a
+                                <input type="text" id="searchInput" class="form-control" placeholder="Search"> <a
                                     class="srh-btn"><i class="ti-close"></i></a>
                             </form>
                         </li>
@@ -221,10 +221,14 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-body">
-                                <h4 class="card-title" style="text-align: center">Product Details</h4>
+                                <h4 class="card-title" style="text-align: center">
+                                    Products Store
+                                    <i class="fas fa-shopping-basket"></i>
+<%--                                    <i class="fa fa-product-hunt"></i>--%>
+                                </h4>
                             </div>
                             <div class="table-responsive">
-                                <table class="table v-middle table-striped table-hover">
+                                <table class="table v-middle table-striped table-hover" id="myTable" onkeyup="myFunction()">
                                     <thead class="table-dark text-light">
                                         <tr class="bg-dark">
                                             <th class="border-top-0" style="color: papayawhip">#</th>
@@ -296,6 +300,28 @@
                 <!-- Table -->
                 <!-- ============================================================== -->
             </div>
+
+            <script>
+                function myFunction() {
+                    var input, filter, table, tr, td, i, txtValue;
+                    input = document.getElementById("searchInput");
+                    filter = input.value.toUpperCase();
+                    table = document.getElementById("myTable");
+                    tr = table.getElementsByTagName("tr");
+                    for (i = 0; i < tr.length; i++) {
+                        td = tr[i].getElementsByTagName("td")[0];
+                        if (td) {
+                            txtValue = td.textContent || td.innerText;
+                            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                                tr[i].style.display = "";
+                            } else {
+                                tr[i].style.display = "none";
+                            }
+                        }
+                    }
+                }
+            </script>
+
             <!-- ============================================================== -->
             <!-- End Container fluid  -->
             <!-- ============================================================== -->
