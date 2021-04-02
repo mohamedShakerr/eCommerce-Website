@@ -39,6 +39,7 @@ public interface ProductDao {
 
     long getProdCount();
 
+    void decreaseProductAmount(int prodId,int amount);
 
-
+    void clearProductAmount(int prodId);
 }

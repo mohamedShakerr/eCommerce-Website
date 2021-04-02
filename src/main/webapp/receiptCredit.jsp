@@ -23,24 +23,24 @@
         </tr>
         <tr>
             <td><b>Payer:</b></td>
-            <td>${payer.firstName} ${payer.lastName}</td>
+            <td>${customerDto.name}</td>
         </tr>
 
         <tr>
             <td><b>Subtotal:</b></td>
-            <td>${transaction.amount.details.subtotal} USD</td>
+            <td>${requestScope.subTotal} USD</td>
         </tr>
         <tr>
             <td><b>Shipping:</b></td>
-            <td>${transaction.amount.details.shipping} USD</td>
+            <td>10 USD</td>
         </tr>
         <tr>
             <td><b>Tax:</b></td>
-            <td>${transaction.amount.details.tax} USD</td>
+            <td>10 USD</td>
         </tr>
         <tr>
             <td><b>Total:</b></td>
-            <td>${transaction.amount.total} USD</td>
+            <td>${requestScope.subTotal+20} USD</td>
         </tr>
     </table>
 </div>

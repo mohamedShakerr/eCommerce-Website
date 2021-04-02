@@ -28,4 +28,6 @@ public interface CustomerDao {
     public double addMoneyToCredit(int id,double money);
 
     public void updateCustomerAvatar(int id,String url);
+
+    public double getCreditLimit(int id);
 }

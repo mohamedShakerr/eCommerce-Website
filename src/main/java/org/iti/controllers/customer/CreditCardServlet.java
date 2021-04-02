@@ -1,7 +1,6 @@
 package org.iti.controllers.customer;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
-import org.iti.domain.Customer;
 import org.iti.dtos.CustomerDto;
 import org.iti.services.CustomerServices;
 

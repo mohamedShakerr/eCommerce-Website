@@ -11,7 +11,7 @@ import org.iti.dao.interfaces.CustomerDao;
 
 import org.iti.db.DBSessionProvider;
 import org.iti.db.domain.Customers;
-import org.iti.domain.Customer;
+
 import org.iti.dtos.CustomerDto;
 import org.iti.utils.mappers.EntityDtoMapper;
 import org.iti.utils.mappers.todtomappers.CustomerMapper;

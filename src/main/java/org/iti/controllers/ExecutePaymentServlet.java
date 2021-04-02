@@ -10,9 +10,14 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import org.iti.dao.impl.CartImpl;
+import org.iti.dao.interfaces.CartDao;
+import org.iti.db.domain.CartItems;
+import org.iti.services.CheckoutCreditService;
 import org.iti.services.PaymentServices;
 
 import java.io.IOException;
+import java.util.List;
 
 @WebServlet("/execute_payment")
 public class ExecutePaymentServlet extends HttpServlet {
@@ -22,15 +27,23 @@ public class ExecutePaymentServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String paymentId = request.getParameter("paymentId");
-       // System.out.println(paymentId);
         String payerId = request.getParameter("PayerID");
-       // System.out.println(payerId);
+
         try {
             PaymentServices paymentServices = new PaymentServices();
             Payment payment = paymentServices.executePayment(paymentId, payerId);
 
             PayerInfo payerInfo = payment.getPayer().getPayerInfo();
             Transaction transaction = payment.getTransactions().get(0);
+
+            CheckoutCreditService checkoutCreditService=CheckoutCreditService.getInstance();
+            CartDao cartDao=new CartImpl();
+            List<CartItems> cartItemsList=cartDao.getCartByUserId(1);
+            checkoutCreditService.decreaseProductQuantity(cartItemsList);
+            checkoutCreditService.saveOrders(cartItemsList);
+            //delete cart
+
+            cartDao.deleteCart(1);
 
             request.setAttribute("payer", payerInfo);
             request.setAttribute("transaction", transaction);

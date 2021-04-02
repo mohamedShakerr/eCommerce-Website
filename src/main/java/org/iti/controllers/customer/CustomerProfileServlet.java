@@ -5,7 +5,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.*;
 import java.io.*;
 import java.util.*;
-import org.iti.domain.Customer;
+
 import org.iti.dtos.CustomerDto;
 import org.iti.services.CustomerServices;
 

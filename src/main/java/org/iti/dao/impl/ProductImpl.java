@@ -168,5 +168,23 @@ public class ProductImpl implements ProductDao {
         return (long) q.getResultList().get(0);
     }
 
+    @Override
+    public void decreaseProductAmount(int prodId,int amount){
+        session.beginTransaction();
+        Query q=session.createQuery("update products p set p.quantity=p.quantity- :amount where p.prodId=:prodId")
+                .setParameter("prodId",prodId)
+                .setParameter("amount",amount);
+        q.executeUpdate();
+        session.getTransaction().commit();
+    }
+
+    @Override
+    public void clearProductAmount(int prodId){
+        session.beginTransaction();
+        Query q=session.createQuery("update products p set p.quantity=0 where p.prodId=:prodId")
+                .setParameter("prodId",prodId);
+        q.executeUpdate();
+        session.getTransaction().commit();
+    }
 
 }

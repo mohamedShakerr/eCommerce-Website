@@ -171,4 +171,17 @@ public class CustomerDaoImpl implements CustomerDao {
         session.getTransaction().commit();
         session.close();
     }
+
+    public double getCreditLimit(int id){
+        Session hibernateSession = dbSessionProvider.getSession();
+
+        Query q = hibernateSession.
+                createQuery("from Customers c where c.customerId = :id")
+                .setParameter("id", id);
+
+        Customers customer = (Customers) q.uniqueResult();
+        hibernateSession.close();
+
+        return customer.getCredit();
+    }
 }
