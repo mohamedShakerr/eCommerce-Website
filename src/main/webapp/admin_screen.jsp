@@ -27,6 +27,8 @@
 
     <!-- Custom CSS -->
     <link href="admin_assets/css/style.min.css" rel="stylesheet">
+
+
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -147,8 +149,8 @@
                         <!-- User profile and search -->
                         <!-- ============================================================== -->
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark pro-pic" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                <img src="admin_assets/images/users/1.jpg" alt="user" class="rounded-circle" width="31">
+                            <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="m-r-10 mdi mdi-account-settings-variant fa-2x" style="color: white"></i>
                             </a>
                             <ul class="dropdown-menu dropdown-menu-end user-dd animated" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="javascript:void(0)">
@@ -181,7 +183,6 @@
                                 <i class="fa fa-plus-square"></i>
                                 <span class="hide-menu m-l-5">Add New Product</span>
                             </button>
-
                         </li>
                         <!-- User Profile-->
                         <li class="sidebar-item">
@@ -223,47 +224,58 @@
                                 <h4 class="card-title" style="text-align: center">Product Details</h4>
                             </div>
                             <div class="table-responsive">
-                                <table class="table v-middle table-striped">
-                                    <thead>
-                                        <tr class="bg-light">
-                                            <th class="border-top-0">#</th>
-                                            <th class="border-top-0">Name</th>
-                                            <th class="border-top-0">Price</th>
-<%--                                            <th class="border-top-0">Category</th>--%>
-                                            <th class="border-top-0">Quantity</th>
+                                <table class="table v-middle table-striped table-hover">
+                                    <thead class="table-dark text-light">
+                                        <tr class="bg-dark">
+                                            <th class="border-top-0" style="color: papayawhip">#</th>
+                                            <th class="border-top-0" style="color: papayawhip">Name</th>
+                                            <th class="border-top-0" style="color: papayawhip">Price</th>
+                                            <th class="border-top-0" style="color: papayawhip">Quantity</th>
+                                            <th class="border-top-0" style="color: papayawhip" colspan="2">&nbsp;&nbsp;Action</th>
+
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <c:choose>
                                             <c:when test='${! empty requestScope.productsList}'>
                                                 <c:forEach var="myProduct" items='${requestScope["productsList"]}'>
-                                                    <tr>
-                                                        <td>
-                                                            <c:out value="${myProduct.productId}" />
-                                                        </td>
-                                                        <td>
-                                                            <div class="d-flex align-items-center">
-                                                                <div class="m-r-10">
-                                                                    <img class="btn btn-circle d-flex btn-info text-white" src="${myProduct.imageUrl}" width="50" class="rounded-circle" alt="product" />
+                                                        <tr>
+                                                            <td>
+                                                                <c:out value="${myProduct.productId}" />
+                                                            </td>
+                                                            <td>
+                                                                <div class="d-flex align-items-center">
+                                                                    <div class="m-r-10">
+                                                                        <img class="btn btn-circle d-flex btn-info text-white" src="${myProduct.imageUrl}" width="50" class="rounded-circle" alt="product" />
+                                                                    </div>
+                                                                    <div class="">
+                                                                        <h4 class="m-b-0 font-16">
+                                                                            <c:out value="${myProduct.productName}" />
+                                                                        </h4>
+                                                                    </div>
                                                                 </div>
-                                                                <div class="">
-                                                                    <h4 class="m-b-0 font-16">
-                                                                        <c:out value="${myProduct.productName}" />
-                                                                    </h4>
+                                                            </td>
+                                                            <td>
+                                                                <label class="label label-primary">
+                                                                    <c:out value="${myProduct.productPrice}" />
+                                                                </label>
+                                                            </td>
+                                                            <td>
+                                                                <label class="label label-danger">
+                                                                    <c:out value="${myProduct.quantity}" />
+                                                                </label>
+                                                            </td>
+                                                            <td>
+                                                                <div class="d-flex align-items-center">
+                                                                    <div class="m-r-10">
+                                                                        <a class="main-btn primary-btn" href="admin/products?productId=${myProduct.productId}"><i class="fas fa-edit"></i></a>
+                                                                    </div>&nbsp; &nbsp; &nbsp;
+                                                                    <div class="m-r-10">
+                                                                        <a class="main-btn primary-btn"><i class="fas fa-trash-alt"></i></a>
+                                                                    </div>
                                                                 </div>
-                                                            </div>
-                                                        </td>
-                                                        <td>
-                                                            <label class="label label-primary">
-                                                                <c:out value="${myProduct.productPrice}" />
-                                                            </label>
-                                                        </td>
-                                                        <td>
-                                                            <label class="label label-danger">
-                                                                <c:out value="${myProduct.quantity}" />
-                                                            </label>
-                                                        </td>
-                                                    </tr>
+                                                            </td>
+                                                        </tr>
                                                 </c:forEach>
                                             </c:when>
                                             <c:otherwise>
@@ -326,7 +338,6 @@
     <script src="admin_assets/js/sidebarmenu.js"></script>
     <!--Custom JavaScript -->
     <script src="admin_assets/js/custom.js"></script>
-
 </body>
 
 </html>
