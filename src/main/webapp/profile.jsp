@@ -48,187 +48,182 @@
 
 <body>
 
-    <!--====== Header ======-->
+<!--====== Header ======-->
 
 
-    <!--====== Header======-->
+<!--====== Header======-->
 
-    <!--====== Profile Start ======-->
+<!--====== Profile Start ======-->
 
-    <section class="profile-wrapper pt-100 pb-100">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-9">
-                    <div class="profile">
-                        <div class="profile-header">
-                            <div class="profile-cover-photo bg_cover" ></div>
-                            <div class="profile-author d-sm-flex flex-row-reverse justify-content-between align-items-end">
-                                <div class="profile-photo">
-                                    <img src="<c:out value="${customer.image}"/>" alt="Profile Photo">
-                                </div>
-                                <div class="profile-name">
-                                    <h4 class="name"><c:out value="${customer.name}"/></h4>
-                                </div>
+<section class="profile-wrapper pt-100 pb-100">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-9">
+                <div class="profile">
+                    <div class="profile-header">
+                        <div class="profile-cover-photo bg_cover"></div>
+                        <div class="profile-author d-sm-flex flex-row-reverse justify-content-between align-items-end">
+
+
+                            <div class="profile-photo">
+                                <img src="<c:out value="${customerDto.url}"/>" alt="Profile Photo">
+                            </div>
+                            <div class="profile-name">
+                                <h4 class="name"><c:out value="${customerDto.name}"/></h4>
                             </div>
                         </div>
-                        <div class="profile-body">
-                            <div class="profile-title">
-                                <h5 class="title">Personal Details</h5>
-                                <a class="profile-link" href="edit_profile.jsp">edit</a>
-                            </div>
-                            <div class="profile-details">
-                                <div class="single-details-item d-flex flex-wrap">
-                                    <div class="details-title">
-                                        <h6 class="title">User Full Name:</h6>
-                                    </div>
-                                    <div class="details-content media-body">
-                                        <p><c:out value="${customer.name}"/></p>
-                                    </div>
-                                </div>
-								
-                                <div class="single-details-item d-flex flex-wrap">
-                                    <div class="details-title">
-                                        <h6 class="title">Email:</h6>
-                                    </div>
-                                    <div class="details-content media-body">
-                                        <p><c:out value="${customer.email}"/></p>
-                                    </div>
-                                </div>
-								
-								
-                                <div class="single-details-item d-flex flex-wrap">
-                                    <div class="details-title">
-                                        <h6 class="title">Phone:</h6>
-                                    </div>
-                                    <div class="details-content media-body">
-                                        <p><c:out value="${customer.phone}"/></p>
-                                    </div>
-                                </div>
-								
-                                <div class="single-details-item d-flex flex-wrap">
-                                    <div class="details-title">
-                                        <h6 class="title">Address:</h6>
-                                    </div>
-                                    <div class="details-content media-body">
-                                        <p><c:out value="${customer.address}"/></p>
-                                    </div>
-                                </div>
-                           
-								
-                                <div class="single-details-item d-flex flex-wrap">
-                                    <div class="details-title">
-                                        <h6 class="title">Registration date:</h6>
-                                    </div>
-                                    <div class="details-content media-body">
-                                        <p><c:out value="${customer.regDate}"/></p>
-                                    </div>
-                                </div>
-                                <div class="single-details-item d-flex flex-wrap">
-                                    <div class="details-title">
-                                        <h6 class="title">Credit limit:</h6>
-                                    </div>
-                                    <div class="details-content media-body">
-                                        <p><c:out value="${customer.credit}"/></p>
-                                    </div>
-                                </div>
-								
-								 <div class="single-details-item d-flex flex-wrap">
-                                    <div class="details-title">
-                                        <h6 class="title">Interests:</h6>
-                                    </div>
-                                    <div class="details-content media-body">
-                                        <p>xxx,xx</p>
-                                    </div>
-                                </div>
-                            </div>
+                    </div>
+                    <div class="profile-body">
+                        <div class="profile-title">
+                            <h5 class="title">Personal Details</h5>
+                            <a class="profile-link" href="edit_profile.jsp">edit</a>
                         </div>
-                        <div class="profile-footer mt-45">
-                            <div class="profile-title">
-                                <h5 class="title">Cards</h5>
-                                <a class="profile-link" href="#0" onclick="showCard()">Add Cards</a>
+                        <div class="profile-details">
+                            <div class="single-details-item d-flex flex-wrap">
+                                <div class="details-title">
+                                    <h6 class="title">User Full Name:</h6>
+                                </div>
+                                <div class="details-content media-body">
+                                    <p><c:out value="${customerDto.name}"/></p>
+                                </div>
                             </div>
-                            <div class="profile-card-info">
-                                <div id="creditCardFormId" class="creditCardForm" style="display: none">
 
-                                    <div class="payment">
-                                        <form>
-                                            <div class="form-group owner" >
-                                                <label for="owner">Owner</label>
-                                                <input type="text" class="form-control" id="owner">
-                                                <div class="alert alert-danger" id="ownerNameError" style="display:none">
+                            <div class="single-details-item d-flex flex-wrap">
+                                <div class="details-title">
+                                    <h6 class="title">Email:</h6>
+                                </div>
+                                <div class="details-content media-body">
+                                    <p><c:out value="${customerDto.email}"/></p>
+                                </div>
+                            </div>
 
-                                                </div>
+
+                            <div class="single-details-item d-flex flex-wrap">
+                                <div class="details-title">
+                                    <h6 class="title">Phone:</h6>
+                                </div>
+                                <div class="details-content media-body">
+                                    <p><c:out value="${customerDto.phone}"/></p>
+                                </div>
+                            </div>
+
+                            <div class="single-details-item d-flex flex-wrap">
+                                <div class="details-title">
+                                    <h6 class="title">Address:</h6>
+                                </div>
+                                <div class="details-content media-body">
+                                    <p><c:out value="${customerDto.address}"/></p>
+                                </div>
+                            </div>
+
+
+                            <div class="single-details-item d-flex flex-wrap">
+                                <div class="details-title">
+                                    <h6 class="title">Registration date:</h6>
+                                </div>
+                                <div class="details-content media-body">
+                                    <p><c:out value="${customerDto.registerDate}"/></p>
+                                </div>
+                            </div>
+                            <div class="single-details-item d-flex flex-wrap">
+                                <div class="details-title">
+                                    <h6 class="title">Credit limit:</h6>
+                                </div>
+                                <div class="details-content media-body">
+                                    <p><c:out value="${customerDto.credit}"/></p>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                    <div class="profile-footer mt-45">
+                        <div class="profile-title">
+                            <h5 class="title">Cards</h5>
+                            <a class="profile-link" href="#0" onclick="showCard()">Add Cards</a>
+                        </div>
+                        <div class="profile-card-info">
+                            <div id="creditCardFormId" class="creditCardForm" style="display: none">
+
+                                <div class="payment">
+                                    <form>
+                                        <div class="form-group owner">
+                                            <label for="owner">Owner</label>
+                                            <input type="text" class="form-control" id="owner">
+                                            <div class="alert alert-danger" id="ownerNameError" style="display:none">
+
                                             </div>
-                                            <div class="form-group CVV">
-                                                <label for="cvv">CVV</label>
-                                                <input type="text" class="form-control" id="cvv">
-                                                <div class="alert alert-danger" id="CVVError" style="display:none">
-
-                                                </div>
-                                            </div>
-                                            <div class="form-group" id="card-number-field">
-                                                <label for="cardNumber">Card Number</label>
-                                                <input type="text" class="form-control" id="cardNumber">
-                                                <div class="alert alert-danger" id="cardNumberError" style="display:none" >
-
-                                                </div>
-                                            </div>
-                                            <div class="form-group" id="expiration-date">
-                                                <label>Expiration Date</label>
-                                                <select>
-                                                    <option value="01">January</option>
-                                                    <option value="02">February </option>
-                                                    <option value="03">March</option>
-                                                    <option value="04">April</option>
-                                                    <option value="05">May</option>
-                                                    <option value="06">June</option>
-                                                    <option value="07">July</option>
-                                                    <option value="08">August</option>
-                                                    <option value="09">September</option>
-                                                    <option value="10">October</option>
-                                                    <option value="11">November</option>
-                                                    <option value="12">December</option>
-                                                </select>
-                                                <select>
-                                                    <option value="21"> 2021</option>
-                                                    <option value="22"> 2022</option>
-                                                    <option value="23"> 2023</option>
-                                                    <option value="24"> 2024</option>
-                                                    <option value="25"> 2025</option>
-                                                    <option value="26"> 2026</option>
-                                                </select>
-                                            </div>
-                                            <div class="form-group" id="credit_cards">
-                                                <img src="assets/imgs/visa.jpg" id="visa">
-                                                <img src="assets/imgs/mastercard.jpg" id="mastercard">
+                                        </div>
+                                        <div class="form-group CVV">
+                                            <label for="cvv">CVV</label>
+                                            <input type="text" class="form-control" id="cvv">
+                                            <div class="alert alert-danger" id="CVVError" style="display:none">
 
                                             </div>
-                                            <div class="form-group" id="money-field">
-                                                <label >Money</label>
-                                                <input type="text" class="form-control" id="money">
-                                                <div class="alert alert-danger" id="moneyError" style="display:none" >
+                                        </div>
+                                        <div class="form-group" id="card-number-field">
+                                            <label for="cardNumber">Card Number</label>
+                                            <input type="text" class="form-control" id="cardNumber">
+                                            <div class="alert alert-danger" id="cardNumberError" style="display:none">
 
-                                                </div>
                                             </div>
-                                            <div class="form-group" id="pay-now">
-                                                <button  class="btn btn-default" id="confirm-purchase">Confirm</button>
+                                        </div>
+                                        <div class="form-group" id="expiration-date">
+                                            <label>Expiration Date</label>
+                                            <select>
+                                                <option value="01">January</option>
+                                                <option value="02">February</option>
+                                                <option value="03">March</option>
+                                                <option value="04">April</option>
+                                                <option value="05">May</option>
+                                                <option value="06">June</option>
+                                                <option value="07">July</option>
+                                                <option value="08">August</option>
+                                                <option value="09">September</option>
+                                                <option value="10">October</option>
+                                                <option value="11">November</option>
+                                                <option value="12">December</option>
+                                            </select>
+                                            <select>
+                                                <option value="21"> 2021</option>
+                                                <option value="22"> 2022</option>
+                                                <option value="23"> 2023</option>
+                                                <option value="24"> 2024</option>
+                                                <option value="25"> 2025</option>
+                                                <option value="26"> 2026</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group" id="credit_cards">
+                                            <img src="assets/imgs/visa.jpg" id="visa">
+                                            <img src="assets/imgs/mastercard.jpg" id="mastercard">
+
+                                        </div>
+                                        <div class="form-group" id="money-field">
+                                            <label>Money</label>
+                                            <input type="text" class="form-control" id="money">
+                                            <div class="alert alert-danger" id="moneyError" style="display:none">
+
                                             </div>
-                                        </form>
+                                        </div>
+                                        <div class="form-group" id="pay-now">
+                                            <button class="btn btn-default" id="confirm-purchase">Confirm</button>
+                                        </div>
+                                    </form>
 
-<%--                                        <div class="alert alert-danger" role="alert">--%>
-<%--                                            This is a danger alert—check it out!--%>
-<%--                                        </div>--%>
-                                    </div>
-
+                                    <%--                                        <div class="alert alert-danger" role="alert">--%>
+                                    <%--                                            This is a danger alert—check it out!--%>
+                                    <%--                                        </div>--%>
                                 </div>
 
                             </div>
+
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 <%--    <tr>--%>
 <%--        <td>Visa</td>--%>
 <%--        <td>4716108999716531</td>--%>
@@ -239,40 +234,40 @@
 <%--        <td>5281037048916168</td>--%>
 <%--        <td>043</td>--%>
 <%--    </tr>--%>
-    <!--====== Profile Ends ======-->
+<!--====== Profile Ends ======-->
 
-   <!--====== Footer ======-->
+<!--====== Footer ======-->
 
 
-    <!--====== Footer======-->
+<!--====== Footer======-->
 
-    <!--====== Bootstrap js ======-->
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
-    <script src="assets/js/bootstrap.min.js"></script>
+<!--====== Bootstrap js ======-->
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+<script src="assets/js/bootstrap.min.js"></script>
 
-    <!--====== Tiny Slider js ======-->
-    <script src="assets/js/tiny-slider.js"></script>
+<!--====== Tiny Slider js ======-->
+<script src="assets/js/tiny-slider.js"></script>
 
-    <!--====== nouiSlider js ======-->
-    <script src="assets/js/nouislider.min.js"></script>
+<!--====== nouiSlider js ======-->
+<script src="assets/js/nouislider.min.js"></script>
 
-    <!--====== count up js ======-->
-    <script src="assets/js/count-up.min.js"></script>
+<!--====== count up js ======-->
+<script src="assets/js/count-up.min.js"></script>
 
-    <!--====== gLightBox js ======-->
-    <script src="assets/js/glightbox.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <!--====== Main js ======-->
-    <script src="assets/js/main.js"></script>
+<!--====== gLightBox js ======-->
+<script src="assets/js/glightbox.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<!--====== Main js ======-->
+<script src="assets/js/main.js"></script>
 
-    <script src="assets/js/card.js"></script>
-    <script src="assets/js/jquery.payform.min.js" charset="utf-8"></script>
+<script src="assets/js/card.js"></script>
+<script src="assets/js/jquery.payform.min.js" charset="utf-8"></script>
 <script>
-    function showCard(){
-        if(document.getElementById("creditCardFormId").style.display=="none"){
-            document.getElementById("creditCardFormId").style.display="block";
-        }else{
-            document.getElementById("creditCardFormId").style.display="none";
+    function showCard() {
+        if (document.getElementById("creditCardFormId").style.display == "none") {
+            document.getElementById("creditCardFormId").style.display = "block";
+        } else {
+            document.getElementById("creditCardFormId").style.display = "none";
         }
     }
 </script>

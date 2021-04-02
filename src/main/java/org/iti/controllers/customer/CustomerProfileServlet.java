@@ -6,6 +6,7 @@ import jakarta.servlet.http.*;
 import java.io.*;
 import java.util.*;
 import org.iti.domain.Customer;
+import org.iti.dtos.CustomerDto;
 import org.iti.services.CustomerServices;
 
 
@@ -20,9 +21,12 @@ public class CustomerProfileServlet extends HttpServlet{
 
 		int id = 1;
 
-		CustomerServices customerServices=new CustomerServices(request,response);
-		customerServices.showCustomerProfile(id);
+		CustomerServices customerServices=new CustomerServices();
+		CustomerDto customerDto=customerServices.showCustomerProfile(id);
 
+		session.setAttribute("customerDto", customerDto);
+		RequestDispatcher rd = request.getRequestDispatcher("/profile.jsp");
+		rd.forward(request, response);
 
 
 	}

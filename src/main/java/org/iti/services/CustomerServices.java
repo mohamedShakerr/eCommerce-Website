@@ -5,60 +5,64 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
-import org.iti.data.daoimpl.CustomerDAO;
+import org.hibernate.Session;
+import org.iti.dao.impl.CustomerDaoImpl;
+import org.iti.dao.interfaces.CustomerDao;
+
+import org.iti.db.DBSessionProvider;
+import org.iti.db.domain.Customers;
 import org.iti.domain.Customer;
+import org.iti.dtos.CustomerDto;
+import org.iti.utils.mappers.EntityDtoMapper;
+import org.iti.utils.mappers.todtomappers.CustomerMapper;
 
 import java.io.IOException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class CustomerServices {
-    private CustomerDAO customerDao = new CustomerDAO();
-    private HttpServletRequest request;
-    private HttpServletResponse response;
-    public CustomerServices(){}
-    public CustomerServices(HttpServletRequest request, HttpServletResponse response) {
-        this.request = request;
-        this.response = response;
+
+    public CustomerServices() {
+
     }
 
-    public void showCustomerProfile(int id) throws ServletException, IOException {
-        Customer customer = customerDao.getCustomer(id);
-        HttpSession session = request.getSession();
-        session.setAttribute("customer", customer);
-        RequestDispatcher rd = request.getRequestDispatcher("/profile.jsp");
-        rd.forward(request, response);
+
+
+    public CustomerDto showCustomerProfile(int id) throws ServletException, IOException {
+
+        CustomerDao customerDao=new CustomerDaoImpl();
+        Customers customer= customerDao.getCustomerByID(id);
+        EntityDtoMapper<Customers, CustomerDto> mapper = new CustomerMapper();
+
+        return mapper.toDto(customer);
+
+
     }
 
-    public void updateCustomer() throws ServletException, IOException {
-        String name=request.getParameter("name");
-        String email=request.getParameter("email");
-        String password=request.getParameter("password");
-        String phone=request.getParameter("phone");
-        String address=request.getParameter("address");
+    public boolean updateCustomer(int id,String name,String email,String password,String phone,String address) throws ServletException, IOException {
+
         if(name !=null && email != null && password != null && phone!= null && address != null &&
             !name.isEmpty() && !address.isEmpty() && password.length()>=6 && isPhoneNumberValid(phone) && isEmailValid(email)){
-            HttpSession session = request.getSession();
-            Customer customer=(Customer) session.getAttribute("customer");
-            customer.setPassword(password);
-            customer.setPhone(phone);
-            customer.setName(name);
-            customer.setEmail(email);
-            customer.setAddress(address);
-            request.setAttribute("success",true);
+
             //Update DB
-            customerDao.updateCustomer(customer);
-        }else{
-            request.setAttribute("success",false);
+            CustomerDao customerDao=new CustomerDaoImpl();
+            CustomerDto customerDto=new CustomerDto();
+            customerDto.setAddress(address);
+            customerDto.setEmail(email);
+            customerDto.setName(name);
+            customerDto.setPhone(phone);
+            customerDto.setPassword(password);
+            customerDao.updateCustomer(id,customerDto);
+            return true;
         }
-        RequestDispatcher rd = request.getRequestDispatcher("/edit_profile.jsp");
-        rd.forward(request, response);
+
+       return false;
     }
-   public double addMoneyToCredit(double money,int id){
-        Customer customer=customerDao.getCustomer(id);
-        //update DB
-        customer.setCredit(money+customer.getCredit());
-        return customer.getCredit();
+   public double addMoneyToCredit(int id,double money){
+       CustomerDao customerDao=new CustomerDaoImpl();
+        double creditCardAmount=customerDao.addMoneyToCredit(id,money);
+
+        return creditCardAmount;
     }
     boolean isPhoneNumberValid(String phone){
         Pattern pattern = Pattern.compile("^(011|015|012|010)[0-9]{8}");

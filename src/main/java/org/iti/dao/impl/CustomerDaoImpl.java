@@ -105,4 +105,70 @@ public class CustomerDaoImpl implements CustomerDao {
         Query query = hibernateSession.createQuery("from Customers", Customers.class);
         return query.getResultList();
     }
+
+    @Override
+    public Customers getCustomerByID(int id){
+        Session hibernateSession = dbSessionProvider.getSession();
+
+        Query q = hibernateSession.
+                createQuery("from Customers c where c.customerId = :id")
+                .setParameter("id", id);
+
+        Customers result = (Customers) q.uniqueResult();
+        hibernateSession.close();
+
+        return result;
+    }
+
+    public void updateCustomer(int id,CustomerDto customerDto){
+        Session session = dbSessionProvider.getSession();
+
+        session.beginTransaction();
+
+        javax.persistence.Query q = session.createQuery("update Customers c set c.name =:name , c.email =:email "+
+                " , c.password =:password ,c.phone =:phone , c.address =:address where c.customerId = :id")
+                .setParameter("id", id)
+                .setParameter("name", customerDto.getName())
+                .setParameter("email", customerDto.getEmail())
+                .setParameter("password", customerDto.getPassword())
+                .setParameter("phone", customerDto.getPhone())
+                .setParameter("address", customerDto.getAddress());
+
+        q.executeUpdate();
+
+        session.getTransaction().commit();
+        session.close();
+    }
+
+    public double addMoneyToCredit(int id,double money){
+        Session session = dbSessionProvider.getSession();
+
+        session.beginTransaction();
+
+        javax.persistence.Query q = session.createQuery("update Customers c set c.credit = c.credit+:qty where c.customerId = :id")
+                .setParameter("id", id)
+                .setParameter("qty", money);
+
+        q.executeUpdate();
+
+        session.getTransaction().commit();
+        session.close();
+
+        Customers result = getCustomerByID(id);
+
+        return result.getCredit();
+    }
+
+    public void updateCustomerAvatar(int id,String url){
+        Session session = dbSessionProvider.getSession();
+
+        session.beginTransaction();
+
+        javax.persistence.Query q = session.createQuery("update Customers c set c.image =:image where c.customerId = :id")
+                .setParameter("id", id)
+                .setParameter("image", url);
+        q.executeUpdate();
+        session.getTransaction().commit();
+        session.close();
+    }
 }

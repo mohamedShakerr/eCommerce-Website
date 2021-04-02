@@ -2,6 +2,7 @@ package org.iti.controllers.customer;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import org.iti.domain.Customer;
+import org.iti.dtos.CustomerDto;
 import org.iti.services.CustomerServices;
 
 import java.io.*;
@@ -14,11 +15,12 @@ public class CreditCardServlet extends HttpServlet{
             String money=request.getParameter("money");
             double moneyAdded=Double.parseDouble(money);
 		    CustomerServices customerServices=new CustomerServices();
-		HttpSession session = request.getSession();
-		Customer customer=(Customer) session.getAttribute("customer");
-
-		    double totalMoney=customerServices.addMoneyToCredit(moneyAdded,customer.getId());
-		    customer.setCredit(totalMoney);
+			HttpSession session = request.getSession();
+			CustomerDto customerDto=(CustomerDto) session.getAttribute("customerDto");
+			/******xxxxxxxxxxxxxxx***********/
+			int id=1;
+		    double totalMoney=customerServices.addMoneyToCredit(id,moneyAdded);
+			customerDto.setCredit(totalMoney);
 		
 	}
 	

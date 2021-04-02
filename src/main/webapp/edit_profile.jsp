@@ -43,8 +43,13 @@
     <!--====== Template Style CSS ======-->
     <link rel="stylesheet" href="assets/css/style.css">
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
-
+    <style>
+     #avatar:hover{
+         cursor: pointer;
+     }
+    </style>
     <script type="text/javascript">
 
         $("#btnSubmit").click(function (event) {
@@ -82,10 +87,14 @@
                         <div class="profile-cover-photo bg_cover"></div>
                         <div class="profile-author d-sm-flex flex-row-reverse justify-content-between align-items-end">
                             <div class="profile-photo">
-                                <img src="<c:out value="${customer.image}"/>" alt="Profile Photo">
+                                <img id="avatar" src="<c:out value="${customerDto.url}"/>" alt="Profile Photo">
+                                <input id="ajaxfile" type="file" accept="image/*" style="display:none"/> <br/>
+                                <%--                                <button onclick="uploadFile()"> Change </button>--%>
+                                <%--                                <button class="btn btn-primary" type="button" id="customFileInput">Upload</button>--%>
+
                             </div>
                             <div class="profile-name">
-                                <h4 class="name"><c:out value="${customer.name}"/></h4>
+                                <h4 class="name"><c:out value="${customerDto.name}"/></h4>
                             </div>
                         </div>
                     </div>
@@ -104,7 +113,7 @@
                                         </div>
                                         <div class="details-content media-body">
                                             <input type="text" id="name" name="name" class="form-control" required
-                                                   value='<c:out value="${customer.name}"/>'/>
+                                                   value='<c:out value="${customerDto.name}"/>'/>
                                         </div>
                                     </div>
                                 </div>
@@ -116,7 +125,7 @@
                                         </div>
                                         <div class="details-content media-body">
                                             <input type="email" id="email" name="email" class="form-control" required
-                                                   value="<c:out value="${customer.email}"/>"/>
+                                                   value="<c:out value="${customerDto.email}"/>"/>
                                             <div class="invalid-feedback">Invalid Email address</div>
                                         </div>
                                     </div>
@@ -130,7 +139,7 @@
                                         <div class="details-content media-body">
                                             <input type="password" id="password" pattern=".{6,}" name="password"
                                                    class="form-control" required
-                                                   value="<c:out value="${customer.password}"/>"/>
+                                                   value="<c:out value="${customerDto.password}"/>"/>
                                             <div class="invalid-feedback">Must be at least 6 characters long</div>
                                         </div>
                                     </div>
@@ -144,7 +153,7 @@
                                         <div class="details-content media-body">
                                             <input type="text" id="phone" pattern="^(011|015|012|010)[0-9]{8}"
                                                    name="phone" class="form-control" required
-                                                   value="<c:out value="${customer.phone}"/>"/>
+                                                   value="<c:out value="${customerDto.phone}"/>"/>
                                             <div class="invalid-feedback">Invalid phone number</div>
 
                                         </div>
@@ -158,7 +167,7 @@
                                         </div>
                                         <div class="details-content media-body">
                                             <input type="text" id="address" name="address" class="form-control" required
-                                                   value="<c:out value="${customer.address}"/>"/>
+                                                   value="<c:out value="${customerDto.address}"/>"/>
                                         </div>
                                     </div>
                                 </div>
@@ -218,6 +227,36 @@
 <!--====== Main js ======-->
 <script src="assets/js/main.js"></script>
 
+<!-- Ajax to Java File Upload Logic -->
+<script>
+
+    $(document).ready(function () {
+        $('#avatar').on('click', function () {
+            $('#ajaxfile').trigger('click');
+        });
+        $("#ajaxfile").on('change', function () {
+            //do whatever you want
+            uploadFile();
+        });
+    });
+
+    async function uploadFile() {
+        let formData = new FormData();
+        if (ajaxfile.files[0] != null) {
+            formData.append("file", ajaxfile.files[0]);
+            let response = await fetch('ChangeAvatarServlet', {
+
+                method: "POST",
+                body: formData
+            });
+
+            let result = await response.json();
+
+            $("#avatar").attr("src", result.message);
+        }
+    }
+
+</script>
 </body>
 
 </html>
