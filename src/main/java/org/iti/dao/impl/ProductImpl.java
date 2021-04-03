@@ -168,5 +168,14 @@ public class ProductImpl implements ProductDao {
         return (long) q.getResultList().get(0);
     }
 
+    @Override
+    public Products updateProduct(Products product) {
+
+        session.beginTransaction();
+        Products myProduct = (Products) session.merge(product);
+        session.getTransaction().commit();
+
+        return myProduct;
+    }
 
 }

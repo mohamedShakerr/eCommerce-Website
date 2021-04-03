@@ -39,6 +39,6 @@ public interface ProductDao {
 
     long getProdCount();
 
-
+    Products updateProduct(Products product);
 
 }

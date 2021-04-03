@@ -56,6 +56,28 @@ public class ProductService {
         return mapper.convertEntityToDto(product);
     }
 
+    public AdminProductDto updateProduct(AdminProductDto productDto){
+
+        ProductDao productDao = new ProductImpl(serviceSessison);
+
+        Products product = productDao.getProductById(productDto.getProductId());
+
+        product.setName(productDto.getProductName());
+        product.setPrice(productDto.getProductPrice());
+        product.setQuantity(productDto.getQuantity());
+        product.setDescription(productDto.getDescription());
+
+        product = productDao.updateProduct(product);
+
+        Mapper<AdminProductDto, Products> mapper = new ProductToAdminProduct();
+
+        if(product != null){
+            return mapper.convertEntityToDto(product);
+        }
+
+        return null;
+    }
+
     public  void terminateService(){
         serviceSessison.close();
     }

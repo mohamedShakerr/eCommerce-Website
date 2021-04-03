@@ -10,4 +10,5 @@ public abstract class Mapper<E,T> {
         return entities.stream().map(this::convertEntityToDto).collect(Collectors.toList());
     }
 
+
 }
