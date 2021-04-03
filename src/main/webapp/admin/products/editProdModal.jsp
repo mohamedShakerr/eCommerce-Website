@@ -33,7 +33,6 @@
                         </div>
                     </div>
 
-
                     <div class="form-group">
                         <label class="col-sm-12">Category</label>
                         <div class="col-sm-12">
@@ -75,12 +74,6 @@
                         </div>
                     </div>
 
-
-
-<%--                    <div class="mb-3">--%>
-<%--                        <label for="formFileSm" class="form-label">main image</label>--%>
-<%--                        <input class="form-control form-control-sm" id="formFileSm" type="file">--%>
-<%--                    </div>--%>
                 </form>
             </div>
             <div class="modal-footer" style="background-color: #5c636a">

@@ -28,6 +28,9 @@
     <!-- Custom CSS -->
     <link href="../admin_assets/css/style.min.css" rel="stylesheet">
 
+    <!-- Flickey CSS for ImgSlider -->
+    <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
+
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -218,20 +221,6 @@
             <!-- ============================================================== -->
             <!-- Bread crumb and right sidebar toggle -->
             <!-- ============================================================== -->
-<%--            <div class="page-breadcrumb">--%>
-<%--                <div class="row align-items-center">--%>
-<%--                    <div class="feed-widget page-title">--%>
-<%--                        <ul class="list-style-none feed-body m-0 p-b-20">--%>
-<%--                            <li class="feed-item">--%>
-<%--                                <div class="feed-icon bg-danger">--%>
-<%--                                    <i class="ti-user"></i>--%>
-<%--                                </div>--%>
-<%--                                <h4>Customer Profile</h4>--%>
-<%--                            </li>--%>
-<%--                        </ul>--%>
-<%--                    </div>--%>
-<%--                </div>--%>
-<%--            </div>--%>
             <div class="page-breadcrumb" style="background-color: #5c636a">
                 <div class="row align-items-center">
                     <h3 style="text-align: center; color: white">
@@ -242,7 +231,6 @@
             </div>
             <!-- ============================================================== -->
             <!-- End Bread crumb and right sidebar toggle -->
-            <!-- ============================================================== -->
             <!-- ============================================================== -->
             <!-- Container fluid  -->
             <!-- ============================================================== -->
@@ -285,48 +273,27 @@
                                     <div>
                                         <hr>
                                     </div>
-<%--                                    <div class="card-body">--%>
-<%--                                        <div class="product-details-image">--%>
-<%--                                            <div class="product-image">--%>
-<%--                                                <div class="product-image-active tab-content" id="v-pills-tabContent-6">--%>
-<%--                                                    <div class="single-image tab-pane fade show active" id="v-pills-26" role="tabpanel" aria-labelledby="v-pills-26-tab">--%>
-<%--                                                        <img src="${myProduct.imageUrl}" alt="">--%>
-<%--                                                    </div>--%>
-<%--                                                    <div class="single-image tab-pane fade" id="v-pills-27" role="tabpanel" aria-labelledby="v-pills-27-tab">--%>
-<%--                                                        <img src="${myProduct.imageUrl}" alt="">--%>
-<%--                                                    </div>--%>
-<%--                                                    <div class="single-image tab-pane fade" id="v-pills-28" role="tabpanel" aria-labelledby="v-pills-28-tab">--%>
-<%--                                                        <img src="${myProduct.imageUrl}" alt="">--%>
-<%--                                                    </div>--%>
-<%--                                                    <div class="single-image tab-pane fade" id="v-pills-29" role="tabpanel" aria-labelledby="v-pills-29-tab">--%>
-<%--                                                        <img src="${myProduct.imageUrl}" alt="">--%>
-<%--                                                    </div>--%>
-<%--                                                    <div class="single-image tab-pane fade" id="v-pills-30" role="tabpanel" aria-labelledby="v-pills-30-tab">--%>
-<%--                                                        <img src="${myProduct.imageUrl}" alt="">--%>
-<%--                                                    </div>--%>
-<%--                                                </div>--%>
-<%--                                            </div>--%>
-<%--                                            <div class="product-thumb-image">--%>
-<%--                                                <div class="product-thumb-image-active nav nav-pills" id="v-pills-tab-6" role="tablist" aria-orientation="vertical">--%>
-<%--                                                    <div class="single-thumb active" id="v-pills-26-tab" data-bs-toggle="pill" href="#v-pills-26" role="tab" aria-controls="v-pills-26" aria-selected="true">--%>
-<%--                                                        <img src="${myProduct.imageUrl}" alt="">--%>
-<%--                                                    </div>--%>
-<%--                                                    <div class="single-thumb" id="v-pills-27-tab" data-bs-toggle="pill" href="#v-pills-27" role="tab" aria-controls="v-pills-27" aria-selected="false">--%>
-<%--                                                        <img src="${myProduct.imageUrl}" alt="">--%>
-<%--                                                    </div>--%>
-<%--                                                    <div class="single-thumb" id="v-pills-28-tab" data-bs-toggle="pill" href="#v-pills-28" role="tab" aria-controls="v-pills-28" aria-selected="false">--%>
-<%--                                                        <img src="${myProduct.imageUrl}" alt="">--%>
-<%--                                                    </div>--%>
-<%--                                                    <div class="single-thumb" id="v-pills-29-tab" data-bs-toggle="pill" href="#v-pills-29" role="tab" aria-controls="v-pills-29" aria-selected="false">--%>
-<%--                                                        <img src="${myProduct.imageUrl}" alt="">--%>
-<%--                                                    </div>--%>
-<%--                                                    <div class="single-thumb" id="v-pills-30-tab" data-bs-toggle="pill" href="#v-pills-30" role="tab" aria-controls="v-pills-30" aria-selected="false">--%>
-<%--                                                        <img src="${myProduct.imageUrl}" alt="">--%>
-<%--                                                    </div>--%>
-<%--                                                </div>--%>
-<%--                                            </div>--%>
-<%--                                        </div>--%>
-<%--                                    </div>--%>
+                                    <div class="card-body">
+                                        <h3 style="text-align: center; color: #262d35">
+                                            Product
+                                            <c:if test='${! empty requestScope.myProduct}'>
+                                                <c:out value="${myProduct.productId}" />
+                                            </c:if>
+                                            Album
+                                            <i class="fas fa-images"></i>
+                                        </h3>
+                                        <div class="card-body">
+                                            <div class="carousel" data-flickity='{ "wrapAround": "true", "autoPlay": true, "imagesLoaded": true}'>
+                                                <c:forEach var="prodImg" items="${myProduct.prodImages}" varStatus="counter" begin="0" end="${myProduct.prodImages.size()-1}">
+                                                    <div class="carousel-cell"  id="v-pills-${counter.index}">
+                                                        <div class="carousel-cell">
+                                                            <img src="${prodImg}" width="350" height="330">
+                                                        </div>
+                                                    </div>
+                                                </c:forEach>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                     <!-- Column -->
@@ -340,24 +307,24 @@
                                 information
                                 <i class="m-r-10 mdi mdi-cart"></i>
                             </h3><br>
-                            <div class="card">
+                            <div class="card" style="background-color: #262d35">
                                 <div class="card-body">
                                     <form class="form-horizontal form-material mx-2">
                                         <div class="form-group">
-                                            <label class="col-md-12">Product Name</label>
+                                            <label class="col-md-12" style="color: white">Product Name</label>
                                             <div class="col-md-12">
                                                 <input type="text" id="nameInputId" value="${myProduct.productName}" class="form-control form-control-line" disabled>
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label class="col-md-12">Price</label>
+                                            <label class="col-md-12" style="color: white">Price</label>
                                             <div class="col-md-12">
                                                 <input type="text" id="priceInputId" value="${myProduct.productPrice}"
                                                     class="form-control form-control-line" disabled>
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label class="col-md-12">Quantity</label>
+                                            <label class="col-md-12" style="color: white">Quantity</label>
                                             <div class="col-md-12">
                                                 <input type="text" placeholder="50" id="quantityInputId"
                                                        value="${myProduct.quantity}" class="form-control form-control-line" disabled>
@@ -380,7 +347,7 @@
                                             </div>
                                         </div>--%>
                                         <div class="form-group">
-                                            <label class="col-md-12">Description</label>
+                                            <label class="col-md-12" style="color: white">Description</label>
                                             <div class="col-md-12">
                                                 <textarea rows="5" class="form-control"  id="descInputId" style="resize: none" disabled>
                                                     <c:out value="${myProduct.description}" />
@@ -389,11 +356,11 @@
                                         </div>
                                         <div class="form-group" style="text-align: center">
                                             <div class="d-grid gap-2 d-md-block">
-                                                <button type="button" id="editBtnId" onclick="onEditClick()" class="btn btn-info upgrade-btn text-white align-items-center">
-                                                    <i class="m-r-10 mdi mdi-table-edit"></i>
+                                                <button type="button" id="editBtnId" onclick="onEditClick()" class="btn btn-danger upgrade-btn text-white align-items-center">
+                                                    <i class="mdi mdi-table-edit"></i>
                                                     <span class="hide-menu m-l-4">Edit Product</span>
-                                                </button>
-                                                <button type="button" id="saveBtnId" onclick="updateProduct()" class="btn btn-dark upgrade-btn text-white align-items-center" disabled>
+                                                </button>&nbsp; &nbsp; &nbsp;
+                                                <button type="button" id="saveBtnId" onclick="updateProduct()" class="btn btn-info upgrade-btn text-white align-items-center" disabled>
                                                     <i class="fas fa-save"></i>
                                                     <span class="hide-menu m-l-4">Save Product</span>
                                                 </button>
@@ -415,6 +382,14 @@
                                         </span>
                                     </form>
                                 </div>
+                            </div>
+                            <br>
+                            <div style="text-align: center; color: #262d35">
+                                <h1>
+                                    <i class="fab fa-playstation"></i>
+                                    <i class="fas fa-gamepad"></i>
+                                    <span class="logo-text">UnityStore</span>
+                                </h1>
                             </div>
                         </div>
                     </c:if>
@@ -508,7 +483,9 @@
             <!-- footer -->
             <!-- ============================================================== -->
             <footer class="footer text-center">
-                All Rights Reserved by JETS G.M.W.SH
+                Copyright
+                <i class="far fa-copyright"></i>
+                2021 by JETS G.M.W.SH. All Rights Reserved.
             </footer>
             <!-- ============================================================== -->
             <!-- End footer -->
@@ -545,6 +522,9 @@
 <script src="../admin_assets/js/sidebarmenu.js"></script>
 <!--Custom JavaScript -->
 <script src="../admin_assets/js/custom.js"></script>
+
+<!--flickity JavaScript for imgSlider -->
+<script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
 
 </body>
 

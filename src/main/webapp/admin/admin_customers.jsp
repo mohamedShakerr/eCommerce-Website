@@ -257,7 +257,9 @@
         <!-- footer -->
         <!-- ============================================================== -->
         <footer class="footer text-center">
-            All Rights Reserved by JETS G.M.W.SH
+            Copyright
+            <i class="far fa-copyright"></i>
+            2021 by JETS G.M.W.SH. All Rights Reserved.
         </footer>
     </div>
 
