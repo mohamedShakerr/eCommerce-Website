@@ -1,6 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!-- Modal -->
-<div class="modal fade" id="edirProdModal">
+<div class="modal fade" id="editProdModal">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header" style="background-color: #5c636a">
@@ -15,13 +15,13 @@
                     <div class="form-group">
                         <label class="col-md-12">Product Name</label>
                         <div class="col-md-12">
-                            <input type="text" value="${myProduct.productName}" class="form-control form-control-line">
+                            <input type="text" value="" class="form-control form-control-line">
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-md-12">Price</label>
                         <div class="col-md-12">
-                            <input type="text" value="${myProduct.productPrice}"
+                            <input type="text" value=""
                                    class="form-control form-control-line">
                         </div>
                     </div>
@@ -29,9 +29,43 @@
                         <label class="col-md-12">Quantity</label>
                         <div class="col-md-12">
                             <input type="text" placeholder="50"
-                                   value="${myProduct.quantity}" class="form-control form-control-line">
+                                   value="" class="form-control form-control-line">
                         </div>
                     </div>
+
+
+                    <div class="form-group">
+                        <label class="col-sm-12">Category</label>
+                        <div class="col-sm-12">
+                            <select class="form-select shadow-none form-control-line">
+                                <option>cables</option>
+                                <option>cards</option>
+                                <option>consoles</option>
+                                <option>games</option>
+                                <option>headsets</option>
+                                <option>joysticks</option>
+                                <option>thumbsticks</option>
+                                <option>vr</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label col-md-12">Main Image</label>
+                        <div class="col-md-12">
+                            <input type="file" accept="image/*"
+                                   class="form-control form-control-sm" >
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label col-md-12">Albums</label>
+                        <div class="col-md-12">
+                            <input type="file" accept="image/*"
+                                   class="form-control form-control-sm" multiple>
+                        </div>
+                    </div>
+
                     <div class="form-group">
                         <label class="col-md-12">Description</label>
                         <div class="col-md-12">
@@ -40,6 +74,13 @@
                             </textarea>
                         </div>
                     </div>
+
+
+
+<%--                    <div class="mb-3">--%>
+<%--                        <label for="formFileSm" class="form-label">main image</label>--%>
+<%--                        <input class="form-control form-control-sm" id="formFileSm" type="file">--%>
+<%--                    </div>--%>
                 </form>
             </div>
             <div class="modal-footer" style="background-color: #5c636a">

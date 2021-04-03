@@ -363,22 +363,22 @@
                                                        value="${myProduct.quantity}" class="form-control form-control-line" disabled>
                                             </div>
                                         </div>
-<%--                                        <div class="form-group">--%>
-<%--                                            <label class="col-sm-12">Category</label>--%>
-<%--                                            <div class="col-sm-12">--%>
-<%--                                                <select class="form-select shadow-none form-control-line">--%>
-<%--                                                    &lt;%&ndash;                                                    <option selected><c:out value="${myProduct.description}" /></option>&ndash;%&gt;--%>
-<%--                                                    <option>cables</option>--%>
-<%--                                                    <option>cards</option>--%>
-<%--                                                    <option>consoles</option>--%>
-<%--                                                    <option>games</option>--%>
-<%--                                                    <option>headsets</option>--%>
-<%--                                                    <option>joysticks</option>--%>
-<%--                                                    <option>thumbsticks</option>--%>
-<%--                                                    <option>vr</option>--%>
-<%--                                                </select>--%>
-<%--                                            </div>--%>
-<%--                                        </div>--%>
+<%--                                        <div class="form-group">
+                                            <label class="col-sm-12">Category</label>
+                                            <div class="col-sm-12">
+                                                <select class="form-select shadow-none form-control-line">
+                                                    &lt;%&ndash;                                                    <option selected><c:out value="${myProduct.description}" /></option>&ndash;%&gt;
+                                                    <option>cables</option>
+                                                    <option>cards</option>
+                                                    <option>consoles</option>
+                                                    <option>games</option>
+                                                    <option>headsets</option>
+                                                    <option>joysticks</option>
+                                                    <option>thumbsticks</option>
+                                                    <option>vr</option>
+                                                </select>
+                                            </div>
+                                        </div>--%>
                                         <div class="form-group">
                                             <label class="col-md-12">Description</label>
                                             <div class="col-md-12">

@@ -40,44 +40,9 @@
 <body>
 
 <!-- Modal -->
-<div class="modal fade" id="exampleModal">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header" style="background-color: #5c636a">
-                <h5 class="modal-title" style="color: white">Add New Product</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <!--                    <span aria-hidden="true">×</span>-->
-                    <i class="fas fa-window-close" style="color: white"></i>
-                </button>
-            </div>
-            <div class="modal-body">
-                <form>
-                    <div class="form-floating mb-3">
-                        <input type="text" class="form-control" id="prodName" placeholder="Name">
-                        <label for="prodName">Name</label>
-                    </div>
-                    <div class="form-floating mb-3">
-                        <input type="text" class="form-control" id="prodPrice" placeholder="Price">
-                        <label for="prodPrice">Price</label>
-                    </div>
-                    <div class="form-floating mb-3">
-                        <input type="text" class="form-control" id="proQuant" placeholder="Quantity">
-                        <label for="proQuant">Quantity</label>
-                    </div>
-                    <div class="form-floating">
-                        <textarea class="form-control" placeholder="Description" id="prodDesc"
-                                  style="resize: none; height: 100px"></textarea>
-                        <label for="prodDesc">Description</label>
-                    </div>
-                </form>
-            </div>
-            <div class="modal-footer" style="background-color: #5c636a">
-                <button type="button" class="btn btn-danger" style="color: white" data-dismiss="modal">Cancel</button>
-                <button type="button" class="btn btn-primary">Add Product</button>
-            </div>
-        </div>
-    </div>
-</div>
+<jsp:include page="admin/products/editProdModal.jsp"/>
+
+
 
 <!-- ============================================================== -->
 <!-- Preloader - style you can find in spinners.css -->
@@ -183,7 +148,7 @@
                     <li class="p-15 m-t-10">
                         <button type="button"
                                 class="btn d-block w-100 create-btn text-white no-block d-flex align-items-center"
-                                data-toggle="modal" data-target="#exampleModal" data-whatever="@geeksforgeeks">
+                                data-toggle="modal" data-target="#editProdModal" data-whatever="@geeksforgeeks">
                             <i class="fa fa-plus-square"></i>
                             <span class="hide-menu m-l-5">Add New Product</span>
                         </button>
