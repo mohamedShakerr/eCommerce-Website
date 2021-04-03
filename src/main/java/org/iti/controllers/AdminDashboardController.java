@@ -16,6 +16,7 @@ import org.iti.services.ProductService;
 import org.iti.utils.S3UploadManager;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 
 public class AdminDashboardController extends HttpServlet{
@@ -37,6 +38,14 @@ public class AdminDashboardController extends HttpServlet{
 
 	public void doPost(HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException {
 
+		PrintWriter out = response.getWriter();
+		Integer productId = Integer.valueOf(request.getParameter("productId"));
+
+		ProductService productsService = new ProductService();
+
+		boolean result = productsService.deleteProduct(productId);
+
+		out.println(result);
 
 	}
 

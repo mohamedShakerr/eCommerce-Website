@@ -20,13 +20,13 @@ public class ProductService {
 
     Session serviceSessison = null;
 
-    public ProductService(){
+    public ProductService() {
         DBSessionProvider dbSessionProvider = DBSessionProvider.getInstance();
         serviceSessison = dbSessionProvider.getSession();
     }
 
 
-    public ProdDetailDto getProductById(Integer id){
+    public ProdDetailDto getProductById(Integer id) {
 
         ProductDao productDao = new ProductImpl(serviceSessison);
         Products product = productDao.getProductById(id);
@@ -47,7 +47,7 @@ public class ProductService {
 
     }
 
-    public AdminProductDto getAdminProductById(Integer id){
+    public AdminProductDto getAdminProductById(Integer id) {
 
         ProductDao productDao = new ProductImpl(serviceSessison);
         Products product = productDao.getProductById(id);
@@ -56,7 +56,7 @@ public class ProductService {
         return mapper.convertEntityToDto(product);
     }
 
-    public AdminProductDto updateProduct(AdminProductDto productDto){
+    public AdminProductDto updateProduct(AdminProductDto productDto) {
 
         ProductDao productDao = new ProductImpl(serviceSessison);
 
@@ -71,15 +71,24 @@ public class ProductService {
 
         Mapper<AdminProductDto, Products> mapper = new ProductToAdminProduct();
 
-        if(product != null){
+        if (product != null) {
             return mapper.convertEntityToDto(product);
         }
 
         return null;
     }
 
-    public  void terminateService(){
+
+    public boolean deleteProduct(Integer productId) {
+
+        ProductDao productDao = new ProductImpl(serviceSessison);
+
+        return productDao.deleteProductById(productId);
+    }
+
+    public void terminateService() {
         serviceSessison.close();
     }
+
 
 }

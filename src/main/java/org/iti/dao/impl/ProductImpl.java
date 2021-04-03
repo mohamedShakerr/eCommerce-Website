@@ -178,4 +178,19 @@ public class ProductImpl implements ProductDao {
         return myProduct;
     }
 
+    @Override
+    public boolean deleteProductById(Integer productId) {
+
+        Products product = session.find(Products.class,productId);
+        System.out.println(product.getName());
+        session.beginTransaction();
+        session.remove(product);
+        session.getTransaction().commit();
+
+        System.out.println("After deletion "+product.getName());
+
+
+        return true;
+    }
+
 }
