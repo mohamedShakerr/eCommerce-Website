@@ -24,6 +24,9 @@ public class LoginController extends HttpServlet {
 
         // check cookie email
         if(cookiesManager.isCookieExists(request, "email")) {
+            //INTRO VALIDATION
+            //Filter
+            //
             response.sendRedirect(request.getContextPath());
         } else {
             response.sendRedirect("login.jsp");

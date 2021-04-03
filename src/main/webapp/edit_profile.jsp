@@ -25,6 +25,12 @@
     <!--====== Material Design Icons CSS ======-->
     <link rel="stylesheet" href="assets/css/materialdesignicons.min.css">
 
+    <!--====== FONT Awesome Icons CSS ======-->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+          integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+          crossorigin="anonymous" />
+
     <!--====== Bootstrap CSS ======-->
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
 
@@ -217,6 +223,9 @@
 
 <!--====== Main js ======-->
 <script src="assets/js/main.js"></script>
+
+<%--=======CART SCRIPT======--%>
+<script src="./assets/js/cart.js"></script>
 
 </body>
 

@@ -15,7 +15,7 @@ import software.amazon.awssdk.regions.servicemetadata.Route53ServiceMetadata;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-@WebServlet(name = "CartEditServlet" , urlPatterns = "/cartedit")
+@WebServlet(name = "CartEditServlet" , urlPatterns = {"/cartedit","/shop/cartedit"})
 public class CartEditServlet extends HttpServlet {
 
     public void init(ServletConfig config) throws ServletException {
@@ -74,15 +74,19 @@ public class CartEditServlet extends HttpServlet {
                     break;
                 case "addNew":
                     cartService.addNewItemToCart(userId,productId,quantity);
+                    outMsg = "success";
                     break;
                 default:
                     out.print("err");
             }
+
+            out.print(outMsg);
+
         }else {
             out.print("err");
             System.out.println("xd");
         }
-        out.print(outMsg);
+
     }
 
 

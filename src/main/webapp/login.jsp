@@ -17,6 +17,12 @@
     <!--====== Material Design Icons CSS ======-->
     <link rel="stylesheet" href="assets/css/materialdesignicons.min.css">
 
+    <!--====== FONT Awesome Icons CSS ======-->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+          integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+          crossorigin="anonymous" />
+
     <!--====== Bootstrap CSS ======-->
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
 
@@ -30,11 +36,14 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 
     <!--====== Style CSS ======-->
-    <!-- <link rel="stylesheet" href="assets/css/style.css"> -->
+    <link rel="stylesheet" href="assets/css/style.css">
 
 </head>
 
 <body>
+
+<c:set var="userId" value="${sessionScope.userId}" scope="session"/>
+<jsp:include page="navbar.jsp"/>
 
     <section class="login-registration-wrapper pt-50 pb-100">
         <div class="container">
@@ -99,6 +108,11 @@
             </div>
         </div>
     </section>
+
+<!--====== Footer Style 5 Part Start ======-->
+
+<jsp:include page="footer.jsp"/>
+<!--====== Footer Style 5 Part Ends ======-->
 
     <!--====== Bootstrap js ======-->
     <script src="assets/js/bootstrap.min.js"></script>

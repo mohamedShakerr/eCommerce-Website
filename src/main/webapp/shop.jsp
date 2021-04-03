@@ -23,6 +23,12 @@
     <!--====== Material Design Icons CSS ======-->
     <link rel="stylesheet" href="./assets/css/materialdesignicons.min.css">
 
+    <!--====== FONT Awesome Icons CSS ======-->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+          integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+          crossorigin="anonymous" />
+
     <!--====== Bootstrap CSS ======-->
     <link rel="stylesheet" href="./assets/css/bootstrap-5.0.0-beta1.min.css">
 
@@ -51,8 +57,6 @@
 
 <body>
 
-
-
 <%--Setting values--%>
 <c:set var="prods" value="${requestScope.products}"/>
 <c:set var="maxPrice" value="${requestScope.maxPrice}"/>
@@ -60,7 +64,12 @@
 
 <c:set var="paginationSize" value="${requestScope.NumberOfPages}"/>
 
-<c:out value="${paginationSize}"/>
+
+<!--======================== Navbar  Starts ====================================-->
+<c:set var="userId" value="${sessionScope.userId}" scope="session"/>
+<jsp:include page="navbar.jsp"/>
+<!--======================== Navbar  Ends ====================================-->
+
     <!--====== Filter Part Start ======-->
 
     <section class="filter-wrapper pt-85" style="padding-top: 20px;">
@@ -157,6 +166,11 @@
 
     <!--====== Filter Part Ends ======-->
 
+
+    <%--============ FOOTER =============--%>
+    <jsp:include page="footer.jsp"/>
+    <%--============ FOOTER END =============--%>
+
     <!--====== Bootstrap js ======-->
     <script src="./assets/js/bootstrap.bundle-5.0.0-beta1.min.js"></script>
     <!--====== Tiny Slider js ======-->
@@ -169,6 +183,9 @@
     <script src="./assets/js/glightbox.min.js"></script>
     <!--====== Main js ======-->
     <script src="./assets/js/main.js"></script>
+
+    <%--=======CART SCRIPT======--%>
+    <script src="./assets/js/cart.js"></script>
 
 
 <script>

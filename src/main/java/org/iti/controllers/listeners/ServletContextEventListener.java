@@ -55,23 +55,20 @@ public class ServletContextEventListener implements ServletContextListener{
         dbSessionProvider.setSessionFactory(sessionFactory);
 
 
-
 //        ===============================dao testings
         System.out.println("=============DAO TESTING =============");
 
-//        System.out.println(cartDao.getCartByUserId(1));
-//        System.out.println(cartDao.getCartProdCountByUserId(1));
-
-//        CartService cartService = new CartService();
-//        CartDto dto = cartService.getCartByUserId(1);
-//        System.out.println(dto);
 
 
     }
     
     @Override
     public void contextDestroyed(ServletContextEvent sce){
-        System.out.println("=================Context Destroyed");
+
+        DBSessionProvider dbSessionProvider = DBSessionProvider.getInstance();
+        dbSessionProvider.terminateSessionFactory();
+
+        System.out.println("=================Context Destroyed==============");
     } 
 
 }

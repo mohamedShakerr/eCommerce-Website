@@ -16,6 +16,7 @@ import org.iti.services.FeaturedProductsService;
 import org.iti.utils.*;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import static javax.swing.text.html.CSS.getAttribute;
@@ -35,11 +36,11 @@ public class IndexServlet extends HttpServlet{
 		HttpSession session = request.getSession(true);
 
 
-		if( session.getAttribute("rememberMe") != null){
-			if( session.getAttribute("userId") != null ){
-				session.setAttribute("userId", null);
-			}
-		}
+//		if( session.getAttribute("rememberMe") != null){
+//			if( session.getAttribute("userId") != null ){
+//				session.setAttribute("userId", null);
+//			}
+//		}
 
 		// ============== Call On Services And Get Required Stuff ================
 		//======================== Featured Product Service ================
@@ -47,17 +48,25 @@ public class IndexServlet extends HttpServlet{
 		List<FeaturedIndexProductDto> featuredProducts = featuredProductsService.getAllFeaturedProducts();
 		List<FeaturedIndexProductDto> featuredAccessories = featuredProductsService.getAllFeaturedAccessories();
 		ProdDetailDto featuredOculus = featuredProductsService.getOculusFeaturedProduct();
+		featuredProductsService.terminateService();
 
 		//====================== Cart Service =======================================
 		CartService cartService = CartService.getInstance();
-		//TODO CHANGE THIS SHIT
-		CartDto cart = cartService.getCartByUserId(1);
+
+		Integer userId = (Integer) session.getAttribute("userId");
+
+		if(userId != null){
+			CartDto cart = cartService.getCartByUserId(userId);
+			request.setAttribute("cartItems", cart.getCartItems());
+		}else{
+			request.setAttribute("cartItems", new ArrayList<>());
+		}
+		cartService.terminateService();
+
 
 		request.setAttribute("featuredProducts", featuredProducts);
 		request.setAttribute("featuredAccessories", featuredAccessories);
-		request.setAttribute("cartItems", cart.getCartItems());
 		request.setAttribute("featuredOculus", featuredOculus);
-
 
 		rd.forward(request,response);
 	}

@@ -33,5 +33,8 @@ public class DBSessionProvider {
         return sessionFactory.openSession();
     }
 
+    public void terminateSessionFactory(){
+        sessionFactory.close();
+    }
 
 }

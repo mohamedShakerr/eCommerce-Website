@@ -8,16 +8,20 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import org.iti.db.domain.Products;
+import org.iti.dtos.CartDto;
 import org.iti.dtos.FilterCriteria;
 import org.iti.dtos.ShopCategoryDto;
 import org.iti.dtos.ShopProdDto;
+import org.iti.services.CartService;
 import org.iti.services.ShopService;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.List;
 
 @WebServlet(name = "ShopServlet", urlPatterns = {"/shop"})
@@ -59,11 +63,21 @@ public class ShopServlet extends HttpServlet {
             int pageNum = Integer.parseInt(currentPage);
 
             List<ShopProdDto> prodList = shopService.fetchProdsByBatch(pageNum);
-
-//            int NumberOfPages = shopService.getNumberOfPages(prodList);
-
-
             shopService.terminateService();
+
+            HttpSession session = request.getSession();
+            CartService cartService = CartService.getInstance();
+
+            Integer userId = (Integer) session.getAttribute("userId");
+
+            if(userId != null){
+                CartDto cart = cartService.getCartByUserId(userId);
+                request.setAttribute("cartItems", cart.getCartItems());
+            }else{
+                request.setAttribute("cartItems", new ArrayList<>());
+            }
+            cartService.terminateService();
+
 
             request.setAttribute("currentPage",pageNum);
             request.setAttribute("categories", categoryList);
@@ -84,6 +98,7 @@ public class ShopServlet extends HttpServlet {
                 currentPage = "1";
 
 
+
             //Get The Filter Criteria
             FilterCriteria criteria  = gson.fromJson(filter, FilterCriteria.class);
 
@@ -100,6 +115,19 @@ public class ShopServlet extends HttpServlet {
             int pageNum = Integer.parseInt(currentPage);
             //FilterProducts And Fetch First Page Of result ONLY
             List<ShopProdDto> prodList = shopService.batchFilterProducts(criteria, pageNum);
+
+            HttpSession session = request.getSession();
+            CartService cartService = CartService.getInstance();
+
+            Integer userId = (Integer) session.getAttribute("userId");
+
+            if(userId != null){
+                CartDto cart = cartService.getCartByUserId(userId);
+                request.setAttribute("cartItems", cart.getCartItems());
+            }else{
+                request.setAttribute("cartItems", new ArrayList<>());
+            }
+            cartService.terminateService();
 
 
             shopService.terminateService();
