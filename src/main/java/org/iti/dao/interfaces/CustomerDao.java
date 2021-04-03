@@ -21,4 +21,8 @@ public interface CustomerDao {
 
     List<Customers> getAllCustomers();
 
+    String getUserTokenById(int userId);
+
+    void saveTokenbyUserId(String token, int userId);
+
 }

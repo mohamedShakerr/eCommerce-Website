@@ -7,10 +7,12 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
+import org.apache.commons.codec.digest.DigestUtils;
 import org.iti.dtos.CustomerDto;
 import org.iti.services.LoginService;
 import org.iti.services.RegistrationService;
 import org.iti.utils.CookiesManager;
+import org.iti.utils.UUIDProvider;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -23,10 +25,13 @@ public class LoginController extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         // check cookie email
+        boolean isUIDCookieExist = cookiesManager.isCookieExists(request, "UID");
+        boolean isTokenCookieExist = cookiesManager.isCookieExists(request, "token");
+
+
+
         if(cookiesManager.isCookieExists(request, "email")) {
-            //INTRO VALIDATION
-            //Filter
-            //
+
             response.sendRedirect(request.getContextPath());
         } else {
             response.sendRedirect("login.jsp");
@@ -35,8 +40,10 @@ public class LoginController extends HttpServlet {
     }
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException             {
+
+
+
 
         LoginService loginService = new LoginService();
 
@@ -44,36 +51,43 @@ public class LoginController extends HttpServlet {
         String password = request.getParameter("password");
         String rememberMe = request.getParameter("rememberMe");
 
-        try {
 
-            CustomerDto customerDto = new CustomerDto(email, password);
+        CustomerDto customerDto = new CustomerDto(email, password);
 
-            boolean isLoginValid = loginService.isLoginCustomer(customerDto);
+        boolean isLoginValid = false;
+        isLoginValid = loginService.isLoginCustomer(customerDto);
 
 
-            if(isLoginValid) {
+        if(isLoginValid) {
 
-                HttpSession session = request.getSession(true);
+            HttpSession session = request.getSession();
 
-                int userId = loginService.getUserIdByEmail(email);
-                session.setAttribute("userId", userId);
+            int userId = loginService.getUserIdByEmail(email);
+            session.setAttribute("userId", userId);
 
-                if (rememberMe != null && rememberMe.equals("true")) {
-                    cookiesManager.addCookie(response, "email", email);
-                    session.setAttribute("rememberMe", true);
-                }
+            if (rememberMe != null && rememberMe.equals("true")) {
 
-                response.sendRedirect(request.getContextPath());
+                //IF remember me is enabled create the token
+                String randomString = UUIDProvider.getUUID();
+                String userToken = userId+DigestUtils.sha256Hex(randomString);
+                System.out.println("USER TOKEN"+userToken);
+
+                //Save that token in DB, For Future comparison
+                loginService.saveToken(userToken,userId);
+
+                cookiesManager.addCookie(response, "UID", ""+userId);
+                cookiesManager.addCookie(response, "token", userToken);
+
+                session.setAttribute("rememberMe", true);
             }
-            else {
 
-                request.setAttribute("InputError", "err");
-                RequestDispatcher rd = request.getRequestDispatcher("login.jsp");
-                rd.forward(request, response);
-            }
+            response.sendRedirect(request.getContextPath());
+        }
+        else {
 
-        } catch (SQLException throwable) {
-            throwable.printStackTrace();
+            request.setAttribute("InputError", "err");
+            RequestDispatcher rd = request.getRequestDispatcher("login.jsp");
+            rd.forward(request, response);
         }
     }
 }

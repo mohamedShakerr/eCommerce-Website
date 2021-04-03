@@ -17,7 +17,7 @@ public class LoginService {
     }
 
 
-    public boolean isLoginCustomer(CustomerDto customerDto) throws SQLException {
+    public boolean isLoginCustomer(CustomerDto customerDto) {
 
         CustomerMapper customerMapper = new CustomerMapper();
         return customerDao.isCustomerExist(customerMapper.toEntity(customerDto));
@@ -25,6 +25,13 @@ public class LoginService {
 
     public int getUserIdByEmail(String email){
         return customerDao.getUserIdByEmail(email);
+    }
+
+    public void saveToken(String token, int userId){
+
+        CustomerDao dao = new CustomerDaoImpl();
+        dao.saveTokenbyUserId(token, userId);
+
     }
 
 }

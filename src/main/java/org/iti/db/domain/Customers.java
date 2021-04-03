@@ -39,6 +39,7 @@ public class Customers implements java.io.Serializable {
     private double credit;
     private String image;
     private String phone;
+    private String cookieToken;
     private Set<Orders> orderses = new HashSet<Orders>(0);
     private Set<CartItems> cartItemses = new HashSet<CartItems>(0);
 
@@ -68,10 +69,11 @@ public class Customers implements java.io.Serializable {
         this.cartItemses = cartItemses;
     }
 
+
+
+
     @Id
     @GeneratedValue(strategy = IDENTITY)
-
-
     @Column(name = "customer_id", unique = true, nullable = false)
     public Integer getCustomerId() {
         return this.customerId;
@@ -81,6 +83,14 @@ public class Customers implements java.io.Serializable {
         this.customerId = customerId;
     }
 
+    @Column(name = "cookie_token", length = 270)
+    public String getCookieToken() {
+        return cookieToken;
+    }
+
+    public void setCookieToken(String cookieToken) {
+        this.cookieToken = cookieToken;
+    }
 
     @Column(name = "name", unique = true, nullable = false, length = 25)
     public String getName() {
@@ -110,7 +120,6 @@ public class Customers implements java.io.Serializable {
     public void setPassword(String password) {
         this.password = password;
     }
-
 
     @Column(name = "address", length = 100)
     public String getAddress() {
