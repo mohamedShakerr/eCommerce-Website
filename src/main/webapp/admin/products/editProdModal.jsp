@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!-- Modal -->
 <div class="modal fade" id="editProdModal">
     <div class="modal-dialog">
@@ -51,18 +52,12 @@
 
                     <div class="form-group">
                         <label class="form-label col-md-12">Main Image</label>
-                        <div class="col-md-12">
-                            <input type="file" accept="image/*"
-                                   class="form-control form-control-sm" >
+                        <div class="col-md-12 ">
+                            <input type="file" class="form-control form-control-sm" >
                         </div>
                     </div>
 
-                    <div class="form-group">
-                        <label class="form-label col-md-12">Albums</label>
-                        <div class="col-md-12">
-                            <input type="file" accept="image/*"
-                                   class="form-control form-control-sm" multiple>
-                        </div>
+                    <div id="coba">
                     </div>
 
                     <div class="form-group">
@@ -83,3 +78,19 @@
         </div>
     </div>
 </div>
+
+<script>
+
+    $("#coba").spartanMultiImagePicker({
+        fieldName:        'fileUpload[]',
+        maxCount:         4,
+        rowHeight:        '100px',
+        groupClassName:   'col-md-1 col-sm-1 col-xs-2',
+        allowedExt:       'png|jpg',
+        dropFileLabel:    "Drop Here",
+        placeholderImage: {
+            width: '100%'
+        },
+    });
+
+</script>
