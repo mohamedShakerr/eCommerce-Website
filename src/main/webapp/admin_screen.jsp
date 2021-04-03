@@ -338,16 +338,11 @@
 
                     if (result) {
                         //deleted
-
                         $('#row'+productId).remove();
-
                         console.log("Product " + productId + " was deleted");
-
                     } else {
                         // failed
-
                         console.log("couldn't delete produect");
-
                     }
 
                 });
