@@ -29,10 +29,12 @@
     <link href="admin_assets/css/style.min.css" rel="stylesheet">
 
     <!-- M-Img-Picker JS -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css"
+          integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
     <!-- JQuery -->
     <script src="admin_assets/js/jquery.min.js"></script>
-    <script type="text/javascript" src="m-Img-Picker/dist/js/spartan-multi-image-picker-min.js"></script>
+    <script type="text/javascript"
+            src="spartan-multi-image-picker-master/dist/js/spartan-multi-image-picker-min.js"></script>
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -55,40 +57,43 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form class="form-horizontal form-material mx-2">
+
+<%--                <img src="https://ecommerece-iti.s3.eu-central-1.amazonaws.com/fbe5336c-352d-499a-ac8e-4c013520f2c0"/>--%>
+                <form  method="POST" action="admin" enctype="multipart/form-data" class="form-horizontal form-material mx-2">
+                    <input type="text" name="operation" value="addProduct" hidden/>
                     <div class="form-group">
                         <label class="col-md-12">Product Name</label>
                         <div class="col-md-12">
-                            <input type="text" value="" class="form-control form-control-line">
+                            <input id="productName" name="productName" value="thisIsProductNAme" type="text" class="form-control form-control-line">
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-md-12">Price</label>
                         <div class="col-md-12">
-                            <input type="text" value=""
+                            <input id="productPrice" name="productPrice" type="text"
                                    class="form-control form-control-line">
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-md-12">Quantity</label>
                         <div class="col-md-12">
-                            <input type="text" placeholder="50"
-                                   value="" class="form-control form-control-line">
+                            <input id="productQuantity" name="productQuantity" type="text" placeholder="50"
+                                   class="form-control form-control-line">
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label class="col-sm-12">Category</label>
-                        <div class="col-sm-12">
-                            <select class="form-select shadow-none form-control-line">
-                                <option>cables</option>
-                                <option>cards</option>
-                                <option>consoles</option>
-                                <option>games</option>
-                                <option>headsets</option>
-                                <option>joysticks</option>
-                                <option>thumbsticks</option>
-                                <option>vr</option>
+                        <div  class="col-sm-12">
+                            <select id="categorySelector" name="categorySelector" class="form-select shadow-none form-control-line">
+                                <option value="cables">Cables</option>
+                                <option value="cards">Cards</option>
+                                <option value="consoles">Consoles</option>
+                                <option value="games">Games</option>
+                                <option value="headsets">Headsets</option>
+                                <option value="joysticks">Joysticks</option>
+                                <option value="thubsticks">Thubsticks</option>
+                                <option value="vr">VR</option>
                             </select>
                         </div>
                     </div>
@@ -96,36 +101,37 @@
                     <div class="form-group">
                         <label class="form-label col-md-12">Main Image</label>
                         <div class="col-md-12">
-                            <input type="file" class="form-control form-control-sm" >
+                            <input  id="productImageFile" name="productImageFile" type="file" class="form-control form-control-sm">
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label class="col-md-12">Description</label>
                         <div class="col-md-12">
-                            <textarea rows="5" class="form-control" style="resize: none">
+                            <textarea id="productDescription" name="productDescription" rows="5" class="form-control" style="resize: none">
                             </textarea>
                         </div>
                     </div>
 
-                    <div class="form-group">
-                        <label class="form-label col-md-12">Albums</label>
-                        <div class="col-md-12" >
-                            <div id="coba"></div>
-                        </div>
+                    <%--                    <div class="form-group">--%>
+                    <%--                        <label class="form-label col-md-12">Albums</label>--%>
+                    <%--                        <div class="col-md-12" >--%>
+                    <%--                            <div id="coba"></div>--%>
+                    <%--                        </div>--%>
+                    <%--                    </div>--%>
+
+                    <div class="modal-footer" style="background-color: #5c636a">
+                        <button type="button" class="btn btn-danger" style="color: white" data-dismiss="modal">Cancel</button>
+                        <button type="submit" class="btn btn-primary">Update Product</button>
                     </div>
                 </form>
             </div>
-            <div class="modal-footer" style="background-color: #5c636a">
-                <button type="button" class="btn btn-danger"  style="color: white" data-dismiss="modal">Cancel</button>
-                <button type="button" class="btn btn-primary">Update Product</button>
-            </div>
+
         </div>
     </div>
 </div>
 <!-- Modal -->
 <%--<jsp:include page="admin/products/editProdModal.jsp"/>--%>
-
 
 
 <!-- ============================================================== -->
@@ -384,11 +390,11 @@
 
             function onDeleteProduct(productId) {
 
-                $.post("admin?productId=" + productId, function (result) {
+                $.post("admin?operation=deleteProduct&productId=" + productId, function (result) {
 
                     if (result) {
                         //deleted
-                        $('#row'+productId).remove();
+                        $('#row' + productId).remove();
                         console.log("Product " + productId + " was deleted");
                     } else {
                         // failed
@@ -400,16 +406,16 @@
             }
         </script>
 
-<%--        Img Picker--%>
+        <%--        Img Picker--%>
         <script>
 
             $("#coba").spartanMultiImagePicker({
-                fieldName:        'fileUpload[]',
-                maxCount:         4,
-                rowHeight:        '100px',
-                groupClassName:   'col-md-2 col-sm-2 col-xs-3',
-                allowedExt:       'png|jpg',
-                dropFileLabel:    "Drop Here",
+                fieldName: 'fileUpload[]',
+                maxCount: 4,
+                rowHeight: '100px',
+                groupClassName: 'col-md-2 col-sm-2 col-xs-3',
+                allowedExt: 'png|jpg',
+                dropFileLabel: "Drop Here",
                 placeholderImage: {
                     image: 'https://www.flaticon.com/svg/vstatic/svg/1829/1829552.svg?token=exp=1617477003~hmac=2a1cfaf1227002a902b28c1ae486afb2',
                     width: '100%'
