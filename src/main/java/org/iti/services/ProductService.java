@@ -94,8 +94,16 @@ public class ProductService {
 
         S3UploadManager uploadManager = new S3UploadManager();
 
+        // uploading images
         String imageURL = uploadManager.uploadImage(productDto.getImageBytes());
         productDto.setImageUrl(imageURL);
+
+        productDto.getProductAlbum().forEach(bytes -> {
+            productDto.getProductImageURLs().add(uploadManager.uploadImage(bytes));
+                }
+        );
+
+        System.out.println("********************************** album URL SIZE after uploading" + productDto.getProductImageURLs().size());
 
         ProductDao productDao = new ProductImpl(serviceSessison);
 
@@ -105,7 +113,6 @@ public class ProductService {
 
         CategoryDao categoryDao = new CategoryImpl(serviceSessison);
 
-        System.out.println("Category + 8 = " + (8 + productDto.getCategory()));
 
         Categories category = categoryDao.getCategoryById(productDto.getCategory());
 

@@ -13,19 +13,31 @@ public class AdminProductDto {
     private Integer category;
     private String description;
     private byte[] imageBytes;
-    private List<String> prodImages = new ArrayList<>();
+    private List<String> productImageURLs = new ArrayList<>();
+
+    public List<byte[]> getProductAlbum() {
+        return productAlbum;
+    }
+
+    public void setProductAlbum(List<byte[]> productAlbum) {
+        this.productAlbum = productAlbum;
+    }
+
+    private List<byte[]> productAlbum = new ArrayList<>();
 
 
     public AdminProductDto() {
     }
 
-    public AdminProductDto(String productName, Double productPrice, Integer quantity, Integer category, String description, byte[] imageBytes) {
+    public AdminProductDto(String productName, Double productPrice, Integer quantity, Integer category, String description, byte[] imageBytes,
+                           List<byte[]> productAlbum ) {
         this.productName = productName;
         this.productPrice = productPrice;
         this.quantity = quantity;
         this.category = category;
         this.description = description;
         this.imageBytes = imageBytes;
+        this.productAlbum = productAlbum;
     }
 
     public AdminProductDto(Integer prodId, String prodName, Double prodPrice, Integer prodQuantity, String prodDesc) {
@@ -85,12 +97,12 @@ public class AdminProductDto {
         this.description = description;
     }
 
-    public List<String> getProdImages() {
-        return prodImages;
+    public List<String> getProductImageURLs() {
+        return productImageURLs;
     }
 
-    public void setProdImages(List<String> prodImages) {
-        this.prodImages = prodImages;
+    public void setProductImageURLs(List<String> productImageURLs) {
+        this.productImageURLs = productImageURLs;
     }
 
     public byte[] getImageBytes() {
@@ -119,7 +131,7 @@ public class AdminProductDto {
                 ", quantity=" + quantity +
                 ", category=" + category +
                 ", description='" + description + '\'' +
-                ", prodImages=" + prodImages +
+                ", prodImages=" + productImageURLs +
                 '}';
     }
 }

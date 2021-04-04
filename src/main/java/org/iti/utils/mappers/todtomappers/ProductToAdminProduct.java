@@ -1,7 +1,5 @@
 package org.iti.utils.mappers.todtomappers;
 
-import org.iti.db.domain.Categories;
-import org.iti.db.domain.ProdImages;
 import org.iti.db.domain.Products;
 import org.iti.dtos.AdminProductDto;
 import org.iti.utils.mappers.Mapper;
@@ -31,7 +29,7 @@ public class ProductToAdminProduct extends Mapper<AdminProductDto, Products> {
         entity.getProdImageses().forEach(prodImage -> {
             images.add(prodImage.getImageUrl());
         });
-        adminProductDto.setProdImages(images);
+        adminProductDto.setProductImageURLs(images);
 
         return adminProductDto;
     }

@@ -65,45 +65,36 @@ public class AdminDashboardController extends HttpServlet {
             String productDescription = request.getParameter("productDescription");
 
 
-            System.out.println("name =======" + productName);
-//            System.out.println("price =======" + productPrice);
-//            System.out.println("quantity =======" + productQuantity);
-//            System.out.println("category =======" + productCategory);
-//            System.out.println("descprition =======" + productDescription);
-
-
             Part filePart = request.getPart("productImageFile");
 
-            String fileName = filePart.getSubmittedFileName();
             ProductService productsService = new ProductService();
 
             byte[] imageBytes = filePart.getInputStream().readAllBytes();
 
 
             List<Part> albumParts = (List<Part>) request.getParts();
-            System.out.println("prodAlbum size =======" + albumParts.size());
 
 
-            byte[] AlbumBytes;
+
+            List<byte[]> productAlbumData = new ArrayList<>();
 
             for (int i = 0; i < albumParts.size(); i++){
-                if (albumParts.get(i).getSubmittedFileName() != null){
+                if (albumParts.get(i).getSubmittedFileName() != null && !albumParts.get(i).getSubmittedFileName().isEmpty()){
                     if(!albumParts.get(i).getName().equals("productImageFile")){
                         String fileNamePart = albumParts.get(i).getSubmittedFileName();
-                        AlbumBytes = albumParts.get(i).getInputStream().readAllBytes();
+                        productAlbumData.add(albumParts.get(i).getInputStream().readAllBytes());
                         System.out.println("prodAlbumPart name =======" + fileNamePart);
                     }
-                    String fileNamePart = albumParts.get(i).getSubmittedFileName();
-                    System.out.println("prodAlbumPart name =======" + fileNamePart);
                 }
             }
 
 
             AdminProductDto productDto = new AdminProductDto(productName,Double.valueOf(productPrice),
-                    Integer.valueOf(productQuantity),productCategory,productDescription,imageBytes);
-
+                    Integer.valueOf(productQuantity),productCategory,productDescription,imageBytes,productAlbumData);
 
           productsService.addNewProduct(productDto);
+
+          this.doGet(request,response);
 
         }
     }

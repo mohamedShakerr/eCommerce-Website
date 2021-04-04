@@ -75,7 +75,7 @@
                     <div class="form-group">
                         <label class="col-md-12">Quantity</label>
                         <div class="col-md-12">
-                            <input id="productQuantity" name="productQuantity" type="text" placeholder="50"
+                            <input id="productQuantity" name="productQuantity" type="text"
                                    class="form-control form-control-line">
                         </div>
                     </div>
@@ -99,7 +99,7 @@
                     <div class="form-group">
                         <label class="form-label col-md-12">Main Image</label>
                         <div class="col-md-12">
-                            <input  id="productImageFile" name="productImageFile" type="file" class="form-control form-control-sm">
+                            <input  id="productImageFile" name="productImageFile" type="file" accept="image/*" class="form-control form-control-sm">
                         </div>
                     </div>
 
