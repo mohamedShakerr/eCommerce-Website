@@ -193,4 +193,11 @@ public class ProductImpl implements ProductDao {
         return true;
     }
 
+    @Override
+    public void addProduct(Products product) {
+        session.beginTransaction();
+        session.save(product);
+        session.getTransaction().commit();
+    }
+
 }

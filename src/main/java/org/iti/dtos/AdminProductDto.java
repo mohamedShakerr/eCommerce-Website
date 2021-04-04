@@ -10,11 +10,23 @@ public class AdminProductDto {
     private Double productPrice;
     private String imageUrl;
     private Integer quantity;
+    private Integer category;
     private String description;
+    private byte[] imageBytes;
     private List<String> prodImages = new ArrayList<>();
 
 
-    public AdminProductDto() { }
+    public AdminProductDto() {
+    }
+
+    public AdminProductDto(String productName, Double productPrice, Integer quantity, Integer category, String description, byte[] imageBytes) {
+        this.productName = productName;
+        this.productPrice = productPrice;
+        this.quantity = quantity;
+        this.category = category;
+        this.description = description;
+        this.imageBytes = imageBytes;
+    }
 
     public AdminProductDto(Integer prodId, String prodName, Double prodPrice, Integer prodQuantity, String prodDesc) {
         productId = prodId;
@@ -65,14 +77,37 @@ public class AdminProductDto {
         this.imageUrl = imageUrl;
     }
 
-    public String getDescription() { return description; }
+    public String getDescription() {
+        return description;
+    }
 
-    public void setDescription(String description) { this.description = description; }
+    public void setDescription(String description) {
+        this.description = description;
+    }
 
-    public List<String> getProdImages() { return prodImages; }
+    public List<String> getProdImages() {
+        return prodImages;
+    }
 
-    public void setProdImages(List<String> prodImages) { this.prodImages = prodImages; }
+    public void setProdImages(List<String> prodImages) {
+        this.prodImages = prodImages;
+    }
 
+    public byte[] getImageBytes() {
+        return imageBytes;
+    }
+
+    public void setImageBytes(byte[] imageBytes) {
+        this.imageBytes = imageBytes;
+    }
+
+    public Integer getCategory() {
+        return category;
+    }
+
+    public void setCategory(Integer category) {
+        this.category = category;
+    }
 
     @Override
     public String toString() {
@@ -82,6 +117,7 @@ public class AdminProductDto {
                 ", productPrice=" + productPrice +
                 ", imageUrl='" + imageUrl + '\'' +
                 ", quantity=" + quantity +
+                ", category=" + category +
                 ", description='" + description + '\'' +
                 ", prodImages=" + prodImages +
                 '}';

@@ -42,4 +42,6 @@ public interface ProductDao {
     Products updateProduct(Products product);
 
     boolean deleteProductById(Integer productId);
+
+    void addProduct(Products product);
 }

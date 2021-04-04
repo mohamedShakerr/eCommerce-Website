@@ -86,14 +86,14 @@
                         <label class="col-sm-12">Category</label>
                         <div  class="col-sm-12">
                             <select id="categorySelector" name="categorySelector" class="form-select shadow-none form-control-line">
-                                <option value="cables">Cables</option>
-                                <option value="cards">Cards</option>
-                                <option value="consoles">Consoles</option>
-                                <option value="games">Games</option>
-                                <option value="headsets">Headsets</option>
-                                <option value="joysticks">Joysticks</option>
-                                <option value="thubsticks">Thubsticks</option>
-                                <option value="vr">VR</option>
+                                <option value="1">Consoles</option>
+                                <option value="2">Games</option>
+                                <option value="3">Joysticks</option>
+                                <option value="4">VR</option>
+                                <option value="5">Headsets</option>
+                                <option value="6">Cables</option>
+                                <option value="7">Thubsticks</option>
+                                <option value="8">Cards</option>
                             </select>
                         </div>
                     </div>

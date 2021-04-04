@@ -14,4 +14,6 @@ public interface CategoryDao {
     boolean isCategoryExist(Integer categoryId);
 
     void addCategory(Categories addedCat);
+
+    Categories getCategoryById(Integer categoryId);
 }

@@ -13,16 +13,16 @@ import java.util.Set;
 public class CategoryImpl implements CategoryDao {
 
     Session session = null;
-    public  CategoryImpl(Session session){
+
+    public CategoryImpl(Session session) {
         this.session = session;
     }
 
     @Override
     public List<Categories> getAllCategories() {
         Query q = session.createQuery("from categories", Categories.class);
-        return  q.getResultList();
+        return q.getResultList();
     }
-
 
 
     @Override
@@ -41,10 +41,10 @@ public class CategoryImpl implements CategoryDao {
     @Override
     public boolean isCategoryExist(Integer categoryId) {
         session.beginTransaction();
-        Categories categories = session.find(Categories.class,categoryId);
+        Categories categories = session.find(Categories.class, categoryId);
         session.getTransaction().commit();
-        if(categories == null) return  false;
-        else return  true;
+        if (categories == null) return false;
+        else return true;
     }
 
     @Override
@@ -53,5 +53,11 @@ public class CategoryImpl implements CategoryDao {
         session.persist(addedCat);
         session.getTransaction().commit();
 
+    }
+
+    @Override
+    public Categories getCategoryById(Integer categoryId) {
+
+        return session.find(Categories.class, categoryId);
     }
 }

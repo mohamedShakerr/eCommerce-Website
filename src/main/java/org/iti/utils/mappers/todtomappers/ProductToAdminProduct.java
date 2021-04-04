@@ -1,5 +1,6 @@
 package org.iti.utils.mappers.todtomappers;
 
+import org.iti.db.domain.Categories;
 import org.iti.db.domain.ProdImages;
 import org.iti.db.domain.Products;
 import org.iti.dtos.AdminProductDto;
@@ -27,9 +28,9 @@ public class ProductToAdminProduct extends Mapper<AdminProductDto, Products> {
 
         images.add(entity.getImg());
 
-        entity.getProdImageses().forEach(prodImage ->{
+        entity.getProdImageses().forEach(prodImage -> {
             images.add(prodImage.getImageUrl());
-        } );
+        });
         adminProductDto.setProdImages(images);
 
         return adminProductDto;
@@ -40,18 +41,18 @@ public class ProductToAdminProduct extends Mapper<AdminProductDto, Products> {
 
         Products product = new Products();
 
-        product.setProdId(productDto.getProductId());
         product.setName(productDto.getProductName());
         product.setPrice(productDto.getProductPrice());
         product.setImg(productDto.getImageUrl());
         product.setQuantity(productDto.getQuantity());
+
         product.setDescription(productDto.getDescription());
 
-//        product.getProdImageses().add(new ProdImages(product, productDto.getImageUrl()));
+     //     product.getProdImageses().add(new ProdImages(product, productDto.getImageUrl()));
 
-        productDto.getProdImages().forEach(prodImage ->{
+   /*     productDto.getProdImages().forEach(prodImage ->{
             product.getProdImageses().add(new ProdImages(product, prodImage));
-        } );
+        } );*/
 
         return product;
     }
