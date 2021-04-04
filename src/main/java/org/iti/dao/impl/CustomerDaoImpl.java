@@ -5,6 +5,7 @@ import org.hibernate.query.Query;
 import org.iti.dao.interfaces.CustomerDao;
 import org.iti.db.DBSessionProvider;
 import org.iti.db.domain.Customers;
+import org.iti.domain.Customer;
 import org.iti.dtos.CustomerDto;
 
 import java.util.List;
@@ -139,6 +140,16 @@ public class CustomerDaoImpl implements CustomerDao {
         hibernateSession.getTransaction().commit();
 
         hibernateSession.close();
+    }
+
+    @Override
+    public Customers getCustomerById(int userId) {
+        Session hibernateSession = dbSessionProvider.getSession();
+
+        Customers customer = hibernateSession.find(Customers.class, userId);
+
+        hibernateSession.close();
+        return  customer;
     }
 
 

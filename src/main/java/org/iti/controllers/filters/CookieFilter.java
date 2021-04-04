@@ -30,7 +30,6 @@ public class CookieFilter implements Filter {
 
         if (cookies != null) {
 
-            System.out.println("cookie is enabled");
 
             chain.doFilter(request, response);
 

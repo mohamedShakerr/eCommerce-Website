@@ -24,9 +24,14 @@ public class LogoutController extends HttpServlet {
 
         session.invalidate();
 
-        Cookie emailCookieRemove = new Cookie("email", "");
-        emailCookieRemove.setMaxAge(-1);
-        response.addCookie(emailCookieRemove);
+        Cookie uidCookieRemove = new Cookie("UID", "");
+        Cookie tokenCookieRemove = new Cookie("TOKEN", "");
+
+        uidCookieRemove.setMaxAge(-1);
+        tokenCookieRemove.setMaxAge(-1);
+
+        response.addCookie(uidCookieRemove);
+        response.addCookie(tokenCookieRemove);
 
         response.sendRedirect(request.getContextPath());
 

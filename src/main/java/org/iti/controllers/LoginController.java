@@ -25,17 +25,21 @@ public class LoginController extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         // check cookie email
-        boolean isUIDCookieExist = cookiesManager.isCookieExists(request, "UID");
-        boolean isTokenCookieExist = cookiesManager.isCookieExists(request, "token");
+//        boolean isUIDCookieExist = cookiesManager.isCookieExists(request, "UID");
+//        boolean isTokenCookieExist = cookiesManager.isCookieExists(request, "token");
 
+//
+//
+//        if(cookiesManager.isCookieExists(request, "email")) {
+//
+//            response.sendRedirect(request.getContextPath());
+//        } else {
+//            response.sendRedirect("login.jsp");
+//        }
 
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("login.jsp");
+        requestDispatcher.forward(request, response);
 
-        if(cookiesManager.isCookieExists(request, "email")) {
-
-            response.sendRedirect(request.getContextPath());
-        } else {
-            response.sendRedirect("login.jsp");
-        }
 
     }
 
@@ -69,18 +73,21 @@ public class LoginController extends HttpServlet {
 
                 //IF remember me is enabled create the token
                 String randomString = UUIDProvider.getUUID();
-                String userToken = userId+DigestUtils.sha256Hex(randomString);
+                String userToken = DigestUtils.sha256Hex(randomString);
                 System.out.println("USER TOKEN"+userToken);
 
                 //Save that token in DB, For Future comparison
                 loginService.saveToken(userToken,userId);
 
                 cookiesManager.addCookie(response, "UID", ""+userId);
-                cookiesManager.addCookie(response, "token", userToken);
+                cookiesManager.addCookie(response, "TOKEN", userToken);
 
                 session.setAttribute("rememberMe", true);
-            }
+                session.setAttribute("TOKEN", userToken);
+            }else {
 
+                session.setAttribute("rememberMe", false);
+            }
             response.sendRedirect(request.getContextPath());
         }
         else {
