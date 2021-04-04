@@ -29,12 +29,10 @@
     <link href="admin_assets/css/style.min.css" rel="stylesheet">
 
     <!-- M-Img-Picker JS -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css"
-          integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
     <!-- JQuery -->
     <script src="admin_assets/js/jquery.min.js"></script>
-    <script type="text/javascript"
-            src="spartan-multi-image-picker-master/dist/js/spartan-multi-image-picker-min.js"></script>
+    <script type="text/javascript" src="admin_assets/m-Img-Picker/js/spartan-multi-image-picker-min.js"></script>
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -108,17 +106,17 @@
                     <div class="form-group">
                         <label class="col-md-12">Description</label>
                         <div class="col-md-12">
-                            <textarea id="productDescription" name="productDescription" rows="5" class="form-control" style="resize: none">
+                            <textarea id="productDescription" name="productDescription" rows="5" class="form-control form-control-line" style="resize: none">
                             </textarea>
                         </div>
                     </div>
 
-                    <%--                    <div class="form-group">--%>
-                    <%--                        <label class="form-label col-md-12">Albums</label>--%>
-                    <%--                        <div class="col-md-12" >--%>
-                    <%--                            <div id="coba"></div>--%>
-                    <%--                        </div>--%>
-                    <%--                    </div>--%>
+                    <div class="form-group row">
+                        <label class="form-label col-md-12">Albums</label>
+                        <div class="col-md-12" >
+                            <div id="coba" class="row"></div>
+                        </div>
+                    </div>
 
                     <div class="modal-footer" style="background-color: #5c636a">
                         <button type="button" class="btn btn-danger" style="color: white" data-dismiss="modal">Cancel</button>
@@ -406,22 +404,31 @@
             }
         </script>
 
-        <%--        Img Picker--%>
+        <%-- ==== Img Picker ==== --%>
         <script>
-
+            var imgIcon = "https://www.google.com/url?sa=i&url=https%3A%2F%2Ftoppng.com%2Ffile-upload-image-icon-PNG-free-PNG-Images_223100&psig=AOvVaw39eu6kmuPWUUbh7IYfCH15&ust=1617649445842000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCLCVvfqj5e8CFQAAAAAdAAAAABAO";
             $("#coba").spartanMultiImagePicker({
                 fieldName: 'fileUpload[]',
                 maxCount: 4,
+                loaderIcon: '<i class="fas fa-sync fa-spin"></i>',
                 rowHeight: '100px',
-                groupClassName: 'col-md-2 col-sm-2 col-xs-3',
-                allowedExt: 'png|jpg',
+                groupClassName: 'col-md-3 col-sm-3 col-xs-4',
+                allowedExt: 'png|jpg|jpeg',
+                maxFileSize: '2000000',
                 dropFileLabel: "Drop Here",
                 placeholderImage: {
-                    image: 'https://www.flaticon.com/svg/vstatic/svg/1829/1829552.svg?token=exp=1617477003~hmac=2a1cfaf1227002a902b28c1ae486afb2',
+                    image: "",
                     width: '100%'
                 },
+                onExtensionErr : function(index, file){
+                    console.log(index, file);
+                    alert('Please only input png or jpg type file');
+                },
+                onSizeErr : function(index, file){
+                    console.log(index, file);
+                    alert('File size too big');
+                }
             });
-
         </script>
 
         <!-- ============================================================== -->
