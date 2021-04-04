@@ -27,6 +27,8 @@ public class AdminCustomersController extends HttpServlet{
 		CustomerService customerService = new CustomerService();
 		List<CustomerDto> customersList = customerService.getAllCustomers();
 
+		customerService.terminateService();
+
 		request.setAttribute("customersList", customersList);
 
 		rd.forward(request,response);

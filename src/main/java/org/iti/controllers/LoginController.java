@@ -28,7 +28,6 @@ public class LoginController extends HttpServlet {
         } else {
             response.sendRedirect("login.jsp");
         }
-
     }
 
     @Override

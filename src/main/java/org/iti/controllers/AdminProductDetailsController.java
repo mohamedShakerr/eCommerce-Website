@@ -69,6 +69,8 @@ public class AdminProductDetailsController extends HttpServlet{
 
 		System.out.println("updated prod : " + updatedProduct);
 
+		productService.terminateService();
+
 		PrintWriter out = response.getWriter();
 		out.print(updatedProduct);
 

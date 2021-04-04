@@ -94,6 +94,9 @@ public class AdminDashboardController extends HttpServlet {
 
           productsService.addNewProduct(productDto);
 
+          productsService.terminateService();
+
+
           this.doGet(request,response);
 
         }

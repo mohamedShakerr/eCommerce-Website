@@ -128,20 +128,13 @@
                 <!-- ============================================================== -->
                 <!-- toggle and nav items -->
                 <!-- ============================================================== -->
+                <!-- Right side toggle and nav items -->
                 <ul class="navbar-nav float-start me-auto">
                     <!-- ============================================================== -->
                     <!-- Search -->
                     <!-- ============================================================== -->
-                    <li class="nav-item search-box"> <a class="nav-link waves-effect waves-dark"
-                                                        href="javascript:void(0)"><i class="ti-search"></i></a>
-                        <form class="app-search position-absolute">
-                            <input type="text" class="form-control" placeholder="Search"> <a
-                                class="srh-btn"><i class="ti-close"></i></a>
-                        </form>
-                    </li>
+
                 </ul>
-                <!-- ============================================================== -->
-                <!-- Right side toggle and nav items -->
                 <!-- ============================================================== -->
                 <ul class="navbar-nav float-end">
                     <!-- ============================================================== -->
@@ -177,13 +170,6 @@
             <!-- Sidebar navigation-->
             <nav class="sidebar-nav">
                 <ul id="sidebarnav">
-                    <li class="p-15 m-t-10" >
-                        <button type="button" class="btn d-block w-100 create-btn text-white no-block d-flex align-items-center" data-toggle="modal" data-target="#exampleModal" data-whatever="@geeksforgeeks">
-                            <i class="fa fa-plus-square"></i>
-                            <span class="hide-menu m-l-5">Add New Product</span>
-                        </button>
-
-                    </li>
                     <!-- User Profile-->
                     <li class="sidebar-item">
                         <a class="sidebar-link waves-effect waves-dark sidebar-link"

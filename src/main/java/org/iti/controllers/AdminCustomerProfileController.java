@@ -29,6 +29,8 @@ public class AdminCustomerProfileController extends HttpServlet{
 		CustomerService customerService = new CustomerService();
 		CustomerDto customer = customerService.getCustomerByUserEmail(customerEmail);
 
+		customerService.terminateService();
+
 		if(customerEmail != null){
 			request.setAttribute("myCustomer", customer);
 		}

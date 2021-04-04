@@ -187,13 +187,7 @@
                     <!-- ============================================================== -->
                     <!-- Search -->
                     <!-- ============================================================== -->
-                    <li class="nav-item search-box"><a class="nav-link waves-effect waves-dark"
-                                                       href="javascript:void(0)"><i class="ti-search"></i></a>
-                        <form class="app-search position-absolute">
-                            <input type="text" id="searchInput" class="form-control" placeholder="Search"> <a
-                                class="srh-btn"><i class="ti-close"></i></a>
-                        </form>
-                    </li>
+
                 </ul>
                 <!-- ============================================================== -->
                 <!-- Right side toggle and nav items -->
@@ -284,6 +278,15 @@
                                 <%--                                    <i class="fa fa-product-hunt"></i>--%>
                             </h4>
                         </div>
+                        <div class="search-box">
+                            <a class="waves-effect waves-dark" href="javascript:void(0)" >&nbsp; &nbsp;
+                                <i class="ti-search" style="color: black"></i>
+                            </a>
+                            <form class="app-search position-absolute">
+                                <input type="text" id="searchInp" class="form-control" placeholder="Search">
+                                <a class="srh-btn"><i class="ti-close"></i></a>
+                            </form>
+                        </div><br>
                         <div class="table-responsive">
                             <table class="table v-middle table-striped table-hover" id="myTable" onkeyup="myFunction()">
                                 <thead class="table-dark text-light">
@@ -367,24 +370,6 @@
 
 
         <script>
-            function myFunction() {
-                var input, filter, table, tr, td, i, txtValue;
-                input = document.getElementById("searchInput");
-                filter = input.value.toUpperCase();
-                table = document.getElementById("myTable");
-                tr = table.getElementsByTagName("tr");
-                for (i = 0; i < tr.length; i++) {
-                    td = tr[i].getElementsByTagName("td")[0];
-                    if (td) {
-                        txtValue = td.textContent || td.innerText;
-                        if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                            tr[i].style.display = "";
-                        } else {
-                            tr[i].style.display = "none";
-                        }
-                    }
-                }
-            }
 
             function onDeleteProduct(productId) {
 
@@ -429,6 +414,18 @@
                     alert('File size too big');
                 }
             });
+
+            <%--  ================== Table Search ================== --%>
+            $(document).ready(function() {
+                $("#searchInp").on("keyup", function() {
+                    var value = $(this).val().toLowerCase();
+                    $("#myTable tr").filter(function() {
+                        $(this).toggle($(this).text()
+                            .toLowerCase().indexOf(value) > -1)
+                    });
+                });
+            });
+
         </script>
 
         <!-- ============================================================== -->
