@@ -3,6 +3,7 @@ package org.iti.dao.impl;
 import org.hibernate.Session;
 import org.iti.dao.interfaces.ProductDao;
 import org.iti.db.domain.Categories;
+import org.iti.db.domain.ProdImages;
 import org.iti.db.domain.Products;
 
 import javax.persistence.Query;
@@ -196,6 +197,9 @@ public class ProductImpl implements ProductDao {
     @Override
     public void addProduct(Products product) {
         session.beginTransaction();
+
+        for(ProdImages img : product.getProdImageses())
+            session.persist(img);
         session.save(product);
         session.getTransaction().commit();
     }

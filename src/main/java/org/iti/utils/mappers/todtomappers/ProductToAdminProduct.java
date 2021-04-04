@@ -1,5 +1,6 @@
 package org.iti.utils.mappers.todtomappers;
 
+import org.iti.db.domain.ProdImages;
 import org.iti.db.domain.Products;
 import org.iti.dtos.AdminProductDto;
 import org.iti.utils.mappers.Mapper;
@@ -46,12 +47,13 @@ public class ProductToAdminProduct extends Mapper<AdminProductDto, Products> {
 
         product.setDescription(productDto.getDescription());
 
-     //     product.getProdImageses().add(new ProdImages(product, productDto.getImageUrl()));
 
-   /*     productDto.getProdImages().forEach(prodImage ->{
+        productDto.getProductImageURLs().forEach(prodImage ->{
             product.getProdImageses().add(new ProdImages(product, prodImage));
-        } );*/
+        } );
 
+        System.out.println("################################### inside product to admin product" +
+                ""+product.getProdImageses().size());
         return product;
     }
 }
