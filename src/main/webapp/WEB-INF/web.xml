@@ -237,6 +237,10 @@ metadata-complete= "false">
         <error-code>404</error-code>
         <location>/404Err.jsp</location>
     </error-page>
+    <error-page>
+        <error-code>500</error-code>
+        <location>/500Err.jsp</location>
+    </error-page>
 <!--=== ERROR PAGES END=====================================-->
 
     <resource-ref>
