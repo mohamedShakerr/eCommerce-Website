@@ -7,6 +7,7 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import org.iti.db.domain.CartItems;
 import org.iti.services.CheckoutCreditService;
 import org.iti.services.CheckoutService;
@@ -20,11 +21,12 @@ public class CheckoutServlet extends HttpServlet {
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         CheckoutService checkoutService=CheckoutService.getInstance();
-        //Hard CODE
-        List<CartItems> cartItemsList= checkoutService.getCartItems(1);
+        HttpSession session=request.getSession();
+        int id=(int)session.getAttribute("userId");
+        List<CartItems> cartItemsList= checkoutService.getCartItems(id);
 
         request.setAttribute("cartItemsList",cartItemsList);
-        request.setAttribute("subtotal",checkoutService.getSubTotal(1));
+        request.setAttribute("subtotal",checkoutService.getSubTotal(id));
         RequestDispatcher rd =request.getRequestDispatcher("/checkout.jsp");
 
         rd.forward(request, response);
@@ -34,35 +36,36 @@ public class CheckoutServlet extends HttpServlet {
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String paymentMethod=request.getParameter("paymentMethod");
         CheckoutService checkoutService=CheckoutService.getInstance();
-        //Hard CODE
-        List<CartItems> cartItemsList= checkoutService.getCartItems(1);
+        HttpSession session=request.getSession();
+        int id=(int)session.getAttribute("userId");
+        List<CartItems> cartItemsList= checkoutService.getCartItems(id);
         if(paymentMethod.equals("credit")){
             String address=request.getParameter("address");
             String country=request.getParameter("country");
             String state=request.getParameter("state");
             String ziPcode=request.getParameter("zipcode");
             CheckoutCreditService checkoutCreditService=CheckoutCreditService.getInstance();
-            //hard codexxxxxxxxxxx
+
 
             //check credit limit
             if(address.equals("")||country.equals("")||state.equals("")||ziPcode.equals("")||
-                    (!checkoutCreditService.checkCreditLimit(1,checkoutService.getSubTotal(1)+20))){
+                    (!checkoutCreditService.checkCreditLimit(id,checkoutService.getSubTotal(id)+20))){
                 return;
             }
             request.setAttribute("countryBilling",country);
             request.setAttribute("stateBilling",state);
             request.setAttribute("zipcodeBilling",ziPcode);
             request.setAttribute("addressBilling",address);
-            //hardCodexxxxxx
-            request.setAttribute("subtotal",checkoutService.getSubTotal(1));
+
+            request.setAttribute("subtotal",checkoutService.getSubTotal(id));
 
             request.getRequestDispatcher("reviewCredit.jsp").forward(request, response);
 
         }else if(paymentMethod.equals("paypal")){
             try {
                 PaymentServices paymentServices = new PaymentServices();
-                //hard code   xxxxxx
-                String approvalLink = paymentServices.authorizePayment(cartItemsList,checkoutService.getSubTotal(1));
+                String contextPath=request.getContextPath();
+                String approvalLink = paymentServices.authorizePayment(cartItemsList,checkoutService.getSubTotal(id),contextPath);
 
                 response.sendRedirect(approvalLink);
 

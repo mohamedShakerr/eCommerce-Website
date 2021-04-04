@@ -1,5 +1,6 @@
 package org.iti.services;
 
+import jakarta.servlet.http.HttpSession;
 import org.hibernate.Session;
 import org.iti.dao.impl.CustomerDaoImpl;
 import org.iti.dao.impl.ProductImpl;
@@ -46,9 +47,10 @@ public class CheckoutCreditService {
         return false;
     }
 
-    public void decreaseCreditCard(double decreasedAmount){
+    public void decreaseCreditCard(double decreasedAmount,int id){
         CustomerDao customerDao=new CustomerDaoImpl();
-        customerDao.addMoneyToCredit(1,decreasedAmount);
+
+        customerDao.addMoneyToCredit(id,decreasedAmount);
     }
 
     public void saveOrders(List<CartItems> cartItemsList ){

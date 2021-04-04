@@ -16,8 +16,8 @@ public class CreditCardServlet extends HttpServlet{
 		    CustomerServices customerServices=new CustomerServices();
 			HttpSession session = request.getSession();
 			CustomerDto customerDto=(CustomerDto) session.getAttribute("customerDto");
-			/******xxxxxxxxxxxxxxx***********/
-			int id=1;
+
+		    int id=(int)session.getAttribute("userId");
 		    double totalMoney=customerServices.addMoneyToCredit(id,moneyAdded);
 			customerDto.setCredit(totalMoney);
 		

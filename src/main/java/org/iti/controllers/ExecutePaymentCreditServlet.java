@@ -9,6 +9,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import org.iti.dao.impl.CartImpl;
 import org.iti.dao.interfaces.CartDao;
 import org.iti.db.domain.CartItems;
@@ -27,19 +28,21 @@ public class ExecutePaymentCreditServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         //decrease credit limit
+        HttpSession session=request.getSession();
+        int id=(int)session.getAttribute("userId");
         CheckoutService checkoutService=CheckoutService.getInstance();
-        double subTotal=checkoutService.getSubTotal(1);
+        double subTotal=checkoutService.getSubTotal(id);
         CheckoutCreditService checkoutCreditService=CheckoutCreditService.getInstance();
-        if(!checkoutCreditService.checkCreditLimit(1,subTotal+20)){
+        if(!checkoutCreditService.checkCreditLimit(id,subTotal+20)){
             return;
         }
-        checkoutCreditService.decreaseCreditCard(subTotal+20);
+        checkoutCreditService.decreaseCreditCard(subTotal+20,id);
         //populate order table
-        List<CartItems> cartItemsList=checkoutService.getCartItems(1);
+        List<CartItems> cartItemsList=checkoutService.getCartItems(id);
         checkoutCreditService.saveOrders(cartItemsList);
         //delete cart
         CartDao cartDao=new CartImpl();
-        cartDao.deleteCart(1);
+        cartDao.deleteCart(id);
 
         //decrease product quantity
         checkoutCreditService.decreaseProductQuantity(cartItemsList);

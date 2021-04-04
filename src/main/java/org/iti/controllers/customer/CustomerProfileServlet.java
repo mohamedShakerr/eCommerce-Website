@@ -17,9 +17,9 @@ public class CustomerProfileServlet extends HttpServlet{
 //		String idStr=request.getParameter("userid");
 
 		HttpSession session = request.getSession();
-//		int id = (int)session.getAttribute("userId");
+		int id = (int)session.getAttribute("userId");
 
-		int id = 1;
+
 
 		CustomerServices customerServices=new CustomerServices();
 		CustomerDto customerDto=customerServices.showCustomerProfile(id);

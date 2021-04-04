@@ -14,10 +14,11 @@ public class PaymentServices {
     private static final String CLIENT_SECRET = "EJP4m7mC0Lp0z97Lti-Lm1hUjxzeDRRlMJKQVVW97txNanqtKqDwmAvLo025wOlDnuMp1wTo5H9kJM1P";
     private static final String MODE = "sandbox";
 
-    public String authorizePayment(List<CartItems> orderDetail,double subTotal) throws PayPalRESTException {
+
+    public String authorizePayment(List<CartItems> orderDetail,double subTotal,String contextPath) throws PayPalRESTException {
 
         Payer payer = getPayerInformation();
-        RedirectUrls redirectUrls = getRedirectURLs();
+        RedirectUrls redirectUrls = getRedirectURLs(contextPath);
         List<Transaction> listTransaction = getTransactionInformation(orderDetail,subTotal);
 
         Payment requestPayment = new Payment();
@@ -48,10 +49,10 @@ public class PaymentServices {
         return payer;
     }
 
-    private RedirectUrls getRedirectURLs() {
+    private RedirectUrls getRedirectURLs(String contextPath) {
         RedirectUrls redirectUrls = new RedirectUrls();
-        redirectUrls.setCancelUrl("http://localhost:9191/eCommerceWebsite/cancel.html");
-        redirectUrls.setReturnUrl("http://localhost:9191/eCommerceWebsite/review_payment");
+        redirectUrls.setCancelUrl("http://localhost:9191/"+contextPath+"/cancel.html");
+        redirectUrls.setReturnUrl("http://localhost:9191/"+contextPath+"/review_payment");
 
         return redirectUrls;
     }
@@ -69,7 +70,7 @@ public class PaymentServices {
 
         Transaction transaction = new Transaction();
         transaction.setAmount(amount);
-//        transaction.setDescription("XXXXXXXXXXXXXDEscription");
+
 
         ItemList itemList = new ItemList();
         List<Item> items = new ArrayList<>();

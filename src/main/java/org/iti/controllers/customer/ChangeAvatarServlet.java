@@ -28,8 +28,9 @@ public class ChangeAvatarServlet extends HttpServlet {
         CustomerDto customerDto=(CustomerDto)session.getAttribute("customerDto");
         customerDto.setUrl(url);
         CustomerDao customerDao=new CustomerDaoImpl();
-        /*********Hard Code***************/
-        customerDao.updateCustomerAvatar(1,url);
+
+        int id=(int)session.getAttribute("userId");
+        customerDao.updateCustomerAvatar(id,url);
 
         response.getWriter().print("{\"message\":\""+url+"\"}");
     }

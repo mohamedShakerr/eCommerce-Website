@@ -21,10 +21,10 @@ public class EditProfileServlet extends HttpServlet {
         String phone=request.getParameter("phone");
         String address=request.getParameter("address");
         CustomerServices customerServices=new CustomerServices();
-        /**********XXXXXXXXXXXXXXXXXXXXXXXXX*************/
-        int id=1;
-        if(customerServices.updateCustomer(1,name,email,password,phone,address)){
-            HttpSession session = request.getSession();
+        HttpSession session=request.getSession();
+        int id=(int)session.getAttribute("userId");
+        if(customerServices.updateCustomer(id,name,email,password,phone,address)){
+
             CustomerDto customerDto=(CustomerDto) session.getAttribute("customerDto");
             customerDto.setPassword(password);
             customerDto.setPhone(phone);

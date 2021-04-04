@@ -10,6 +10,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import org.iti.dao.impl.CartImpl;
 import org.iti.dao.interfaces.CartDao;
 import org.iti.db.domain.CartItems;
@@ -38,12 +39,14 @@ public class ExecutePaymentServlet extends HttpServlet {
 
             CheckoutCreditService checkoutCreditService=CheckoutCreditService.getInstance();
             CartDao cartDao=new CartImpl();
-            List<CartItems> cartItemsList=cartDao.getCartByUserId(1);
+            HttpSession session=request.getSession();
+            int id=(int)session.getAttribute("userId");
+            List<CartItems> cartItemsList=cartDao.getCartByUserId(id);
             checkoutCreditService.decreaseProductQuantity(cartItemsList);
             checkoutCreditService.saveOrders(cartItemsList);
             //delete cart
 
-            cartDao.deleteCart(1);
+            cartDao.deleteCart(id);
 
             request.setAttribute("payer", payerInfo);
             request.setAttribute("transaction", transaction);
