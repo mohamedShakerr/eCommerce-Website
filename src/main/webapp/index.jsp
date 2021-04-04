@@ -23,6 +23,11 @@
     <!--====== Material Design Icons CSS ======-->
     <link rel="stylesheet" href="./assets/css/materialdesignicons.min.css">
 
+    <!--====== FONT Awesome Icons CSS ======-->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+          integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+          crossorigin="anonymous" />
     <!--====== Bootstrap CSS ======-->
     <link rel="stylesheet" href="./assets/css/bootstrap-5.0.0-beta1.min.css">
 
@@ -50,24 +55,6 @@
 
 <body>
 
-<!--====== PRELOADER PART START ======-->
-<div class="preloader">
-    <div class="loader">
-        <div class="spinner">
-            <div class="spinner-container">
-                <div class="spinner-rotator">
-                    <div class="spinner-left">
-                        <div class="spinner-circle"></div>
-                    </div>
-                    <div class="spinner-right">
-                        <div class="spinner-circle"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!--====== PRELOADER PART ENDS ======-->
 
 
 <!--====== Navbar Style 11 Part Start ======-->
@@ -75,412 +62,54 @@
 <c:set var="cart" value="${requestScope.cartItems}" scope="request"/>
 <c:set var="oculus" value="${requestScope.featuredOculus}" scope="request"/>
 
-<section class="navigation">
-    <!--====== Navbar Style 11 Part Start ======-->
+<!--======================== Navbar  Starts ====================================-->
+<c:set var="userId" value="${sessionScope.userId}" scope="session"/>
+<jsp:include page="navbar.jsp"/>
+<!--======================== Navbar  Ends ====================================-->
 
-    <header class="menu-style-11 position-relative">
-
-        <!-- main navbar Start -->
-        <nav class="nav-navbar">
-            <div class="container">
-                <div class="row align-items-center">
-                    <div class="col-lg-4 col-3">
-                        <!-- navbar cart start -->
-                        <div class="navbar-toggle icon-text-btn d-lg-none">
-                            <a class="icon-btn primary-icon-text mobile-menu-open-11" href="javascript:void(0)"><i
-                                    class="mdi mdi-menu"></i></a>
-                        </div>
-                        <!-- navbar cart Ends -->
-
-                        <div class="navbar-container navbar-sidebar-11">
-                            <!-- navbar close  Ends -->
-                            <div class="navbar-close d-lg-none">
-                                <a class="close-mobile-menu-11" href="javascript:void(0)"><i
-                                        class="mdi mdi-close"></i></a>
-                            </div>
-                            <!-- navbar close  Ends -->
-
-                            <!-- navbar wrapper Start -->
-                            <div class="navbar-wrapper d-lg-flex flex-wrap">
-                                <!-- navbar Menu start -->
-                                <nav class="main-navbar">
-                                    <div class="navbar-menu">
-
-                                        <div class="navbar-menu-toggle d-none d-lg-block">
-                                            <button id="toggle-menu-11" class="menu-toggle collapsed"
-                                                    data-bs-toggle="collapse" data-bs-target="#menuVertical11-1"
-                                                    aria-controls="menuVertical11-1" aria-expanded="false"
-                                                    aria-label="Toggle navigation">
-                                                <span class="toggle-icon"></span>
-                                                <span class="toggle-icon"></span>
-                                                <span class="toggle-icon"></span>
-                                            </button>
-                                        </div>
-
-                                        <ul class="main-menu menu-vertical-11 collapse" id="menuVertical11-1">
-                                            <li class="menu-item-has-children">
-                                                <a href="#0" class="collapsed" data-bs-toggle="collapse"
-                                                   data-bs-target="#menuVertical11-2"
-                                                   aria-controls="menuVertical11-2" aria-expanded="false"
-                                                   aria-label="Toggle navigation">Arts & Crafts <i
-                                                        class="mdi mdi-chevron-right"></i></a>
-
-                                                <!-- sub mega dropdown Start -->
-                                                <ul class="sub-mega-dropdown collapse" id="menuVertical11-2">
-                                                    <li>
-                                                        <div class="mega-dropdown-menu">
-                                                            <ul class="container mega-dropdown d-flex flex-wrap">
-                                                                <li
-                                                                        class="mega-dropdown-list menu-item-has-children">
-                                                                    <h6 class="heading-6 font-weight-500 mega-title collapsed"
-                                                                        data-bs-toggle="collapse"
-                                                                        data-bs-target="#menuVertical11-3"
-                                                                        aria-controls="menuVertical11-3"
-                                                                        aria-expanded="false"
-                                                                        aria-label="Toggle navigation">
-                                                                        New Arrivals
-                                                                        <i class="mdi mdi-chevron-right"></i>
-                                                                    </h6>
-                                                                    <ul class="collapse" id="menuVertical11-3">
-                                                                        <li><a href="#0">Dressess</a></li>
-                                                                        <li><a href="#0">Jackets</a></li>
-                                                                        <li><a href="#0">Hoodies & Sweatshirts</a>
-                                                                        </li>
-                                                                        <li><a href="#0">Sweaters</a></li>
-                                                                        <li><a href="#0">Tops & Tees</a></li>
-                                                                        <li><a href="#0">Party Dressess</a></li>
-                                                                    </ul>
-                                                                </li>
-                                                                <li
-                                                                        class="mega-dropdown-list menu-item-has-children">
-                                                                    <h6 class="heading-6 font-weight-500 mega-title collapsed"
-                                                                        data-bs-toggle="collapse"
-                                                                        data-bs-target="#menuVertical11-4"
-                                                                        aria-controls="menuVertical11-4"
-                                                                        aria-expanded="false"
-                                                                        aria-label="Toggle navigation">
-                                                                        Trending
-                                                                        <i class="mdi mdi-chevron-right"></i>
-                                                                    </h6>
-                                                                    <ul class="collapse" id="menuVertical11-4">
-                                                                        <li><a href="#0">Dressess</a></li>
-                                                                        <li><a href="#0">Jackets</a></li>
-                                                                        <li><a href="#0">Hoodies & Sweatshirts</a>
-                                                                        </li>
-                                                                        <li><a href="#0">Sweaters</a></li>
-                                                                        <li><a href="#0">Tops & Tees</a></li>
-                                                                        <li><a href="#0">Party Dressess</a></li>
-                                                                    </ul>
-                                                                </li>
-                                                                <li class="mega-dropdown-list">
-                                                                    <div class="d-md-flex d-lg-block">
-                                                                        <div class="menu-image">
-                                                                            <img src="assets/images/menu-1.jpg"
-                                                                                 alt="">
-                                                                        </div>
-                                                                        <div class="menu-image">
-                                                                            <img src="assets/images/menu-2.jpg"
-                                                                                 alt="">
-                                                                        </div>
-                                                                    </div>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                    </li>
-                                                </ul>
-                                                <!-- sub mega dropdown Ends -->
-                                            </li>
-                                            <li class="menu-item-has-children">
-                                                <a href="#0" class="collapsed" data-bs-toggle="collapse"
-                                                   data-bs-target="#menuVertical11-5"
-                                                   aria-controls="menuVertical11-5" aria-expanded="false"
-                                                   aria-label="Toggle navigation">Fashion <i
-                                                        class="mdi mdi-chevron-right"></i></a>
-
-                                                <!-- sub mega dropdown Start -->
-                                                <ul class="sub-mega-dropdown collapse" id="menuVertical11-5">
-                                                    <li>
-                                                        <div class="mega-dropdown-menu">
-                                                            <ul class="container mega-dropdown d-flex flex-wrap">
-                                                                <li
-                                                                        class="mega-dropdown-list menu-item-has-children">
-                                                                    <h6 class="heading-6 font-weight-500 mega-title collapsed"
-                                                                        data-bs-toggle="collapse"
-                                                                        data-bs-target="#menuVertical11-6"
-                                                                        aria-controls="menuVertical11-6"
-                                                                        aria-expanded="false"
-                                                                        aria-label="Toggle navigation">
-                                                                        New Arrivals
-                                                                        <i class="mdi mdi-chevron-right"></i>
-                                                                    </h6>
-                                                                    <ul class="collapse" id="menuVertical11-6">
-                                                                        <li><a href="#0">Dressess</a></li>
-                                                                        <li><a href="#0">Jackets</a></li>
-                                                                        <li><a href="#0">Hoodies & Sweatshirts</a>
-                                                                        </li>
-                                                                        <li><a href="#0">Sweaters</a></li>
-                                                                        <li><a href="#0">Tops & Tees</a></li>
-                                                                        <li><a href="#0">Party Dressess</a></li>
-                                                                    </ul>
-                                                                </li>
-                                                                <li
-                                                                        class="mega-dropdown-list menu-item-has-children">
-                                                                    <h6 class="heading-6 font-weight-500 mega-title collapsed"
-                                                                        data-bs-toggle="collapse"
-                                                                        data-bs-target="#menuVertical11-7"
-                                                                        aria-controls="menuVertical11-7"
-                                                                        aria-expanded="false"
-                                                                        aria-label="Toggle navigation">
-                                                                        Trending
-                                                                        <i class="mdi mdi-chevron-right"></i>
-                                                                    </h6>
-                                                                    <ul class="collapse" id="menuVertical11-7">
-                                                                        <li><a href="#0">Dressess</a></li>
-                                                                        <li><a href="#0">Jackets</a></li>
-                                                                        <li><a href="#0">Hoodies & Sweatshirts</a>
-                                                                        </li>
-                                                                        <li><a href="#0">Sweaters</a></li>
-                                                                        <li><a href="#0">Tops & Tees</a></li>
-                                                                        <li><a href="#0">Party Dressess</a></li>
-                                                                    </ul>
-                                                                </li>
-                                                                <li class="mega-dropdown-list">
-                                                                    <div class="d-md-flex d-lg-block">
-                                                                        <div class="menu-image">
-                                                                            <img src="assets/images/menu-1.jpg"
-                                                                                 alt="">
-                                                                        </div>
-                                                                        <div class="menu-image">
-                                                                            <img src="assets/images/menu-2.jpg"
-                                                                                 alt="">
-                                                                        </div>
-                                                                    </div>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                    </li>
-                                                </ul>
-                                                <!-- sub mega dropdown Ends -->
-                                            </li>
-                                            <li><a href="#0">Health & Household <i
-                                                    class="mdi mdi-chevron-right"></i></a></li>
-                                            <li><a href="#0">Bages & Shoes <i class="mdi mdi-chevron-right"></i></a>
-                                            </li>
-                                            <li><a href="#0">Jewelry & Watchs <i
-                                                    class="mdi mdi-chevron-right"></i></a></li>
-                                            <li><a href="#0">Beauty & Health <i
-                                                    class="mdi mdi-chevron-right"></i></a></li>
-                                            <li><a href="#0">Electronics <i class="mdi mdi-chevron-right"></i></a>
-                                            </li>
-                                            <li><a href="#0">Home & Garden <i class="mdi mdi-chevron-right"></i></a>
-                                            </li>
-
-                                            <!-- BACK END STUFF HERE -->
-                                            <!-- Check if User is logged In Or Not -->
-
-                                            <c:choose>
-                                                
-                                                <c:when test="${sessionScope.userId != null}">
-                                                    <!-- TODO REMOVE DEBUGGIMG -->
-                                                    <script> console.log("user Logged In") </script>
-                                                    <li><a href="profile" id="BurgerMenuLoginRegBtns"> Profile  <i class="mdi mdi-card-account-details"></i></a></li>
-                                                    <li><a href="logout" id="BurgerMenuLoginRegBtns">Logout  <i class="mdi mdi-logout-variant"></i></a></li>
-                                                </c:when>
-
-                                                <c:when test="${sessionScope.userId == null}">
-                                                    <!-- TODO REMOVE DEBUGGIMG -->
-                                                    <script> console.log("user NOT Logged In") </script>
-                                                    <li><a href="login" id="BurgerMenuLoginRegBtns"> Login <i class="mdi mdi-login-variant"></i></a></li>
-                                                    <li><a href="register" id="BurgerMenuLoginRegBtns">Register <i class="mdi mdi-account-multiple-plus"></i></a></li>
-
-                                                </c:when>
-                                                
-                                            </c:choose>
-
-                                        </ul>
-                                    </div>
-                                </nav>
-                                <!-- navbar Menu Ends -->
-                            </div>
-                            <!-- navbar wrapper Ends -->
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-6">
-                        <!-- desktop logo Start -->
-                        <div class="desktop-logo text-center">
-                            <a href="#0"><img src="assets/images/logo.svg" alt="Logo"></a>
-                        </div>
-                        <!-- desktop logo Ends -->
-                    </div>
-                    <div class="col-lg-4 col-3">
-
-
-                        <!-- navbar Meta start -->
-
-
-                        <div class="navbar-meta ">
-
-
-
-                            <ul class="meta">
-
-
-                                <!-- BACK END STUFF HERE -->
-                                <c:choose>
-
-                                    <c:when test="${sessionScope.userId != null}">
-
-                                        <li id="userMenu" >
-                                            <!--Will Apper only if the useer is LOGGED IN-->
-                                            <div class="navbar-user dropdown">
-
-                                                <a class="icon-btn primary-icon-text icon-text-btn" href="#dropdown11"
-                                                   role="button" data-bs-toggle="dropdown" aria-expanded="false"><i
-                                                        class="mdi mdi-account"></i></a>
-                                                <ul class="dropdown-menu" id="dropdown11">
-                                                    <li><a href="#0"><i class="mdi mdi-account"></i> My Profile</a></li>
-                                                    <li><a href="#0"><i class="mdi mdi-import"></i> Logout</a></li>
-                                                </ul>
-                                            </div>
-                                        </li>
-
-                                        <li id="user-cart">
-                                            <div class="navbar-cart">
-                                                <a class="icon-btn primary-icon-text icon-text-btn" href="#0"><img
-                                                        src="assets/images/icon-svg/cart-9.svg" alt="Icon" style="padding-top: 10px;"><span id="cart-count"
-                                                                                                                                            class="icon-text text-style-1">${cart.size()}</span></a>
-
-                                                <div class="navbar-cart-dropdown">
-                                                    <div class="checkout-style-2">
-                                                        <div class="checkout-header d-flex justify-content-between">
-                                                            <h6 class="title">Shopping Cart </h6>
-                                                        </div>
-
-                                                        <div class="checkout-table table-responsive">
-                                                            <table class="table">
-                                                                <tbody id="cart-items-table">
-                                                                <c:forEach var="item" items="${cart}">
-                                                                    <tr id="table-row-${item.productId}">
-                                                                        <td class="checkout-product">
-                                                                            <div class="product-cart d-flex">
-                                                                                <div class="product-thumb">
-                                                                                    <img src="${item.productImage}"
-                                                                                         alt="Product">
-                                                                                </div>
-                                                                                <div class="product-content media-body">
-                                                                                    <h5 class="title"><a href="shop/prod-detail?prodId=${item.productId}">
-                                                                                            ${item.productName}
-                                                                                    </a></h5>
-                                                                                    <ul>
-                                                                                        <li><span id="item-qty-${item.productId}">${item.productQty}</span>
-                                                                                            <span>X$</span>
-                                                                                            <span id="item-price">${item.productPrice}</span>
-                                                                                        </li>
-                                                                                        <li><a class="delete" onclick="deleteProduct(${item.productId})"><i
-                                                                                                class="mdi mdi-delete"></i></a>
-                                                                                        </li>
-                                                                                    </ul>
-                                                                                </div>
-                                                                            </div>
-                                                                        </td>
-                                                                        <td class="checkout-quantity">
-                                                                            <div class="product-quantity d-inline-flex">
-                                                                                <button type="button" id="sub"
-                                                                                        class="sub" onclick="decProdQty(${item.productId},${item.productPrice})"><i
-                                                                                        class="mdi mdi-minus"></i></button>
-                                                                                <input id="item-${item.productId}-qty-input" type="text" value="${item.productQty}" disabled>
-                                                                                <button type="button" id="add"
-                                                                                        class="add" onclick="incProdQty(${item.productId},${item.productPrice})">
-                                                                                    <i
-                                                                                            class="mdi mdi-plus"></i>
-                                                                                </button>
-                                                                            </div>
-                                                                        </td>
-                                                                        <td class="checkout-price">
-                                                                            <p id="total-item-price-${item.productId}" class="price">${item.productPrice * item.productQty }</p>
-                                                                        </td>
-                                                                    </tr>
-                                                                </c:forEach>
-                                                                </tbody>
-                                                            </table>
-                                                        </div>
-                                                        <div class="checkout-footer">
-                                                            <div class="checkout-sub-total d-flex justify-content-between">
-                                                                <p class="value">Subotal Price:</p>
-                                                                <p class="price" id="cart-total-price">$144</p>
-                                                            </div>
-                                                            <div class="checkout-btn">
-                                                                <a href="#0" class="main-btn primary-btn-border">View
-                                                                    Cart</a>
-                                                                <a href="#0" class="main-btn primary-btn">To Checkout</a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </li>
-
-                                    </c:when>
-
-                                    <c:when test="${sessionScope.userId == null}">
-
-                                        <li id="userSignInRegister">
-                                            <a class="icon-btn primary-icon-text icon-text-btn customMenuBtn" href="login" role="button">
-                                                <class class="mdi mdi-login-variant"></class>Login
-                                            </a>
-
-                                            <a class="icon-btn primary-icon-text icon-text-btn customMenuBtn" href="register" role="button">
-                                                <class class="mdi mdi-account-multiple-plus"></class>Register
-                                            </a>
-
-                                        </li>
-
-                                    </c:when>
-
-                                </c:choose>
-
-                            </ul>
-                        </div>
-                        <!-- navbar Meta Ends -->
-                    </div>
+<section class="header-style-1 header-style-dark-1 mt-20">
+    <div class="header-big position-relative">
+        <div class="header-items-active-dark-1">
+            <div class="single-header-item bg_cover" style='background-image: url("./assets/images/header-1/header-big-2.jpg");'>
+                <div class="header-item-content">
+                    <h3 class="title">Don’t say it with flowers: A NOMOS watch is a gift that lasts</h3>
+                    <a href="#0" class="link">Our Valentine's Day collection</a>
                 </div>
             </div>
-        </nav>
-        <!-- main navbar Ends -->
-        <div class="overlay-11"></div>
-    </header>
-    <!--====== Navbar Style 11 Part Ends ======-->
-</section>
-<!--====== Navbar Style 11 Part Ends ======-->
-<!--======  Header Style 4 Part Start ======-->
-<section class="header-style-4">
-    <div class="position-relative">
-        <div class="header-4-active">
-            <div class="header-image bg_cover" style="background-image: url(assets/images/header-4/header-1.jpg);">
+            <div class="single-header-item bg_cover" style='background-image: url("./assets/images/header-1/header-big-1.jpg");'>
+                <div class="header-item-content">
+                    <h3 class="title">Don’t say it with flowers: A NOMOS watch is a gift that lasts</h3>
+                    <a href="#0" class="link">Our Valentine's Day collection</a>
+                </div>
             </div>
-            <div class="header-image bg_cover" style="background-image: url(assets/images/header-4/header-1.jpg);">
-            </div>
-            <div class="header-image bg_cover" style="background-image: url(assets/images/header-4/header-1.jpg);">
+            <div class="single-header-item bg_cover" style='background-image: url("./assets/images/header-1/header-big-2.jpg");'>
+                <div class="header-item-content">
+                    <h3 class="title">Don’t say it with flowers: A NOMOS watch is a gift that lasts</h3>
+                    <a href="#0" class="link">Our Valentine's Day collection</a>
+                </div>
             </div>
         </div>
     </div>
-    <div class="header-content">
-        <div class="product-style-15">
-            <div class="product-image">
-                <div class="product-item active">
-                    <img src="assets/images/product-7/product-1.jpg" alt="product">
-                </div>
+    <div class="header-min">
+        <div class="header-min-item product-style-25 bg_cover" style='background-image: url("./assets/images/header-1/header-min-3.jpg");'>
+            <div class="product-content">
+                <h4 class="title"><a href="#0">Metro 38 Date</a></h4>
+                <p>Reference 1102</p>
+                <a href="#0" class="main-btn secondary-2-btn"> <img src="./assets/images/icon-svg/cart-7.svg" alt="">$ 399</a>
             </div>
-            <div class="product-content text-center">
-                <h4 class="title"><a href="#0">Loop Ear Plug Black</a></h4>
-                <p>Midnight Black</p>
-                <a href="#0" class="main-btn d-block primary-btn"> <img src="assets/images/icon-svg/cart-7.svg"
-                                                                        alt=""> $ 399</a>
+        </div>
+        <div class="header-min-item product-style-25 bg_cover" style='background-image: url("./assets/images/header-1/header-min-4.jpg");'>
+            <div class="product-content">
+                <h4 class="title"><a href="#0">Metro 38 Date</a></h4>
+                <p>Reference 1102</p>
+                <a href="#0" class="main-btn secondary-2-btn"> <img src="./assets/images/icon-svg/cart-7.svg" alt="">$ 399</a>
             </div>
         </div>
     </div>
 </section>
-<!--======  Header Style 4 Part Ends ======-->
+
+
+
 <!--====== Content Card Style 6 Part Start ======-->
 <section class="content-card-style-6 pt-95 pb-100">
     <div class="container">
@@ -801,91 +430,14 @@
     </div>
 </section>
 <!--======  Content Card Style 10 Part Ends ======-->
+
 <!--====== Footer Style 5 Part Start ======-->
-<section class="footer-style-5 pt-70 pb-100">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-3">
-                <div class="footer-about mt-30">
-                    <a href="#0">
-                        <img src="assets/images/logo.svg" alt="">
-                    </a>
-                    <p>Made with &copy; at <a href="#0">GrayGrids</a>. All rights reserved.</p>
-                    <ul class="footer-social">
-                        <li><a href="#0"><i class="lni lni-facebook-filled"></i></a></li>
-                        <li><a href="#0"><i class="lni lni-twitter-filled"></i></a></li>
-                        <li><a href="#0"><i class="lni lni-linkedin-original"></i></a></li>
-                        <li><a href="#0"><i class="lni lni-instagram-original"></i></a></li>
-                        <li><a href="#0"><i class="lni lni-whatsapp"></i></a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="col-lg-6">
-                <div class="footer-link-widget">
-                    <div class="footer-link">
-                        <h5 class="footer-title">My Account</h5>
 
-                        <ul class="link">
-                            <li><a href="#0">Orders</a></li>
-                            <li><a href="#0">Downloads</a></li>
-                            <li><a href="#0">Addresses</a></li>
-                            <li><a href="#0">Account details</a></li>
-                            <li><a href="#0">Logout</a></li>
-                        </ul>
-                    </div>
-                    <div class="footer-link">
-                        <h5 class="footer-title">Information</h5>
-
-                        <ul class="link">
-                            <li><a href="#0">About Us</a></li>
-                            <li><a href="#0">Contact Us</a></li>
-                            <li><a href="#0">Downloads</a></li>
-                            <li><a href="#0">Sitemap</a></li>
-                            <li><a href="#0">FAQs Page</a></li>
-                            <li><a href="#0">Comming Soon</a></li>
-                            <li><a href="#0">404 Page</a></li>
-                        </ul>
-                    </div>
-                    <div class="footer-link">
-                        <h5 class="footer-title">Categories</h5>
-
-                        <ul class="link">
-                            <li><a href="#0">Outfit</a></li>
-                            <li><a href="#0">Sunglassess</a></li>
-                            <li><a href="#0">Watches</a></li>
-                            <li><a href="#0">Bags</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3">
-                <div class="footer-widget-subscribe">
-                    <h5 class="footer-title">Stay in the loop</h5>
-                    <p>Be the first to know when new products drop and get behind-the-scenes content straight.</p>
-
-                    <div class="subscribe-form">
-                        <form action="#">
-                            <div class="single-form form-default">
-                                <label>Enter your email address</label>
-                                <div class="form-input">
-                                    <input type="text" placeholder="user@email.com">
-                                    <i class="mdi mdi-account"></i>
-                                    <button class="main-btn primary-btn"><span class="mdi mdi-send"></span></button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+<jsp:include page="footer.jsp"/>
 <!--====== Footer Style 5 Part Ends ======-->
 <!--=========================================Scripts=====================================-->
 
-<script>
 
-</script>
 
 <!--====== Bootstrap js ======-->
 <script src="./assets/js/bootstrap.bundle-5.0.0-beta1.min.js"></script>
@@ -903,6 +455,29 @@
 <%--=======CART SCRIPT======--%>
 <script src="./assets/js/cart.js"></script>
 
+<script>
+    tns({
+        autoplay: true,
+        autoplayButtonOutput: false,
+        mouseDrag: true,
+        gutter: 0,
+        container: ".header-items-active-dark-1",
+        center: true,
+        nav: true,
+        controls: false,
+        speed: 400,
+        controlsText: [
+            '<i class="lni lni-arrow-left-circle"></i>',
+            '<i class="lni lni-arrow-right-circle"></i>',
+        ],
+        responsive: {
+            0: {
+                items: 1,
+            },
+        }
+    });
+
+</script>
 
 </body>
 

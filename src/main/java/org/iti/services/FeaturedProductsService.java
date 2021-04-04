@@ -68,4 +68,8 @@ public class FeaturedProductsService {
         return  mapper.convertEntityToDto(OculusFeaturedProd);
     }
 
+    public  void terminateService(){
+        serviceSessison.close();
+    }
+
 }

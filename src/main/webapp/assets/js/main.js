@@ -32,26 +32,26 @@ overlay11.addEventListener('click', () => {
 })
 
 //======== tiny slider for header-4-active
-tns({
-    autoplay: true,
-    autoplayButtonOutput: false,
-    mouseDrag: true,
-    gutter: 0,
-    container: ".header-4-active",
-    center: true,
-    nav: true,
-    controls: false,
-    speed: 400,
-    controlsText: [
-        '<i class="lni lni-arrow-left-circle"></i>',
-        '<i class="lni lni-arrow-right-circle"></i>',
-    ],
-    responsive: {
-        0: {
-            items: 1,
-        },
-    }
-});
+// tns({
+//     autoplay: true,
+//     autoplayButtonOutput: false,
+//     mouseDrag: true,
+//     gutter: 0,
+//     container: ".header-4-active",
+//     center: true,
+//     nav: true,
+//     controls: false,
+//     speed: 400,
+//     controlsText: [
+//         '<i class="lni lni-arrow-left-circle"></i>',
+//         '<i class="lni lni-arrow-right-circle"></i>',
+//     ],
+//     responsive: {
+//         0: {
+//             items: 1,
+//         },
+//     }
+// });
 
 // =========== select-color-6 active
 selectColor6 = document.querySelectorAll("#select-color-6 li");
@@ -92,3 +92,18 @@ var cu = new counterUp({
     append: " ",
 });
 cu.start();
+
+
+//================Back to top button ===========
+// $(window).scroll(function() {
+//     if ($(window).scrollTop() > 300) {
+//         $("#back-to-top-btn").addClass('show');
+//     } else {
+//         $("#back-to-top-btn").removeClass('show');
+//     }
+// });
+//
+// $("#back-to-top-btn").on('click', function(e) {
+//     e.preventDefault();
+//     $('html, body').animate({scrollTop:0}, '300');
+// });

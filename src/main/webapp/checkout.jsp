@@ -4,17 +4,51 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--====== Title ======-->
+    <title>eCommerce HTML | Profile</title>
+
     <meta name="description" content="">
-    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-    <meta name="generator" content="Hugo 0.82.0">
-    <title>Checkout example · Bootstrap v5.0</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/checkout/">
+    <!--====== Favicon Icon ======-->
+    <link rel="shortcut icon" href="assets/images/favicon.png" type="image/png">
 
+    <!--====== Tiny Slider CSS ======-->
+    <link rel="stylesheet" href="assets/css/tiny-slider.css">
 
-    <!-- Bootstrap core CSS -->
+    <!--====== Line Icons CSS ======-->
+    <link rel="stylesheet" href="assets/css/LineIcons.css">
+
+    <!--====== Material Design Icons CSS ======-->
+    <link rel="stylesheet" href="assets/css/materialdesignicons.min.css">
+
+    <!--====== FONT Awesome Icons CSS ======-->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+          integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+          crossorigin="anonymous" />
+
+    <!--====== Bootstrap CSS ======-->
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+
+    <!--====== gLightBox CSS ======-->
+    <link rel="stylesheet" href="assets/css/glightbox.min.css">
+
+    <!--====== nouiSlider CSS ======-->
+    <link rel="stylesheet" href="assets/css/nouislider.min.css">
+
+    <!--====== Default CSS ======-->
+    <link rel="stylesheet" href="assets/css/default.css">
+
+    <!--====== Template Style CSS ======-->
+    <link rel="stylesheet" href="assets/css/tempstyle.css">
+
+    <!--====== Style CSS ======-->
+    <link rel="stylesheet" href="assets/css/style.css">
+
+    <!-- card style-->
+    <link rel="stylesheet" type="text/css" href="assets/css/card.css">
 
     <style>
         .bd-placeholder-img {
@@ -43,8 +77,15 @@
 </head>
 <body class="bg-light">
 
+<!--======================== Navbar  Starts ====================================-->
+<c:set var="userId" value="${sessionScope.userId}" scope="session"/>
+<jsp:include page="./navbar.jsp"/>
+<!--======================== Navbar  Ends ====================================-->
+
 <div class="container">
     <main>
+
+
 
         <div class="row g-5">
 
@@ -178,8 +219,32 @@
 
 </div>
 
+<%--============ FOOTER =============--%>
+<jsp:include page="./footer.jsp"/>
+<%--============ FOOTER END =============--%>
 
-<script src="assets/js/bootstrap.bundle-5.0.0-beta1.min.js"></script>
+
+<!--====== Bootstrap js ======-->
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+<script src="assets/js/bootstrap.min.js"></script>
+
+<!--====== Tiny Slider js ======-->
+<script src="assets/js/tiny-slider.js"></script>
+
+<!--====== nouiSlider js ======-->
+<script src="assets/js/nouislider.min.js"></script>
+
+<!--====== count up js ======-->
+<script src="assets/js/count-up.min.js"></script>
+
+<!--====== gLightBox js ======-->
+<script src="assets/js/glightbox.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<!--====== Main js ======-->
+<script src="assets/js/main.js"></script>
+
+<script src="assets/js/card.js"></script>
+<script src="assets/js/jquery.payform.min.js" charset="utf-8"></script>
 
 <script>
     // Example starter JavaScript for disabling form submissions if there are invalid fields

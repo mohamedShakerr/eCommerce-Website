@@ -23,6 +23,12 @@
     <!--====== Material Design Icons CSS ======-->
     <link rel="stylesheet" href="../assets/css/materialdesignicons.min.css">
 
+    <!--====== FONT Awesome Icons CSS ======-->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+          integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+          crossorigin="anonymous" />
+
     <!--====== Bootstrap CSS ======-->
     <link rel="stylesheet" href="../assets/css/bootstrap-5.0.0-beta1.min.css">
 
@@ -41,6 +47,11 @@
     <!-- =======Style CSS ============ -->
     <link rel="stylesheet" href="../assets/css/style.css">
 
+    <script
+            src="https://code.jquery.com/jquery-3.6.0.min.js"
+            integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+            crossorigin="anonymous"></script>
+
 </head>
 
 <body>
@@ -49,6 +60,25 @@
     <!--====== Product Details Style 2 Part Start ======-->
 
     <c:set var = "product" scope="request" value="${requestScope.product}"/>
+    <c:set var = "prodAdded" scope="request" value="${requestScope.prodAdded}"/>
+    <!--======================== Navbar  Starts ====================================-->
+    <c:set var="userId" value="${sessionScope.userId}" scope="session"/>
+    <jsp:include page="../navbar.jsp"/>
+    <!--======================== Navbar  Ends ====================================-->
+
+    <c:if test="${prodAdded != null}">
+        <div class="container" style="text-align: center;margin: 10px auto;">
+            <div class="alert alert-success" role="alert">
+                Product Added to Cart
+                <a href="${pageContext.request.contextPath}/shop" type="button" class="main-btn primary-btn" >
+                    <img src="../assets/images/icon-svg/cart-4.svg"alt="">
+                    Continue Shopping
+                </a>
+            </div>
+        </div>
+
+
+    </c:if>
 
 
     <section class="product-details-wrapper mt-30 pt-70 pb-100">
@@ -80,15 +110,12 @@
 
                                 <div class="product-thumb-image-active nav nav-pills" id="v-pills-tab-2" role="tablist"
                                     aria-orientation="vertical">
-
                                     <c:forEach var="prodImg" items="${product.prodImages}" varStatus="counter" begin="0"  end="${product.prodImages.size()-1}">
-
                                         <div class="single-thumb ${counter.isFirst()? 'active':''}" id="v-pills-${counter.index}-tab" data-bs-toggle="pill"
                                              href="#v-pills-${counter.index}" role="tab" aria-controls="v-pills-${counter.index}" aria-selected="true">
                                             <img src="${prodImg}" alt="">
                                         </div>
                                     </c:forEach>
-
                                 </div>
                             </div>
                         </div>
@@ -127,7 +154,7 @@
                             </div>
 
                             <div class="product-btn">
-                                <a href="#0" class="main-btn primary-btn" onclick="addProdToCart(${product.id})"><img src="./assets/images/icon-svg/cart-4.svg"
+                                <a class="main-btn primary-btn" onclick="addProdToCart(${product.id})"><img src="../assets/images/icon-svg/cart-4.svg"
                                         alt=""> Add to cart</a>
                             </div>
                         </div>
@@ -138,6 +165,12 @@
     </section>
 
     <!--====== Product Details Style 2 Part Ends ======-->
+
+    <%--============ FOOTER =============--%>
+    <jsp:include page="../footer.jsp"/>
+    <%--============ FOOTER END =============--%>
+
+
 
     <!--=========================================Scripts=====================================-->
 
@@ -159,8 +192,34 @@
     <!--====== Main js ======-->
     <script src="../assets/js/main.js"></script>
 
+    <%--=======CART SCRIPT======--%>
+    <script src="../assets/js/cart.js"></script>
+
 
     <script>
+
+        function addProdToCart(prodId){
+
+            var addedQuantity = $("#prod-quantity").val();
+
+            $.post("cartedit?edit=addNew&prodId="+prodId+"&qty="+addedQuantity, function (data){
+                // console.log(data);
+                // var host = window.location.host;
+                // console.log(host)
+                //
+                // $(location).attr('href', host+"/"+data);
+                // location.reload();
+
+                if (location.href.endsWith("added=")){
+                    location.href = location.href + "";
+                    console.log("Added yasta 5las");
+                }else {
+                    location.href = location.href + "&added=";
+                }
+
+            });
+        }
+
 
         // =========== select-item-2 active
         selectItem2 = document.querySelectorAll("#select-item-2 .single-item");

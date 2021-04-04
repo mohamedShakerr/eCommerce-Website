@@ -77,9 +77,10 @@ public class CustomerDaoImpl implements CustomerDao {
                 .setParameter( 1, customer.getPassword()).list();
 
         if (customerList.isEmpty()){
+            hibernateSession.close();
             return false;
         }
-
+        hibernateSession.close();
         return true;
     }
 
@@ -92,8 +93,9 @@ public class CustomerDaoImpl implements CustomerDao {
         Query query = hibernateSession.createQuery(queryString, Customers.class).setParameter(0, email);
         System.out.println(query.getResultList());
         System.out.println(query.getSingleResult());
-
-        return ((Customers)query.getResultList().get(0)).getCustomerId();
+        int userId = ((Customers)query.getResultList().get(0)).getCustomerId();
+        hibernateSession.close();
+        return userId;
     }
 
 
@@ -103,6 +105,7 @@ public class CustomerDaoImpl implements CustomerDao {
 
         Session hibernateSession = dbSessionProvider.getSession();
         Query query = hibernateSession.createQuery("from Customers", Customers.class);
+        hibernateSession.close();
         return query.getResultList();
     }
 
@@ -184,4 +187,48 @@ public class CustomerDaoImpl implements CustomerDao {
 
         return customer.getCredit();
     }
+
+    public String getUserTokenById(int userId) {
+
+        Session hibernateSession = dbSessionProvider.getSession();
+
+        Customers customers = hibernateSession.find(Customers.class, userId);
+
+        if(customers == null){
+            hibernateSession.close();
+            return null;
+        }else {
+            hibernateSession.close();
+            return customers.getCookieToken();
+        }
+    }
+
+    @Override
+    public void saveTokenbyUserId(String token, int userId) {
+        Session hibernateSession = dbSessionProvider.getSession();
+        hibernateSession.beginTransaction();
+
+        Customers customers = hibernateSession.find(Customers.class, userId);
+
+        if(customers != null){
+            customers.setCookieToken(token);
+        }
+
+        hibernateSession.getTransaction().commit();
+
+        hibernateSession.close();
+    }
+
+//    @Override
+//    public Customers getCustomerById(int userId) {
+//        Session hibernateSession = dbSessionProvider.getSession();
+//
+//        Customers customer = hibernateSession.find(Customers.class, userId);
+//
+//        hibernateSession.close();
+//        return  customer;
+//    }
+
+
+
 }

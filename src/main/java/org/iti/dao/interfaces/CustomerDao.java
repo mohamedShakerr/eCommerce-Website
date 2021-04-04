@@ -30,4 +30,9 @@ public interface CustomerDao {
     public void updateCustomerAvatar(int id,String url);
 
     public double getCreditLimit(int id);
+    String getUserTokenById(int userId);
+
+    void saveTokenbyUserId(String token, int userId);
+
+
 }

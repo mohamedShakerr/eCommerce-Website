@@ -23,6 +23,12 @@
     <!--====== Material Design Icons CSS ======-->
     <link rel="stylesheet" href="assets/css/materialdesignicons.min.css">
 
+    <!--====== FONT Awesome Icons CSS ======-->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+          integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+          crossorigin="anonymous" />
+
     <!--====== Bootstrap CSS ======-->
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
 
@@ -48,10 +54,12 @@
 
 <body>
 
-<!--====== Header ======-->
 
+<!--======================== Navbar  Starts ====================================-->
+<c:set var="userId" value="${sessionScope.userId}" scope="session"/>
+<jsp:include page="./navbar.jsp"/>
+<!--======================== Navbar  Ends ====================================-->
 
-<!--====== Header======-->
 
 <!--====== Profile Start ======-->
 
@@ -224,22 +232,13 @@
         </div>
     </div>
 </section>
-<%--    <tr>--%>
-<%--        <td>Visa</td>--%>
-<%--        <td>4716108999716531</td>--%>
-<%--        <td>257</td>--%>
-<%--    </tr>--%>
-<%--    <tr>--%>
-<%--        <td>Master Card</td>--%>
-<%--        <td>5281037048916168</td>--%>
-<%--        <td>043</td>--%>
-<%--    </tr>--%>
+
 <!--====== Profile Ends ======-->
 
-<!--====== Footer ======-->
 
-
-<!--====== Footer======-->
+<%--============ FOOTER =============--%>
+<jsp:include page="./footer.jsp"/>
+<%--============ FOOTER END =============--%>
 
 <!--====== Bootstrap js ======-->
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
@@ -262,6 +261,11 @@
 
 <script src="assets/js/card.js"></script>
 <script src="assets/js/jquery.payform.min.js" charset="utf-8"></script>
+
+
+    <%--=======CART SCRIPT======--%>
+    <script src="./assets/js/cart.js"></script>
+
 <script>
     function showCard() {
         if (document.getElementById("creditCardFormId").style.display == "none") {

@@ -42,38 +42,31 @@
 
 <body>
 
-<c:set var="userId" value="${sessionScope.userId}" scope="session"/>
-<jsp:include page="navbar.jsp"/>
+
 
     <section class="login-registration-wrapper pt-50 pb-100">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-6 align-self-center">
-                    <c:if test='${requestScope["cookiesState"].equals("cookiesBlocked")}'>
-                        <jsp:include page="alertCookies.jsp"/>
-                    </c:if>
+
                     <div class="login-registration-style-2 text-center mt-50">
                         <div>
                             <h3 style="color: #542DED;">
                                 <i class="fab fa-playstation"></i>
                                 <i class="fas fa-gamepad"></i>
                             </h3>
-                            <h1 class="heading-4 font-weight-500 title" style="color: #542DED;">Login</h1>
+                            <h1 class="heading-4 font-weight-500 title" style="color: #542DED;">Admin Login</h1>
                         </div>
 
                         <div class="login-registration-form pt-10">
-                            <form action="login" method="post">
+                            <form action="j_security_check" method="post">
 
                                 <div class="single-form form-default form-border">
 
-                                    <c:if test='${! empty requestScope.InputError}'>
-                                        <span id="inputErr" style="color: #ff0000;">
-                                            Invalid email or password.
-                                        </span>
-                                    </c:if>
+
                                     <span id="invalidInput"></span>
                                      <div class="form-input">
-                                         <input type="email" name="email" id="email" placeholder="Email">
+                                         <input type="email" name="j_username" id="email" placeholder="Email">
                                          <i class="mdi mdi-email" style="color: #542DED;"></i>
                                      </div>
                                     <br>
@@ -81,27 +74,19 @@
                                  </div>
                                  <div class="single-form form-default form-border">
                                      <div class="form-input">
-                                         <input id="password-5" type="password" name="password" placeholder="Password" required>
+                                         <input id="password-5" type="password" name="j_password" placeholder="Password" required>
                                          <i class="mdi mdi-lock" style="color: #542DED;"></i>
-<%--                                         <span toggle="#password-5" class="mdi mdi-eye-outline toggle-password"></span>--%>
+                                         <span toggle="#password-5" class="mdi mdi-eye-outline toggle-password"></span>
                                      </div>
                                      <br>
                                  </div>
-                                 <div class="login-checkbox-forget d-sm-flex justify-content-between align-items-center">
-                                     <div class="single-checkbox checkbox-style-3">
-                                         <input type="checkbox" name="rememberMe" id="remember-me" value="true" >
-                                         <label for="remember-me"><span></span> </label>
-                                         <p>Remember Me</p>
-                                     </div>
-                                 </div>
+
                                  <div class="single-form">
                                      <button class="main-btn primary-btn" id="lgnBtn">Sign in</button>
                                  </div>
                             </form>
                         </div>
-                        <div class="d-sm-flex justify-content-between align-items-center">
-                            <p class="login" >Don't have an account? <a href="register">Sign up</a></p>
-                        </div>
+
                     </div>
                  </div>
 
@@ -111,7 +96,7 @@
 
 <!--====== Footer Style 5 Part Start ======-->
 
-<jsp:include page="footer.jsp"/>
+
 <!--====== Footer Style 5 Part Ends ======-->
 
     <!--====== Bootstrap js ======-->

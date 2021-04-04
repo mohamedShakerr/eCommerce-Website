@@ -25,6 +25,12 @@
     <!--====== Material Design Icons CSS ======-->
     <link rel="stylesheet" href="assets/css/materialdesignicons.min.css">
 
+    <!--====== FONT Awesome Icons CSS ======-->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+          integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+          crossorigin="anonymous" />
+
     <!--====== Bootstrap CSS ======-->
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
 
@@ -72,8 +78,8 @@
 <body>
 
 <!--====== Header ======-->
-
-
+<c:set var="userId" value="${sessionScope.userId}" scope="session"/>
+<jsp:include page="./navbar.jsp"/>
 <!--====== Header======-->
 
 <!--====== Profile Start ======-->
@@ -203,10 +209,11 @@
 
 <!--====== Profile Ends ======-->
 
-<!--====== Footer ======-->
+<%--============ FOOTER =============--%>
+<jsp:include page="./footer.jsp"/>
+<%--============ FOOTER END =============--%>
 
 
-<!--====== Footer======-->
 
 <!--====== Bootstrap js ======-->
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
@@ -226,6 +233,7 @@
 
 <!--====== Main js ======-->
 <script src="assets/js/main.js"></script>
+
 
 <!-- Ajax to Java File Upload Logic -->
 <script>
@@ -257,6 +265,11 @@
     }
 
 </script>
+
+<%--=======CART SCRIPT======--%>
+<script src="./assets/js/cart.js"></script>
+
+
 </body>
 
 </html>
