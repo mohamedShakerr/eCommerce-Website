@@ -1,6 +1,7 @@
 package org.iti.dao.interfaces;
 
 import org.iti.db.domain.Customers;
+import org.iti.db.domain.Orders;
 import org.iti.dtos.CustomerDto;
 
 import java.util.List;
@@ -14,6 +15,9 @@ public interface CustomerDao {
     Customers getCustomerByUserEmail(String email);
 
     Customers getCustomerByUserId(Integer customerId);
+
+    List<Orders> getOrdersByUserId(Integer customerId);
+
 
     boolean isCustomerExist(Customers customerDto);
 
