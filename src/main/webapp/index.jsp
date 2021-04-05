@@ -73,7 +73,7 @@
             <div class="single-header-item bg_cover" style='background-image: url("./assets/images/cyberpunk2077.jpg");'>
                 <div class="header-item-content">
                     <h3 class="title">The New Dystopian Future CYBERPUNK 2077, is here make sure to grab it</h3>
-                    <a href="shop" class="link">check our latest games</a>
+                    <a href="shop?cat=2" class="link">check our latest games</a>
                 </div>
             </div>
             <div class="single-header-item bg_cover" style='background-image: url("./assets/images/ps5_bg.jpg");'>
@@ -390,15 +390,6 @@
 -->
 
 <!--====== Product Style 14 Part Ends ======-->
-<!--======  Content Card Style 10 Part Start ======-->
-<section class="content-card-style-10 bg_cover mt-100"
-         style="background-image: url(assets/images/content-card-5/content-6.jpg);">
-    <div class="content-card text-center">
-        <h4 class="title">NEW STYLE EAR PROTECTOR</h4>
-        <a href="#0" class="content-link">Explore <i class="mdi mdi-chevron-right"></i></a>
-    </div>
-</section>
-<!--======  Content Card Style 10 Part Ends ======-->
 
 <!--====== Footer Style 5 Part Start ======-->
 <jsp:include page="footer.jsp"/>
