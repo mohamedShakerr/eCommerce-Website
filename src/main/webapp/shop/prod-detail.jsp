@@ -70,8 +70,8 @@
         <div class="container" style="text-align: center;margin: 10px auto;">
             <div class="alert alert-success" role="alert">
                 Product Added to Cart
-                <a href="${pageContext.request.contextPath}/shop" type="button" class="main-btn primary-btn" >
-                    <img src="../assets/images/icon-svg/cart-4.svg"alt="">
+                <br>
+                <a href="${pageContext.request.contextPath}/shop" type="button" class="main-btn primary-btn"style="margin-left: 20px" >
                     Continue Shopping
                 </a>
             </div>
@@ -209,12 +209,22 @@
                 //
                 // $(location).attr('href', host+"/"+data);
                 // location.reload();
+                console.log(data);
 
-                if (location.href.endsWith("added=")){
-                    location.href = location.href + "";
-                    console.log("Added yasta 5las");
+                if( data.includes( "partial-response") ){
+                    console.log("EDELO");
+                    rgx = /url="(.*)"/;
+                    var arr = rgx.exec(data);
+                    console.log(arr[1]);
+                    var host = window.location.protocol + "//" + window.location.host;
+                    location.href = host + arr[1];
                 }else {
-                    location.href = location.href + "&added=";
+                    if (location.href.endsWith("added=")){
+                        location.href = location.href + "";
+                        console.log("Added yasta 5las");
+                    }else {
+                        location.href = location.href + "&added=";
+                    }
                 }
 
             });

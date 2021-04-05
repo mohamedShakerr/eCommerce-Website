@@ -39,8 +39,12 @@ public class CartEditServlet extends HttpServlet {
         Object outMsg = null;
         if( edit!= null ){
             //TODO REFACTOR
-//            Integer userId = (Integer) request.getSession().getAttribute("userId");
-            Integer userId = 1;
+            Integer userId = (Integer) request.getSession().getAttribute("userId");
+
+            //If  null, User not logged in Redirect To Login
+            if(userId == null){
+                response.sendRedirect(request.getContextPath()+"/login");
+            }
             Integer productId = null;
             Integer quantity  = null;
 

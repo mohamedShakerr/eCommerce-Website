@@ -122,17 +122,25 @@ metadata-complete= "false">
         <url-pattern>/profile</url-pattern>
     </filter-mapping>
 
-<!--    <filter>-->
-<!--        <filter-name>PageAuthFilter</filter-name>-->
-<!--        <filter-class>org.iti.controllers.filters.PageAuthFilter</filter-class>-->
-<!--    </filter>-->
+    <filter>
+        <filter-name>PageAuthFilter</filter-name>
+        <filter-class>org.iti.controllers.filters.PageAuthFilter</filter-class>
+    </filter>
 
-<!--    <filter-mapping>-->
-<!--        <filter-name>PageAuthFilter</filter-name>-->
-<!--        <url-pattern>/cartedit</url-pattern>-->
-<!--        <url-pattern>/login</url-pattern>-->
-<!--        <url-pattern>/register</url-pattern>-->
-<!--    </filter-mapping>-->
+    <filter-mapping>
+        <filter-name>PageAuthFilter</filter-name>
+        <url-pattern>/cartedit</url-pattern>
+        <url-pattern>/checkout</url-pattern>
+        <url-pattern>/admin</url-pattern>
+        <url-pattern>/profile</url-pattern>
+        <url-pattern>/editprofile</url-pattern>
+        <url-pattern>/review_payment</url-pattern>
+        <url-pattern>/logout</url-pattern>
+        <url-pattern>/editprofile</url-pattern>
+        <url-pattern>/execute_payment</url-pattern>
+        <url-pattern>/execute_payment_credit</url-pattern>
+        <url-pattern>/shop/cartedit</url-pattern>
+    </filter-mapping>
 
     <!--================================================-->
 

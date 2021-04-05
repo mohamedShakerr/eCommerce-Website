@@ -70,39 +70,39 @@
 <section class="header-style-1 header-style-dark-1 mt-20">
     <div class="header-big position-relative">
         <div class="header-items-active-dark-1">
-            <div class="single-header-item bg_cover" style='background-image: url("./assets/images/header-1/header-big-2.jpg");'>
+            <div class="single-header-item bg_cover" style='background-image: url("./assets/images/cyberpunk2077.jpg");'>
                 <div class="header-item-content">
-                    <h3 class="title">Don’t say it with flowers: A NOMOS watch is a gift that lasts</h3>
-                    <a href="#0" class="link">Our Valentine's Day collection</a>
+                    <h3 class="title">The New Dystopian Future CYBERPUNK 2077, is here make sure to grab it</h3>
+                    <a href="shop" class="link">check our latest games</a>
                 </div>
             </div>
-            <div class="single-header-item bg_cover" style='background-image: url("./assets/images/header-1/header-big-1.jpg");'>
+            <div class="single-header-item bg_cover" style='background-image: url("./assets/images/ps5_bg.jpg");'>
                 <div class="header-item-content">
-                    <h3 class="title">Don’t say it with flowers: A NOMOS watch is a gift that lasts</h3>
-                    <a href="#0" class="link">Our Valentine's Day collection</a>
+                    <h3 class="title">the powerful PS5 is here ,grab it !   </h3>
+                    <a href="shop/prod-detail?prodId=15" class="link">Very limited supply </a>
                 </div>
             </div>
-            <div class="single-header-item bg_cover" style='background-image: url("./assets/images/header-1/header-big-2.jpg");'>
+            <div class="single-header-item bg_cover" style='background-image: url("./assets/images/xbox_bg.png");'>
                 <div class="header-item-content">
-                    <h3 class="title">Don’t say it with flowers: A NOMOS watch is a gift that lasts</h3>
-                    <a href="#0" class="link">Our Valentine's Day collection</a>
+                    <h3 class="title">XBOX Series X</h3>
+                    <a href="shop/prod-detail?prodId=16" class="link">Check it out NOW!</a>
                 </div>
             </div>
         </div>
     </div>
     <div class="header-min">
-        <div class="header-min-item product-style-25 bg_cover" style='background-image: url("./assets/images/header-1/header-min-3.jpg");'>
+        <div class="header-min-item product-style-25 bg_cover" style='background-image: url("./assets/images/ps5_c_bg.jpg");'>
             <div class="product-content">
-                <h4 class="title"><a href="#0">Metro 38 Date</a></h4>
-                <p>Reference 1102</p>
-                <a href="#0" class="main-btn secondary-2-btn"> <img src="./assets/images/icon-svg/cart-7.svg" alt="">$ 399</a>
+                <h4 class="title"><a href="shop/prod-detail?prodId=17">PS5 Joystick</a></h4>
+                <p>Powerful PS5 joystick </p>
+                <a href="shop/prod-detail?prodId=17" class="main-btn secondary-2-btn"> <img src="./assets/images/icon-svg/cart-7.svg" alt="">Buy Now</a>
             </div>
         </div>
-        <div class="header-min-item product-style-25 bg_cover" style='background-image: url("./assets/images/header-1/header-min-4.jpg");'>
+        <div class="header-min-item product-style-25 bg_cover" style='background-image: url("./assets/images/xbox_1.jpg");'>
             <div class="product-content">
-                <h4 class="title"><a href="#0">Metro 38 Date</a></h4>
-                <p>Reference 1102</p>
-                <a href="#0" class="main-btn secondary-2-btn"> <img src="./assets/images/icon-svg/cart-7.svg" alt="">$ 399</a>
+                <h4 class="title"><a href="shop/prod-detail?prodId=18">XBOX Joystick</a></h4>
+                <p>Slick XBOX Joystick</p>
+                <a href="shop/prod-detail?prodId=18" class="main-btn secondary-2-btn"> <img src="./assets/images/icon-svg/cart-7.svg" alt="">Buy Now</a>
             </div>
         </div>
     </div>
@@ -261,7 +261,7 @@
                             <span class="price">$ ${myProd.productPrice}</span>
                             <a href="shop/prod-detail?prodId=${myProd.productId}" class="main-btn primary-btn"> <img src="assets/images/icon-svg/cart-4.svg"
                                                                             alt="">
-                                Add to Cart</a>
+                                Buy</a>
                         </div>
                     </div>
                 </div>
@@ -341,37 +341,7 @@
 
 
                         <div class="product-select-wrapper mt-10 flex-wrap">
-                            <div class="select-item">
-                                <h6 class="select-title">Select Color: <span>Grey</span></h6>
-                                <ul class="color-select" id="select-color-6">
-                                    <li class="active" style="background-color: #EFEFEF;"></li>
-                                    <li style="background-color: #FAE5EC;"></li>
-                                    <li style="background-color: #4C4C4C;"></li>
-                                </ul>
-                            </div>
-                            <div class="select-item">
-                                <h6 class="select-title">Memory (GB): </h6>
-                                <div class="size-select">
-                                    <div class="select-position">
-                                        <select>
-                                            <option value="">32gb</option>
-                                            <option value="">64gb</option>
-                                            <option value="">128 gb</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="select-item">
-                                <h6 class="select-title">Select Quantity: </h6>
-
-                                <div class="select-quantity">
-                                    <button type="button" id="sub" class="sub"><i
-                                            class="mdi mdi-minus"></i></button>
-                                    <input type="text" value="1" disabled/>
-                                    <button type="button" id="add" class="add"><i class="mdi mdi-plus"></i></button>
-                                </div>
-                            </div>
-
+                            is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting,
                         </div>
                     </div>
                     <div class="col-lg-6">
@@ -383,9 +353,7 @@
                             </div>
 
                             <div class="product-btn">
-                                <a href="#0" class="main-btn primary-btn"><img
-                                        src="assets/images/icon-svg/cart-4.svg" alt=""> Add to cart</a>
-                                <a href="#0" class="main-btn secondary-1-btn"><img
+                                <a href="shop/prod-detail?prodId=${oculus.id}" class="main-btn secondary-1-btn"><img
                                         src="assets/images/icon-svg/cart-8.svg" alt=""> Buy Now</a>
                             </div>
                         </div>
@@ -397,6 +365,8 @@
 </section>
 <!--======  Product Details Style 6 Part Ends ======-->
 <!--====== Product Style 14 Part Start ======-->
+
+<!--
 <section class="product-wrapper pt-70">
     <div class="container">
         <div class="row">
@@ -409,9 +379,8 @@
                         </div>
                         <div class="product-content">
                             <h4 class="title"><a href="shop/prod-detail?prodId=${accessory.productId}">${accessory.productName}</a></h4>
-<%--                            <p>In Stock : ${accessory.quantity}</p>--%>
                             <a href="shop/prod-detail?prodId=${accessory.productId}" class="main-btn secondary-1-btn"> <img src="assets/images/icon-svg/cart-7.svg"
-                                                                                alt=""> $ ${accessory.productPrice}</a>
+                                                                                                                            alt=""> $ ${accessory.productPrice}</a>
                         </div>
                     </div>
                 </div>
@@ -420,6 +389,8 @@
         </div>
     </div>
 </section>
+-->
+
 <!--====== Product Style 14 Part Ends ======-->
 <!--======  Content Card Style 10 Part Start ======-->
 <section class="content-card-style-10 bg_cover mt-100"
@@ -432,12 +403,9 @@
 <!--======  Content Card Style 10 Part Ends ======-->
 
 <!--====== Footer Style 5 Part Start ======-->
-
 <jsp:include page="footer.jsp"/>
 <!--====== Footer Style 5 Part Ends ======-->
 <!--=========================================Scripts=====================================-->
-
-
 
 <!--====== Bootstrap js ======-->
 <script src="./assets/js/bootstrap.bundle-5.0.0-beta1.min.js"></script>
