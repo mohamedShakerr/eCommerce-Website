@@ -3,6 +3,7 @@ package org.iti.dao.impl;
 import org.hibernate.Session;
 import org.iti.dao.interfaces.ProductDao;
 import org.iti.db.domain.Categories;
+import org.iti.db.domain.ProdImages;
 import org.iti.db.domain.Products;
 
 import javax.persistence.Query;
@@ -169,6 +170,7 @@ public class ProductImpl implements ProductDao {
     }
 
     @Override
+
     public void decreaseProductAmount(int prodId,int amount){
         session.beginTransaction();
         Query q=session.createQuery("update products p set p.quantity=p.quantity- :amount where p.prodId=:prodId")
@@ -179,11 +181,48 @@ public class ProductImpl implements ProductDao {
     }
 
     @Override
-    public void clearProductAmount(int prodId){
+    public void clearProductAmount(int prodId) {
         session.beginTransaction();
-        Query q=session.createQuery("update products p set p.quantity=0 where p.prodId=:prodId")
-                .setParameter("prodId",prodId);
+        Query q = session.createQuery("update products p set p.quantity=0 where p.prodId=:prodId")
+                .setParameter("prodId", prodId);
         q.executeUpdate();
+
+    }
+
+    public Products updateProduct(Products product) {
+
+        session.beginTransaction();
+        Products myProduct = (Products) session.merge(product);
+        session.getTransaction().commit();
+
+        return myProduct;
+    }
+
+    @Override
+    public boolean deleteProductById(Integer productId) {
+
+        Products product = session.find(Products.class,productId);
+        System.out.println(product.getName());
+        session.beginTransaction();
+        session.remove(product);
+        session.getTransaction().commit();
+
+        System.out.println("After deletion "+product.getName());
+
+
+        return true;
+    }
+
+    //todo make the same for categories
+    //todo this is another admin prod
+    @Override
+    public void addProduct(Products product) {
+        session.beginTransaction();
+
+        for(ProdImages img : product.getProdImageses())
+            session.persist(img);
+        session.save(product);
+
         session.getTransaction().commit();
     }
 

@@ -99,7 +99,7 @@
                 <!-- ============================================================== -->
                 <!-- Logo -->
                 <!-- ============================================================== -->
-                <a class="navbar-brand" href="">
+                <a class="navbar-brand" href="../admin">
                     <!-- Logo icon -->
                     <b class="logo-icon">
                         <h3>
@@ -125,38 +125,46 @@
             <!-- ============================================================== -->
             <div class="navbar-collapse collapse" id="navbarSupportedContent" data-navbarbg="skin5">
                 <!-- ============================================================== -->
-                <!-- toggle and nav items -->
+
+                <!-- ============================================================== -->
+                <!-- Right side toggle and nav items -->
                 <!-- ============================================================== -->
                 <ul class="navbar-nav float-start me-auto">
                     <!-- ============================================================== -->
                     <!-- Search -->
                     <!-- ============================================================== -->
-                    <li class="nav-item search-box"> <a class="nav-link waves-effect waves-dark"
-                                                        href="javascript:void(0)"><i class="ti-search"></i></a>
-                        <form class="app-search position-absolute">
-                            <input type="text" class="form-control" placeholder="Search"> <a
-                                class="srh-btn"><i class="ti-close"></i></a>
-                        </form>
-                    </li>
+
                 </ul>
-                <!-- ============================================================== -->
-                <!-- Right side toggle and nav items -->
-                <!-- ============================================================== -->
+
                 <ul class="navbar-nav float-end">
                     <!-- ============================================================== -->
                     <!-- User profile and search -->
                     <!-- ============================================================== -->
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark pro-pic" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            <img src="../admin_assets/images/users/1.jpg" alt="user" class="rounded-circle" width="31">
+                        <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="#"
+                           id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="m-r-10 mdi mdi-account-settings-variant fa-2x" style="color: white"></i>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end user-dd animated" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="javascript:void(0)">
                                 <i class="fa fa-power-off m-r-5 m-l-5"></i>
                                 Logout</a>
                         </ul>
-
                     </li>
+                    <!-- ============================================================== -->
+                    <!-- User profile and search -->
+                    <!-- ============================================================== -->
+                </ul>
+
+                <ul class="navbar-nav float-start me-auto">
+                    <!-- ============================================================== -->
+                    <!-- Search -->
+                    <!-- ============================================================== -->
+
+                </ul>
+
+                <ul class="navbar-nav float-end">
+                    <!-- ============================================================== -->
                     <!-- ============================================================== -->
                     <!-- User profile and search -->
                     <!-- ============================================================== -->
@@ -176,23 +184,17 @@
             <!-- Sidebar navigation-->
             <nav class="sidebar-nav">
                 <ul id="sidebarnav">
-                    <li class="p-15 m-t-10" >
-                        <button type="button" class="btn d-block w-100 create-btn text-white no-block d-flex align-items-center" data-toggle="modal" data-target="#exampleModal" data-whatever="@geeksforgeeks">
-                            <i class="fa fa-plus-square"></i>
-                            <span class="hide-menu m-l-5">Add New Product</span>
-                        </button>
-                    </li>
                     <!-- User Profile-->
                     <li class="sidebar-item">
                         <a class="sidebar-link waves-effect waves-dark sidebar-link"
-                           href="" aria-expanded="false">
+                           href="../admin" aria-expanded="false">
                             <i class="fas fa-shopping-cart"></i>&nbsp;
                             <span class="hide-menu">Products</span>
                         </a>
 
                     <li class="sidebar-item">
                         <a class="sidebar-link waves-effect waves-dark sidebar-link"
-                           href="customers" aria-expanded="false">
+                           href="../admin/customers" aria-expanded="false">
                             <i class="fas fa-users"></i>&nbsp;
                             <span class="hide-menu">Customers</span>
                         </a>
@@ -217,14 +219,28 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="card">
+                        <br><br><div class="search-box">
+                        <a class="waves-effect waves-dark" href="javascript:void(0)" >&nbsp; &nbsp;
+                            <i class="ti-search" style="color: black"></i>
+                        </a><br>
+                        <form class="app-search position-absolute">
+                            <input type="text" id="searchInput" onkeyup="searchForCustomer()" class="form-control" placeholder="Search">
+                            <a class="srh-btn"><i class="ti-close"></i></a>
+                        </form>
+                    </div>
                         <div class="card-body">
-                            <h4 class="card-title">Customers</h4>
+                            <h3 style="text-align: center; color: black">
+                                Customers
+                                <i class="m-r-10 mdi mdi-account-card-details"></i>
+                            </h3>
+                        </div>
+                        <div class="card-body">
                             <div class="feed-widget">
                                 <ul class="list-style-none feed-body m-0 p-b-20">
                                         <c:choose>
                                             <c:when test='${! empty requestScope.customersList}'>
                                                 <c:forEach var="myCustomer" items='${requestScope["customersList"]}'>
-                                                    <a href="profile?email=${myCustomer.email}">
+                                                    <a href="customers/profile?email=${myCustomer.email}">
                                                         <li class="feed-item">
                                                             <div class="feed-icon">
                                                                 <img src="${myCustomer.url}" alt="user" width="50" height="50" class="rounded-circle">
@@ -257,7 +273,9 @@
         <!-- footer -->
         <!-- ============================================================== -->
         <footer class="footer text-center">
-            All Rights Reserved by JETS G.M.W.SH
+            Copyright
+            <i class="far fa-copyright"></i>
+            2021 by JETS G.M.W.SH. All Rights Reserved.
         </footer>
     </div>
 
@@ -269,6 +287,24 @@
 <!-- End Wrapper -->
 <!-- ============================================================== -->
 <!-- All Jquery -->
+<%-- ========= Customer search ========== --%>
+<script>
+    function searchForCustomer() {
+        let input = document.getElementById('searchInput').value
+        input=input.toLowerCase();
+        let x = document.getElementsByClassName('customerItem');
+
+        for (i = 0; i < x.length; i++) {
+            if (!x[i].innerHTML.toLowerCase().includes(input)) {
+                x[i].style.display="none";
+            }
+            else {
+                x[i].style.display="list-item";
+            }
+        }
+    }
+</script>
+
 
 <!-- Bootstrap -->
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"

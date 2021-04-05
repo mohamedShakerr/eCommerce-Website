@@ -23,10 +23,10 @@
     <link rel="icon" type="image/png" sizes="16x16" href="admin_assets/images/favicon2.png">
 
     <!-- Custom CSS -->
-    <link href="admin_assets/css/chartist.min.css" rel="stylesheet">
+    <link href="../../admin_assets/css/chartist.min.css" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link href="admin_assets/css/style.min.css" rel="stylesheet">
+    <link href="../../admin_assets/css/style.min.css" rel="stylesheet">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -99,7 +99,7 @@
                 <!-- ============================================================== -->
                 <!-- Logo -->
                 <!-- ============================================================== -->
-                <a class="navbar-brand" href="admin">
+                <a class="navbar-brand" href="../../admin">
                     <!-- Logo icon -->
                     <b class="logo-icon">
                         <h3>
@@ -128,20 +128,13 @@
                 <!-- ============================================================== -->
                 <!-- toggle and nav items -->
                 <!-- ============================================================== -->
+                <!-- Right side toggle and nav items -->
                 <ul class="navbar-nav float-start me-auto">
                     <!-- ============================================================== -->
                     <!-- Search -->
                     <!-- ============================================================== -->
-                    <li class="nav-item search-box"> <a class="nav-link waves-effect waves-dark"
-                                                        href="javascript:void(0)"><i class="ti-search"></i></a>
-                        <form class="app-search position-absolute">
-                            <input type="text" class="form-control" placeholder="Search"> <a
-                                class="srh-btn"><i class="ti-close"></i></a>
-                        </form>
-                    </li>
+
                 </ul>
-                <!-- ============================================================== -->
-                <!-- Right side toggle and nav items -->
                 <!-- ============================================================== -->
                 <ul class="navbar-nav float-end">
                     <!-- ============================================================== -->
@@ -149,7 +142,7 @@
                     <!-- ============================================================== -->
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark pro-pic" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            <img src="admin_assets/images/users/1.jpg" alt="user" class="rounded-circle" width="31">
+                            <i class="m-r-10 mdi mdi-account-settings-variant fa-2x" style="color: white"></i>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end user-dd animated" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="javascript:void(0)">
@@ -177,23 +170,16 @@
             <!-- Sidebar navigation-->
             <nav class="sidebar-nav">
                 <ul id="sidebarnav">
-                    <li class="p-15 m-t-10" >
-                        <button type="button" class="btn d-block w-100 create-btn text-white no-block d-flex align-items-center" data-toggle="modal" data-target="#exampleModal" data-whatever="@geeksforgeeks">
-                            <i class="fa fa-plus-square"></i>
-                            <span class="hide-menu m-l-5">Add New Product</span>
-                        </button>
-
-                    </li>
                     <!-- User Profile-->
                     <li class="sidebar-item">
                         <a class="sidebar-link waves-effect waves-dark sidebar-link"
-                           href="admin" aria-expanded="false">
+                           href="../../admin" aria-expanded="false">
                             <i class="fas fa-shopping-cart"></i>&nbsp;
                             <span class="hide-menu">Products</span>
                         </a>
                     <li class="sidebar-item">
                         <a class="sidebar-link waves-effect waves-dark sidebar-link"
-                           href="customers" aria-expanded="false">
+                           href="../../admin/customers" aria-expanded="false">
                             <i class="fas fa-users"></i>&nbsp;
                             <span class="hide-menu">Customers</span>
                         </a>
@@ -215,21 +201,20 @@
             <!-- ============================================================== -->
             <!-- Bread crumb and right sidebar toggle -->
             <!-- ============================================================== -->
-            <div class="page-breadcrumb">
+            <div class="page-breadcrumb" style="background-color: #5c636a">
                 <div class="row align-items-center">
-<!--                    <div class="col-5">-->
-<!--                        <h4 class="page-title">Customer Profile</h4>-->
-<!--                    </div>-->
-                    <div class="feed-widget page-title">
-                        <ul class="list-style-none feed-body m-0 p-b-20">
-                            <li class="feed-item">
-                                <div class="feed-icon bg-danger"><i class="ti-user"></i></div>
-                                <h4>Customer Profile</h4>
-                            </li>
-                        </ul>
-                    </div>
+                <h3 style="text-align: center; color: white">
+                    <c:if test='${! empty requestScope.myCustomer}'>
+                        <c:out value="${myCustomer.name}" />'s Profile
+                    </c:if>
+                    <i class="m-r-10 mdi mdi-account-card-details"></i>
+<%--                    Customer information--%>
+                </h3><br><br><br>
                 </div>
             </div>
+<%--            <div>--%>
+<%--                <hr>--%>
+<%--            </div>--%>
             <!-- ============================================================== -->
             <!-- End Bread crumb and right sidebar toggle -->
             <!-- ============================================================== -->
@@ -247,139 +232,172 @@
                         <div class="col-lg-5 col-xlg-4 col-md-5">
                             <div class="card">
                                 <div class="card-body">
-                                    <center class="m-t-30">
-                                        <img src="${myCustomer.url}" class="rounded-circle" width="150" />
-                                        <h4 class="card-title m-t-10">
+                                    <div class="m-t-20" style="text-align: center;">
+                                        <img src="${myCustomer.url}" class="rounded-circle" width="150" /><br>
+                                        <h3 class="card-title m-t-10">
                                             <c:out value="${myCustomer.name}" />
-                                        </h4>
-                                        <div class="row text-center justify-content-md-center">
-                                            <div class="col-4">
-                                                <a href="javascript:void(0)" class="link">
-                                                    <i class="icon-people"></i>
-                                                    <font class="font-medium">
-                                                        254
-                                                    </font>
-                                                </a>
-                                            </div>
-                                            <div class="col-4">
-                                                <a href="javascript:void(0)" class="link">
-                                                    <i class="icon-picture"></i>
-                                                    <font class="font-medium">
-                                                        54
-                                                    </font>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </center>
+                                        </h3>
+                                    </div>
                                 </div>
                                 <div>
                                     <hr>
                                 </div>
+                                <h3 style="text-align: center;">Orders History <img src="../../admin_assets/images/clock.png"/></h3>
+                                <div class="card-body">
+                                    <div class="table-responsive">
+                                        <table class="table table-striped table-hover">
+                                            <thead class="table-dark">
+                                            <tr class="bg-dark">
+                                                <th class="border-top-0" style="color: papayawhip">#</th>
+                                                <th class="border-top-0" style="color: papayawhip">Cost</th>
+                                                <th class="border-top-0" style="color: papayawhip">&nbsp;&nbsp;Date</th>
+                                            </thead>
+                                            <tbody>
+<%--                                            <c:choose>--%>
+<%--                                                <c:when test='${! empty requestScope.productsList}'>--%>
+<%--                                                    <c:forEach var="myProduct" items='${requestScope["productsList"]}'>--%>
+                                                        <tr>
+                                                            <td>
+<%--                                                            <c:out value="${myProduct.productId}" />--%>
+                                                                1
+                                                            </td>
+                                                            <td>
+                                                                <label class="label label-info">
+                                                                    $100
+                                                                </label>
+                                                            </td>
+                                                            <td>
+                                                                <label class="label label-danger">
+                                                                    6/4/2021
+<%--                                                                    <c:out value="${myProduct.quantity}" />--%>
+                                                                </label>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+<%--                                                            <c:out value="${myProduct.productId}" />--%>
+                                                                2
+                                                            </td>
+                                                            <td>
+                                                                <label class="label label-info">
+                                                                    $13000
+                                                                </label>
+                                                            </td>
+                                                            <td>
+                                                                <label class="label label-danger">
+                                                                    2/4/2021
+<%--                                                                    <c:out value="${myProduct.quantity}" />--%>
+                                                                </label>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+<%--                                                            <c:out value="${myProduct.productId}" />--%>
+                                                                3
+                                                            </td>
+                                                            <td>
+                                                                <label class="label label-info">
+                                                                    $150
+                                                                </label>
+                                                            </td>
+                                                            <td>
+                                                                <label class="label label-danger">
+                                                                    22/3/2021
+<%--                                                                    <c:out value="${myProduct.quantity}" />--%>
+                                                                </label>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+<%--                                                            <c:out value="${myProduct.productId}" />--%>
+                                                                4
+                                                            </td>
+                                                            <td>
+                                                                <label class="label label-info">
+                                                                    $240
+                                                                </label>
+                                                            </td>
+                                                            <td>
+                                                                <label class="label label-danger">
+                                                                    22/2/2021
+    <%--                                                                    <c:out value="${myProduct.quantity}" />--%>
+                                                                </label>
+                                                            </td>
+                                                        </tr>
+
+<%--                                                    </c:forEach>--%>
+<%--                                                </c:when>--%>
+<%--                                                <c:otherwise>--%>
+<%--                                                    <tr>--%>
+<%--                                                        <td colspan=8 align="center" bgcolor="red">--%>
+<%--                                                            <b>There is no Products Found</b>--%>
+<%--                                                        </td>--%>
+<%--                                                    </tr>--%>
+<%--                                                </c:otherwise>--%>
+<%--                                            </c:choose>--%>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     <!-- Column -->
-                    <!-- Column -->
                         <div class="col-lg-7 col-xlg-8 col-md-7">
-                            <div class="card">
+                            <h3 style="text-align: center;">
+                                Customer information
+                                <img src="../../admin_assets/images/inf.png"/>
+                            </h3><br>
+                            <div class="card" style="background-color: #262d35">
                                 <div class="card-body">
                                     <form class="form-horizontal form-material mx-2">
                                         <div class="form-group">
-                                            <label class="col-md-12">Customer Name</label>
+                                            <b class="col-md-12" style="color: white">Name</b>
                                             <div class="col-md-12">
 <%--                                                <input type="text" value="customerName" class="form-control form-control-line" disabled>--%>
                                                 <input type="text" value="${myCustomer.name}" class="form-control form-control-line" disabled>
                                             </div>
-                                        </div>
+                                        </div><br>
                                         <div class="form-group">
-                                            <label for="example-email" class="col-md-12">Email</label>
+                                            <b for="example-email" style="color: white" class="col-md-12">Email</b>
                                             <div class="col-md-12">
-<%--                                                <input type="email" placeholder="johnathan@admin.com"--%>
-<%--                                                    class="form-control form-control-line" name="example-email"--%>
-<%--                                                    id="example-email" value="customerMail" disabled>--%>
                                                 <input type="email" placeholder="johnathan@admin.com"
                                                     class="form-control form-control-line" name="example-email"
                                                     id="example-email" value="${myCustomer.email}" disabled>
                                             </div>
-                                        </div>
+                                        </div><br>
                                         <div class="form-group">
-                                            <label class="col-md-12">Address</label>
+                                            <b class="col-md-12" style="color: white">Address</b>
                                             <div class="col-md-12">
-<%--                                                <input type="text" value="customerAddress"--%>
-<%--                                                    class="form-control form-control-line" disabled>--%>
                                                 <input type="text" value="${myCustomer.address}"
                                                     class="form-control form-control-line" disabled>
                                             </div>
-                                        </div>
+                                        </div><br>
                                         <div class="form-group">
-                                            <label class="col-md-12">Phone</label>
+                                            <b class="col-md-12" style="color: white">Phone</b>
                                             <div class="col-md-12">
-<%--                                                <input type="text" placeholder="123 456 7890"--%>
-<%--                                                       value="customerPhone" class="form-control form-control-line" disabled>--%>
                                                 <input type="text" placeholder="123 456 7890"
                                                        value="${myCustomer.phone}" class="form-control form-control-line" disabled>
                                             </div>
-                                        </div>
+                                        </div><br>
                                         <div class="form-group">
-                                            <label class="col-md-12">Register Date</label>
+                                            <b class="col-md-12" style="color: white">Register Date</b>
                                             <div class="col-md-12">
-<%--                                                <input type="text" placeholder="123 456 7890"--%>
-<%--                                                       value="customerRegisterDate" class="form-control form-control-line" disabled>--%>
                                                 <input type="text" placeholder="123 456 7890"
                                                        value="${myCustomer.registerDate}" class="form-control form-control-line" disabled>
                                             </div>
                                         </div>
                                     </form>
                                 </div>
+                            </div><br><br>
+                            <div style="text-align: center; color: #262d35">
+                                <h1>
+                                    <i class="fab fa-playstation"></i>
+                                    <i class="fas fa-gamepad"></i>
+                                    <span class="logo-text">UnityStore</span>
+                                </h1>
                             </div>
                         </div>
                     </c:if>
-
-
-
-<%--                    <div class="col-lg-7 col-xlg-8 col-md-7">--%>
-<%--                        <div class="card">--%>
-<%--                            <div class="card-body">--%>
-<%--                                <form class="form-horizontal form-material mx-2">--%>
-<%--                                    <div class="form-group">--%>
-<%--                                        <label class="col-md-12">Customer Name</label>--%>
-<%--                                        <div class="col-md-12">--%>
-<%--                                            <input type="text" value="customerName" class="form-control form-control-line" disabled>--%>
-<%--                                        </div>--%>
-<%--                                    </div>--%>
-<%--                                    <div class="form-group">--%>
-<%--                                        <label for="example-email" class="col-md-12">Email</label>--%>
-<%--                                        <div class="col-md-12">--%>
-<%--                                            <input type="email" placeholder="johnathan@admin.com"--%>
-<%--                                                   class="form-control form-control-line" name="example-email"--%>
-<%--                                                   id="example-email" value="customerMail" disabled>--%>
-<%--                                        </div>--%>
-<%--                                    </div>--%>
-<%--                                    <div class="form-group">--%>
-<%--                                        <label class="col-md-12">Address</label>--%>
-<%--                                        <div class="col-md-12">--%>
-<%--                                            <input type="text" value="customerAddress"--%>
-<%--                                                   class="form-control form-control-line" disabled>--%>
-<%--                                        </div>--%>
-<%--                                    </div>--%>
-<%--                                    <div class="form-group">--%>
-<%--                                        <label class="col-md-12">Phone</label>--%>
-<%--                                        <div class="col-md-12">--%>
-<%--                                            <input type="text" placeholder="123 456 7890"--%>
-<%--                                                   value="customerPhone" class="form-control form-control-line" disabled>--%>
-<%--                                        </div>--%>
-<%--                                    </div>--%>
-<%--                                    <div class="form-group">--%>
-<%--                                        <label class="col-md-12">Register Date</label>--%>
-<%--                                        <div class="col-md-12">--%>
-<%--                                            <input type="text" placeholder="123 456 7890"--%>
-<%--                                                   value="customerRegisterDate" class="form-control form-control-line" disabled>--%>
-<%--                                        </div>--%>
-<%--                                    </div>--%>
-<%--                                </form>--%>
-<%--                            </div>--%>
-<%--                        </div>--%>
-<%--                    </div>--%>
-
 
 
                     <!-- Column -->
@@ -403,7 +421,9 @@
             <!-- footer -->
             <!-- ============================================================== -->
             <footer class="footer text-center">
-                All Rights Reserved by JETS G.M.W.SH
+                Copyright
+                <i class="far fa-copyright"></i>
+                2021 by JETS G.M.W.SH. All Rights Reserved.
             </footer>
             <!-- ============================================================== -->
             <!-- End footer -->
@@ -429,17 +449,17 @@
         integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/"
         crossorigin="anonymous"></script>
 
-<script src="admin_assets/js/jquery.min.js"></script>
+<script src="../../admin_assets/js/jquery.min.js"></script>
 <!-- Bootstrap tether Core JavaScript -->
-<script src="admin_assets/js/bootstrap.bundle.min.js"></script>
+<script src="../../admin_assets/js/bootstrap.bundle.min.js"></script>
 
-<script src="admin_assets/js/app-style-switcher.js"></script>
+<script src="../../admin_assets/js/app-style-switcher.js"></script>
 <!--Wave Effects -->
-<script src="admin_assets/js/waves.js"></script>
+<script src="../../admin_assets/js/waves.js"></script>
 <!--Menu sidebar -->
-<script src="admin_assets/js/sidebarmenu.js"></script>
+<script src="../../admin_assets/js/sidebarmenu.js"></script>
 <!--Custom JavaScript -->
-<script src="admin_assets/js/custom.js"></script>
+<script src="../../admin_assets/js/custom.js"></script>
 
 </body>
 

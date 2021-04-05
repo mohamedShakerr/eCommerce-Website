@@ -5,6 +5,9 @@ https://jakarta.ee/xml/ns/jakartaee/web-app_5_0.xsd"
 version= "5.0"
 metadata-complete= "false">
 
+    <!-- =========== DB Connection =================== -->
+
+    <!--==============================================-->
 
 	<servlet>
 		<servlet-name>profile</servlet-name>
@@ -45,6 +48,19 @@ metadata-complete= "false">
     </servlet-mapping>
 
 
+    <!-- Admin ProductDetails servlet -->
+    <servlet>
+        <servlet-name>AdminProductDetailsController</servlet-name>
+        <servlet-class>org.iti.controllers.AdminProductDetailsController</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>AdminProductDetailsController</servlet-name>
+        <url-pattern>/admin/products</url-pattern>
+    </servlet-mapping>
+
+
+
     <!--============Welcome FIle=============-->
     <welcome-file-list>
         <welcome-file>index.jsp</welcome-file>
@@ -78,7 +94,8 @@ metadata-complete= "false">
 
     <!--=================Filters========================-->
 
-    <!-- Cookie filter -->
+    <!-- ============ Cookie Filter ============== -->
+
     <filter>
         <filter-name>CookieFilter</filter-name>
         <filter-class>org.iti.controllers.filters.CookieFilter</filter-class>
@@ -102,6 +119,7 @@ metadata-complete= "false">
         <url-pattern>/shop/prod-detail</url-pattern>
         <url-pattern>/shop/cartedit</url-pattern>
         <url-pattern>/cartedit</url-pattern>
+        <url-pattern>/profile</url-pattern>
     </filter-mapping>
 
 <!--    <filter>-->
@@ -127,6 +145,7 @@ metadata-complete= "false">
 
     <!--================================================-->
 
+    <!-- ============ Register servlet ============== -->
 
     <servlet>
         <servlet-name>Register</servlet-name>
@@ -148,8 +167,8 @@ metadata-complete= "false">
         <url-pattern>/validateRegister</url-pattern>
     </servlet-mapping>
 
+    <!-- ============ Login servlet ============== -->
 
-    <!-- Login servlet -->
     <servlet>
         <servlet-name>Login</servlet-name>
         <servlet-class>org.iti.controllers.LoginController</servlet-class>
@@ -159,6 +178,8 @@ metadata-complete= "false">
         <servlet-name>Login</servlet-name>
         <url-pattern>/login</url-pattern>
     </servlet-mapping>
+
+    <!-- ===================== ADMIN SERVLETS ================================ -->
 
     <!-- AdminDashboard servlet -->
     <servlet>
@@ -193,6 +214,7 @@ metadata-complete= "false">
         <servlet-name>AdminCustomerProfileController</servlet-name>
         <url-pattern>/admin/customers/profile</url-pattern>
     </servlet-mapping>
+
 
 <!--    ================================================    -->
 
@@ -250,5 +272,8 @@ metadata-complete= "false">
         <res-type>javax.sql.DataSource</res-type>
         <res-auth>Container</res-auth>
     </resource-ref>
+
+
+
 
 </web-app>

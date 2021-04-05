@@ -48,4 +48,8 @@ public class CustomerService {
 
     }
 
+    public void terminateService() {
+        serviceSessison.close();
+    }
+
 }

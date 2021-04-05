@@ -105,8 +105,10 @@ public class CustomerDaoImpl implements CustomerDao {
 
         Session hibernateSession = dbSessionProvider.getSession();
         Query query = hibernateSession.createQuery("from Customers", Customers.class);
+
+        List<Customers> customers = query.getResultList();
         hibernateSession.close();
-        return query.getResultList();
+        return customers;
     }
 
     @Override

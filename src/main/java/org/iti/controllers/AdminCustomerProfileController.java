@@ -20,7 +20,7 @@ public class AdminCustomerProfileController extends HttpServlet{
 
 	public void doGet(HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException{
 
-		RequestDispatcher rd = request.getRequestDispatcher("/admin/customer/admin_customer_profile.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("/admin/customers/admin_customer_profile.jsp");
 
 		String customerEmail = request.getParameter("email");
 
@@ -28,6 +28,8 @@ public class AdminCustomerProfileController extends HttpServlet{
 
 		CustomerService customerService = new CustomerService();
 		CustomerDto customer = customerService.getCustomerByUserEmail(customerEmail);
+
+		customerService.terminateService();
 
 		if(customerEmail != null){
 			request.setAttribute("myCustomer", customer);
