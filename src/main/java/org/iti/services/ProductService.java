@@ -11,6 +11,7 @@ import org.iti.db.domain.Products;
 import org.iti.dtos.AdminProductDto;
 import org.iti.dtos.FeaturedIndexProductDto;
 import org.iti.dtos.ProdDetailDto;
+import org.iti.utils.ProductNotFoundException;
 import org.iti.utils.S3UploadManager;
 import org.iti.utils.mappers.EntityDtoMapper;
 import org.iti.utils.mappers.Mapper;
@@ -34,6 +35,10 @@ public class ProductService {
 
         ProductDao productDao = new ProductImpl(serviceSessison);
         Products product = productDao.getProductById(id);
+
+        if(product == null){
+            throw new ProductNotFoundException("Product Donot Exist");
+        }
 
         Mapper<ProdDetailDto, Products> mapper = new DBProdToDetailedProd();
         return mapper.convertEntityToDto(product);

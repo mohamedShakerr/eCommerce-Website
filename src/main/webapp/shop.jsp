@@ -63,6 +63,7 @@
 <c:set var="categories" value="${requestScope.categories}"/>
 
 <c:set var="paginationSize" value="${requestScope.NumberOfPages}"/>
+<c:set var="categId" value="${requestScope.categId}"/>
 
 
 <!--======================== Navbar  Starts ====================================-->
@@ -113,7 +114,7 @@
                                     <c:forEach  var="category" items="${categories}" varStatus="count" begin="0" end="${categories.size()}">
                                         <li>
                                             <div class="platform-check">
-                                                <input type="checkbox" id="category-${count.index}"name="category" value="${category.id}">
+                                                <input type="checkbox" id="category-${count.index}"name="category" value="${category.id}" ${categId==category.id? 'checked': ''}>
                                                 <label for="category-${count.index}"><span></span>${category.name}</label>
                                                 <!-- <span class="count">88</span> -->
                                             </div>
@@ -199,7 +200,15 @@
         var filterCriteria = new Object()
         filterCriteria.minPrice = 0;
         filterCriteria.maxPrice = ${maxPrice};
-        filterCriteria.categories = [];
+        <c:choose>
+            <c:when test="${categId != null}">
+                filterCriteria.categories = ["${categId}"];
+            </c:when>
+            <c:otherwise>
+                filterCriteria.categories = [];
+            </c:otherwise>
+        </c:choose>
+
         console.log("init"+ filterCriteria);
         jsonFilterCriteria = JSON.stringify(filterCriteria);
         console.log("init ==>>>"+ jsonFilterCriteria);

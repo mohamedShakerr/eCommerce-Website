@@ -271,6 +271,10 @@ metadata-complete= "false">
         <error-code>500</error-code>
         <location>/500Err.jsp</location>
     </error-page>
+    <error-page>
+        <exception-type>org.iti.utils.ProductNotFoundException</exception-type>
+        <location>/prodNotFoundErr.jsp</location>
+    </error-page>
 <!--=== ERROR PAGES END=====================================-->
 
     <resource-ref>

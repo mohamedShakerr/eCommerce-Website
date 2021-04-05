@@ -1,4 +1,5 @@
-<%@ page language="java" isErrorPage="true" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!doctype html>
 <html class="no-js" lang="en">
 
@@ -6,7 +7,7 @@
     <meta charset="utf-8">
 
     <!--====== Title ======-->
-    <title>404 Error - Page Not Found</title>
+    <title>Login</title>
 
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -23,7 +24,7 @@
           crossorigin="anonymous" />
 
     <!--====== Bootstrap CSS ======-->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
 
     <!--====== Default CSS ======-->
     <link rel="stylesheet" href="assets/css/default.css">
@@ -41,31 +42,55 @@
 
 <body>
 
-    <section class="login-registration-wrapper pt-50 pb-100">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-6 align-self-center">
+<c:set var="userId" value="${sessionScope.userId}" scope="session"/>
+<jsp:include page="navbar.jsp"/>
 
-                    <div class="login-registration-style-2 text-center mt-50">
-                        <div>
-                            <h3 style="color: #542DED;">
-                                <i class="fab fa-playstation"></i>
-                                <i class="fas fa-gamepad"></i>
-                            </h3>
-                            <h1 class="heading-1 font-weight-500 title" style="color: #542DED; margin: 10px auto;">Error 404</h1>
+
+
+<section class="contact-wrapper pt-50 pb-100">
+    <div class="container">
+
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <div class="contact-style-3 text-center mt-50">
+                    <h4 class="heading-4 font-weight-500 title">Get in Touch</h4>
+                    <p class="paragraph-small sub-title mt-10">Feel free to drop us a line below!</p>
+                    <form action="#">
+                        <div class="single-form form-default text-start">
+                            <label>Full Name</label>
+                            <div class="form-input">
+                                <input type="text" placeholder="Full Name">
+                                <i class="mdi mdi-account"></i>
+                            </div>
                         </div>
-
-                        <h6  class="heading-5 font-weight-500 title" >The Page You Requested Couldn't be Found</h6>
-
-                    </div>
-
-                 </div>
+                        <div class="single-form form-default text-start">
+                            <label>Email Address</label>
+                            <div class="form-input">
+                                <input type="text" placeholder="Email Address">
+                                <i class="mdi mdi-email"></i>
+                            </div>
+                        </div>
+                        <div class="single-form form-default text-start">
+                            <label>Message</label>
+                            <div class="form-input">
+                                <textarea placeholder="Message"></textarea>
+                                <i class="mdi mdi-message-text-outline"></i>
+                            </div>
+                        </div>
+                        <div class="single-form">
+                            <button class="main-btn primary-btn">send message</button>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
-    </section>
+
+    </div>
+</section>
 
 <!--====== Footer Style 5 Part Start ======-->
 
+<jsp:include page="footer.jsp"/>
 <!--====== Footer Style 5 Part Ends ======-->
 
     <!--====== Bootstrap js ======-->

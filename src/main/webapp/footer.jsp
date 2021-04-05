@@ -21,7 +21,7 @@
                         </a>
                     </div>
 
-                    <p>Made with &copy; at <a href="#0">GrayGrids</a>. All rights reserved.</p>
+                    <p>Made with &copy; at <a href="#0">2021 by JETS G.M.W.SH. All Rights Reserved.</a>.</p>
                     <ul class="footer-social">
                         <li><a href="#0"><i class="lni lni-facebook-filled"></i></a></li>
                         <li><a href="#0"><i class="lni lni-twitter-filled"></i></a></li>
@@ -35,36 +35,27 @@
                 <div class="footer-link-widget">
                     <div class="footer-link">
                         <h5 class="footer-title">My Account</h5>
-
                         <ul class="link">
-                            <li><a href="#0">Orders</a></li>
-                            <li><a href="#0">Downloads</a></li>
-                            <li><a href="#0">Addresses</a></li>
-                            <li><a href="#0">Account details</a></li>
-                            <li><a href="#0">Logout</a></li>
+                            <li><a href="${pageContext.request.contextPath}/profile">Profile</a></li>
+                            <li><a href="${pageContext.request.contextPath}/logout">Logout</a></li>
                         </ul>
                     </div>
                     <div class="footer-link">
                         <h5 class="footer-title">Information</h5>
 
                         <ul class="link">
-                            <li><a href="#0">About Us</a></li>
-                            <li><a href="#0">Contact Us</a></li>
-                            <li><a href="#0">Downloads</a></li>
-                            <li><a href="#0">Sitemap</a></li>
-                            <li><a href="#0">FAQs Page</a></li>
-                            <li><a href="#0">Comming Soon</a></li>
-                            <li><a href="#0">404 Page</a></li>
+                            <li><a href="${pageContext.request.contextPath}/aboutus">About Us</a></li>
+                            <li><a href="${pageContext.request.contextPath}/contactus">Contact Us</a></li>
                         </ul>
                     </div>
                     <div class="footer-link">
                         <h5 class="footer-title">Categories</h5>
 
                         <ul class="link">
-                            <li><a href="#0">Outfit</a></li>
-                            <li><a href="#0">Sunglassess</a></li>
-                            <li><a href="#0">Watches</a></li>
-                            <li><a href="#0">Bags</a></li>
+                            <li><a href="${pageContext.request.contextPath}/shop?cat=1">Consoles</a></li>
+                            <li><a href="${pageContext.request.contextPath}/shop?cat=3">Joysticks</a></li>
+                            <li><a href="${pageContext.request.contextPath}/shop?cat=2">Games</a></li>
+                            <li><a href="${pageContext.request.contextPath}/shop?cat=4">VR</a></li>
                         </ul>
                     </div>
                 </div>
@@ -92,3 +83,49 @@
     </div>
 </section>
 <!--====== Footer Style 5 Part Ends ======-->
+<button onclick="topFunction()" id="myBtn" title="Go to top"><i class="fas fa-arrow-up"></i></button>
+
+<style>
+    #myBtn {
+        display: none; /* Hidden by default */
+        position: fixed; /* Fixed/sticky position */
+        bottom: 20px; /* Place the button at the bottom of the page */
+        right: 30px; /* Place the button 30px from the right */
+        z-index: 99; /* Make sure it does not overlap */
+        border: none; /* Remove borders */
+        outline: none; /* Remove outline */
+        background-color: #542DED; /* Set a background color */
+        color: white; /* Text color */
+        cursor: pointer; /* Add a mouse pointer on hover */
+        padding: 10px; /* Some padding */
+        font-size: 20px; /* Increase font size */
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+        text-align:center;
+    }
+
+    #myBtn:hover {
+        background-color: #260ba7; /* Add a dark-grey background on hover */
+    }
+</style>
+<script>
+    mybutton = document.getElementById("myBtn");
+
+    // When the user scrolls down 20px from the top of the document, show the button
+    window.onscroll = function() {scrollFunction()};
+
+    function scrollFunction() {
+        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+            mybutton.style.display = "block";
+        } else {
+            mybutton.style.display = "none";
+        }
+    }
+
+    // When the user clicks on the button, scroll to the top of the document
+    function topFunction() {
+        document.body.scrollTop = 0; // For Safari
+        document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+    }
+</script>

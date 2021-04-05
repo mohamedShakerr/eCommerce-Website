@@ -46,7 +46,6 @@ public class IndexServlet extends HttpServlet{
 		//======================== Featured Product Service ================
 		FeaturedProductsService featuredProductsService = new FeaturedProductsService();
 		List<FeaturedIndexProductDto> featuredProducts = featuredProductsService.getAllFeaturedProducts();
-		List<FeaturedIndexProductDto> featuredAccessories = featuredProductsService.getAllFeaturedAccessories();
 		ProdDetailDto featuredOculus = featuredProductsService.getOculusFeaturedProduct();
 		featuredProductsService.terminateService();
 
@@ -65,7 +64,6 @@ public class IndexServlet extends HttpServlet{
 
 
 		request.setAttribute("featuredProducts", featuredProducts);
-		request.setAttribute("featuredAccessories", featuredAccessories);
 		request.setAttribute("featuredOculus", featuredOculus);
 
 		rd.forward(request,response);

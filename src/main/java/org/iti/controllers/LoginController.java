@@ -66,7 +66,11 @@ public class LoginController extends HttpServlet {
             HttpSession session = request.getSession();
 
             int userId = loginService.getUserIdByEmail(email);
+
+            boolean isUserAdmin = loginService.isUserAdminstrator(email);
+
             session.setAttribute("userId", userId);
+            session.setAttribute("isUserAdmin", isUserAdmin);
 
             if (rememberMe != null && rememberMe.equals("true")) {
 
@@ -80,6 +84,11 @@ public class LoginController extends HttpServlet {
 
                 cookiesManager.addCookie(response, "UID", ""+userId);
                 cookiesManager.addCookie(response, "TOKEN", userToken);
+
+                //====Check if User is Admin
+                //TODO Refactor
+
+                //====
 
                 session.setAttribute("rememberMe", true);
                 session.setAttribute("TOKEN", userToken);

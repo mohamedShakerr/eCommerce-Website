@@ -14,6 +14,7 @@ import org.iti.dtos.ProdDetailDto;
 import org.iti.services.CartService;
 import org.iti.services.FeaturedProductsService;
 import org.iti.services.ProductService;
+import org.iti.utils.ProductNotFoundException;
 import org.iti.utils.S3UploadManager;
 
 import java.io.IOException;
@@ -33,6 +34,10 @@ public class ProductDetailServlet extends HttpServlet {
 
 
         Integer productId = Integer.parseInt( request.getParameter("prodId") );
+
+        if(productId < 0){
+            throw new ProductNotFoundException("-ve Product Id");
+        }
 
         String added = request.getParameter("added");
 

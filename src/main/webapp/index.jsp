@@ -128,10 +128,10 @@
                         <img src="assets/images/content-card-4/caontent-1.jpg" alt="">
                     </div>
                     <div class="content-card-content">
-                        <h4 class="title"><a href="#0">Replacement Controller</a></h4>
+                        <h4 class="title"><a href="shop/prod-detail?prodId=22">Replacement Controller</a></h4>
                         <p>A replacement for the Oculus Go controller. Only one controller can be synced.</p>
-                        <a href="#0" class="main-btn primary-btn"><img src="assets/images/icon-svg/cart-4.svg"
-                                                                       alt=""> 399</a>
+                        <a href="shop/prod-detail?prodId=22" class="main-btn primary-btn"><img src="assets/images/icon-svg/cart-4.svg"
+                                                                       alt=""> BUY</a>
                     </div>
                 </div>
             </div>
@@ -141,10 +141,10 @@
                         <img src="assets/images/content-card-4/caontent-2.jpg" alt="">
                     </div>
                     <div class="content-card-content">
-                        <h4 class="title"><a href="#0">Fitted Interface</a></h4>
+                        <h4 class="title"><a href="shop/prod-detail?prodId=23">Fitted Interface</a></h4>
                         <p>A replacement for the Oculus Go controller. Only one controller can be synced.</p>
-                        <a href="#0" class="main-btn primary-btn"><img src="assets/images/icon-svg/cart-4.svg"
-                                                                       alt=""> 399</a>
+                        <a href="shop/prod-detail?prodId=23" class="main-btn primary-btn"><img src="assets/images/icon-svg/cart-4.svg"
+                                                                       alt=""> BUY</a>
                     </div>
                 </div>
             </div>
@@ -154,10 +154,10 @@
                         <img src="assets/images/content-card-4/caontent-3.jpg" alt="">
                     </div>
                     <div class="content-card-content">
-                        <h4 class="title"><a href="#0">Oculus Go Case</a></h4>
+                        <h4 class="title"><a href="shop/prod-detail?prodId=24">Oculus Go Case</a></h4>
                         <p>A replacement for the Oculus Go controller. Only one controller can be synced.</p>
-                        <a href="#0" class="main-btn primary-btn"><img src="assets/images/icon-svg/cart-4.svg"
-                                                                       alt=""> 399</a>
+                        <a href="shop/prod-detail?prodId=24" class="main-btn primary-btn"><img src="assets/images/icon-svg/cart-4.svg"
+                                                                       alt=""> BUY</a>
                     </div>
                 </div>
             </div>
@@ -195,9 +195,9 @@
                         <i class="mdi mdi-truck-fast"></i>
                     </div>
                     <div class="content-content">
-                        <h4 class="title"><a href="#0">Two-hour delivery</a></h4>
+                        <h4 class="title"><a href="aboutus">Two-hour delivery</a></h4>
                         <p>Available in most metros on selected in-stock products</p>
-                        <a href="#0" class="more">learn more</a>
+                        <a href="aboutus" class="more">learn more</a>
                     </div>
                 </div>
             </div>
@@ -207,9 +207,9 @@
                         <i class="mdi mdi-message-text"></i>
                     </div>
                     <div class="content-content">
-                        <h4 class="title"><a href="#0">Get help buying</a></h4>
+                        <h4 class="title"><a href="contactus">Get help buying</a></h4>
                         <p>Have a question? Call a Specialist or chat online for help</p>
-                        <a href="#0" class="more">Contuct us</a>
+                        <a href="contactus" class="more">Contact us</a>
                     </div>
                 </div>
             </div>
@@ -219,9 +219,9 @@
                         <i class="mdi mdi-ticket-percent"></i>
                     </div>
                     <div class="content-content">
-                        <h4 class="title"><a href="#0">Find the card for you</a></h4>
+                        <h4 class="title"><a href="aboutus">Find the card for you</a></h4>
                         <p>Get 3% Daily Cash with special financing offers from us</p>
-                        <a href="#0" class="more">learn more</a>
+                        <a href="aboutus" class="more">learn more</a>
                     </div>
                 </div>
             </div>
@@ -239,7 +239,8 @@
                     <div class="product-style-7 mt-30">
                         <div class="product-image">
                             <div class="product-active">
-                                <div class="product-item active">
+                                <div class="product-item active bg_cover" >
+<%--                                    <div style='background-image: url("${myProd.imageUrl}");width: 100%;'></div>--%>
                                     <img src="${myProd.imageUrl}" alt="product">
                                 </div>
                             </div>
@@ -267,9 +268,6 @@
                 </div>
 
             </c:forEach>
-
-
-
         </div>
     </div>
 </section>

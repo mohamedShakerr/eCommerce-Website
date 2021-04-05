@@ -3,13 +3,9 @@
 <!--======================== Navbar  Starts ====================================-->
 <c:set var="cart" value="${requestScope.cartItems}" scope="request"/>
 <c:set var="userId" value="${sessionScope.userId}" scope="request"/>
+<c:set var="isUserAdmin" value="${sessionScope.isUserAdmin}" scope="session"/>
 
-
-<c:out value="sdsd"/>
-<c:out value="${userId};"/>
-<c:out value="${sessionScope.userId};"/>
-<c:out value="${requestScope.userId};"/>
-
+<c:out value="${isUserAdmin}"/>
 
 <section class="navigation sticky-top">
 
@@ -55,11 +51,18 @@
                                         </div>
 
                                         <ul class="main-menu menu-vertical-11 collapse" id="menuVertical11-1">
+
+                                            <li><a href="${pageContext.request.contextPath}">HOME <i class="mdi mdi-chevron-right"></i></a>
+                                            </li>
+
+                                            <li><a href="${pageContext.request.contextPath}/shop">SHOP <i class="mdi mdi-chevron-right"></i></a>
+                                            </li>
+
                                             <li class="menu-item-has-children">
                                                 <a href="#0" class="collapsed" data-bs-toggle="collapse"
                                                    data-bs-target="#menuVertical11-2"
                                                    aria-controls="menuVertical11-2" aria-expanded="false"
-                                                   aria-label="Toggle navigation">Arts & Crafts <i
+                                                   aria-label="Toggle navigation">CATEGORIES <i
                                                         class="mdi mdi-chevron-right"></i></a>
 
                                                 <!-- sub mega dropdown Start -->
@@ -75,17 +78,16 @@
                                                                         aria-controls="menuVertical11-3"
                                                                         aria-expanded="false"
                                                                         aria-label="Toggle navigation">
-                                                                        New Arrivals
+                                                                        Devices
                                                                         <i class="mdi mdi-chevron-right"></i>
                                                                     </h6>
                                                                     <ul class="collapse" id="menuVertical11-3">
-                                                                        <li><a href="#0">Dressess</a></li>
-                                                                        <li><a href="#0">Jackets</a></li>
-                                                                        <li><a href="#0">Hoodies & Sweatshirts</a>
+                                                                        <li><a href="${pageContext.request.contextPath}/shop?cat=1">Consoles</a></li>
+                                                                        <li><a href="${pageContext.request.contextPath}/shop?cat=4">VR</a></li>
+                                                                        <li><a href="${pageContext.request.contextPath}/shop?cat=3">Joysticks</a>
                                                                         </li>
-                                                                        <li><a href="#0">Sweaters</a></li>
-                                                                        <li><a href="#0">Tops & Tees</a></li>
-                                                                        <li><a href="#0">Party Dressess</a></li>
+                                                                        <li><a href="${pageContext.request.contextPath}/shop?cat=5">Headsets</a></li>
+
                                                                     </ul>
                                                                 </li>
                                                                 <li
@@ -96,99 +98,26 @@
                                                                         aria-controls="menuVertical11-4"
                                                                         aria-expanded="false"
                                                                         aria-label="Toggle navigation">
-                                                                        Trending
+                                                                        Mesc.
                                                                         <i class="mdi mdi-chevron-right"></i>
                                                                     </h6>
                                                                     <ul class="collapse" id="menuVertical11-4">
-                                                                        <li><a href="#0">Dressess</a></li>
-                                                                        <li><a href="#0">Jackets</a></li>
-                                                                        <li><a href="#0">Hoodies & Sweatshirts</a>
+                                                                        <li><a href="${pageContext.request.contextPath}/shop?cat=6">Cables</a></li>
+                                                                        <li><a href="${pageContext.request.contextPath}/shop?cat=8">Cards</a></li>
+                                                                        <li><a href="${pageContext.request.contextPath}/shop?cat=2">Games</a>
                                                                         </li>
-                                                                        <li><a href="#0">Sweaters</a></li>
-                                                                        <li><a href="#0">Tops & Tees</a></li>
-                                                                        <li><a href="#0">Party Dressess</a></li>
-                                                                    </ul>
-                                                                </li>
-                                                                <li class="mega-dropdown-list">
-                                                                    <div class="d-md-flex d-lg-block">
-                                                                        <div class="menu-image">
-                                                                            <img src="assets/images/menu-1.jpg"
-                                                                                 alt="">
-                                                                        </div>
-                                                                        <div class="menu-image">
-                                                                            <img src="assets/images/menu-2.jpg"
-                                                                                 alt="">
-                                                                        </div>
-                                                                    </div>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                    </li>
-                                                </ul>
-                                                <!-- sub mega dropdown Ends -->
-                                            </li>
-                                            <li class="menu-item-has-children">
-                                                <a href="#0" class="collapsed" data-bs-toggle="collapse"
-                                                   data-bs-target="#menuVertical11-5"
-                                                   aria-controls="menuVertical11-5" aria-expanded="false"
-                                                   aria-label="Toggle navigation">Fashion <i
-                                                        class="mdi mdi-chevron-right"></i></a>
+                                                                        <li><a href="${pageContext.request.contextPath}/shop?cat=7">Thumbsticks</a></li>
 
-                                                <!-- sub mega dropdown Start -->
-                                                <ul class="sub-mega-dropdown collapse" id="menuVertical11-5">
-                                                    <li>
-                                                        <div class="mega-dropdown-menu">
-                                                            <ul class="container mega-dropdown d-flex flex-wrap">
-                                                                <li
-                                                                        class="mega-dropdown-list menu-item-has-children">
-                                                                    <h6 class="heading-6 font-weight-500 mega-title collapsed"
-                                                                        data-bs-toggle="collapse"
-                                                                        data-bs-target="#menuVertical11-6"
-                                                                        aria-controls="menuVertical11-6"
-                                                                        aria-expanded="false"
-                                                                        aria-label="Toggle navigation">
-                                                                        New Arrivals
-                                                                        <i class="mdi mdi-chevron-right"></i>
-                                                                    </h6>
-                                                                    <ul class="collapse" id="menuVertical11-6">
-                                                                        <li><a href="#0">Dressess</a></li>
-                                                                        <li><a href="#0">Jackets</a></li>
-                                                                        <li><a href="#0">Hoodies & Sweatshirts</a>
-                                                                        </li>
-                                                                        <li><a href="#0">Sweaters</a></li>
-                                                                        <li><a href="#0">Tops & Tees</a></li>
-                                                                        <li><a href="#0">Party Dressess</a></li>
-                                                                    </ul>
-                                                                </li>
-                                                                <li
-                                                                        class="mega-dropdown-list menu-item-has-children">
-                                                                    <h6 class="heading-6 font-weight-500 mega-title collapsed"
-                                                                        data-bs-toggle="collapse"
-                                                                        data-bs-target="#menuVertical11-7"
-                                                                        aria-controls="menuVertical11-7"
-                                                                        aria-expanded="false"
-                                                                        aria-label="Toggle navigation">
-                                                                        Trending
-                                                                        <i class="mdi mdi-chevron-right"></i>
-                                                                    </h6>
-                                                                    <ul class="collapse" id="menuVertical11-7">
-                                                                        <li><a href="#0">Dressess</a></li>
-                                                                        <li><a href="#0">Jackets</a></li>
-                                                                        <li><a href="#0">Hoodies & Sweatshirts</a>
-                                                                        </li>
-                                                                        <li><a href="#0">Sweaters</a></li>
-                                                                        <li><a href="#0">Tops & Tees</a></li>
-                                                                        <li><a href="#0">Party Dressess</a></li>
                                                                     </ul>
                                                                 </li>
                                                                 <li class="mega-dropdown-list">
                                                                     <div class="d-md-flex d-lg-block">
                                                                         <div class="menu-image">
-                                                                            <img src="assets/images/menu-1.jpg"
-                                                                                 alt="">
+                                                                            <img src="https://ecommerece-iti.s3.eu-central-1.amazonaws.com/steam.jpg"
+                                                                                 alt="img">
                                                                         </div>
                                                                         <div class="menu-image">
-                                                                            <img src="assets/images/menu-2.jpg"
+                                                                            <img src="https://ecommerece-iti.s3.eu-central-1.amazonaws.com/hed.jpg"
                                                                                  alt="">
                                                                         </div>
                                                                     </div>
@@ -199,18 +128,7 @@
                                                 </ul>
                                                 <!-- sub mega dropdown Ends -->
                                             </li>
-                                            <li><a href="#0">Health & Household <i
-                                                    class="mdi mdi-chevron-right"></i></a></li>
-                                            <li><a href="#0">Bages & Shoes <i class="mdi mdi-chevron-right"></i></a>
-                                            </li>
-                                            <li><a href="#0">Jewelry & Watchs <i
-                                                    class="mdi mdi-chevron-right"></i></a></li>
-                                            <li><a href="#0">Beauty & Health <i
-                                                    class="mdi mdi-chevron-right"></i></a></li>
-                                            <li><a href="#0">Electronics <i class="mdi mdi-chevron-right"></i></a>
-                                            </li>
-                                            <li><a href="#0">Home & Garden <i class="mdi mdi-chevron-right"></i></a>
-                                            </li>
+
 
                                             <!-- BACK END STUFF HERE -->
                                             <!-- Check if User is logged In Or Not -->
@@ -222,6 +140,11 @@
                                                     <script> console.log("user Logged In") </script>
                                                     <li><a href="${pageContext.request.contextPath}/profile" id="BurgerMenuLoginRegBtns"> Profile  <i class="mdi mdi-card-account-details"></i></a></li>
                                                     <li><a href="${pageContext.request.contextPath}/logout" id="BurgerMenuLoginRegBtns">Logout  <i class="mdi mdi-logout-variant"></i></a></li>
+
+                                                    <c:if test="${isUserAdmin}">
+                                                        <li><a href="${pageContext.request.contextPath}/admin" id="BurgerMenuLoginRegBtns">Admin  <i class="mdi mdi-account-lock"></i></a></li>
+                                                    </c:if>
+
                                                 </c:when>
 
                                                 <c:when test="${userId == null}">
@@ -280,6 +203,11 @@
                                                 <ul class="dropdown-menu" id="dropdown11">
                                                     <li><a href="${pageContext.request.contextPath}/profile"><i class="mdi mdi-account"></i> My Profile</a></li>
                                                     <li><a href="${pageContext.request.contextPath}/logout"><i class="mdi mdi-import"></i> Logout</a></li>
+
+                                                    <c:if test="${isUserAdmin}">
+                                                        <li><a href="${pageContext.request.contextPath}/admin"><i class="mdi mdi-account-lock"></i> Admin</a></li>
+                                                    </c:if>
+
                                                 </ul>
                                             </div>
                                         </li>

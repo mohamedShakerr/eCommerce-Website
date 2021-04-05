@@ -81,6 +81,9 @@ public class TokenValidationFilter implements Filter {
                     session.setAttribute("userId", cookieUID);
                     //Put TOKEN in cookie as well
                     session.setAttribute("TOKEN", token);
+                    String userMail = loginService.getUserMailFromId(cookieUID);
+                    boolean isUserAdmin = loginService.isUserAdminstrator(userMail);
+                    session.setAttribute("isUserAdmin",isUserAdmin);
 
                 }else {
                     //The Cookies are not valid so we invalidate Them
