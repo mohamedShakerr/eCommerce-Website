@@ -5,7 +5,6 @@
 <c:set var="userId" value="${sessionScope.userId}" scope="request"/>
 <c:set var="isUserAdmin" value="${sessionScope.isUserAdmin}" scope="session"/>
 
-<c:out value="${isUserAdmin}"/>
 
 <section class="navigation sticky-top">
 
@@ -137,8 +136,7 @@
 
                                                 <c:when test="${userId != null}">
                                                     <!-- TODO REMOVE DEBUGGIMG -->
-                                                    <script> console.log("user Logged In") </script>
-                                                    <li><a href="${pageContext.request.contextPath}/profile" id="BurgerMenuLoginRegBtns"> Profile  <i class="mdi mdi-card-account-details"></i></a></li>
+                                                    <li><a href="${pageContext.request.contextPath}/profile" id="BurgerMenuLoginRegBtns"> Profile   <i class="mdi mdi-card-account-details"></i></a></li>
                                                     <li><a href="${pageContext.request.contextPath}/logout" id="BurgerMenuLoginRegBtns">Logout  <i class="mdi mdi-logout-variant"></i></a></li>
 
                                                     <c:if test="${isUserAdmin}">
@@ -149,9 +147,8 @@
 
                                                 <c:when test="${userId == null}">
                                                     <!-- TODO REMOVE DEBUGGIMG -->
-                                                    <script> console.log("user NOT Logged In") </script>
-                                                    <li><a href="${pageContext.request.contextPath}/login" id="BurgerMenuLoginRegBtns"> Login <i class="mdi mdi-login-variant"></i></a></li>
-                                                    <li><a href="${pageContext.request.contextPath}/register" id="BurgerMenuLoginRegBtns">Register <i class="mdi mdi-account-multiple-plus"></i></a></li>
+                                                    <li><a href="${pageContext.request.contextPath}/login" id="BurgerMenuLoginRegBtns"> Login  <i class="mdi mdi-login-variant"></i></a></li>
+                                                    <li><a href="${pageContext.request.contextPath}/register" id="BurgerMenuLoginRegBtns">Register  <i class="mdi mdi-account-multiple-plus"></i></a></li>
 
                                                 </c:when>
 
@@ -216,9 +213,8 @@
                                         <c:if test="${not pageContext.request.requestURI.endsWith('/checkout.jsp')}">
                                             <li id="user-cart">
                                                 <div class="navbar-cart">
-                                                    <a class="icon-btn primary-icon-text icon-text-btn" href="#0"><img
-                                                            src="https://www.flaticon.com/svg/vstatic/svg/709/709640.svg?token=exp=1617579714~hmac=d43fb926c9eb7ead7b7b681f57eed011" alt="Icon" style="padding-top: 10px;"><span id="cart-count"
-                                                                                                                                                                                                                                 class="icon-text text-style-1">--</span></a>
+                                                    <a class="icon-btn primary-icon-text icon-text-btn" href="#0">
+                                                        <i class="fas fa-shopping-cart"></i><span id="cart-count" class="icon-text text-style-1">--</span></a>
 
                                                     <div class="navbar-cart-dropdown">
                                                         <div class="checkout-style-2">
@@ -296,11 +292,11 @@
 
                                         <li id="userSignInRegister">
                                             <a class="icon-btn primary-icon-text icon-text-btn customMenuBtn" href="${pageContext.request.contextPath}/login" role="button">
-                                                <class class="mdi mdi-login-variant"></class>Login
+                                                <class class="mdi mdi-login-variant"></class>&nbsp;Login
                                             </a>
 
                                             <a class="icon-btn primary-icon-text icon-text-btn customMenuBtn" href="${pageContext.request.contextPath}/register" role="button">
-                                                <class class="mdi mdi-account-multiple-plus"></class>Register
+                                                <class class="mdi mdi-account-multiple-plus"></class>&nbsp;Register
                                             </a>
 
                                         </li>
