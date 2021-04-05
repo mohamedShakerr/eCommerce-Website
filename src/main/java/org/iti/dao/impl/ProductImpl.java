@@ -195,6 +195,7 @@ public class ProductImpl implements ProductDao {
     }
 
     //todo make the same for categories
+    //todo this is another admin prod
     @Override
     public void addProduct(Products product) {
         session.beginTransaction();
