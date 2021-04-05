@@ -155,20 +155,6 @@
                     <!-- User profile and search -->
                     <!-- ============================================================== -->
                 </ul>
-
-                <ul class="navbar-nav float-start me-auto">
-                    <!-- ============================================================== -->
-                    <!-- Search -->
-                    <!-- ============================================================== -->
-
-                </ul>
-
-                <ul class="navbar-nav float-end">
-                    <!-- ============================================================== -->
-                    <!-- ============================================================== -->
-                    <!-- User profile and search -->
-                    <!-- ============================================================== -->
-                </ul>
             </div>
         </nav>
     </header>
@@ -220,8 +206,9 @@
                 <div class="col-md-12">
                     <div class="card">
                         <br><br><div class="search-box">
-                        <a class="waves-effect waves-dark" href="javascript:void(0)" >&nbsp; &nbsp;
+                        <a class="waves-effect waves-dark row" href="javascript:void(0)" >&nbsp; &nbsp;
                             <i class="ti-search" style="color: black"></i>
+                            Search
                         </a><br>
                         <form class="app-search position-absolute">
                             <input type="text" id="searchInput" onkeyup="searchForCustomer()" class="form-control" placeholder="Search">
@@ -240,7 +227,7 @@
                                         <c:choose>
                                             <c:when test='${! empty requestScope.customersList}'>
                                                 <c:forEach var="myCustomer" items='${requestScope["customersList"]}'>
-                                                    <a href="customers/profile?email=${myCustomer.email}">
+                                                    <a href="customers/profile?customerId=${myCustomer.customerId}">
                                                         <li class="feed-item">
                                                             <div class="feed-icon">
                                                                 <img src="${myCustomer.url}" alt="user" width="50" height="50" class="rounded-circle">
@@ -292,7 +279,7 @@
     function searchForCustomer() {
         let input = document.getElementById('searchInput').value
         input=input.toLowerCase();
-        let x = document.getElementsByClassName('customerItem');
+        let x = document.getElementsByClassName('feed-item');
 
         for (i = 0; i < x.length; i++) {
             if (!x[i].innerHTML.toLowerCase().includes(input)) {

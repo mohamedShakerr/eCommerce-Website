@@ -5,6 +5,7 @@ import java.util.Date;
 
 public class CustomerDto implements Serializable {
 
+    private Integer customerId;
     private String name;
     private String email;
     private String password;
@@ -31,6 +32,14 @@ public class CustomerDto implements Serializable {
     public CustomerDto(String email, String password) {
         this.email = email;
         this.password = password;
+    }
+
+    public Integer getCustomerId() {
+        return customerId;
+    }
+
+    public void setCustomerId(Integer customerId) {
+        this.customerId = customerId;
     }
 
     public String getName() {
@@ -111,5 +120,23 @@ public class CustomerDto implements Serializable {
 
     public void setInterests(String interests) {
         this.interests = interests;
+    }
+
+
+    @Override
+    public String toString() {
+        return "CustomerDto{" +
+                "customerId=" + customerId +
+                ", name='" + name + '\'' +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", address='" + address + '\'' +
+                ", credit=" + credit +
+                ", registerDate=" + registerDate +
+                ", url='" + url + '\'' +
+                ", phone='" + phone + '\'' +
+                ", job='" + job + '\'' +
+                ", interests='" + interests + '\'' +
+                '}';
     }
 }

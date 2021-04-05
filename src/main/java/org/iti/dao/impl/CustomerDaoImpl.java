@@ -5,6 +5,7 @@ import org.hibernate.query.Query;
 import org.iti.dao.interfaces.CustomerDao;
 import org.iti.db.DBSessionProvider;
 import org.iti.db.domain.Customers;
+import org.iti.db.domain.Orders;
 import org.iti.dtos.CustomerDto;
 
 import java.util.List;
@@ -65,6 +66,34 @@ public class CustomerDaoImpl implements CustomerDao {
         hibernateSession.close();
 
         return result;
+    }
+
+    @Override
+    public Customers getCustomerByUserId(Integer customerId) {
+
+        Session hibernateSession = dbSessionProvider.getSession();
+
+        Query q = hibernateSession.
+                createQuery("from Customers c where c.customerId = :customerId")
+                .setParameter("customerId", customerId);
+
+        Customers result = (Customers) q.uniqueResult();
+        hibernateSession.close();
+
+        return result;
+    }
+
+    public List<Orders> getOrdersByUserId(Integer customerId){
+
+        Session hibernateSession = dbSessionProvider.getSession();
+
+        String queryString = "from Orders o where o.customers.customerId= :id " ;
+        Query query = hibernateSession.createQuery(queryString).setParameter("id",customerId);
+
+        List<Orders> orders = query.getResultList();
+        hibernateSession.close();
+
+        return orders;
     }
 
     @Override

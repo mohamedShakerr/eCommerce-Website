@@ -248,93 +248,45 @@
                                         <table class="table table-striped table-hover">
                                             <thead class="table-dark">
                                             <tr class="bg-dark">
-                                                <th class="border-top-0" style="color: papayawhip">#</th>
-                                                <th class="border-top-0" style="color: papayawhip">Cost</th>
-                                                <th class="border-top-0" style="color: papayawhip">&nbsp;&nbsp;Date</th>
+                                                <th class="border-top-0" style="color: white">#</th>
+                                                <th class="border-top-0" style="color: white">Products</th>
+                                                <th class="border-top-0" style="color: white">Cost</th>
+                                                <th class="border-top-0" style="color: white">&nbsp;&nbsp;Date</th>
                                             </thead>
                                             <tbody>
-<%--                                            <c:choose>--%>
-<%--                                                <c:when test='${! empty requestScope.productsList}'>--%>
-<%--                                                    <c:forEach var="myProduct" items='${requestScope["productsList"]}'>--%>
-                                                        <tr>
-                                                            <td>
-<%--                                                            <c:out value="${myProduct.productId}" />--%>
-                                                                1
-                                                            </td>
-                                                            <td>
-                                                                <label class="label label-info">
-                                                                    $100
-                                                                </label>
-                                                            </td>
-                                                            <td>
-                                                                <label class="label label-danger">
-                                                                    6/4/2021
-<%--                                                                    <c:out value="${myProduct.quantity}" />--%>
-                                                                </label>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>
-<%--                                                            <c:out value="${myProduct.productId}" />--%>
-                                                                2
-                                                            </td>
-                                                            <td>
-                                                                <label class="label label-info">
-                                                                    $13000
-                                                                </label>
-                                                            </td>
-                                                            <td>
-                                                                <label class="label label-danger">
-                                                                    2/4/2021
-<%--                                                                    <c:out value="${myProduct.quantity}" />--%>
-                                                                </label>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>
-<%--                                                            <c:out value="${myProduct.productId}" />--%>
-                                                                3
-                                                            </td>
-                                                            <td>
-                                                                <label class="label label-info">
-                                                                    $150
-                                                                </label>
-                                                            </td>
-                                                            <td>
-                                                                <label class="label label-danger">
-                                                                    22/3/2021
-<%--                                                                    <c:out value="${myProduct.quantity}" />--%>
-                                                                </label>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>
-<%--                                                            <c:out value="${myProduct.productId}" />--%>
-                                                                4
-                                                            </td>
-                                                            <td>
-                                                                <label class="label label-info">
-                                                                    $240
-                                                                </label>
-                                                            </td>
-                                                            <td>
-                                                                <label class="label label-danger">
-                                                                    22/2/2021
-    <%--                                                                    <c:out value="${myProduct.quantity}" />--%>
-                                                                </label>
-                                                            </td>
-                                                        </tr>
-
-<%--                                                    </c:forEach>--%>
-<%--                                                </c:when>--%>
-<%--                                                <c:otherwise>--%>
-<%--                                                    <tr>--%>
-<%--                                                        <td colspan=8 align="center" bgcolor="red">--%>
-<%--                                                            <b>There is no Products Found</b>--%>
-<%--                                                        </td>--%>
-<%--                                                    </tr>--%>
-<%--                                                </c:otherwise>--%>
-<%--                                            </c:choose>--%>
+                                            <c:choose>
+                                                <c:when test='${! empty requestScope.customerOrders}'>
+                                                    <c:forEach var="customerOrder" items='${requestScope["customerOrders"]}'>
+                                                        <c:forEach var="myOrder" items='customerOrder'>
+                                                            <tr>
+                                                                <td>
+                                                                <c:out value="${myOrder[0]}" />
+                                                                </td>
+                                                                <td>
+                                                                    <c:out value="${myOrder[1]}" />
+                                                                </td>
+                                                                <td>
+                                                                    <label class="label label-info">
+                                                                        $<c:out value="${myOrder[2]}" />
+                                                                    </label>
+                                                                </td>
+                                                                <td>
+                                                                    <label class="label label-danger">
+                                                                        $<c:out value="${myOrder[3]}" />
+                                                                    </label>
+                                                                </td>
+                                                            </tr>
+                                                        </c:forEach>
+                                                    </c:forEach>
+                                                </c:when>
+                                                <c:otherwise>
+                                                    <tr>
+                                                        <td colspan=8 align="center" bgcolor="red">
+                                                            <b>There is no Orders Found</b>
+                                                        </td>
+                                                    </tr>
+                                                </c:otherwise>
+                                            </c:choose>
                                             </tbody>
                                         </table>
                                     </div>

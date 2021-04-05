@@ -10,6 +10,8 @@ public class CustomerMapper extends EntityDtoMapper<Customers, CustomerDto> {
     @Override
     public CustomerDto toDto(Customers entity) {
         CustomerDto dto = new CustomerDto();
+
+        dto.setCustomerId(entity.getCustomerId());
         dto.setName(entity.getName());
         dto.setEmail(entity.getEmail());
         dto.setPassword(entity.getPassword());
@@ -24,6 +26,8 @@ public class CustomerMapper extends EntityDtoMapper<Customers, CustomerDto> {
     @Override
     public Customers toEntity(CustomerDto customerDto) {
         Customers customer = new Customers();
+
+        customer.setCustomerId(customerDto.getCustomerId());
         customer.setName(customerDto.getName());
         customer.setEmail(customerDto.getEmail());
         customer.setPassword(customerDto.getPassword());
