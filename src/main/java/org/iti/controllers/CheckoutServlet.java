@@ -8,9 +8,14 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import org.hibernate.Session;
+import org.iti.db.DBSessionProvider;
 import org.iti.db.domain.CartItems;
+import org.iti.db.domain.Customers;
+import org.iti.dtos.CustomerDto;
 import org.iti.services.CheckoutCreditService;
 import org.iti.services.CheckoutService;
+import org.iti.services.CustomerServices;
 import org.iti.services.PaymentServices;
 
 import java.io.IOException;
@@ -56,6 +61,15 @@ public class CheckoutServlet extends HttpServlet {
             request.setAttribute("stateBilling",state);
             request.setAttribute("zipcodeBilling",ziPcode);
             request.setAttribute("addressBilling",address);
+            DBSessionProvider dbSessionProvider = DBSessionProvider.getInstance();
+            Session hsession = dbSessionProvider.getSession();
+            Customers customers = hsession.find(Customers.class, id);
+            CustomerDto dto = new CustomerDto();
+            dto.setEmail(customers.getEmail());
+            dto.setName(customers.getName());
+            hsession.close();
+
+            request.setAttribute("customerDto",dto);
 
             request.setAttribute("subtotal",checkoutService.getSubTotal(id));
 

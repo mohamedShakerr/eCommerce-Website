@@ -42,12 +42,12 @@
             </tr>
             <tr>
                 <td>Name:</td>
-                <td>${customerDto.name}</td>
+                <td>${requestScope.customerDto.name}</td>
             </tr>
 
             <tr>
                 <td>Email:</td>
-                <td>${customerDto.email}</td>
+                <td>${requestScope.customerDto.email}</td>
             </tr>
             <tr><td><br/></td></tr>
             <tr>

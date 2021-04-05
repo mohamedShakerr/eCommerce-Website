@@ -257,26 +257,30 @@
                                             <c:choose>
                                                 <c:when test='${! empty requestScope.customerOrders}'>
                                                     <c:forEach var="customerOrder" items='${requestScope["customerOrders"]}'>
-                                                        <c:forEach var="myOrder" items='customerOrder'>
-                                                            <tr>
-                                                                <td>
-                                                                <c:out value="${myOrder[0]}" />
-                                                                </td>
-                                                                <td>
-                                                                    <c:out value="${myOrder[1]}" />
-                                                                </td>
-                                                                <td>
-                                                                    <label class="label label-info">
-                                                                        $<c:out value="${myOrder[2]}" />
-                                                                    </label>
-                                                                </td>
-                                                                <td>
-                                                                    <label class="label label-danger">
-                                                                        $<c:out value="${myOrder[3]}" />
-                                                                    </label>
-                                                                </td>
-                                                            </tr>
-                                                        </c:forEach>
+
+
+                                                        <tr>
+                                                            <td>
+                                                                <c:out value="${customerOrder[0]}" />
+                                                            </td>
+                                                            <td>
+                                                                <label class="label label-primary">
+                                                                    <c:out value="${customerOrder[1]}" />
+
+                                                                </label>
+                                                            </td>
+                                                            <td>
+                                                                <label class="label label-info">
+                                                                    $<c:out value="${customerOrder[2]}" />
+                                                                </label>
+                                                            </td>
+                                                            <td>
+                                                                <label class="label label-danger">
+                                                                    <c:out value="${customerOrder[3]}" />
+                                                                </label>
+                                                            </td>
+                                                        </tr>
+
                                                     </c:forEach>
                                                 </c:when>
                                                 <c:otherwise>

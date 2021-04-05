@@ -88,7 +88,7 @@ public class Orders implements java.io.Serializable {
         this.paymentses = paymentses;
     }
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "orders")
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "orders")
     public Set<OrderItems> getOrderItemses() {
         return this.orderItemses;
     }

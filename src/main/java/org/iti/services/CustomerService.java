@@ -80,8 +80,8 @@ public class CustomerService {
 
             for (OrderItems orderItems: order.getOrderItemses()){
                 totalPrice += orderItems.getUnitPrice() * orderItems.getQuantity();
-                OrderDetail.add(totalPrice);
             }
+            OrderDetail.add(totalPrice);
 
             OrderDetail.add(order.getDate());
 

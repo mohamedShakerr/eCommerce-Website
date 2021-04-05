@@ -202,13 +202,13 @@
                         <div class="form-check">
                             <input id="credit" name="paymentMethod" type="radio" class="form-check-input" value="credit"
                                    checked required>
-                            <label class="form-check-label" for="credit">Credit card</label>
+                            <label class="form-check-label" for="credit"><i class="far fa-credit-card"></i>Credit card</label>
                         </div>
 
                         <div class="form-check">
                             <input id="paypal" name="paymentMethod" type="radio" class="form-check-input" value="paypal"
                                    required>
-                            <label class="form-check-label" for="paypal">PayPal</label>
+                            <label class="form-check-label" for="paypal"><i class="fab fa-cc-paypal"></i>PayPal</label>
                         </div>
                     </div>
 

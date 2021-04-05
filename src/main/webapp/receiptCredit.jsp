@@ -19,7 +19,7 @@
     <table>
         <tr>
             <td><b>Merchant:</b></td>
-            <td>Company ABC Ltd.</td>
+            <td>Unity Store .</td>
         </tr>
         <tr>
             <td><b>Payer:</b></td>
@@ -43,6 +43,7 @@
             <td>${requestScope.subTotal+20} USD</td>
         </tr>
     </table>
+    <a href="${pageContext.request.contextPath}">Continue Shopping</a>
 </div>
 </body>
 </html>
