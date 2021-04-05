@@ -1,10 +1,8 @@
 package org.iti.dao.interfaces;
 
 import org.iti.db.domain.Customers;
-import org.iti.db.domain.FeaturedProds;
 import org.iti.dtos.CustomerDto;
 
-import java.sql.SQLException;
 import java.util.List;
 
 public interface CustomerDao {
@@ -14,6 +12,8 @@ public interface CustomerDao {
     Customers getCustomerByUserName(String userName);
 
     Customers getCustomerByUserEmail(String email);
+
+    Customers getCustomerByUserId(Integer customerId);
 
     boolean isCustomerExist(Customers customerDto);
 

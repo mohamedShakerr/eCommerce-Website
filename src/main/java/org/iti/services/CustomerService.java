@@ -48,6 +48,17 @@ public class CustomerService {
 
     }
 
+    public CustomerDto getCustomerByUserId(Integer customerId) {
+
+        CustomerDao customerDao = new CustomerDaoImpl();
+
+        Customers customer = customerDao.getCustomerByUserId(customerId);
+
+        EntityDtoMapper<Customers, CustomerDto> mapper = new CustomerMapper();
+
+        return mapper.toDto(customer);
+    }
+
     public void terminateService() {
         serviceSessison.close();
     }

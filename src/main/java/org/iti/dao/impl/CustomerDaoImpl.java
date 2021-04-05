@@ -68,6 +68,21 @@ public class CustomerDaoImpl implements CustomerDao {
     }
 
     @Override
+    public Customers getCustomerByUserId(Integer customerId) {
+
+        Session hibernateSession = dbSessionProvider.getSession();
+
+        Query q = hibernateSession.
+                createQuery("from Customers c where c.customerId = :customerId")
+                .setParameter("customerId", customerId);
+
+        Customers result = (Customers) q.uniqueResult();
+        hibernateSession.close();
+
+        return result;
+    }
+
+    @Override
     public boolean isCustomerExist(Customers customer){
         Session hibernateSession = dbSessionProvider.getSession();
 

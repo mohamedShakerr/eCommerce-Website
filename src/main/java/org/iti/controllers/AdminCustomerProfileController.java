@@ -22,16 +22,16 @@ public class AdminCustomerProfileController extends HttpServlet{
 
 		RequestDispatcher rd = request.getRequestDispatcher("/admin/customers/admin_customer_profile.jsp");
 
-		String customerEmail = request.getParameter("email");
+		Integer customerId = Integer.parseInt(request.getParameter("customerId"));
 
-		System.out.println("parameter is" + customerEmail);
+		System.out.println("parameter is" + customerId);
 
 		CustomerService customerService = new CustomerService();
-		CustomerDto customer = customerService.getCustomerByUserEmail(customerEmail);
+		CustomerDto customer = customerService.getCustomerByUserId(customerId);
 
 		customerService.terminateService();
 
-		if(customerEmail != null){
+		if(customerId != null){
 			request.setAttribute("myCustomer", customer);
 		}
 

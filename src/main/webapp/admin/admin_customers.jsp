@@ -227,7 +227,7 @@
                                         <c:choose>
                                             <c:when test='${! empty requestScope.customersList}'>
                                                 <c:forEach var="myCustomer" items='${requestScope["customersList"]}'>
-                                                    <a href="customers/profile?email=${myCustomer.email}">
+                                                    <a href="customers/profile?customerId=${myCustomer.customerId}">
                                                         <li class="feed-item">
                                                             <div class="feed-icon">
                                                                 <img src="${myCustomer.url}" alt="user" width="50" height="50" class="rounded-circle">
