@@ -194,6 +194,7 @@ public class ProductImpl implements ProductDao {
         return true;
     }
 
+    //todo make the same for categories
     @Override
     public void addProduct(Products product) {
         session.beginTransaction();
