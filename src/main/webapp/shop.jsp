@@ -172,6 +172,8 @@
     <%--============ FOOTER END =============--%>
 
     <!--====== Bootstrap js ======-->
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js" integrity="sha384-SR1sx49pcuLnqZUnnPwx6FCym0wLsk5JZuNx2bPPENzswTNFaQU1RDvt3wT4gWFG" crossorigin="anonymous"></script>
+
     <script src="./assets/js/bootstrap.bundle-5.0.0-beta1.min.js"></script>
     <!--====== Tiny Slider js ======-->
     <script src="./assets/js/tiny-slider.js"></script>

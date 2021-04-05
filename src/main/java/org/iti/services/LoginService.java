@@ -3,7 +3,6 @@ package org.iti.services;
 import org.iti.dao.impl.CustomerDaoImpl;
 import org.iti.dao.interfaces.CustomerDao;
 import org.iti.db.domain.Customers;
-import org.iti.domain.Customer;
 import org.iti.dtos.CustomerDto;
 import org.iti.utils.mappers.todtomappers.CustomerMapper;
 
@@ -46,7 +45,7 @@ public class LoginService {
 
         CustomerDao dao = new CustomerDaoImpl();
 
-        Customers customer = dao.getCustomerById(userId);
+        Customers customer = dao.getCustomerByID(userId);
 
         if(customer == null){
             return  false;

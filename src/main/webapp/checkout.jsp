@@ -35,6 +35,7 @@
     <!--====== gLightBox CSS ======-->
     <link rel="stylesheet" href="assets/css/glightbox.min.css">
 
+
     <!--====== nouiSlider CSS ======-->
     <link rel="stylesheet" href="assets/css/nouislider.min.css">
 
@@ -49,6 +50,11 @@
 
     <!-- card style-->
     <link rel="stylesheet" type="text/css" href="assets/css/card.css">
+
+    <script
+            src="https://code.jquery.com/jquery-3.6.0.min.js"
+            integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+            crossorigin="anonymous"></script>
 
     <style>
         .bd-placeholder-img {
@@ -75,18 +81,15 @@
     <!-- Custom styles for this template -->
     <%--    <link href="form-validation.css" rel="stylesheet">--%>
 </head>
-<body class="bg-light">
+<body >
 
 <!--======================== Navbar  Starts ====================================-->
 <c:set var="userId" value="${sessionScope.userId}" scope="session"/>
 <jsp:include page="./navbar.jsp"/>
 <!--======================== Navbar  Ends ====================================-->
 
-<div class="container">
+<div class="container mt-30 mb-30">
     <main>
-
-
-
         <div class="row g-5">
 
 
@@ -96,16 +99,19 @@
                     <span class="badge bg-primary rounded-pill"><c:out
                             value="${requestScope.cartItemsList.size()}"/></span>
                 </h4>
-                <ul class="list-group mb-3">
+                <ul class="list-group mb-3" id="cartItemsExpadable">
                     <c:choose>
                     <c:when test="${not empty requestScope.cartItemsList}">
 
-                    <c:forEach items="${requestScope.cartItemsList}" var="cartItem">
+                    <c:forEach items="${requestScope.cartItemsList}" var="cartItem" varStatus="count">
                         <li class="list-group-item d-flex justify-content-between lh-sm">
-                            <div>
+                            <div type="button" data-bs-toggle="collapse" data-bs-target="#collapse${count.index}" aria-expanded="true" aria-controls="collapse${count.index}" class="">
                                 <h7><c:out value="${cartItem.quantity}"/>X</h7>
                                 <h6 class="my-0"><c:out value="${cartItem.products.name}"/></h6>
-                                <small class="text-muted"><c:out value="${cartItem.products.description}"/></small>
+                                <div id="collapse${count.index}" class="accordion-collapse collapse " aria-labelledby="heading${count.index}" data-bs-parent="#cartItemsExpadable" style="border: none">
+                                    <small class="text-muted"><c:out value="${cartItem.products.description}"/></small>
+                                </div>
+
                             </div>
                             <span class="text-muted"><c:out value="${cartItem.products.price}"/></span>
                         </li>
@@ -225,8 +231,8 @@
 
 
 <!--====== Bootstrap js ======-->
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
-<script src="assets/js/bootstrap.min.js"></script>
+<%--<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js" integrity="sha384-SR1sx49pcuLnqZUnnPwx6FCym0wLsk5JZuNx2bPPENzswTNFaQU1RDvt3wT4gWFG" crossorigin="anonymous"></script>--%>
+<script src="assets/js/bootstrap.bundle-5.0.0-beta1.min.js"></script>
 
 <!--====== Tiny Slider js ======-->
 <script src="assets/js/tiny-slider.js"></script>
@@ -239,15 +245,14 @@
 
 <!--====== gLightBox js ======-->
 <script src="assets/js/glightbox.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <!--====== Main js ======-->
 <script src="assets/js/main.js"></script>
 
 <script src="assets/js/card.js"></script>
-<script src="assets/js/jquery.payform.min.js" charset="utf-8"></script>
 
 <script>
     // Example starter JavaScript for disabling form submissions if there are invalid fields
+
     (function () {
         'use strict'
 

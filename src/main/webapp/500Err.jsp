@@ -52,10 +52,10 @@
                                 <i class="fab fa-playstation"></i>
                                 <i class="fas fa-gamepad"></i>
                             </h3>
-                            <h1 class="heading-1 font-weight-500 title" style="color: #542DED; margin: 10px auto;">Error 404</h1>
+                            <h1 class="heading-1 font-weight-500 title" style="color: #542DED; margin: 10px auto;">Error 505</h1>
                         </div>
 
-                        <h6  class="heading-5 font-weight-500 title" >The Page You Requested Couldn't be Found</h6>
+                        <h6  class="heading-5 font-weight-500 title" >Something went wrong, try again later.</h6>
 
                     </div>
 

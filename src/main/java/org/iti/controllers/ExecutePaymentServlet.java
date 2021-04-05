@@ -20,7 +20,7 @@ import org.iti.services.PaymentServices;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet("/execute_payment")
+@WebServlet(name = "ExecutePaymentServlet", urlPatterns = {"/execute_payment"} )
 public class ExecutePaymentServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 

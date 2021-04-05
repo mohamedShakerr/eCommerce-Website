@@ -104,17 +104,17 @@ metadata-complete= "false">
         <url-pattern>/cartedit</url-pattern>
     </filter-mapping>
 
-    <filter>
-        <filter-name>PageAuthFilter</filter-name>
-        <filter-class>org.iti.controllers.filters.PageAuthFilter</filter-class>
-    </filter>
+<!--    <filter>-->
+<!--        <filter-name>PageAuthFilter</filter-name>-->
+<!--        <filter-class>org.iti.controllers.filters.PageAuthFilter</filter-class>-->
+<!--    </filter>-->
 
-    <filter-mapping>
-        <filter-name>PageAuthFilter</filter-name>
-        <url-pattern>/cartedit</url-pattern>
-        <url-pattern>/login</url-pattern>
-        <url-pattern>/register</url-pattern>
-    </filter-mapping>
+<!--    <filter-mapping>-->
+<!--        <filter-name>PageAuthFilter</filter-name>-->
+<!--        <url-pattern>/cartedit</url-pattern>-->
+<!--        <url-pattern>/login</url-pattern>-->
+<!--        <url-pattern>/register</url-pattern>-->
+<!--    </filter-mapping>-->
 
     <!--================================================-->
 

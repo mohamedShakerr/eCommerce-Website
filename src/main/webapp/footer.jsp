@@ -7,9 +7,20 @@
         <div class="row">
             <div class="col-lg-3">
                 <div class="footer-about mt-30">
-                    <a href="#0">
-                        <img src="assets/images/logo.svg" alt="">
-                    </a>
+                    <div class="desktop-logo text-center">
+                        <a href="${pageContext.request.contextPath}">
+                            <span class="shop-logo">
+                                    <h3 style="color: #4726CA">
+                                        <i class="fab fa-playstation"></i>
+                                        <i class="fas fa-gamepad"></i>
+                                    </h3>
+                                </span>
+                            <span class="shop-logo-text" >
+                                    <h4 style="color: #4726CA">Unity</h4>
+                            </span>
+                        </a>
+                    </div>
+
                     <p>Made with &copy; at <a href="#0">GrayGrids</a>. All rights reserved.</p>
                     <ul class="footer-social">
                         <li><a href="#0"><i class="lni lni-facebook-filled"></i></a></li>

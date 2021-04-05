@@ -69,7 +69,7 @@
             <div class="col-lg-9">
                 <div class="profile">
                     <div class="profile-header">
-                        <div class="profile-cover-photo bg_cover"></div>
+                        <div class="profile-cover-photo bg_cover " hidden></div>
                         <div class="profile-author d-sm-flex flex-row-reverse justify-content-between align-items-end">
 
 
@@ -242,7 +242,7 @@
 
 <!--====== Bootstrap js ======-->
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
-<script src="assets/js/bootstrap.min.js"></script>
+<script src="assets/js/bootstrap.bundle-5.0.0-beta1.min.js"></script>
 
 <!--====== Tiny Slider js ======-->
 <script src="assets/js/tiny-slider.js"></script>

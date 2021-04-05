@@ -1,5 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
+<%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!--======================== Navbar  Starts ====================================-->
 <c:set var="cart" value="${requestScope.cartItems}" scope="request"/>
 <c:set var="userId" value="${sessionScope.userId}" scope="request"/>
@@ -284,81 +284,83 @@
                                             </div>
                                         </li>
 
-                                        <li id="user-cart">
-                                            <div class="navbar-cart">
-                                                <a class="icon-btn primary-icon-text icon-text-btn" href="#0"><img
-                                                        src="https://ecommerece-iti.s3.eu-central-1.amazonaws.com/d385ecd9-7979-4087-8eac-e57805691dec" alt="Icon" style="padding-top: 10px;"><span id="cart-count"
-                                                                                                                                            class="icon-text text-style-1">--</span></a>
+<%--                                        IF IN CHECKOUT PAGE DONOT PRESENT CART--%>
+                                        <c:if test="${not pageContext.request.requestURI.endsWith('/checkout.jsp')}">
+                                            <li id="user-cart">
+                                                <div class="navbar-cart">
+                                                    <a class="icon-btn primary-icon-text icon-text-btn" href="#0"><img
+                                                            src="https://www.flaticon.com/svg/vstatic/svg/709/709640.svg?token=exp=1617579714~hmac=d43fb926c9eb7ead7b7b681f57eed011" alt="Icon" style="padding-top: 10px;"><span id="cart-count"
+                                                                                                                                                                                                                                 class="icon-text text-style-1">--</span></a>
 
-                                                <div class="navbar-cart-dropdown">
-                                                    <div class="checkout-style-2">
-                                                        <div class="checkout-header d-flex justify-content-between">
-                                                            <h6 class="title">Shopping Cart </h6>
-                                                        </div>
-
-                                                        <div class="checkout-table table-responsive">
-                                                            <table class="table">
-                                                                <tbody id="cart-items-table">
-                                                                <c:forEach var="item" items="${cart}">
-                                                                    <tr id="table-row-${item.productId}">
-                                                                        <td class="checkout-product">
-                                                                            <div class="product-cart d-flex">
-                                                                                <div class="product-thumb">
-                                                                                    <img src="${item.productImage}"
-                                                                                         alt="Product">
-                                                                                </div>
-                                                                                <div class="product-content media-body">
-                                                                                    <h5 class="title"><a href="shop/prod-detail?prodId=${item.productId}">
-                                                                                            ${item.productName}
-                                                                                    </a></h5>
-                                                                                    <ul>
-                                                                                        <li><span id="item-qty-${item.productId}">${item.productQty}</span>
-                                                                                            <span>X$</span>
-                                                                                            <span id="item-price">${item.productPrice}</span>
-                                                                                        </li>
-                                                                                        <li><a class="delete" onclick="deleteProduct(${item.productId})"><i
-                                                                                                class="mdi mdi-delete"></i></a>
-                                                                                        </li>
-                                                                                    </ul>
-                                                                                </div>
-                                                                            </div>
-                                                                        </td>
-                                                                        <td class="checkout-quantity">
-                                                                            <div class="product-quantity d-inline-flex">
-                                                                                <button type="button" id="sub"
-                                                                                        class="sub" onclick="decProdQty(${item.productId},${item.productPrice})"><i
-                                                                                        class="mdi mdi-minus"></i></button>
-                                                                                <input id="item-${item.productId}-qty-input" type="text" value="${item.productQty}" disabled>
-                                                                                <button type="button" id="add"
-                                                                                        class="add" onclick="incProdQty(${item.productId},${item.productPrice})">
-                                                                                    <i
-                                                                                            class="mdi mdi-plus"></i>
-                                                                                </button>
-                                                                            </div>
-                                                                        </td>
-                                                                        <td class="checkout-price">
-                                                                            <p id="total-item-price-${item.productId}" class="price">${item.productPrice * item.productQty }</p>
-                                                                        </td>
-                                                                    </tr>
-                                                                </c:forEach>
-                                                                </tbody>
-                                                            </table>
-                                                        </div>
-                                                        <div class="checkout-footer">
-                                                            <div class="checkout-sub-total d-flex justify-content-between">
-                                                                <p class="value">Subotal Price:</p>
-                                                                <p class="price" id="cart-total-price">$144</p>
+                                                    <div class="navbar-cart-dropdown">
+                                                        <div class="checkout-style-2">
+                                                            <div class="checkout-header d-flex justify-content-between">
+                                                                <h6 class="title">Shopping Cart </h6>
                                                             </div>
-                                                            <div class="checkout-btn">
-                                                                <a href="#0" class="main-btn primary-btn-border">View
-                                                                    Cart</a>
-                                                                <a href="#0" class="main-btn primary-btn">To Checkout</a>
+
+                                                            <div class="checkout-table table-responsive">
+                                                                <table class="table">
+                                                                    <tbody id="cart-items-table">
+                                                                    <c:forEach var="item" items="${cart}">
+                                                                        <tr id="table-row-${item.productId}">
+                                                                            <td class="checkout-product">
+                                                                                <div class="product-cart d-flex">
+                                                                                    <div class="product-thumb">
+                                                                                        <img src="${item.productImage}"
+                                                                                             alt="Product">
+                                                                                    </div>
+                                                                                    <div class="product-content media-body">
+                                                                                        <h5 class="title"><a href="shop/prod-detail?prodId=${item.productId}">
+                                                                                                ${item.productName}
+                                                                                        </a></h5>
+                                                                                        <ul>
+                                                                                            <li><span id="item-qty-${item.productId}">${item.productQty}</span>
+                                                                                                <span>X$</span>
+                                                                                                <span id="item-price">${item.productPrice}</span>
+                                                                                            </li>
+                                                                                            <li><a class="delete" onclick="deleteProduct(${item.productId})"><i
+                                                                                                    class="mdi mdi-delete"></i></a>
+                                                                                            </li>
+                                                                                        </ul>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </td>
+                                                                            <td class="checkout-quantity">
+                                                                                <div class="product-quantity d-inline-flex">
+                                                                                    <button type="button" id="sub"
+                                                                                            class="sub" onclick="decProdQty(${item.productId},${item.productPrice})"><i
+                                                                                            class="mdi mdi-minus"></i></button>
+                                                                                    <input id="item-${item.productId}-qty-input" type="text" value="${item.productQty}" disabled>
+                                                                                    <button type="button" id="add"
+                                                                                            class="add" onclick="incProdQty(${item.productId},${item.productPrice})">
+                                                                                        <i
+                                                                                                class="mdi mdi-plus"></i>
+                                                                                    </button>
+                                                                                </div>
+                                                                            </td>
+                                                                            <td class="checkout-price">
+                                                                                <p id="total-item-price-${item.productId}" class="price">${item.productPrice * item.productQty }</p>
+                                                                            </td>
+                                                                        </tr>
+                                                                    </c:forEach>
+                                                                    </tbody>
+                                                                </table>
+                                                            </div>
+                                                            <div class="checkout-footer">
+                                                                <div class="checkout-sub-total d-flex justify-content-between">
+                                                                    <p class="value">Subotal Price:</p>
+                                                                    <p class="price" id="cart-total-price">$144</p>
+                                                                </div>
+                                                                <div class="checkout-btn">
+                                                                    <a href="${pageContext.request.contextPath}/checkout" class="main-btn primary-btn">To Checkout</a>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                        </li>
+                                            </li>
+                                        </c:if>
+
 
                                     </c:when>
 
