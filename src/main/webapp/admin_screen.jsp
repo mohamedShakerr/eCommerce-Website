@@ -49,7 +49,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header" style="background-color: #5c636a">
-                <h5 class="modal-title" style="color: white">Edit Product</h5>
+                <h5 class="modal-title" style="color: white">Add New Product</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <!--                    <span aria-hidden="true">×</span>-->
                     <i class="fas fa-window-close" style="color: white"></i>
@@ -63,28 +63,30 @@
                     <div class="form-group">
                         <label class="col-md-12">Product Name</label>
                         <div class="col-md-12">
-                            <input id="productName" name="productName" value="thisIsProductNAme" type="text" class="form-control form-control-line">
+                            <input id="productName" name="productName" placeholder="Product Name" type="text" class="form-control form-control-line" required ">
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-md-12">Price</label>
                         <div class="col-md-12">
-                            <input id="productPrice" name="productPrice" type="text"
-                                   class="form-control form-control-line">
+                            <input id="productPrice" name="productPrice" type="text" placeholder="Product Price"
+                                   class="form-control form-control-line" min="1" onblur="checkPrice()" required pattern="[0-9]+(\.[0-9][0-9]?)?">
+                                    <span id="nameErrorProdPrice"   style="display: none; color: red">Invalid Price</span>
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-md-12">Quantity</label>
                         <div class="col-md-12">
-                            <input id="productQuantity" name="productQuantity" type="text"
-                                   class="form-control form-control-line">
+                            <input id="productQuantity" name="productQuantity" type="number" placeholder="Product Quantity"
+                                   class="form-control form-control-line" min="1" onblur="checkQuantity()" required pattern="[0-9]+">
+                            <span id="nameErrorProdQty"   style="display: none; color: red">Invalid quantity</span>
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label class="col-sm-12">Category</label>
                         <div  class="col-sm-12">
-                            <select id="categorySelector" name="categorySelector" class="form-select shadow-none form-control-line">
+                            <select id="categorySelector" name="categorySelector" class="form-select shadow-none form-control-line" required>
                                 <option value="1">Consoles</option>
                                 <option value="2">Games</option>
                                 <option value="3">Joysticks</option>
@@ -100,14 +102,14 @@
                     <div class="form-group">
                         <label class="form-label col-md-12">Main Image</label>
                         <div class="col-md-12">
-                            <input  id="productImageFile" name="productImageFile" type="file" accept="image/*" class="form-control form-control-sm">
+                            <input  id="productImageFile" name="productImageFile" type="file" accept="image/*" class="form-control form-control-sm" required placeholder="Product Main Img">
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label class="col-md-12">Description</label>
                         <div class="col-md-12">
-                            <textarea id="productDescription" name="productDescription" rows="5" class="form-control form-control-line" style="resize: none"></textarea>
+                            <textarea id="productDescription" name="productDescription" rows="5" class="form-control form-control-line" style="resize: none" required placeholder="Product Description"></textarea>
                         </div>
                     </div>
 
@@ -120,7 +122,7 @@
 
                     <div class="modal-footer" style="background-color: #5c636a">
                         <button type="button" class="btn btn-danger" style="color: white" data-dismiss="modal">Cancel</button>
-                        <button type="submit" class="btn btn-primary">Update Product</button>
+                        <button type="submit" class="btn btn-primary">Add Product</button>
                     </div>
                 </form>
             </div>
@@ -375,6 +377,32 @@
 
 
         <script>
+
+            function checkQuantity(){
+
+                var quantity = $("#productQuantity").val();
+                var errSpan =  $("#nameErrorProdQty");
+
+                if(quantity <= 0 ){
+                    document.getElementById("nameErrorProdQty").style.display = 'block';
+                }else{
+                    document.getElementById("nameErrorProdQty").style.display = 'none';
+                }
+
+            }
+
+            function checkPrice(){
+
+                var price = $("#productPrice").val();
+                var errSpan =  $("#nameErrorProdPrice");
+
+                if(price <= 0 || isNaN(price)){
+                    document.getElementById("nameErrorProdPrice").style.display = 'block';
+                }else{
+                    document.getElementById("nameErrorProdPrice").style.display = 'none';
+                }
+
+            }
 
             function onDeleteProduct(productId) {
 

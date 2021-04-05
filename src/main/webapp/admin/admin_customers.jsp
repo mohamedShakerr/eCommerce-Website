@@ -147,8 +147,10 @@
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end user-dd animated" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="javascript:void(0)">
-                                <i class="fa fa-power-off m-r-5 m-l-5"></i>
-                                Logout</a>
+                                <a href="${pageContext.request.contextPath}/admin/admin-logout">
+                                    <i class="fa fa-power-off m-r-5 m-l-5"></i>
+                                    Logout
+                                </a>
                         </ul>
                     </li>
                     <!-- ============================================================== -->
