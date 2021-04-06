@@ -6,7 +6,7 @@
     <meta charset="utf-8">
 
     <!--====== Title ======-->
-    <title>eCommerce HTML | Template Four</title>
+    <title>Unity Store</title>
 
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">

@@ -8,7 +8,7 @@
     <meta charset="utf-8">
 
     <!--====== Title ======-->
-    <title>eCommerce HTML | EditProfile</title>
+    <title>EditProfile</title>
 
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">

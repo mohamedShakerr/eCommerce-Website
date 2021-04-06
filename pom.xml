@@ -124,7 +124,7 @@
 					<username>admin</username>
 					<password>admin</password>
 					<url>http://localhost:9191/manager/text</url>
-					<path>/eCommerceWebsite</path>
+					<path>/unitystore</path>
 				</configuration>
 			</plugin>
         </plugins>
