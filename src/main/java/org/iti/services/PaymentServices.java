@@ -51,8 +51,13 @@ public class PaymentServices {
 
     private RedirectUrls getRedirectURLs(String contextPath) {
         RedirectUrls redirectUrls = new RedirectUrls();
+        //TODO CHANGE HTHIS ACCORDINGLY
         redirectUrls.setCancelUrl("http://3.123.153.143"+contextPath+"/cancel.html");
+//        redirectUrls.setCancelUrl("http://localhost:9191"+contextPath+"/cancel.html");
         redirectUrls.setReturnUrl("http://3.123.153.143"+contextPath+"/review_payment");
+//        redirectUrls.setReturnUrl("http://localhost:9191"+contextPath+"/review_payment");
+
+
 
         return redirectUrls;
     }

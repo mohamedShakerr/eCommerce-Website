@@ -47,11 +47,13 @@ function decProdQty(prodId, prodPrice){
         method:"POST",
         success(data){
             if(data === "success"){
+
                 updateCartTotal();
                 updateCartCount();
                 prodCountInput.val( ( parseInt(prodCountInput.val())-1) );
                 $("#total-item-price-"+prodId).text(  parseInt(prodCountInput.val()) * prodPrice );
                 $("#item-qty-"+prodId).text( prodCountInput.val() );
+
             }else{
 
             }

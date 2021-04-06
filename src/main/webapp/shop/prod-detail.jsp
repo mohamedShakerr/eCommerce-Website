@@ -66,6 +66,18 @@
     <jsp:include page="../navbar.jsp"/>
     <!--======================== Navbar  Ends ====================================-->
 
+    <div class="container" style="margin-top:20px ;">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item" style="font-size: 20px"><a href="${pageContext.request.contextPath}">Home</a></li>
+                <li class="breadcrumb-item" style="font-size: 20px"><a href="${pageContext.request.contextPath}/shop">Shop</a></li>
+                <li class="breadcrumb-item active" style="font-size: 20px" aria-current="page">${product.prodName}</li>
+            </ol>
+        </nav>
+
+    </div>
+
+
     <c:if test="${prodAdded != null}">
         <div class="container" style="text-align: center;margin: 10px auto;">
             <div class="alert alert-success" role="alert">

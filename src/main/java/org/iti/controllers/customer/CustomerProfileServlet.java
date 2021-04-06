@@ -6,7 +6,9 @@ import jakarta.servlet.http.*;
 import java.io.*;
 import java.util.*;
 
+import org.iti.dtos.CartDto;
 import org.iti.dtos.CustomerDto;
+import org.iti.services.CartService;
 import org.iti.services.CustomerServices;
 
 
@@ -23,6 +25,18 @@ public class CustomerProfileServlet extends HttpServlet{
 
 		CustomerServices customerServices=new CustomerServices();
 		CustomerDto customerDto=customerServices.showCustomerProfile(id);
+
+		CartService cartService = CartService.getInstance();
+
+		Integer userId = (Integer) session.getAttribute("userId");
+
+		if(userId != null){
+			CartDto cart = cartService.getCartByUserId(userId);
+			request.setAttribute("cartItems", cart.getCartItems());
+		}else{
+			request.setAttribute("cartItems", new ArrayList<>());
+		}
+		cartService.terminateService();
 
 		session.setAttribute("customerDto", customerDto);
 		RequestDispatcher rd = request.getRequestDispatcher("/profile.jsp");

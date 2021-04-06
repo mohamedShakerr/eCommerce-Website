@@ -110,7 +110,7 @@ public class ShopServlet extends HttpServlet {
             request.setAttribute("maxPrice", maxPrice);
             request.setAttribute("NumberOfPages", numberOfPages);
             if(categ == null){
-                request.setAttribute("categId", -1);
+                request.setAttribute("categId", null);
             }else {
                 request.setAttribute("categId", categ);
             }

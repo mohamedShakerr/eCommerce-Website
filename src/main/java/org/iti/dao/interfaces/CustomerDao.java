@@ -30,6 +30,7 @@ public interface CustomerDao {
     public void updateCustomer(int id,CustomerDto customerDto);
 
     public double addMoneyToCredit(int id,double money);
+    public double subMoneyToCredit(int id,double money);
 
     public void updateCustomerAvatar(int id,String url);
 

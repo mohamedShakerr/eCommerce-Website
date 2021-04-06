@@ -50,7 +50,7 @@ public class CheckoutCreditService {
     public void decreaseCreditCard(double decreasedAmount,int id){
         CustomerDao customerDao=new CustomerDaoImpl();
 
-        customerDao.addMoneyToCredit(id,decreasedAmount);
+        customerDao.subMoneyToCredit(id,decreasedAmount);
     }
 
     public void saveOrders(List<CartItems> cartItemsList ){

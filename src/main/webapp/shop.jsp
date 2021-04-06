@@ -71,6 +71,17 @@
 <jsp:include page="navbar.jsp"/>
 <!--======================== Navbar  Ends ====================================-->
 
+<div class="container" style="margin-top:20px ;">
+
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item" style="font-size: 20px"><a href="${pageContext.request.contextPath}">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page" style="font-size: 20px">Shop</li>
+        </ol>
+    </nav>
+
+</div>
+
     <!--====== Filter Part Start ======-->
 
     <section class="filter-wrapper pt-85" style="padding-top: 20px;">

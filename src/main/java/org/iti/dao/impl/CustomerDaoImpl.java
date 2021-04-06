@@ -193,6 +193,28 @@ public class CustomerDaoImpl implements CustomerDao {
         return result.getCredit();
     }
 
+    public double subMoneyToCredit(int id,double money){
+        Session session = dbSessionProvider.getSession();
+
+        session.beginTransaction();
+
+        javax.persistence.Query q = session.createQuery("update Customers c set c.credit = c.credit-:qty where c.customerId = :id")
+                .setParameter("id", id)
+                .setParameter("qty", money);
+
+        q.executeUpdate();
+
+        session.getTransaction().commit();
+        session.close();
+
+        Customers result = getCustomerByID(id);
+
+        return result.getCredit();
+    }
+
+
+
+
     public void updateCustomerAvatar(int id,String url){
         Session session = dbSessionProvider.getSession();
 
